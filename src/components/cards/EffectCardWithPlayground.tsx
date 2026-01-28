@@ -3,6 +3,7 @@ import { Copy, Check, Sliders } from "lucide-react";
 import { Effect } from "@/data/effects";
 import { FavoriteButton } from "@/components/features/FavoriteButton";
 import { AnimationPlayground } from "@/components/playground/AnimationPlayground";
+import { EffectLivePreview } from "@/components/LivePreview";
 
 interface EffectCardProps {
   effect: Effect;
@@ -40,65 +41,6 @@ export function EffectCardWithPlayground({ effect, isCompact = false }: EffectCa
     }
   };
 
-  const renderPreview = () => {
-    const previewColor = effect.previewColor || "#00FFFF";
-    
-    switch (effect.category) {
-      case "glassmorphism":
-        return (
-          <div 
-            className="backdrop-blur-xl border rounded-2xl p-4 text-sm"
-            style={{
-              background: `${previewColor}25`,
-              borderColor: `${previewColor}40`,
-              boxShadow: `0 8px 32px ${previewColor}22`,
-              color: previewColor,
-            }}
-          >
-            {effect.name}
-          </div>
-        );
-      case "neumorphism":
-        return (
-          <div 
-            className="rounded-2xl p-4 text-sm"
-            style={{
-              background: previewColor,
-              boxShadow: `8px 8px 15px ${previewColor}88, -8px -8px 15px #ffffff`,
-            }}
-          >
-            {effect.name}
-          </div>
-        );
-      case "filters":
-        return (
-          <div 
-            className="w-16 h-16 rounded-lg"
-            style={{
-              background: `linear-gradient(135deg, ${previewColor}, ${previewColor}88)`,
-              filter: "blur(0px) contrast(1.1)",
-            }}
-          />
-        );
-      case "gradients":
-        return (
-          <div 
-            className="w-full h-16 rounded-lg"
-            style={{
-              background: `linear-gradient(135deg, ${previewColor}, ${previewColor}44, ${previewColor}88)`,
-            }}
-          />
-        );
-      default:
-        return (
-          <div 
-            className="w-16 h-16 rounded-lg"
-            style={{ background: previewColor }}
-          />
-        );
-    }
-  };
-
   if (isCompact) {
     return (
       <>
@@ -119,7 +61,7 @@ export function EffectCardWithPlayground({ effect, isCompact = false }: EffectCa
             </div>
           </div>
           <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg p-4 mb-2 flex items-center justify-center min-h-[80px] border border-border/50 overflow-hidden">
-            {renderPreview()}
+            <EffectLivePreview effect={effect} size="sm" />
           </div>
           <h3 className="text-sm font-medium text-foreground truncate">{effect.name}</h3>
           <button
@@ -175,7 +117,7 @@ export function EffectCardWithPlayground({ effect, isCompact = false }: EffectCa
           className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg p-6 mb-4 flex items-center justify-center min-h-[120px] border border-border/50 overflow-hidden cursor-pointer hover:border-secondary/50 transition-colors"
           onClick={() => setShowPlayground(true)}
         >
-          {renderPreview()}
+          <EffectLivePreview effect={effect} size="md" />
         </div>
 
         {/* Code Tabs */}

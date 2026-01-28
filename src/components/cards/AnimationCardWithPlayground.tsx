@@ -3,6 +3,7 @@ import { Copy, Check, Play, Pause, Sliders } from "lucide-react";
 import { Animation } from "@/data/animations";
 import { FavoriteButton } from "@/components/features/FavoriteButton";
 import { AnimationPlayground } from "@/components/playground/AnimationPlayground";
+import { AnimationLivePreview } from "@/components/LivePreview";
 
 interface AnimationCardProps {
   animation: Animation;
@@ -41,21 +42,6 @@ export function AnimationCardWithPlayground({ animation, isCompact = false }: An
     }
   };
 
-  const renderPreview = () => {
-    const baseClasses = isPlaying ? animation.animationClass : "";
-    const previewColor = animation.previewColor || "#00FFFF";
-    
-    return (
-      <div 
-        className={`${baseClasses} w-16 h-16 rounded-lg`}
-        style={{
-          background: `linear-gradient(135deg, ${previewColor}, ${previewColor}88)`,
-          boxShadow: `0 0 20px ${previewColor}44`,
-        }}
-      />
-    );
-  };
-
   if (isCompact) {
     return (
       <>
@@ -82,7 +68,7 @@ export function AnimationCardWithPlayground({ animation, isCompact = false }: An
             </div>
           </div>
           <div className="bg-background/50 rounded-lg p-4 mb-2 flex items-center justify-center min-h-[80px] border border-border/50">
-            {renderPreview()}
+            <AnimationLivePreview animation={animation} isPlaying={isPlaying} size="md" />
           </div>
           <h3 className="text-sm font-medium text-foreground truncate">{animation.name}</h3>
           <button
@@ -145,7 +131,7 @@ export function AnimationCardWithPlayground({ animation, isCompact = false }: An
           className="bg-background/50 rounded-lg p-6 mb-4 flex items-center justify-center min-h-[120px] border border-border/50 cursor-pointer hover:border-primary/50 transition-colors"
           onClick={() => setShowPlayground(true)}
         >
-          {renderPreview()}
+          <AnimationLivePreview animation={animation} isPlaying={isPlaying} size="lg" />
         </div>
 
         {/* Code Tabs */}
