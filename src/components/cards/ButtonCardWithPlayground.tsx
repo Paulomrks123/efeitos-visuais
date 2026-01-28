@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Copy, Check, Sliders } from "lucide-react";
+import { Copy, Check, Sliders, Play, Pause } from "lucide-react";
 import { ButtonAnimation } from "@/data/buttons";
 import { FavoriteButton } from "@/components/features/FavoriteButton";
 import { AnimationPlayground } from "@/components/playground/AnimationPlayground";
+import { ButtonLivePreview } from "@/components/LivePreview";
 
 interface ButtonCardProps {
   button: ButtonAnimation;
@@ -20,6 +21,7 @@ const categoryBadgeColors = {
 };
 
 export function ButtonCardWithPlayground({ button, isCompact = false }: ButtonCardProps) {
+  const [isPlaying, setIsPlaying] = useState(true);
   const [copiedCSS, setCopiedCSS] = useState(false);
   const [copiedHTML, setCopiedHTML] = useState(false);
   const [activeTab, setActiveTab] = useState<"css" | "html">("css");
@@ -38,19 +40,8 @@ export function ButtonCardWithPlayground({ button, isCompact = false }: ButtonCa
 
   const previewColor = button.previewColor || "#00FFFF";
 
-  const renderPreview = () => {
-    return (
-      <button
-        className="px-6 py-3 rounded-lg font-medium text-sm transition-all hover:scale-105"
-        style={{
-          background: `linear-gradient(135deg, ${previewColor}, ${previewColor}cc)`,
-          color: "#fff",
-          boxShadow: `0 4px 15px ${previewColor}44`,
-        }}
-      >
-        {button.name}
-      </button>
-    );
+  const renderPreview = (size: "sm" | "md" | "lg" = "md") => {
+    return <ButtonLivePreview button={button} isPlaying={isPlaying} size={size} />;
   };
 
   // Adapter for playground
@@ -71,6 +62,12 @@ export function ButtonCardWithPlayground({ button, isCompact = false }: ButtonCa
             <div className="flex gap-1">
               <FavoriteButton id={button.id} type="button" size="sm" />
               <button
+                onClick={(e) => { e.stopPropagation(); setIsPlaying(!isPlaying); }}
+                className="p-1.5 rounded-lg bg-muted/50 hover:bg-muted transition-colors opacity-0 group-hover:opacity-100"
+              >
+                {isPlaying ? <Pause size={12} /> : <Play size={12} />}
+              </button>
+              <button
                 onClick={(e) => { e.stopPropagation(); setShowPlayground(true); }}
                 className="p-1.5 rounded-lg bg-neon-cyan/20 hover:bg-neon-cyan/40 text-neon-cyan transition-colors opacity-0 group-hover:opacity-100"
               >
@@ -79,7 +76,7 @@ export function ButtonCardWithPlayground({ button, isCompact = false }: ButtonCa
             </div>
           </div>
           <div className="bg-background/50 rounded-lg p-4 mb-2 flex items-center justify-center min-h-[80px] border border-border/50">
-            {renderPreview()}
+            {renderPreview("sm")}
           </div>
           <h3 className="text-sm font-medium text-foreground truncate">{button.name}</h3>
           <button
@@ -124,6 +121,13 @@ export function ButtonCardWithPlayground({ button, isCompact = false }: ButtonCa
             >
               <Sliders size={16} />
             </button>
+            <button
+              onClick={() => setIsPlaying(!isPlaying)}
+              className="p-2 rounded-lg bg-muted hover:bg-muted/80 transition-colors"
+              title={isPlaying ? "Pausar" : "Reproduzir"}
+            >
+              {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+            </button>
           </div>
         </div>
 
@@ -135,7 +139,7 @@ export function ButtonCardWithPlayground({ button, isCompact = false }: ButtonCa
           className="bg-background/50 rounded-lg p-6 mb-4 flex items-center justify-center min-h-[120px] border border-border/50 cursor-pointer hover:border-neon-cyan/50 transition-colors"
           onClick={() => setShowPlayground(true)}
         >
-          {renderPreview()}
+          {renderPreview("md")}
         </div>
 
         {/* Code Tabs */}
