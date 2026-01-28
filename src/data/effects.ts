@@ -4296,4 +4296,586 @@ export const effects: Effect[] = [
   }
 }`,
   },
+
+  // ==================== NOVOS EFEITOS DE IMAGEM (20 efeitos I-31 a I-50) ====================
+  {
+    id: "I-31",
+    name: "DNA Spiral",
+    description: "Imagem surge em espiral de DNA girando.",
+    category: "images",
+    previewColor: "#00E676",
+    htmlExample: `<div class="img-dna-spiral"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-dna-spiral {
+  animation: imgDnaSpiral 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+@keyframes imgDnaSpiral {
+  0% { transform: rotateY(720deg) scaleX(0); opacity: 0; filter: blur(15px); }
+  30% { transform: rotateY(360deg) scaleX(0.3); filter: blur(8px); }
+  60% { transform: rotateY(180deg) scaleX(0.7); opacity: 1; filter: blur(3px); }
+  100% { transform: rotateY(0deg) scaleX(1); filter: blur(0); }
+}`,
+  },
+  {
+    id: "I-32",
+    name: "Origami Unfold",
+    description: "Imagem se desdobra como origami de papel.",
+    category: "images",
+    previewColor: "#FF5252",
+    htmlExample: `<div class="img-origami"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-origami {
+  transform-origin: center;
+  animation: imgOrigami 1.2s ease-out forwards;
+}
+@keyframes imgOrigami {
+  0% { transform: perspective(800px) rotateX(-90deg) rotateY(-90deg) scale(0.3); opacity: 0; }
+  25% { transform: perspective(800px) rotateX(-45deg) rotateY(-45deg) scale(0.5); }
+  50% { transform: perspective(800px) rotateX(-20deg) rotateY(20deg) scale(0.8); opacity: 1; }
+  75% { transform: perspective(800px) rotateX(10deg) rotateY(-10deg) scale(1.05); }
+  100% { transform: perspective(800px) rotateX(0deg) rotateY(0deg) scale(1); }
+}`,
+  },
+  {
+    id: "I-33",
+    name: "Ink Drop",
+    description: "Imagem aparece como gota de tinta se espalhando.",
+    category: "images",
+    previewColor: "#263238",
+    htmlExample: `<div class="img-ink-drop"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-ink-drop {
+  clip-path: circle(0% at 50% 50%);
+  animation: imgInkDrop 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  filter: contrast(1.2);
+}
+@keyframes imgInkDrop {
+  0% { clip-path: circle(0% at 50% 50%); filter: contrast(3) saturate(0); }
+  30% { clip-path: circle(20% at 50% 50%); filter: contrast(2) saturate(0.5); }
+  60% { clip-path: circle(60% at 50% 50%); filter: contrast(1.5) saturate(0.8); }
+  100% { clip-path: circle(100% at 50% 50%); filter: contrast(1) saturate(1); }
+}`,
+  },
+  {
+    id: "I-34",
+    name: "Kaleidoscope",
+    description: "Efeito caleidoscópio colorido ao revelar.",
+    category: "images",
+    previewColor: "#E040FB",
+    htmlExample: `<div class="img-kaleidoscope"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-kaleidoscope {
+  animation: imgKaleidoscope 2s ease-out forwards;
+}
+@keyframes imgKaleidoscope {
+  0% { transform: scale(0) rotate(0deg); filter: hue-rotate(0deg) blur(20px); opacity: 0; }
+  25% { transform: scale(0.5) rotate(90deg); filter: hue-rotate(90deg) blur(10px); opacity: 0.5; }
+  50% { transform: scale(0.8) rotate(180deg); filter: hue-rotate(180deg) blur(5px); opacity: 0.8; }
+  75% { transform: scale(1.1) rotate(270deg); filter: hue-rotate(270deg) blur(2px); }
+  100% { transform: scale(1) rotate(360deg); filter: hue-rotate(360deg) blur(0); opacity: 1; }
+}`,
+  },
+  {
+    id: "I-35",
+    name: "Broken Glass",
+    description: "Imagem aparece como vidro se reconstituindo.",
+    category: "images",
+    previewColor: "#B0BEC5",
+    htmlExample: `<div class="img-broken-glass"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-broken-glass {
+  animation: imgBrokenGlass 1.2s steps(8) forwards;
+}
+@keyframes imgBrokenGlass {
+  0% { clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%); opacity: 0; }
+  25% { clip-path: polygon(15% 5%, 5% 15%, 25% 45%, 5% 75%, 15% 95%, 45% 65%, 75% 95%, 95% 75%, 65% 45%, 95% 15%, 85% 5%, 55% 35%); }
+  50% { clip-path: polygon(10% 10%, 10% 10%, 20% 40%, 10% 70%, 10% 90%, 40% 60%, 70% 90%, 90% 70%, 60% 40%, 90% 10%, 90% 10%, 60% 40%); opacity: 0.7; }
+  100% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%, 0 100%, 100% 100%, 100% 100%, 100% 100%, 100% 0, 100% 0, 100% 0, 0 0); opacity: 1; }
+}`,
+  },
+  {
+    id: "I-36",
+    name: "Magnetic Pull",
+    description: "Imagem é puxada magneticamente para o centro.",
+    category: "images",
+    previewColor: "#FF6D00",
+    htmlExample: `<div class="img-magnetic"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-magnetic {
+  animation: imgMagnetic 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+@keyframes imgMagnetic {
+  0% { transform: scale(2) translateY(-50px); filter: blur(20px); opacity: 0; }
+  30% { transform: scale(1.5) translateY(-30px); filter: blur(10px); opacity: 0.5; }
+  60% { transform: scale(0.9) translateY(10px); filter: blur(3px); opacity: 0.9; }
+  80% { transform: scale(1.05) translateY(-5px); filter: blur(0); }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}`,
+  },
+  {
+    id: "I-37",
+    name: "Neon Scan Lines",
+    description: "Linhas de scanner neon revelam a imagem.",
+    category: "images",
+    previewColor: "#76FF03",
+    htmlExample: `<div class="img-neon-scan"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-neon-scan {
+  animation: imgNeonScan 1.5s ease-out forwards;
+  position: relative;
+}
+@keyframes imgNeonScan {
+  0% { 
+    clip-path: polygon(0 0, 100% 0, 100% 2%, 0 2%);
+    filter: brightness(2) saturate(2);
+    box-shadow: 0 0 20px #76FF03;
+  }
+  25% { clip-path: polygon(0 0, 100% 0, 100% 25%, 0 25%); }
+  50% { clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%); filter: brightness(1.5); }
+  75% { clip-path: polygon(0 0, 100% 0, 100% 75%, 0 75%); }
+  100% { 
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    filter: brightness(1) saturate(1);
+    box-shadow: none;
+  }
+}`,
+  },
+  {
+    id: "I-38",
+    name: "Smoke Reveal",
+    description: "Imagem emerge através de fumaça mística.",
+    category: "images",
+    previewColor: "#78909C",
+    htmlExample: `<div class="img-smoke-reveal"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-smoke-reveal {
+  animation: imgSmokeReveal 2s ease-out forwards;
+}
+@keyframes imgSmokeReveal {
+  0% { filter: blur(30px) brightness(0.5) grayscale(1); transform: scale(1.2); opacity: 0; }
+  30% { filter: blur(20px) brightness(0.7) grayscale(0.7); transform: scale(1.15); opacity: 0.4; }
+  60% { filter: blur(10px) brightness(0.9) grayscale(0.3); transform: scale(1.08); opacity: 0.7; }
+  100% { filter: blur(0) brightness(1) grayscale(0); transform: scale(1); opacity: 1; }
+}`,
+  },
+  {
+    id: "I-39",
+    name: "Lightning Strike",
+    description: "Relâmpago ilumina e revela a imagem.",
+    category: "images",
+    previewColor: "#FFEA00",
+    htmlExample: `<div class="img-lightning"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-lightning {
+  animation: imgLightning 0.8s steps(6) forwards;
+}
+@keyframes imgLightning {
+  0%, 10% { opacity: 0; filter: brightness(0); }
+  15% { opacity: 1; filter: brightness(5) contrast(2); }
+  20% { opacity: 0.3; filter: brightness(0.5); }
+  30% { opacity: 1; filter: brightness(4) contrast(1.5); }
+  40% { opacity: 0.5; filter: brightness(0.8); }
+  60% { opacity: 1; filter: brightness(2); }
+  100% { opacity: 1; filter: brightness(1) contrast(1); }
+}`,
+  },
+  {
+    id: "I-40",
+    name: "Prism Refraction",
+    description: "Imagem se refrata como luz através de um prisma.",
+    category: "images",
+    previewColor: "#D500F9",
+    htmlExample: `<div class="img-prism"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-prism {
+  animation: imgPrism 1.5s ease-out forwards;
+}
+@keyframes imgPrism {
+  0% { 
+    transform: skewX(30deg) scaleX(0.3);
+    filter: hue-rotate(0deg) saturate(3);
+    opacity: 0;
+  }
+  25% { 
+    transform: skewX(15deg) scaleX(0.6);
+    filter: hue-rotate(60deg) saturate(2.5);
+    opacity: 0.5;
+  }
+  50% { 
+    transform: skewX(-10deg) scaleX(0.9);
+    filter: hue-rotate(120deg) saturate(2);
+    opacity: 0.8;
+  }
+  75% { 
+    transform: skewX(5deg) scaleX(1.05);
+    filter: hue-rotate(180deg) saturate(1.5);
+  }
+  100% { 
+    transform: skewX(0deg) scaleX(1);
+    filter: hue-rotate(0deg) saturate(1);
+    opacity: 1;
+  }
+}`,
+  },
+  {
+    id: "I-41",
+    name: "Cyberpunk Glitch",
+    description: "Glitch cyberpunk intenso com cores neon.",
+    category: "images",
+    previewColor: "#FF1744",
+    htmlExample: `<div class="img-cyber-glitch"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-cyber-glitch {
+  animation: imgCyberGlitch 1.2s steps(20) forwards;
+  position: relative;
+}
+@keyframes imgCyberGlitch {
+  0%, 5% { transform: translate(0); filter: hue-rotate(0deg); clip-path: inset(0 0 100% 0); }
+  10% { transform: translate(-5px, 5px); filter: hue-rotate(90deg); clip-path: inset(20% 0 60% 0); }
+  15% { transform: translate(5px, -5px); filter: hue-rotate(180deg); clip-path: inset(60% 0 20% 0); }
+  20% { transform: translate(-3px, 0); filter: hue-rotate(270deg); clip-path: inset(40% 0 40% 0); }
+  30% { transform: translate(0); filter: hue-rotate(0deg); clip-path: inset(10% 0 70% 0); }
+  50% { clip-path: inset(0 0 50% 0); }
+  70% { clip-path: inset(0 0 20% 0); }
+  100% { transform: translate(0); filter: hue-rotate(0deg); clip-path: inset(0 0 0 0); opacity: 1; }
+}`,
+  },
+  {
+    id: "I-42",
+    name: "Spiral Vortex",
+    description: "Imagem emerge de um vórtice espiral.",
+    category: "images",
+    previewColor: "#651FFF",
+    htmlExample: `<div class="img-vortex"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-vortex {
+  animation: imgVortex 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes imgVortex {
+  0% { 
+    transform: scale(0) rotate(-540deg);
+    filter: blur(20px);
+    opacity: 0;
+    border-radius: 50%;
+  }
+  40% { 
+    transform: scale(0.5) rotate(-270deg);
+    filter: blur(10px);
+    opacity: 0.5;
+    border-radius: 40%;
+  }
+  70% { 
+    transform: scale(0.9) rotate(-90deg);
+    filter: blur(3px);
+    opacity: 0.9;
+    border-radius: 20%;
+  }
+  100% { 
+    transform: scale(1) rotate(0deg);
+    filter: blur(0);
+    opacity: 1;
+    border-radius: 0;
+  }
+}`,
+  },
+  {
+    id: "I-43",
+    name: "Matrix Download",
+    description: "Imagem baixa estilo Matrix com código verde.",
+    category: "images",
+    previewColor: "#00E676",
+    htmlExample: `<div class="img-matrix"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-matrix {
+  animation: imgMatrix 1.5s ease-out forwards;
+}
+@keyframes imgMatrix {
+  0% { 
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    filter: brightness(2) saturate(0) sepia(1) hue-rotate(70deg);
+  }
+  25% { 
+    clip-path: polygon(0 0, 100% 0, 100% 25%, 0 30%);
+    filter: brightness(1.8) saturate(0.3) sepia(0.8) hue-rotate(70deg);
+  }
+  50% { 
+    clip-path: polygon(0 0, 100% 0, 100% 55%, 0 50%);
+    filter: brightness(1.4) saturate(0.6) sepia(0.5) hue-rotate(40deg);
+  }
+  75% { 
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 75%);
+    filter: brightness(1.2) saturate(0.8) sepia(0.2) hue-rotate(20deg);
+  }
+  100% { 
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    filter: brightness(1) saturate(1) sepia(0) hue-rotate(0deg);
+  }
+}`,
+  },
+  {
+    id: "I-44",
+    name: "Flame Burst",
+    description: "Imagem explode em chamas ardentes.",
+    category: "images",
+    previewColor: "#FF3D00",
+    htmlExample: `<div class="img-flame"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-flame {
+  animation: imgFlame 1.2s ease-out forwards;
+}
+@keyframes imgFlame {
+  0% { 
+    transform: scale(0.3);
+    filter: brightness(3) saturate(2) sepia(1);
+    opacity: 0;
+    box-shadow: 0 0 50px #FF3D00, 0 0 100px #FF6D00;
+  }
+  30% { 
+    transform: scale(1.2);
+    filter: brightness(2) saturate(1.5) sepia(0.7);
+    opacity: 0.7;
+    box-shadow: 0 0 30px #FF3D00, 0 0 60px #FF6D00;
+  }
+  60% { 
+    transform: scale(0.95);
+    filter: brightness(1.3) saturate(1.2) sepia(0.3);
+    opacity: 0.9;
+  }
+  100% { 
+    transform: scale(1);
+    filter: brightness(1) saturate(1) sepia(0);
+    opacity: 1;
+    box-shadow: none;
+  }
+}`,
+  },
+  {
+    id: "I-45",
+    name: "Ripple Water",
+    description: "Ondulações na água revelam a imagem.",
+    category: "images",
+    previewColor: "#00B8D4",
+    htmlExample: `<div class="img-ripple-water"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-ripple-water {
+  animation: imgRippleWater 2s ease-out forwards;
+}
+@keyframes imgRippleWater {
+  0% { 
+    transform: scale(1.3) perspective(500px) rotateX(30deg);
+    filter: blur(10px);
+    opacity: 0;
+  }
+  25% { 
+    transform: scale(1.2) perspective(500px) rotateX(20deg);
+    filter: blur(7px);
+    opacity: 0.4;
+  }
+  50% { 
+    transform: scale(1.1) perspective(500px) rotateX(10deg);
+    filter: blur(4px);
+    opacity: 0.7;
+  }
+  75% { 
+    transform: scale(1.03) perspective(500px) rotateX(3deg);
+    filter: blur(1px);
+    opacity: 0.9;
+  }
+  100% { 
+    transform: scale(1) perspective(500px) rotateX(0deg);
+    filter: blur(0);
+    opacity: 1;
+  }
+}`,
+  },
+  {
+    id: "I-46",
+    name: "Diamond Facets",
+    description: "Facetas de diamante cristalizam a imagem.",
+    category: "images",
+    previewColor: "#E0E0E0",
+    htmlExample: `<div class="img-diamond"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-diamond {
+  animation: imgDiamond 1.5s ease-out forwards;
+  clip-path: polygon(50% 0%, 50% 0%, 50% 100%, 50% 100%);
+}
+@keyframes imgDiamond {
+  0% { 
+    clip-path: polygon(50% 0%, 50% 0%, 50% 100%, 50% 100%);
+    filter: brightness(3) contrast(2);
+  }
+  25% { 
+    clip-path: polygon(50% 0%, 75% 25%, 50% 100%, 25% 75%);
+    filter: brightness(2.5) contrast(1.7);
+  }
+  50% { 
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    filter: brightness(2) contrast(1.4);
+  }
+  75% { 
+    clip-path: polygon(10% 10%, 90% 10%, 100% 50%, 90% 90%, 10% 90%, 0% 50%);
+    filter: brightness(1.5) contrast(1.2);
+  }
+  100% { 
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    filter: brightness(1) contrast(1);
+  }
+}`,
+  },
+  {
+    id: "I-47",
+    name: "Aurora Borealis",
+    description: "Luzes da aurora boreal revelam a imagem.",
+    category: "images",
+    previewColor: "#00BFA5",
+    htmlExample: `<div class="img-aurora"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-aurora {
+  animation: imgAurora 2s ease-in-out forwards;
+}
+@keyframes imgAurora {
+  0% { 
+    opacity: 0;
+    filter: hue-rotate(0deg) saturate(3) brightness(0.5);
+    transform: scaleY(0.8) translateY(20px);
+  }
+  25% { 
+    opacity: 0.4;
+    filter: hue-rotate(60deg) saturate(2.5) brightness(0.8);
+    transform: scaleY(0.9) translateY(10px);
+  }
+  50% { 
+    opacity: 0.7;
+    filter: hue-rotate(120deg) saturate(2) brightness(1.2);
+    transform: scaleY(1.05) translateY(-5px);
+  }
+  75% { 
+    opacity: 0.9;
+    filter: hue-rotate(60deg) saturate(1.5) brightness(1.1);
+    transform: scaleY(1) translateY(2px);
+  }
+  100% { 
+    opacity: 1;
+    filter: hue-rotate(0deg) saturate(1) brightness(1);
+    transform: scaleY(1) translateY(0);
+  }
+}`,
+  },
+  {
+    id: "I-48",
+    name: "Shockwave",
+    description: "Onda de choque expande e revela a imagem.",
+    category: "images",
+    previewColor: "#AA00FF",
+    htmlExample: `<div class="img-shockwave"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-shockwave {
+  animation: imgShockwave 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes imgShockwave {
+  0% { 
+    transform: scale(0.1);
+    border-radius: 50%;
+    filter: blur(20px) brightness(3);
+    opacity: 0;
+    box-shadow: 0 0 0 0 rgba(170, 0, 255, 0.8);
+  }
+  30% { 
+    transform: scale(0.5);
+    border-radius: 40%;
+    filter: blur(10px) brightness(2);
+    opacity: 0.5;
+    box-shadow: 0 0 0 20px rgba(170, 0, 255, 0.5);
+  }
+  60% { 
+    transform: scale(0.9);
+    border-radius: 20%;
+    filter: blur(3px) brightness(1.3);
+    opacity: 0.9;
+    box-shadow: 0 0 0 40px rgba(170, 0, 255, 0.2);
+  }
+  100% { 
+    transform: scale(1);
+    border-radius: 0;
+    filter: blur(0) brightness(1);
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(170, 0, 255, 0);
+  }
+}`,
+  },
+  {
+    id: "I-49",
+    name: "Pixel Rain",
+    description: "Chuva de pixels formando a imagem de cima.",
+    category: "images",
+    previewColor: "#64DD17",
+    htmlExample: `<div class="img-pixel-rain"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-pixel-rain {
+  animation: imgPixelRain 1.5s steps(15) forwards;
+}
+@keyframes imgPixelRain {
+  0% { 
+    clip-path: polygon(0 0, 10% 0, 10% 5%, 0 5%);
+    filter: pixelate(20px) brightness(2);
+  }
+  20% { 
+    clip-path: polygon(0 0, 30% 0, 25% 20%, 5% 25%, 0 15%);
+    filter: brightness(1.7);
+  }
+  40% { 
+    clip-path: polygon(0 0, 60% 0, 55% 40%, 40% 45%, 20% 40%, 0 35%);
+    filter: brightness(1.4);
+  }
+  60% { 
+    clip-path: polygon(0 0, 85% 0, 80% 60%, 65% 65%, 45% 60%, 25% 65%, 0 55%);
+    filter: brightness(1.2);
+  }
+  80% { 
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 85% 85%, 60% 80%, 35% 85%, 10% 80%, 0 75%);
+    filter: brightness(1.1);
+  }
+  100% { 
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    filter: brightness(1);
+  }
+}`,
+  },
+  {
+    id: "I-50",
+    name: "Black Hole Emerge",
+    description: "Imagem emerge de um buraco negro cósmico.",
+    category: "images",
+    previewColor: "#1A237E",
+    htmlExample: `<div class="img-blackhole"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-blackhole {
+  animation: imgBlackhole 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+@keyframes imgBlackhole {
+  0% { 
+    transform: scale(0) rotate(-720deg);
+    border-radius: 50%;
+    filter: brightness(0) blur(30px);
+    opacity: 0;
+    box-shadow: 0 0 100px #1A237E, 0 0 200px #000, inset 0 0 50px #000;
+  }
+  20% { 
+    transform: scale(0.2) rotate(-540deg);
+    border-radius: 50%;
+    filter: brightness(0.3) blur(20px);
+    opacity: 0.3;
+    box-shadow: 0 0 80px #3949AB, 0 0 150px #1A237E;
+  }
+  40% { 
+    transform: scale(0.5) rotate(-360deg);
+    border-radius: 40%;
+    filter: brightness(0.6) blur(10px);
+    opacity: 0.6;
+    box-shadow: 0 0 50px #5C6BC0, 0 0 100px #3949AB;
+  }
+  60% { 
+    transform: scale(0.8) rotate(-180deg);
+    border-radius: 25%;
+    filter: brightness(0.8) blur(5px);
+    opacity: 0.8;
+    box-shadow: 0 0 30px #7986CB;
+  }
+  80% { 
+    transform: scale(1.1) rotate(-45deg);
+    border-radius: 10%;
+    filter: brightness(1.2) blur(2px);
+    opacity: 1;
+    box-shadow: 0 0 10px #9FA8DA;
+  }
+  100% { 
+    transform: scale(1) rotate(0deg);
+    border-radius: 0;
+    filter: brightness(1) blur(0);
+    opacity: 1;
+    box-shadow: none;
+  }
+}`,
+  },
 ];

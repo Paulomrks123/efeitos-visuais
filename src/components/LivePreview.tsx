@@ -385,18 +385,28 @@ export function EffectLivePreview({ effect, size = "md" }: EffectLivePreviewProp
         "imgPolaroidDrop", "imgCardFlip", "imgPixelDissolve", "imgKenBurns",
         "imgNeonFrame", "imgSplitReveal", "imgElasticPop", "imgWaveDistort",
         "imgHexagon", "imgParallaxFloat", "imgSpotlight", "imgVintageFilm",
-        "imgHoloShine", "imgPortal"
+        "imgHoloShine", "imgPortal",
+        // New 20 animations (I-31 to I-50)
+        "imgDnaSpiral", "imgOrigami", "imgInkDrop", "imgKaleidoscope",
+        "imgBrokenGlass", "imgMagnetic", "imgNeonScan", "imgSmokeReveal",
+        "imgLightning", "imgPrism", "imgCyberGlitch", "imgVortex",
+        "imgMatrix", "imgFlame", "imgRippleWater", "imgDiamond",
+        "imgAurora", "imgShockwave", "imgPixelRain", "imgBlackhole"
       ];
       
-      // Different animal emojis for each image effect
+      // Different animal emojis for each image effect (50 total)
       const animalEmojis = [
         "🦁", "🐯", "🐻", "🦊", "🐺", "🦄", "🐸", "🦋",
         "🦅", "🐬", "🦈", "🐙", "🦜", "🦩", "🐧", "🦥",
         "🦘", "🐨", "🦒", "🦓", "🐆", "🦏", "🦛", "🐊",
-        "🦚", "🦢", "🦃", "🐓", "🦔", "🐢"
+        "🦚", "🦢", "🦃", "🐓", "🦔", "🐢",
+        // New 20 animals
+        "🐉", "🦖", "🦕", "🐋", "🦭", "🐘", "🦬", "🐪",
+        "🦌", "🐃", "🦙", "🦫", "🦡", "🦨", "🦝", "🐇",
+        "🦤", "🪿", "🐦", "🦇"
       ];
       
-      // Animal image URLs from Unsplash (placeholder)
+      // Animal image URLs from Unsplash (50 total)
       const animalImages = [
         "https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=200&h=200&fit=crop", // lion
         "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=200&h=200&fit=crop", // tiger
@@ -428,6 +438,27 @@ export function EffectLivePreview({ effect, size = "md" }: EffectLivePreviewProp
         "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=200&h=200&fit=crop", // rooster
         "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=200&h=200&fit=crop", // hedgehog
         "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=200&h=200&fit=crop", // turtle
+        // New 20 animal images
+        "https://images.unsplash.com/photo-1577493340887-b7bfff550145?w=200&h=200&fit=crop", // dragon/lizard
+        "https://images.unsplash.com/photo-1606567595334-d39972c85dfd?w=200&h=200&fit=crop", // dinosaur toy
+        "https://images.unsplash.com/photo-1519069060891-f8c50519bf22?w=200&h=200&fit=crop", // elephant
+        "https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=200&h=200&fit=crop", // whale
+        "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=200&h=200&fit=crop", // seal
+        "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=200&h=200&fit=crop", // elephant 2
+        "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=200&h=200&fit=crop", // bison
+        "https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=200&h=200&fit=crop", // camel
+        "https://images.unsplash.com/photo-1484406566174-9da000fda645?w=200&h=200&fit=crop", // deer
+        "https://images.unsplash.com/photo-1557431177-36141475c676?w=200&h=200&fit=crop", // buffalo
+        "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=200&h=200&fit=crop", // llama
+        "https://images.unsplash.com/photo-1612024782955-49fae79e42bb?w=200&h=200&fit=crop", // beaver
+        "https://images.unsplash.com/photo-1497206365907-f5e630693df0?w=200&h=200&fit=crop", // badger
+        "https://images.unsplash.com/photo-1504173010664-32509aeebb62?w=200&h=200&fit=crop", // skunk
+        "https://images.unsplash.com/photo-1497752531616-c3afd9760a11?w=200&h=200&fit=crop", // raccoon
+        "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=200&h=200&fit=crop", // rabbit
+        "https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=200&h=200&fit=crop", // dodo
+        "https://images.unsplash.com/photo-1555169062-013468b47731?w=200&h=200&fit=crop", // goose
+        "https://images.unsplash.com/photo-1444464666168-49d633b86797?w=200&h=200&fit=crop", // bird
+        "https://images.unsplash.com/photo-1548365328-8c6db3220e4c?w=200&h=200&fit=crop", // bat
       ];
       
       const animName = imageAnimations[(imageId - 1) % imageAnimations.length];
