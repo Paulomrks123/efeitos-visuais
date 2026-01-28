@@ -6,1735 +6,2717 @@ export interface Animation {
   cssCode: string;
   htmlExample: string;
   animationClass: string;
+  previewColor?: string;
 }
+
+export const categories = [
+  { id: "all", name: "Todas" },
+  { id: "futuristic", name: "Futurista" },
+  { id: "modern", name: "Moderno" },
+  { id: "stylish", name: "Estiloso" },
+  { id: "vibrant", name: "Colorido Vibrante" },
+];
 
 export const animations: Animation[] = [
-  // CATEGORIA 1: FUTURISTA
+  // ==================== FUTURISTA (25 animações) ====================
   {
     id: "F-01",
-    name: "Neon Pulse",
-    description: "Brilho pulsante em texto ou borda com efeito neon cyberpunk.",
+    name: "Neon Cyan Pulse",
+    description: "Brilho pulsante ciano intenso estilo cyberpunk.",
     category: "futuristic",
-    animationClass: "animate-neon-pulse text-primary",
-    htmlExample: `<span className="animate-neon-pulse text-primary text-4xl font-bold">
-  NEON
-</span>`,
-    cssCode: `@keyframes neon-pulse {
+    previewColor: "#00FFFF",
+    animationClass: "animate-neon-cyan-pulse",
+    htmlExample: `<span class="animate-neon-cyan-pulse">NEON</span>`,
+    cssCode: `@keyframes neon-cyan-pulse {
   0%, 100% { 
-    filter: drop-shadow(0 0 2px #0ff) 
-            drop-shadow(0 0 8px #0ff); 
+    text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF, 0 0 20px #00FFFF;
+    color: #00FFFF;
   }
   50% { 
-    filter: drop-shadow(0 0 4px #0ff) 
-            drop-shadow(0 0 20px #0ff); 
+    text-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 40px #00FFFF, 0 0 80px #00FFFF;
+    color: #FFFFFF;
   }
 }
-
-.animate-neon-pulse {
-  animation: neon-pulse 2s ease-in-out infinite;
+.animate-neon-cyan-pulse {
+  animation: neon-cyan-pulse 2s ease-in-out infinite;
 }`,
   },
   {
     id: "F-02",
-    name: "Glitch Text",
-    description: "Efeito de falha digital em texto, estilo cyberpunk.",
+    name: "Neon Magenta Flicker",
+    description: "Efeito de piscar neon magenta estilo letreiro antigo.",
     category: "futuristic",
-    animationClass: "animate-glitch",
-    htmlExample: `<span className="animate-glitch text-4xl font-bold relative">
-  GLITCH
-</span>`,
-    cssCode: `@keyframes glitch {
-  0%, 100% { 
-    clip-path: inset(40% 0 40% 0);
-    transform: translate(0);
+    previewColor: "#FF00FF",
+    animationClass: "animate-neon-magenta-flicker",
+    htmlExample: `<span class="animate-neon-magenta-flicker">FLICKER</span>`,
+    cssCode: `@keyframes neon-magenta-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 0 0 5px #FF00FF, 0 0 10px #FF00FF, 0 0 20px #FF00FF;
+    opacity: 1;
   }
-  20% { 
-    clip-path: inset(20% 0 60% 0);
-    transform: translate(-2px, 2px);
-  }
-  40% { 
-    clip-path: inset(60% 0 10% 0);
-    transform: translate(2px, -2px);
-  }
-  60% { 
-    clip-path: inset(10% 0 70% 0);
-    transform: translate(-1px, 1px);
-  }
-  80% { 
-    clip-path: inset(80% 0 5% 0);
-    transform: translate(1px, -1px);
+  20%, 24%, 55% {
+    text-shadow: none;
+    opacity: 0.4;
   }
 }
-
-.animate-glitch {
-  animation: glitch 0.5s infinite;
+.animate-neon-magenta-flicker {
+  animation: neon-magenta-flicker 1.5s infinite;
+  color: #FF00FF;
 }`,
   },
   {
     id: "F-03",
-    name: "Data Stream",
-    description: "Linhas de dados em movimento contínuo vertical.",
+    name: "Electric Blue Zap",
+    description: "Descarga elétrica azul com tremor.",
     category: "futuristic",
-    animationClass: "animate-data-stream",
-    htmlExample: `<div className="animate-data-stream w-full h-32 
-  bg-gradient-to-b from-primary/0 via-primary to-primary/0 
-  bg-[length:100%_200%]" />`,
-    cssCode: `@keyframes data-stream {
-  0% { background-position: 0 0; }
-  100% { background-position: 0 100%; }
+    previewColor: "#0066FF",
+    animationClass: "animate-electric-zap",
+    htmlExample: `<div class="animate-electric-zap">⚡</div>`,
+    cssCode: `@keyframes electric-zap {
+  0%, 100% { 
+    transform: translateX(0);
+    filter: drop-shadow(0 0 5px #0066FF);
+  }
+  10%, 30%, 50%, 70%, 90% { 
+    transform: translateX(-2px);
+    filter: drop-shadow(0 0 15px #0066FF) drop-shadow(0 0 30px #00CCFF);
+  }
+  20%, 40%, 60%, 80% { 
+    transform: translateX(2px);
+    filter: drop-shadow(0 0 10px #0066FF);
+  }
 }
-
-.animate-data-stream {
-  animation: data-stream 2s linear infinite;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    hsl(var(--primary)),
-    transparent
-  );
-  background-size: 100% 200%;
+.animate-electric-zap {
+  animation: electric-zap 0.3s ease-in-out infinite;
+  color: #0066FF;
+}`,
+  },
+  {
+    id: "F-04",
+    name: "Hologram Shift",
+    description: "Mudança holográfica com cores prismáticas.",
+    category: "futuristic",
+    previewColor: "#00FF88",
+    animationClass: "animate-hologram-shift",
+    htmlExample: `<div class="animate-hologram-shift">HOLO</div>`,
+    cssCode: `@keyframes hologram-shift {
+  0% { 
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  50% { 
+    background-position: 100% 50%;
+    filter: hue-rotate(180deg);
+  }
+  100% { 
+    background-position: 0% 50%;
+    filter: hue-rotate(360deg);
+  }
+}
+.animate-hologram-shift {
+  background: linear-gradient(90deg, #00FF88, #00FFFF, #FF00FF, #00FF88);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: hologram-shift 3s ease infinite;
 }`,
   },
   {
     id: "F-05",
-    name: "Holographic",
-    description: "Efeito holográfico com gradiente em movimento.",
+    name: "Matrix Rain",
+    description: "Chuva de dados estilo Matrix em verde fosforescente.",
     category: "futuristic",
-    animationClass: "animate-holographic",
-    htmlExample: `<div className="animate-holographic w-32 h-32 rounded-xl
-  bg-gradient-to-r from-primary via-secondary to-accent 
-  bg-[length:200%_200%]" />`,
-    cssCode: `@keyframes holographic {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+    previewColor: "#00FF00",
+    animationClass: "animate-matrix-rain",
+    htmlExample: `<div class="animate-matrix-rain">01010</div>`,
+    cssCode: `@keyframes matrix-rain {
+  0% { 
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { 
+    transform: translateY(100%);
+    opacity: 0;
+  }
 }
-
-.animate-holographic {
-  animation: holographic 3s ease infinite;
-  background: linear-gradient(
-    to right,
-    hsl(var(--primary)),
-    hsl(var(--secondary)),
-    hsl(var(--accent))
-  );
-  background-size: 200% 200%;
+.animate-matrix-rain {
+  animation: matrix-rain 2s linear infinite;
+  color: #00FF00;
+  text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00;
+  font-family: monospace;
 }`,
   },
   {
     id: "F-06",
-    name: "3D Spin",
-    description: "Rotação 3D contínua no eixo Y.",
+    name: "Cyber Grid Pulse",
+    description: "Grade cyberpunk pulsante em azul e roxo.",
     category: "futuristic",
-    animationClass: "animate-spin-3d",
-    htmlExample: `<div className="animate-spin-3d w-20 h-20 
-  bg-primary rounded-lg" 
-  style={{ transformStyle: 'preserve-3d' }} />`,
-    cssCode: `@keyframes spin-3d {
-  0% { transform: rotateY(0deg); }
-  100% { transform: rotateY(360deg); }
+    previewColor: "#6600FF",
+    animationClass: "animate-cyber-grid",
+    htmlExample: `<div class="animate-cyber-grid"></div>`,
+    cssCode: `@keyframes cyber-grid {
+  0%, 100% { 
+    box-shadow: inset 0 0 20px #6600FF, 0 0 10px #6600FF;
+    border-color: #6600FF;
+  }
+  50% { 
+    box-shadow: inset 0 0 40px #00FFFF, 0 0 20px #00FFFF;
+    border-color: #00FFFF;
+  }
 }
-
-.animate-spin-3d {
-  animation: spin-3d 3s linear infinite;
-  transform-style: preserve-3d;
+.animate-cyber-grid {
+  animation: cyber-grid 2s ease-in-out infinite;
+  border: 2px solid #6600FF;
+  background: linear-gradient(45deg, transparent 48%, #6600FF22 50%, transparent 52%);
+  background-size: 10px 10px;
+}`,
+  },
+  {
+    id: "F-07",
+    name: "Plasma Orb",
+    description: "Esfera de plasma com rotação de cores quentes.",
+    category: "futuristic",
+    previewColor: "#FF6600",
+    animationClass: "animate-plasma-orb",
+    htmlExample: `<div class="animate-plasma-orb"></div>`,
+    cssCode: `@keyframes plasma-orb {
+  0% { 
+    background: radial-gradient(circle, #FF6600 0%, #FF0066 50%, #6600FF 100%);
+    transform: scale(1);
+  }
+  33% { 
+    background: radial-gradient(circle, #FF0066 0%, #6600FF 50%, #00FFFF 100%);
+    transform: scale(1.1);
+  }
+  66% { 
+    background: radial-gradient(circle, #6600FF 0%, #00FFFF 50%, #FF6600 100%);
+    transform: scale(0.95);
+  }
+  100% { 
+    background: radial-gradient(circle, #FF6600 0%, #FF0066 50%, #6600FF 100%);
+    transform: scale(1);
+  }
+}
+.animate-plasma-orb {
+  animation: plasma-orb 4s ease-in-out infinite;
+  border-radius: 50%;
 }`,
   },
   {
     id: "F-08",
-    name: "Scanline Effect",
-    description: "Linha horizontal que varre o elemento.",
+    name: "Scanline Red",
+    description: "Linha de varredura vermelha estilo terminal antigo.",
     category: "futuristic",
-    animationClass: "animate-scanline",
-    htmlExample: `<div className="relative w-full h-32 bg-card overflow-hidden">
-  <div className="animate-scanline absolute w-full h-1 
-    bg-primary/50 left-0" />
-</div>`,
-    cssCode: `@keyframes scanline {
-  0%, 100% { top: 0; }
-  50% { top: 100%; }
+    previewColor: "#FF0000",
+    animationClass: "animate-scanline-red",
+    htmlExample: `<div class="animate-scanline-red"></div>`,
+    cssCode: `@keyframes scanline-red {
+  0% { 
+    top: 0%;
+    box-shadow: 0 0 10px #FF0000;
+  }
+  50% { 
+    box-shadow: 0 0 20px #FF0000, 0 0 40px #FF6600;
+  }
+  100% { 
+    top: 100%;
+    box-shadow: 0 0 10px #FF0000;
+  }
 }
-
-.animate-scanline {
-  animation: scanline 2s linear infinite;
+.animate-scanline-red {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #FF0000, transparent);
+  animation: scanline-red 2s linear infinite;
 }`,
   },
   {
     id: "F-09",
-    name: "Warp Speed",
-    description: "Transição rápida de escala e desfoque para efeito de velocidade.",
+    name: "Warp Tunnel",
+    description: "Efeito de túnel de dobra espacial em azul-violeta.",
     category: "futuristic",
-    animationClass: "animate-warp-speed",
-    htmlExample: `<div className="animate-warp-speed w-20 h-20 
-  bg-primary rounded-full" />`,
-    cssCode: `@keyframes warp-speed {
+    previewColor: "#8800FF",
+    animationClass: "animate-warp-tunnel",
+    htmlExample: `<div class="animate-warp-tunnel"></div>`,
+    cssCode: `@keyframes warp-tunnel {
   0% { 
-    transform: scale(1); 
-    filter: blur(0); 
-    opacity: 1; 
+    transform: perspective(500px) rotateX(0deg) scale(1);
+    filter: blur(0px);
+  }
+  50% { 
+    transform: perspective(500px) rotateX(15deg) scale(1.5);
+    filter: blur(2px);
   }
   100% { 
-    transform: scale(1.5); 
-    filter: blur(8px); 
-    opacity: 0; 
+    transform: perspective(500px) rotateX(0deg) scale(1);
+    filter: blur(0px);
   }
 }
-
-.animate-warp-speed {
-  animation: warp-speed 0.5s ease-out forwards;
+.animate-warp-tunnel {
+  animation: warp-tunnel 3s ease-in-out infinite;
+  background: conic-gradient(from 0deg, #8800FF, #00FFFF, #8800FF);
+  border-radius: 50%;
+}`,
+  },
+  {
+    id: "F-10",
+    name: "Digital Rain Gold",
+    description: "Chuva digital dourada premium.",
+    category: "futuristic",
+    previewColor: "#FFD700",
+    animationClass: "animate-digital-gold",
+    htmlExample: `<div class="animate-digital-gold">$$$</div>`,
+    cssCode: `@keyframes digital-gold {
+  0%, 100% { 
+    text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700;
+    transform: translateY(0);
+  }
+  25% { 
+    text-shadow: 0 0 15px #FFD700, 0 0 30px #FFA500;
+    transform: translateY(-5px);
+  }
+  75% { 
+    text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700;
+    transform: translateY(5px);
+  }
+}
+.animate-digital-gold {
+  animation: digital-gold 2s ease-in-out infinite;
+  color: #FFD700;
 }`,
   },
   {
     id: "F-11",
-    name: "Floating Orb",
-    description: "Objeto flutuante com movimento lento e suave.",
+    name: "Quantum Flicker",
+    description: "Flutuação quântica com mudança de opacidade.",
     category: "futuristic",
-    animationClass: "animate-float",
-    htmlExample: `<div className="animate-float w-16 h-16 
-  bg-gradient-to-br from-primary to-secondary 
-  rounded-full shadow-lg" />`,
-    cssCode: `@keyframes float {
+    previewColor: "#00FFCC",
+    animationClass: "animate-quantum-flicker",
+    htmlExample: `<div class="animate-quantum-flicker">Q</div>`,
+    cssCode: `@keyframes quantum-flicker {
   0%, 100% { 
-    transform: translateY(0) rotate(0deg); 
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px #00FFCC);
   }
   25% { 
-    transform: translateY(-10px) rotate(5deg); 
+    opacity: 0.3;
+    transform: scale(0.98);
   }
   50% { 
-    transform: translateY(0) rotate(0deg); 
+    opacity: 0.8;
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 15px #00FFCC);
   }
   75% { 
-    transform: translateY(10px) rotate(-5deg); 
+    opacity: 0.5;
+    transform: scale(0.99);
   }
 }
-
-.animate-float {
-  animation: float 4s ease-in-out infinite;
+.animate-quantum-flicker {
+  animation: quantum-flicker 0.8s ease-in-out infinite;
+  color: #00FFCC;
 }`,
   },
   {
     id: "F-12",
-    name: "Digital Pulse",
-    description: "Círculo que se expande rapidamente e desaparece.",
+    name: "Laser Beam",
+    description: "Feixe de laser vermelho intenso.",
     category: "futuristic",
-    animationClass: "animate-digital-pulse",
-    htmlExample: `<div className="relative flex items-center justify-center">
-  <div className="animate-digital-pulse absolute w-16 h-16 
-    bg-primary/30 rounded-full" />
-  <div className="w-8 h-8 bg-primary rounded-full z-10" />
-</div>`,
-    cssCode: `@keyframes digital-pulse {
+    previewColor: "#FF0033",
+    animationClass: "animate-laser-beam",
+    htmlExample: `<div class="animate-laser-beam"></div>`,
+    cssCode: `@keyframes laser-beam {
   0% { 
-    transform: scale(0.8); 
-    opacity: 1; 
+    width: 0%;
+    box-shadow: 0 0 10px #FF0033;
+  }
+  50% { 
+    width: 100%;
+    box-shadow: 0 0 20px #FF0033, 0 0 40px #FF0033;
   }
   100% { 
-    transform: scale(2); 
-    opacity: 0; 
+    width: 0%;
+    box-shadow: 0 0 10px #FF0033;
   }
 }
-
-.animate-digital-pulse {
-  animation: digital-pulse 1s ease-out infinite;
+.animate-laser-beam {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #FF0033, #FF6666, #FF0033, transparent);
+  animation: laser-beam 1.5s ease-in-out infinite;
 }`,
   },
   {
     id: "F-13",
-    name: "Binary Blink",
-    description: "Texto que pisca em padrão binário digital.",
+    name: "Chrome Reflect",
+    description: "Reflexo cromado prateado metálico.",
     category: "futuristic",
-    animationClass: "animate-binary-blink",
-    htmlExample: `<span className="animate-binary-blink font-mono 
-  text-primary text-2xl">
-  01001010
-</span>`,
-    cssCode: `@keyframes binary-blink {
-  0%, 50% { opacity: 1; }
-  25%, 75% { opacity: 0.3; }
-  100% { opacity: 1; }
+    previewColor: "#C0C0C0",
+    animationClass: "animate-chrome-reflect",
+    htmlExample: `<div class="animate-chrome-reflect">CHROME</div>`,
+    cssCode: `@keyframes chrome-reflect {
+  0% { 
+    background-position: -200% center;
+  }
+  100% { 
+    background-position: 200% center;
+  }
 }
-
-.animate-binary-blink {
-  animation: binary-blink 0.5s step-end infinite;
+.animate-chrome-reflect {
+  background: linear-gradient(90deg, #666, #FFF, #666, #FFF, #666);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: chrome-reflect 3s linear infinite;
 }`,
   },
-  
-  // CATEGORIA 2: MODERNO
   {
-    id: "M-21",
-    name: "Smooth Hover Scale",
-    description: "Aumento de escala suave ao passar o mouse.",
-    category: "modern",
-    animationClass: "transition-transform duration-300 hover:scale-110",
-    htmlExample: `<button className="transition-transform duration-300 
-  hover:scale-110 bg-primary text-primary-foreground 
-  px-6 py-3 rounded-lg">
-  Hover Me
-</button>`,
-    cssCode: `.smooth-hover-scale {
-  transition: transform 0.3s ease-out;
+    id: "F-14",
+    name: "Tron Glow Blue",
+    description: "Brilho estilo Tron em azul elétrico.",
+    category: "futuristic",
+    previewColor: "#00D4FF",
+    animationClass: "animate-tron-blue",
+    htmlExample: `<div class="animate-tron-blue"></div>`,
+    cssCode: `@keyframes tron-blue {
+  0%, 100% { 
+    box-shadow: 0 0 5px #00D4FF, inset 0 0 5px #00D4FF;
+    border-color: #00D4FF;
+  }
+  50% { 
+    box-shadow: 0 0 20px #00D4FF, 0 0 40px #00D4FF, inset 0 0 15px #00D4FF;
+    border-color: #FFFFFF;
+  }
 }
-
-.smooth-hover-scale:hover {
-  transform: scale(1.1);
-}
-
-/* Tailwind equivalent */
-className="transition-transform duration-300 
-  hover:scale-110"`,
+.animate-tron-blue {
+  border: 2px solid #00D4FF;
+  animation: tron-blue 2s ease-in-out infinite;
+  background: transparent;
+}`,
   },
   {
-    id: "M-22",
-    name: "Underline Grow",
-    description: "Linha de sublinhado que cresce do centro para as bordas.",
-    category: "modern",
-    animationClass: "group",
-    htmlExample: `<a className="relative group text-foreground">
-  Menu Item
-  <span className="absolute bottom-0 left-1/2 w-0 h-0.5 
-    bg-primary transition-all duration-300 
-    group-hover:w-full group-hover:left-0" />
-</a>`,
-    cssCode: `.underline-grow {
-  position: relative;
+    id: "F-15",
+    name: "Tron Glow Orange",
+    description: "Brilho estilo Tron em laranja quente.",
+    category: "futuristic",
+    previewColor: "#FF6600",
+    animationClass: "animate-tron-orange",
+    htmlExample: `<div class="animate-tron-orange"></div>`,
+    cssCode: `@keyframes tron-orange {
+  0%, 100% { 
+    box-shadow: 0 0 5px #FF6600, inset 0 0 5px #FF6600;
+    border-color: #FF6600;
+  }
+  50% { 
+    box-shadow: 0 0 20px #FF6600, 0 0 40px #FF9900, inset 0 0 15px #FF6600;
+    border-color: #FFCC00;
+  }
 }
+.animate-tron-orange {
+  border: 2px solid #FF6600;
+  animation: tron-orange 2s ease-in-out infinite;
+  background: transparent;
+}`,
+  },
+  {
+    id: "F-16",
+    name: "Binary Stream Green",
+    description: "Fluxo binário em verde terminal.",
+    category: "futuristic",
+    previewColor: "#33FF33",
+    animationClass: "animate-binary-green",
+    htmlExample: `<div class="animate-binary-green">10110</div>`,
+    cssCode: `@keyframes binary-green {
+  0%, 100% { 
+    opacity: 1;
+    text-shadow: 0 0 5px #33FF33;
+  }
+  25% { 
+    opacity: 0.7;
+    text-shadow: 0 0 10px #33FF33;
+  }
+  50% { 
+    opacity: 1;
+    text-shadow: 0 0 15px #33FF33, 0 0 30px #00FF00;
+  }
+  75% { 
+    opacity: 0.8;
+    text-shadow: 0 0 8px #33FF33;
+  }
+}
+.animate-binary-green {
+  animation: binary-green 0.5s steps(4) infinite;
+  color: #33FF33;
+  font-family: 'Courier New', monospace;
+}`,
+  },
+  {
+    id: "F-17",
+    name: "Reactor Core",
+    description: "Núcleo de reator com pulsação azul-branca.",
+    category: "futuristic",
+    previewColor: "#00CCFF",
+    animationClass: "animate-reactor-core",
+    htmlExample: `<div class="animate-reactor-core"></div>`,
+    cssCode: `@keyframes reactor-core {
+  0%, 100% { 
+    box-shadow: 0 0 20px #00CCFF, 0 0 40px #00CCFF, inset 0 0 20px #FFFFFF;
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 40px #00CCFF, 0 0 80px #00CCFF, 0 0 120px #0066FF, inset 0 0 40px #FFFFFF;
+    transform: scale(1.1);
+  }
+}
+.animate-reactor-core {
+  animation: reactor-core 1.5s ease-in-out infinite;
+  background: radial-gradient(circle, #FFFFFF 0%, #00CCFF 40%, #0066FF 100%);
+  border-radius: 50%;
+}`,
+  },
+  {
+    id: "F-18",
+    name: "Firewall Red",
+    description: "Barreira de firewall em vermelho pulsante.",
+    category: "futuristic",
+    previewColor: "#FF3300",
+    animationClass: "animate-firewall-red",
+    htmlExample: `<div class="animate-firewall-red"></div>`,
+    cssCode: `@keyframes firewall-red {
+  0%, 100% { 
+    background: linear-gradient(0deg, #FF3300 0%, transparent 50%, #FF3300 100%);
+    opacity: 0.8;
+  }
+  50% { 
+    background: linear-gradient(0deg, #FF6600 0%, #FF3300 50%, #FF6600 100%);
+    opacity: 1;
+  }
+}
+.animate-firewall-red {
+  animation: firewall-red 0.5s ease-in-out infinite;
+  background-size: 100% 10px;
+}`,
+  },
+  {
+    id: "F-19",
+    name: "Data Packet Purple",
+    description: "Pacote de dados viajando em roxo.",
+    category: "futuristic",
+    previewColor: "#9900FF",
+    animationClass: "animate-data-packet",
+    htmlExample: `<div class="animate-data-packet"></div>`,
+    cssCode: `@keyframes data-packet {
+  0% { 
+    transform: translateX(-100%) scale(0.5);
+    opacity: 0;
+    background: #9900FF;
+  }
+  20% { 
+    opacity: 1;
+    transform: translateX(0%) scale(1);
+  }
+  80% { 
+    opacity: 1;
+    transform: translateX(80%) scale(1);
+  }
+  100% { 
+    transform: translateX(100%) scale(0.5);
+    opacity: 0;
+    background: #FF00FF;
+  }
+}
+.animate-data-packet {
+  animation: data-packet 2s ease-in-out infinite;
+  border-radius: 4px;
+  box-shadow: 0 0 10px #9900FF;
+}`,
+  },
+  {
+    id: "F-20",
+    name: "Neural Network",
+    description: "Rede neural com pulsos multicoloridos.",
+    category: "futuristic",
+    previewColor: "#FF00AA",
+    animationClass: "animate-neural-net",
+    htmlExample: `<div class="animate-neural-net"></div>`,
+    cssCode: `@keyframes neural-net {
+  0% { 
+    box-shadow: 0 0 5px #FF00AA, 5px 5px 10px #00FFFF, -5px -5px 10px #FFFF00;
+  }
+  33% { 
+    box-shadow: 0 0 5px #00FFFF, 5px 5px 10px #FFFF00, -5px -5px 10px #FF00AA;
+  }
+  66% { 
+    box-shadow: 0 0 5px #FFFF00, 5px 5px 10px #FF00AA, -5px -5px 10px #00FFFF;
+  }
+  100% { 
+    box-shadow: 0 0 5px #FF00AA, 5px 5px 10px #00FFFF, -5px -5px 10px #FFFF00;
+  }
+}
+.animate-neural-net {
+  animation: neural-net 2s linear infinite;
+  background: #111;
+  border-radius: 50%;
+}`,
+  },
+  {
+    id: "F-21",
+    name: "Crypto Shimmer",
+    description: "Brilho de criptomoeda em dourado-verde.",
+    category: "futuristic",
+    previewColor: "#00FF66",
+    animationClass: "animate-crypto-shimmer",
+    htmlExample: `<div class="animate-crypto-shimmer">₿</div>`,
+    cssCode: `@keyframes crypto-shimmer {
+  0%, 100% { 
+    color: #FFD700;
+    text-shadow: 0 0 10px #FFD700;
+  }
+  50% { 
+    color: #00FF66;
+    text-shadow: 0 0 20px #00FF66, 0 0 40px #00FF66;
+  }
+}
+.animate-crypto-shimmer {
+  animation: crypto-shimmer 3s ease-in-out infinite;
+  font-weight: bold;
+}`,
+  },
+  {
+    id: "F-22",
+    name: "Glitch RGB Split",
+    description: "Glitch com separação de canais RGB.",
+    category: "futuristic",
+    previewColor: "#FFFFFF",
+    animationClass: "animate-rgb-split",
+    htmlExample: `<div class="animate-rgb-split">SPLIT</div>`,
+    cssCode: `@keyframes rgb-split {
+  0%, 100% { 
+    text-shadow: -2px 0 #FF0000, 2px 0 #00FFFF;
+    transform: translate(0);
+  }
+  25% { 
+    text-shadow: 2px 0 #FF0000, -2px 0 #00FFFF;
+    transform: translate(-1px, 1px);
+  }
+  50% { 
+    text-shadow: -1px -1px #FF0000, 1px 1px #00FFFF;
+    transform: translate(1px, -1px);
+  }
+  75% { 
+    text-shadow: 1px 2px #FF0000, -1px -2px #00FFFF;
+    transform: translate(-1px, 0);
+  }
+}
+.animate-rgb-split {
+  animation: rgb-split 0.4s steps(2) infinite;
+  color: #FFFFFF;
+}`,
+  },
+  {
+    id: "F-23",
+    name: "Synthwave Sun",
+    description: "Sol synthwave com gradiente rosa-laranja.",
+    category: "futuristic",
+    previewColor: "#FF6B9D",
+    animationClass: "animate-synthwave-sun",
+    htmlExample: `<div class="animate-synthwave-sun"></div>`,
+    cssCode: `@keyframes synthwave-sun {
+  0%, 100% { 
+    box-shadow: 0 0 20px #FF6B9D, 0 0 40px #FF6B9D;
+    background: linear-gradient(180deg, #FF6B9D 0%, #FF8C42 100%);
+  }
+  50% { 
+    box-shadow: 0 0 40px #FF8C42, 0 0 80px #FF6B9D;
+    background: linear-gradient(180deg, #FF8C42 0%, #FFD93D 100%);
+  }
+}
+.animate-synthwave-sun {
+  animation: synthwave-sun 4s ease-in-out infinite;
+  border-radius: 50%;
+  clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+}`,
+  },
+  {
+    id: "F-24",
+    name: "Vaporwave Grid",
+    description: "Grade vaporwave com perspectiva infinita.",
+    category: "futuristic",
+    previewColor: "#E040FB",
+    animationClass: "animate-vaporwave-grid",
+    htmlExample: `<div class="animate-vaporwave-grid"></div>`,
+    cssCode: `@keyframes vaporwave-grid {
+  0% { 
+    background-position: 0 0;
+    border-color: #E040FB;
+  }
+  100% { 
+    background-position: 0 50px;
+    border-color: #00BCD4;
+  }
+}
+.animate-vaporwave-grid {
+  background: linear-gradient(#E040FB 1px, transparent 1px),
+              linear-gradient(90deg, #E040FB 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: vaporwave-grid 1s linear infinite;
+  border: 2px solid #E040FB;
+}`,
+  },
+  {
+    id: "F-25",
+    name: "Cyberpunk Yellow",
+    description: "Aviso cyberpunk em amarelo industrial.",
+    category: "futuristic",
+    previewColor: "#FCE205",
+    animationClass: "animate-cyber-yellow",
+    htmlExample: `<div class="animate-cyber-yellow">!</div>`,
+    cssCode: `@keyframes cyber-yellow {
+  0%, 100% { 
+    background: repeating-linear-gradient(45deg, #FCE205, #FCE205 10px, #000 10px, #000 20px);
+    color: #000;
+  }
+  50% { 
+    background: repeating-linear-gradient(45deg, #000, #000 10px, #FCE205 10px, #FCE205 20px);
+    color: #FCE205;
+  }
+}
+.animate-cyber-yellow {
+  animation: cyber-yellow 1s steps(1) infinite;
+  font-weight: bold;
+  padding: 10px;
+}`,
+  },
 
-.underline-grow::after {
+  // ==================== MODERNO (25 animações) ====================
+  {
+    id: "M-01",
+    name: "Smooth Scale Mint",
+    description: "Escala suave com tom menta refrescante.",
+    category: "modern",
+    previewColor: "#3EB489",
+    animationClass: "animate-scale-mint",
+    htmlExample: `<button class="animate-scale-mint">Hover</button>`,
+    cssCode: `.animate-scale-mint {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #3EB489;
+  color: white;
+}
+.animate-scale-mint:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(62, 180, 137, 0.4);
+}`,
+  },
+  {
+    id: "M-02",
+    name: "Lift Shadow Coral",
+    description: "Elevação com sombra coral elegante.",
+    category: "modern",
+    previewColor: "#FF6F61",
+    animationClass: "animate-lift-coral",
+    htmlExample: `<div class="animate-lift-coral">Card</div>`,
+    cssCode: `.animate-lift-coral {
+  transition: all 0.3s ease;
+  background: white;
+  border: 1px solid #FF6F61;
+}
+.animate-lift-coral:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(255, 111, 97, 0.3);
+  border-color: #FF6F61;
+}`,
+  },
+  {
+    id: "M-03",
+    name: "Underline Grow Navy",
+    description: "Sublinhado crescente em azul marinho.",
+    category: "modern",
+    previewColor: "#1E3A5F",
+    animationClass: "animate-underline-navy",
+    htmlExample: `<a class="animate-underline-navy">Link</a>`,
+    cssCode: `.animate-underline-navy {
+  position: relative;
+  color: #1E3A5F;
+}
+.animate-underline-navy::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 50%;
   width: 0;
   height: 2px;
-  background: hsl(var(--primary));
+  background: #1E3A5F;
   transition: all 0.3s ease;
 }
-
-.underline-grow:hover::after {
+.animate-underline-navy:hover::after {
   width: 100%;
   left: 0;
 }`,
   },
   {
-    id: "M-23",
-    name: "Fade In Down",
-    description: "Elemento que surge do topo com opacidade.",
+    id: "M-04",
+    name: "Fade Slide Lavender",
+    description: "Entrada com fade e slide em lavanda.",
     category: "modern",
-    animationClass: "animate-fade-in-down",
-    htmlExample: `<div className="animate-fade-in-down 
-  bg-card p-6 rounded-lg">
-  Conteúdo animado
-</div>`,
-    cssCode: `@keyframes fade-in-down {
+    previewColor: "#E6E6FA",
+    animationClass: "animate-fade-lavender",
+    htmlExample: `<div class="animate-fade-lavender">Content</div>`,
+    cssCode: `@keyframes fade-lavender {
   0% { 
-    opacity: 0; 
-    transform: translateY(-20px); 
+    opacity: 0;
+    transform: translateY(20px);
   }
   100% { 
-    opacity: 1; 
-    transform: translateY(0); 
+    opacity: 1;
+    transform: translateY(0);
+    background: linear-gradient(135deg, #E6E6FA, #DDA0DD);
   }
 }
-
-.animate-fade-in-down {
-  animation: fade-in-down 0.5s ease-out;
+.animate-fade-lavender {
+  animation: fade-lavender 0.5s ease-out forwards;
+}`,
+  },
+  {
+    id: "M-05",
+    name: "Bounce Soft Peach",
+    description: "Micro bounce suave em pêssego.",
+    category: "modern",
+    previewColor: "#FFDAB9",
+    animationClass: "animate-bounce-peach",
+    htmlExample: `<button class="animate-bounce-peach">🔔</button>`,
+    cssCode: `@keyframes bounce-peach {
+  0%, 100% { 
+    transform: translateY(0);
+    background: #FFDAB9;
+  }
+  50% { 
+    transform: translateY(-5px);
+    background: #FFE4C4;
+    box-shadow: 0 5px 15px rgba(255, 218, 185, 0.5);
+  }
+}
+.animate-bounce-peach {
+  animation: bounce-peach 0.6s ease-in-out infinite;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+}`,
+  },
+  {
+    id: "M-06",
+    name: "Rotate Subtle Slate",
+    description: "Rotação sutil em cinza ardósia.",
+    category: "modern",
+    previewColor: "#708090",
+    animationClass: "animate-rotate-slate",
+    htmlExample: `<div class="animate-rotate-slate">⚙️</div>`,
+    cssCode: `.animate-rotate-slate {
+  transition: transform 0.4s ease;
+  color: #708090;
+}
+.animate-rotate-slate:hover {
+  transform: rotate(90deg);
+  color: #2F4F4F;
+}`,
+  },
+  {
+    id: "M-07",
+    name: "Border Pulse Sky",
+    description: "Borda pulsante em azul céu.",
+    category: "modern",
+    previewColor: "#87CEEB",
+    animationClass: "animate-border-sky",
+    htmlExample: `<input class="animate-border-sky" />`,
+    cssCode: `@keyframes border-sky {
+  0%, 100% { 
+    border-color: #87CEEB;
+    box-shadow: 0 0 0 0 rgba(135, 206, 235, 0.4);
+  }
+  50% { 
+    border-color: #00BFFF;
+    box-shadow: 0 0 0 4px rgba(135, 206, 235, 0);
+  }
+}
+.animate-border-sky {
+  border: 2px solid #87CEEB;
+  animation: border-sky 2s ease-in-out infinite;
+  padding: 10px;
+  border-radius: 6px;
+  outline: none;
+}`,
+  },
+  {
+    id: "M-08",
+    name: "Glow Button Teal",
+    description: "Botão com glow em verde-azulado.",
+    category: "modern",
+    previewColor: "#008080",
+    animationClass: "animate-glow-teal",
+    htmlExample: `<button class="animate-glow-teal">Action</button>`,
+    cssCode: `.animate-glow-teal {
+  background: #008080;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+.animate-glow-teal:hover {
+  box-shadow: 0 0 20px rgba(0, 128, 128, 0.6), 0 0 40px rgba(0, 128, 128, 0.4);
+  transform: translateY(-2px);
+}`,
+  },
+  {
+    id: "M-09",
+    name: "Shimmer Pearl",
+    description: "Brilho deslizante perolado.",
+    category: "modern",
+    previewColor: "#F5F5F5",
+    animationClass: "animate-shimmer-pearl",
+    htmlExample: `<div class="animate-shimmer-pearl">Loading</div>`,
+    cssCode: `@keyframes shimmer-pearl {
+  0% { 
+    background-position: -200% 0;
+  }
+  100% { 
+    background-position: 200% 0;
+  }
+}
+.animate-shimmer-pearl {
+  background: linear-gradient(90deg, #F5F5F5 25%, #FFFFFF 50%, #F5F5F5 75%);
+  background-size: 200% 100%;
+  animation: shimmer-pearl 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}`,
+  },
+  {
+    id: "M-10",
+    name: "Pop Elastic Rose",
+    description: "Pop elástico em rosa suave.",
+    category: "modern",
+    previewColor: "#FFB6C1",
+    animationClass: "animate-pop-rose",
+    htmlExample: `<div class="animate-pop-rose">✓</div>`,
+    cssCode: `@keyframes pop-rose {
+  0% { 
+    transform: scale(0);
+    background: #FFB6C1;
+  }
+  50% { 
+    transform: scale(1.2);
+  }
+  100% { 
+    transform: scale(1);
+    background: #FF69B4;
+  }
+}
+.animate-pop-rose {
+  animation: pop-rose 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}`,
+  },
+  {
+    id: "M-11",
+    name: "Slide Right Sage",
+    description: "Deslize para direita em verde sálvia.",
+    category: "modern",
+    previewColor: "#9DC183",
+    animationClass: "animate-slide-sage",
+    htmlExample: `<div class="animate-slide-sage">→</div>`,
+    cssCode: `@keyframes slide-sage {
+  0% { 
+    transform: translateX(-100%);
+    opacity: 0;
+    background: #9DC183;
+  }
+  100% { 
+    transform: translateX(0);
+    opacity: 1;
+    background: #7CB342;
+  }
+}
+.animate-slide-sage {
+  animation: slide-sage 0.5s ease-out forwards;
+}`,
+  },
+  {
+    id: "M-12",
+    name: "Blur Enter Sand",
+    description: "Entrada com blur em tom areia.",
+    category: "modern",
+    previewColor: "#C2B280",
+    animationClass: "animate-blur-sand",
+    htmlExample: `<div class="animate-blur-sand">Content</div>`,
+    cssCode: `@keyframes blur-sand {
+  0% { 
+    filter: blur(10px);
+    opacity: 0;
+    background: #C2B280;
+  }
+  100% { 
+    filter: blur(0);
+    opacity: 1;
+    background: #D2B48C;
+  }
+}
+.animate-blur-sand {
+  animation: blur-sand 0.6s ease-out forwards;
+  padding: 20px;
+  border-radius: 8px;
+}`,
+  },
+  {
+    id: "M-13",
+    name: "Flip Card Indigo",
+    description: "Flip de card em índigo profundo.",
+    category: "modern",
+    previewColor: "#4B0082",
+    animationClass: "animate-flip-indigo",
+    htmlExample: `<div class="animate-flip-indigo">Flip</div>`,
+    cssCode: `@keyframes flip-indigo {
+  0% { 
+    transform: perspective(600px) rotateY(0deg);
+    background: #4B0082;
+  }
+  100% { 
+    transform: perspective(600px) rotateY(180deg);
+    background: #6A5ACD;
+  }
+}
+.animate-flip-indigo {
+  animation: flip-indigo 0.6s ease-in-out;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+}`,
+  },
+  {
+    id: "M-14",
+    name: "Swing Bell Amber",
+    description: "Balanço de sino em âmbar dourado.",
+    category: "modern",
+    previewColor: "#FFBF00",
+    animationClass: "animate-swing-amber",
+    htmlExample: `<div class="animate-swing-amber">🔔</div>`,
+    cssCode: `@keyframes swing-amber {
+  0%, 100% { 
+    transform: rotate(0deg);
+    color: #FFBF00;
+  }
+  25% { 
+    transform: rotate(15deg);
+  }
+  50% { 
+    transform: rotate(-15deg);
+    color: #FFD700;
+  }
+  75% { 
+    transform: rotate(10deg);
+  }
+}
+.animate-swing-amber {
+  animation: swing-amber 1s ease-in-out infinite;
+  transform-origin: top center;
+  display: inline-block;
+}`,
+  },
+  {
+    id: "M-15",
+    name: "Morph Button Berry",
+    description: "Morfismo de botão em tom berry.",
+    category: "modern",
+    previewColor: "#8E4585",
+    animationClass: "animate-morph-berry",
+    htmlExample: `<button class="animate-morph-berry">Submit</button>`,
+    cssCode: `.animate-morph-berry {
+  background: #8E4585;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.4s ease;
+}
+.animate-morph-berry:hover {
+  border-radius: 25px;
+  background: #702963;
+  padding: 12px 32px;
+}`,
+  },
+  {
+    id: "M-16",
+    name: "Ripple Ocean",
+    description: "Efeito ripple em azul oceano.",
+    category: "modern",
+    previewColor: "#006994",
+    animationClass: "animate-ripple-ocean",
+    htmlExample: `<button class="animate-ripple-ocean">Click</button>`,
+    cssCode: `@keyframes ripple-ocean {
+  0% { 
+    box-shadow: 0 0 0 0 rgba(0, 105, 148, 0.4);
+  }
+  100% { 
+    box-shadow: 0 0 0 20px rgba(0, 105, 148, 0);
+  }
+}
+.animate-ripple-ocean {
+  background: #006994;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  animation: ripple-ocean 1.5s ease-out infinite;
+}`,
+  },
+  {
+    id: "M-17",
+    name: "Gradient Shift Sunset",
+    description: "Mudança de gradiente pôr do sol.",
+    category: "modern",
+    previewColor: "#FF7F50",
+    animationClass: "animate-gradient-sunset",
+    htmlExample: `<div class="animate-gradient-sunset">Sunset</div>`,
+    cssCode: `@keyframes gradient-sunset {
+  0% { 
+    background-position: 0% 50%;
+  }
+  50% { 
+    background-position: 100% 50%;
+  }
+  100% { 
+    background-position: 0% 50%;
+  }
+}
+.animate-gradient-sunset {
+  background: linear-gradient(270deg, #FF7F50, #FF6347, #FF4500, #FFD700);
+  background-size: 400% 400%;
+  animation: gradient-sunset 4s ease infinite;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+}`,
+  },
+  {
+    id: "M-18",
+    name: "Typewriter Charcoal",
+    description: "Efeito máquina de escrever em carvão.",
+    category: "modern",
+    previewColor: "#36454F",
+    animationClass: "animate-typewriter-charcoal",
+    htmlExample: `<span class="animate-typewriter-charcoal">Typing...</span>`,
+    cssCode: `@keyframes typewriter-charcoal {
+  0% { 
+    width: 0;
+    border-right: 2px solid #36454F;
+  }
+  100% { 
+    width: 100%;
+    border-right: 2px solid transparent;
+  }
+}
+.animate-typewriter-charcoal {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typewriter-charcoal 3s steps(20) forwards;
+  color: #36454F;
+  font-family: monospace;
+}`,
+  },
+  {
+    id: "M-19",
+    name: "Heartbeat Crimson",
+    description: "Batimento cardíaco em carmesim.",
+    category: "modern",
+    previewColor: "#DC143C",
+    animationClass: "animate-heartbeat-crimson",
+    htmlExample: `<div class="animate-heartbeat-crimson">❤</div>`,
+    cssCode: `@keyframes heartbeat-crimson {
+  0%, 100% { 
+    transform: scale(1);
+    color: #DC143C;
+  }
+  15% { 
+    transform: scale(1.15);
+  }
+  30% { 
+    transform: scale(1);
+  }
+  45% { 
+    transform: scale(1.1);
+    color: #FF1744;
+  }
+  60% { 
+    transform: scale(1);
+  }
+}
+.animate-heartbeat-crimson {
+  animation: heartbeat-crimson 1.5s ease-in-out infinite;
+  display: inline-block;
+}`,
+  },
+  {
+    id: "M-20",
+    name: "Wobble Olive",
+    description: "Oscilação divertida em verde oliva.",
+    category: "modern",
+    previewColor: "#808000",
+    animationClass: "animate-wobble-olive",
+    htmlExample: `<div class="animate-wobble-olive">Wobble</div>`,
+    cssCode: `@keyframes wobble-olive {
+  0%, 100% { 
+    transform: translateX(0) rotate(0deg);
+    background: #808000;
+  }
+  15% { 
+    transform: translateX(-10px) rotate(-5deg);
+  }
+  30% { 
+    transform: translateX(8px) rotate(3deg);
+    background: #6B8E23;
+  }
+  45% { 
+    transform: translateX(-6px) rotate(-3deg);
+  }
+  60% { 
+    transform: translateX(4px) rotate(2deg);
+  }
+  75% { 
+    transform: translateX(-2px) rotate(-1deg);
+  }
+}
+.animate-wobble-olive {
+  animation: wobble-olive 1s ease-in-out;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+}`,
+  },
+  {
+    id: "M-21",
+    name: "Pulse Ring Azure",
+    description: "Anel pulsante em azul azure.",
+    category: "modern",
+    previewColor: "#007FFF",
+    animationClass: "animate-pulse-azure",
+    htmlExample: `<div class="animate-pulse-azure"></div>`,
+    cssCode: `@keyframes pulse-azure {
+  0% { 
+    transform: scale(1);
+    opacity: 1;
+    border-color: #007FFF;
+  }
+  100% { 
+    transform: scale(1.5);
+    opacity: 0;
+    border-color: #00BFFF;
+  }
+}
+.animate-pulse-azure {
+  border: 3px solid #007FFF;
+  border-radius: 50%;
+  animation: pulse-azure 1.5s ease-out infinite;
+}`,
+  },
+  {
+    id: "M-22",
+    name: "Jello Tangerine",
+    description: "Efeito gelatina em tangerina.",
+    category: "modern",
+    previewColor: "#FF9966",
+    animationClass: "animate-jello-tangerine",
+    htmlExample: `<button class="animate-jello-tangerine">Jello</button>`,
+    cssCode: `@keyframes jello-tangerine {
+  0%, 100% { 
+    transform: skewX(0deg);
+    background: #FF9966;
+  }
+  25% { 
+    transform: skewX(-10deg);
+  }
+  50% { 
+    transform: skewX(8deg);
+    background: #FF7F50;
+  }
+  75% { 
+    transform: skewX(-4deg);
+  }
+}
+.animate-jello-tangerine {
+  animation: jello-tangerine 0.8s ease-in-out;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+}`,
+  },
+  {
+    id: "M-23",
+    name: "Tada Emerald",
+    description: "Animação tada em esmeralda.",
+    category: "modern",
+    previewColor: "#50C878",
+    animationClass: "animate-tada-emerald",
+    htmlExample: `<div class="animate-tada-emerald">🎉</div>`,
+    cssCode: `@keyframes tada-emerald {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg);
+    background: #50C878;
+  }
+  10%, 20% { 
+    transform: scale(0.9) rotate(-3deg);
+  }
+  30%, 50%, 70%, 90% { 
+    transform: scale(1.1) rotate(3deg);
+    background: #3CB371;
+  }
+  40%, 60%, 80% { 
+    transform: scale(1.1) rotate(-3deg);
+  }
+}
+.animate-tada-emerald {
+  animation: tada-emerald 1s ease-in-out;
+  color: white;
+  padding: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }`,
   },
   {
     id: "M-24",
-    name: "Micro Bounce",
-    description: "Pequeno salto em um ícone ou botão.",
+    name: "Rubber Band Plum",
+    description: "Efeito elástico em ameixa.",
     category: "modern",
-    animationClass: "animate-micro-bounce",
-    htmlExample: `<button className="animate-micro-bounce 
-  text-2xl bg-card p-4 rounded-full">
-  🔔
-</button>`,
-    cssCode: `@keyframes micro-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
-.animate-micro-bounce {
-  animation: micro-bounce 0.3s ease-in-out;
-}`,
-  },
-  {
-    id: "M-32",
-    name: "Image Zoom In",
-    description: "Imagem que aumenta de escala sutilmente ao carregar.",
-    category: "modern",
-    animationClass: "animate-zoom-in",
-    htmlExample: `<img 
-  src="/placeholder.svg" 
-  className="animate-zoom-in w-full h-48 
-    object-cover rounded-lg" 
-/>`,
-    cssCode: `@keyframes zoom-in {
-  0% { 
-    transform: scale(1.1); 
-    opacity: 0; 
-  }
-  100% { 
-    transform: scale(1); 
-    opacity: 1; 
-  }
-}
-
-.animate-zoom-in {
-  animation: zoom-in 0.5s ease-out;
-}`,
-  },
-  {
-    id: "M-35",
-    name: "Rotate on Hover",
-    description: "Rotação leve em um elemento ao passar o mouse.",
-    category: "modern",
-    animationClass: "transition-transform duration-300 hover:rotate-3",
-    htmlExample: `<div className="transition-transform duration-300 
-  hover:rotate-3 bg-card p-6 rounded-lg">
-  Hover to rotate
-</div>`,
-    cssCode: `.rotate-on-hover {
-  transition: transform 0.3s ease;
-}
-
-.rotate-on-hover:hover {
-  transform: rotate(3deg);
-}
-
-/* Tailwind equivalent */
-className="transition-transform duration-300 
-  hover:rotate-3"`,
-  },
-  {
-    id: "M-36",
-    name: "Skew on Hover",
-    description: "Inclinação sutil em um elemento ao passar o mouse.",
-    category: "modern",
-    animationClass: "transition-transform duration-300 hover:skew-x-3",
-    htmlExample: `<div className="transition-transform duration-300 
-  hover:skew-x-3 bg-card p-6 rounded-lg">
-  Hover to skew
-</div>`,
-    cssCode: `.skew-on-hover {
-  transition: transform 0.3s ease;
-}
-
-.skew-on-hover:hover {
-  transform: skewX(3deg);
-}
-
-/* Tailwind equivalent */
-className="transition-transform duration-300 
-  hover:skew-x-3"`,
-  },
-  {
-    id: "M-40",
-    name: "Slide Up",
-    description: "Elemento que desliza de baixo para cima.",
-    category: "modern",
-    animationClass: "animate-slide-up",
-    htmlExample: `<div className="animate-slide-up 
-  bg-card p-6 rounded-lg">
-  Sliding content
-</div>`,
-    cssCode: `@keyframes slide-up {
-  0% { 
-    transform: translateY(100%); 
-    opacity: 0; 
-  }
-  100% { 
-    transform: translateY(0); 
-    opacity: 1; 
-  }
-}
-
-.animate-slide-up {
-  animation: slide-up 0.5s ease-out;
-}`,
-  },
-  {
-    id: "M-41",
-    name: "Blur In",
-    description: "Elemento que aparece com efeito de desfoque.",
-    category: "modern",
-    animationClass: "animate-blur-in",
-    htmlExample: `<div className="animate-blur-in 
-  bg-card p-6 rounded-lg text-2xl">
-  Blur Effect
-</div>`,
-    cssCode: `@keyframes blur-in {
-  0% { 
-    filter: blur(20px); 
-    opacity: 0; 
-  }
-  100% { 
-    filter: blur(0); 
-    opacity: 1; 
-  }
-}
-
-.animate-blur-in {
-  animation: blur-in 0.5s ease-out;
-}`,
-  },
-  {
-    id: "M-42",
-    name: "Pop",
-    description: "Elemento que aparece com efeito de pop elástico.",
-    category: "modern",
-    animationClass: "animate-pop",
-    htmlExample: `<div className="animate-pop 
-  bg-primary text-primary-foreground 
-  p-4 rounded-full w-16 h-16 
-  flex items-center justify-center">
-  ✓
-</div>`,
-    cssCode: `@keyframes pop {
-  0% { transform: scale(0); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
-
-.animate-pop {
-  animation: pop 0.3s ease-out;
-}`,
-  },
-
-  // CATEGORIA 3: ESTILOSO
-  {
-    id: "E-42",
-    name: "Text Wave",
-    description: "Cada letra de uma palavra se move em uma onda.",
-    category: "stylish",
-    animationClass: "animate-text-wave",
-    htmlExample: `<div className="flex">
-  {'WAVE'.split('').map((letter, i) => (
-    <span 
-      key={i}
-      className="animate-text-wave text-3xl font-bold"
-      style={{ animationDelay: \`\${i * 0.1}s\` }}
-    >
-      {letter}
-    </span>
-  ))}
-</div>`,
-    cssCode: `@keyframes text-wave {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.animate-text-wave {
-  animation: text-wave 1s ease-in-out infinite;
-  display: inline-block;
-}
-
-/* Apply delay to each letter */
-.letter:nth-child(1) { animation-delay: 0s; }
-.letter:nth-child(2) { animation-delay: 0.1s; }
-.letter:nth-child(3) { animation-delay: 0.2s; }
-/* etc... */`,
-  },
-  {
-    id: "E-52",
-    name: "Bouncing Loader",
-    description: "Três bolas que quicam em sequência.",
-    category: "stylish",
-    animationClass: "animate-bouncing",
-    htmlExample: `<div className="flex gap-2">
-  {[0, 1, 2].map((i) => (
-    <div 
-      key={i}
-      className="animate-bouncing w-4 h-4 
-        bg-primary rounded-full"
-      style={{ animationDelay: \`\${i * 0.15}s\` }}
-    />
-  ))}
-</div>`,
-    cssCode: `@keyframes bouncing {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
-.animate-bouncing {
-  animation: bouncing 0.6s ease-in-out infinite;
-}
-
-/* Stagger with delays */
-.ball:nth-child(1) { animation-delay: 0s; }
-.ball:nth-child(2) { animation-delay: 0.15s; }
-.ball:nth-child(3) { animation-delay: 0.3s; }`,
-  },
-  {
-    id: "E-55",
-    name: "Infinite Scroll",
-    description: "Elementos que se movem em loop contínuo horizontal.",
-    category: "stylish",
-    animationClass: "animate-scroll-left",
-    htmlExample: `<div className="overflow-hidden w-full">
-  <div className="animate-scroll-left flex gap-8 w-max">
-    {/* Duplicate items for seamless loop */}
-    {items.concat(items).map((item, i) => (
-      <div key={i}>{item}</div>
-    ))}
-  </div>
-</div>`,
-    cssCode: `@keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-scroll-left {
-  animation: scroll-left 10s linear infinite;
-}
-
-/* Container must have overflow: hidden */
-/* Content must be duplicated for seamless loop */`,
-  },
-  {
-    id: "E-56",
-    name: "Morph Shape",
-    description: "Forma orgânica que se transforma continuamente.",
-    category: "stylish",
-    animationClass: "animate-morph",
-    htmlExample: `<div className="animate-morph w-32 h-32 
-  bg-gradient-to-br from-primary to-secondary" />`,
-    cssCode: `@keyframes morph {
+    previewColor: "#DDA0DD",
+    animationClass: "animate-rubber-plum",
+    htmlExample: `<button class="animate-rubber-plum">Stretch</button>`,
+    cssCode: `@keyframes rubber-plum {
   0%, 100% { 
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; 
+    transform: scaleX(1) scaleY(1);
+    background: #DDA0DD;
+  }
+  30% { 
+    transform: scaleX(1.2) scaleY(0.8);
+  }
+  40% { 
+    transform: scaleX(0.85) scaleY(1.15);
+    background: #DA70D6;
   }
   50% { 
-    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; 
+    transform: scaleX(1.1) scaleY(0.9);
+  }
+  65% { 
+    transform: scaleX(0.95) scaleY(1.05);
+  }
+  75% { 
+    transform: scaleX(1.03) scaleY(0.97);
   }
 }
-
-.animate-morph {
-  animation: morph 8s ease-in-out infinite;
+.animate-rubber-plum {
+  animation: rubber-plum 0.8s ease;
+  color: #4B0082;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
 }`,
   },
   {
-    id: "E-57",
-    name: "Flip Card",
-    description: "Cartão que gira 360 graus no eixo Y.",
-    category: "stylish",
-    animationClass: "animate-flip",
-    htmlExample: `<div 
-  className="animate-flip w-32 h-32 
-    bg-card rounded-lg flex items-center 
-    justify-center text-2xl"
-  style={{ transformStyle: 'preserve-3d' }}
->
-  🎴
-</div>`,
-    cssCode: `@keyframes flip {
+    id: "M-25",
+    name: "Zoom Fade Mauve",
+    description: "Zoom com fade em malva.",
+    category: "modern",
+    previewColor: "#E0B0FF",
+    animationClass: "animate-zoom-mauve",
+    htmlExample: `<div class="animate-zoom-mauve">Modal</div>`,
+    cssCode: `@keyframes zoom-mauve {
   0% { 
-    transform: perspective(400px) rotateY(0); 
+    transform: scale(0.8);
+    opacity: 0;
+    background: #E0B0FF;
   }
   100% { 
-    transform: perspective(400px) rotateY(360deg); 
-  }
-}
-
-.animate-flip {
-  animation: flip 1s ease-in-out;
-  transform-style: preserve-3d;
-}`,
-  },
-  {
-    id: "E-58",
-    name: "Swing",
-    description: "Elemento que balança como um pêndulo.",
-    category: "stylish",
-    animationClass: "animate-swing origin-top",
-    htmlExample: `<div className="animate-swing origin-top 
-  bg-card p-4 rounded-lg inline-block">
-  🔔 Notification
-</div>`,
-    cssCode: `@keyframes swing {
-  20% { transform: rotate(15deg); }
-  40% { transform: rotate(-10deg); }
-  60% { transform: rotate(5deg); }
-  80% { transform: rotate(-5deg); }
-  100% { transform: rotate(0deg); }
-}
-
-.animate-swing {
-  animation: swing 1s ease-in-out;
-  transform-origin: top center;
-}`,
-  },
-  {
-    id: "E-59",
-    name: "Jello",
-    description: "Efeito elástico de gelatina tremendo.",
-    category: "stylish",
-    animationClass: "animate-jello",
-    htmlExample: `<button className="animate-jello 
-  bg-primary text-primary-foreground 
-  px-6 py-3 rounded-lg">
-  Jello Effect
-</button>`,
-    cssCode: `@keyframes jello {
-  0%, 100% { transform: scale3d(1, 1, 1); }
-  30% { transform: scale3d(1.25, 0.75, 1); }
-  40% { transform: scale3d(0.75, 1.25, 1); }
-  50% { transform: scale3d(1.15, 0.85, 1); }
-  65% { transform: scale3d(0.95, 1.05, 1); }
-  75% { transform: scale3d(1.05, 0.95, 1); }
-}
-
-.animate-jello {
-  animation: jello 1s ease-in-out;
-}`,
-  },
-  {
-    id: "E-60",
-    name: "Tada",
-    description: "Animação de celebração com escala e rotação.",
-    category: "stylish",
-    animationClass: "animate-tada",
-    htmlExample: `<div className="animate-tada text-4xl">
-  🎉
-</div>`,
-    cssCode: `@keyframes tada {
-  0% { transform: scale3d(1, 1, 1); }
-  10%, 20% { 
-    transform: scale3d(0.9, 0.9, 0.9) rotate(-3deg); 
-  }
-  30%, 50%, 70%, 90% { 
-    transform: scale3d(1.1, 1.1, 1.1) rotate(3deg); 
-  }
-  40%, 60%, 80% { 
-    transform: scale3d(1.1, 1.1, 1.1) rotate(-3deg); 
-  }
-  100% { transform: scale3d(1, 1, 1); }
-}
-
-.animate-tada {
-  animation: tada 1s ease-in-out;
-}`,
-  },
-  {
-    id: "E-61",
-    name: "Wobble",
-    description: "Balanço lateral que diminui gradualmente.",
-    category: "stylish",
-    animationClass: "animate-wobble",
-    htmlExample: `<div className="animate-wobble 
-  bg-card p-6 rounded-lg inline-block">
-  Wobble Effect
-</div>`,
-    cssCode: `@keyframes wobble {
-  0% { transform: translateX(0%); }
-  15% { transform: translateX(-25%) rotate(-5deg); }
-  30% { transform: translateX(20%) rotate(3deg); }
-  45% { transform: translateX(-15%) rotate(-3deg); }
-  60% { transform: translateX(10%) rotate(2deg); }
-  75% { transform: translateX(-5%) rotate(-1deg); }
-  100% { transform: translateX(0%); }
-}
-
-.animate-wobble {
-  animation: wobble 1s ease-in-out;
-}`,
-  },
-  {
-    id: "E-62",
-    name: "Rubber Band",
-    description: "Efeito elástico de esticar e voltar.",
-    category: "stylish",
-    animationClass: "animate-rubber-band",
-    htmlExample: `<button className="animate-rubber-band 
-  bg-secondary text-secondary-foreground 
-  px-6 py-3 rounded-lg">
-  Stretch!
-</button>`,
-    cssCode: `@keyframes rubber-band {
-  0% { transform: scale3d(1, 1, 1); }
-  30% { transform: scale3d(1.25, 0.75, 1); }
-  40% { transform: scale3d(0.75, 1.25, 1); }
-  50% { transform: scale3d(1.15, 0.85, 1); }
-  65% { transform: scale3d(0.95, 1.05, 1); }
-  75% { transform: scale3d(1.05, 0.95, 1); }
-  100% { transform: scale3d(1, 1, 1); }
-}
-
-.animate-rubber-band {
-  animation: rubber-band 1s ease-in-out;
-}`,
-  },
-
-  // CATEGORIA 4: COLORIDO VIBRANTE
-  {
-    id: "V-61",
-    name: "Rainbow Gradient",
-    description: "Gradiente de fundo que muda de cor continuamente.",
-    category: "vibrant",
-    animationClass: "animate-rainbow",
-    htmlExample: `<div className="animate-rainbow w-full h-32 rounded-xl
-  bg-gradient-to-r from-red-500 via-yellow-500 
-  via-green-500 via-blue-500 to-purple-500 
-  bg-[length:200%_200%]" />`,
-    cssCode: `@keyframes rainbow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animate-rainbow {
-  animation: rainbow 3s ease infinite;
-  background: linear-gradient(
-    to right,
-    red, orange, yellow, green, blue, purple, red
-  );
-  background-size: 200% 200%;
-}`,
-  },
-  {
-    id: "V-62",
-    name: "Pulsating Glow",
-    description: "Brilho de cor que pulsa e se espalha.",
-    category: "vibrant",
-    animationClass: "animate-pulsating-glow",
-    htmlExample: `<div className="animate-pulsating-glow 
-  w-32 h-32 bg-accent rounded-full" />`,
-    cssCode: `@keyframes pulsating-glow {
-  0%, 100% { 
-    box-shadow: 0 0 10px hsl(var(--accent)), 
-                0 0 20px hsl(var(--accent)); 
-  }
-  50% { 
-    box-shadow: 0 0 20px hsl(var(--accent)), 
-                0 0 40px hsl(var(--accent)), 
-                0 0 60px hsl(var(--accent)); 
-  }
-}
-
-.animate-pulsating-glow {
-  animation: pulsating-glow 2s ease-in-out infinite;
-}`,
-  },
-  {
-    id: "V-65",
-    name: "Hue Rotate",
-    description: "Rotação contínua de matiz nas cores.",
-    category: "vibrant",
-    animationClass: "animate-hue-rotate",
-    htmlExample: `<div className="animate-hue-rotate 
-  w-32 h-32 bg-gradient-to-br from-primary to-secondary 
-  rounded-xl" />`,
-    cssCode: `@keyframes hue-rotate {
-  0% { filter: hue-rotate(0deg); }
-  100% { filter: hue-rotate(360deg); }
-}
-
-.animate-hue-rotate {
-  animation: hue-rotate 3s linear infinite;
-}`,
-  },
-  {
-    id: "V-73",
-    name: "Shimmer",
-    description: "Brilho que varre o elemento da esquerda para direita.",
-    category: "vibrant",
-    animationClass: "animate-shimmer",
-    htmlExample: `<div className="animate-shimmer 
-  w-full h-16 rounded-lg
-  bg-gradient-to-r from-muted via-muted-foreground/20 
-  to-muted bg-[length:200%_100%]" />`,
-    cssCode: `@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.animate-shimmer {
-  animation: shimmer 2s linear infinite;
-  background: linear-gradient(
-    to right,
-    hsl(var(--muted)),
-    hsl(var(--muted-foreground) / 0.2),
-    hsl(var(--muted))
-  );
-  background-size: 200% 100%;
-}`,
-  },
-  {
-    id: "V-78",
-    name: "Color Cycle",
-    description: "Elemento que passa por um ciclo de cores sólidas.",
-    category: "vibrant",
-    animationClass: "animate-color-cycle",
-    htmlExample: `<div className="animate-color-cycle 
-  w-32 h-32 rounded-xl" />`,
-    cssCode: `@keyframes color-cycle {
-  0%, 100% { background-color: hsl(var(--primary)); }
-  33% { background-color: hsl(var(--secondary)); }
-  66% { background-color: hsl(var(--accent)); }
-}
-
-.animate-color-cycle {
-  animation: color-cycle 3s ease infinite;
-}`,
-  },
-  {
-    id: "V-74",
-    name: "Heartbeat",
-    description: "Animação de batimento cardíaco pulsante.",
-    category: "vibrant",
-    animationClass: "animate-heartbeat",
-    htmlExample: `<div className="animate-heartbeat text-5xl">
-  ❤️
-</div>`,
-    cssCode: `@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  14% { transform: scale(1.3); }
-  28% { transform: scale(1); }
-  42% { transform: scale(1.3); }
-  70% { transform: scale(1); }
-}
-
-.animate-heartbeat {
-  animation: heartbeat 1.5s ease-in-out infinite;
-}`,
-  },
-  {
-    id: "V-75",
-    name: "Shake",
-    description: "Vibração lateral rápida.",
-    category: "vibrant",
-    animationClass: "animate-shake",
-    htmlExample: `<button className="animate-shake 
-  bg-destructive text-destructive-foreground 
-  px-6 py-3 rounded-lg">
-  Error!
-</button>`,
-    cssCode: `@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  10%, 30%, 50%, 70%, 90% { 
-    transform: translateX(-5px); 
-  }
-  20%, 40%, 60%, 80% { 
-    transform: translateX(5px); 
-  }
-}
-
-.animate-shake {
-  animation: shake 0.5s ease-in-out;
-}`,
-  },
-  {
-    id: "V-76",
-    name: "Rotate Continuous",
-    description: "Rotação contínua infinita.",
-    category: "vibrant",
-    animationClass: "animate-rotate",
-    htmlExample: `<div className="animate-rotate 
-  w-16 h-16 border-4 border-primary 
-  border-t-transparent rounded-full" />`,
-    cssCode: `@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.animate-rotate {
-  animation: rotate 2s linear infinite;
-}`,
-  },
-  {
-    id: "V-79",
-    name: "Pulse Ring",
-    description: "Anel que se expande e desaparece do centro.",
-    category: "vibrant",
-    animationClass: "animate-pulse-ring",
-    htmlExample: `<div className="relative flex items-center justify-center">
-  <div className="animate-pulse-ring absolute w-12 h-12 
-    border-2 border-primary rounded-full" />
-  <div className="w-4 h-4 bg-primary rounded-full" />
-</div>`,
-    cssCode: `@keyframes pulse-ring {
-  0% { 
-    transform: scale(0.8); 
-    opacity: 1; 
-  }
-  100% { 
-    transform: scale(2.5); 
-    opacity: 0; 
-  }
-}
-
-.animate-pulse-ring {
-  animation: pulse-ring 1.5s 
-    cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-}`,
-  },
-  {
-    id: "V-80",
-    name: "Gradient Border",
-    description: "Borda com gradiente animado em movimento.",
-    category: "vibrant",
-    animationClass: "animate-gradient-border",
-    htmlExample: `<div className="p-[3px] rounded-xl animate-gradient-border
-  bg-gradient-to-r from-primary via-secondary to-accent 
-  bg-[length:200%_200%]">
-  <div className="bg-background rounded-lg p-6">
-    Gradient Border
-  </div>
-</div>`,
-    cssCode: `@keyframes gradient-border {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animate-gradient-border {
-  animation: gradient-border 3s ease infinite;
-  background: linear-gradient(
-    to right,
-    hsl(var(--primary)),
-    hsl(var(--secondary)),
-    hsl(var(--accent))
-  );
-  background-size: 200% 200%;
-}`,
-  },
-
-  // ========== 50 NOVAS ANIMAÇÕES ÉPICAS ==========
-  
-  // CYBERPUNK & SCI-FI (10)
-  {
-    id: "F-81",
-    name: "Matrix Rain",
-    category: "futuristic",
-    description: "Código caindo estilo Matrix com brilho verde.",
-    animationClass: "animate-matrix-rain",
-    htmlExample: `<div className="animate-matrix-rain font-mono text-green-400">010110</div>`,
-    cssCode: `@keyframes matrix-rain {
-  0% { transform: translateY(-100%); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(100%); opacity: 0; }
-}
-.animate-matrix-rain {
-  animation: matrix-rain 2s linear infinite;
-  text-shadow: 0 0 10px currentColor;
-}`
-  },
-  {
-    id: "F-82",
-    name: "Portal Vortex",
-    category: "futuristic",
-    description: "Vórtice espiral de portal dimensional.",
-    animationClass: "animate-portal-vortex",
-    htmlExample: `<div className="animate-portal-vortex w-20 h-20 rounded-full border-4 border-dashed border-primary" />`,
-    cssCode: `@keyframes portal-vortex {
-  0% { transform: rotate(0deg) scale(1); border-width: 4px; }
-  50% { transform: rotate(180deg) scale(1.2); border-width: 2px; }
-  100% { transform: rotate(360deg) scale(1); border-width: 4px; }
-}
-.animate-portal-vortex {
-  animation: portal-vortex 3s ease-in-out infinite;
-}`
-  },
-  {
-    id: "F-83",
-    name: "Cyber Glitch RGB",
-    category: "futuristic",
-    description: "Glitch avançado com separação cromática RGB.",
-    animationClass: "animate-cyber-glitch",
-    htmlExample: `<span className="animate-cyber-glitch text-4xl font-bold">CYBER</span>`,
-    cssCode: `@keyframes cyber-glitch {
-  0%, 100% { transform: translate(0); text-shadow: -2px 0 #ff0000, 2px 0 #00ffff; }
-  20% { transform: translate(-3px, 3px); text-shadow: 3px 0 #ff0000, -3px 0 #00ffff; }
-  40% { transform: translate(3px, -3px); text-shadow: -3px 0 #ff0000, 3px 0 #00ffff; }
-  60% { transform: translate(-2px, 2px); text-shadow: 2px 0 #ff0000, -2px 0 #00ffff; }
-  80% { transform: translate(2px, -2px); text-shadow: -2px 0 #ff0000, 2px 0 #00ffff; }
-}
-.animate-cyber-glitch { animation: cyber-glitch 0.3s infinite; }`
-  },
-  {
-    id: "F-84",
-    name: "Hologram Flicker",
-    category: "futuristic",
-    description: "Holograma sci-fi com cintilação realista.",
-    animationClass: "animate-hologram-flicker",
-    htmlExample: `<div className="animate-hologram-flicker text-cyan-400 text-4xl">HOLOGRAM</div>`,
-    cssCode: `@keyframes hologram-flicker {
-  0%, 100% { opacity: 1; filter: brightness(1); }
-  10% { opacity: 0.8; filter: brightness(1.5); }
-  30% { opacity: 0.6; filter: brightness(2); }
-  50% { opacity: 0.9; filter: brightness(1.2); }
-  70% { opacity: 0.7; filter: brightness(1.8); }
-}
-.animate-hologram-flicker {
-  animation: hologram-flicker 2s infinite;
-  text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
-}`
-  },
-  {
-    id: "F-85",
-    name: "Energy Shield",
-    category: "futuristic",
-    description: "Campo de força energético pulsante.",
-    animationClass: "animate-energy-shield",
-    htmlExample: `<div className="animate-energy-shield w-24 h-24 rounded-full border-2 border-cyan-400" />`,
-    cssCode: `@keyframes energy-shield {
-  0%, 100% { 
-    box-shadow: 0 0 10px rgba(0,255,255,0.5), inset 0 0 20px rgba(0,255,255,0.2);
     transform: scale(1);
+    opacity: 1;
+    background: #9966CC;
+  }
+}
+.animate-zoom-mauve {
+  animation: zoom-mauve 0.3s ease-out forwards;
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+}`,
+  },
+
+  // ==================== ESTILOSO (25 animações) ====================
+  {
+    id: "S-01",
+    name: "Elegant Fade Gold",
+    description: "Fade elegante em dourado luxuoso.",
+    category: "stylish",
+    previewColor: "#D4AF37",
+    animationClass: "animate-fade-gold",
+    htmlExample: `<div class="animate-fade-gold">Luxury</div>`,
+    cssCode: `@keyframes fade-gold {
+  0% { 
+    opacity: 0;
+    color: #D4AF37;
+    text-shadow: none;
+  }
+  100% { 
+    opacity: 1;
+    color: #FFD700;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  }
+}
+.animate-fade-gold {
+  animation: fade-gold 1s ease-out forwards;
+  font-weight: 600;
+}`,
+  },
+  {
+    id: "S-02",
+    name: "Silk Shimmer Silver",
+    description: "Brilho sedoso prateado premium.",
+    category: "stylish",
+    previewColor: "#C0C0C0",
+    animationClass: "animate-silk-silver",
+    htmlExample: `<div class="animate-silk-silver">Premium</div>`,
+    cssCode: `@keyframes silk-silver {
+  0% { 
+    background-position: -200% 0;
+  }
+  100% { 
+    background-position: 200% 0;
+  }
+}
+.animate-silk-silver {
+  background: linear-gradient(90deg, #C0C0C0 0%, #FFFFFF 25%, #C0C0C0 50%, #FFFFFF 75%, #C0C0C0 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: silk-silver 3s linear infinite;
+}`,
+  },
+  {
+    id: "S-03",
+    name: "Rose Gold Glow",
+    description: "Brilho em rose gold sofisticado.",
+    category: "stylish",
+    previewColor: "#B76E79",
+    animationClass: "animate-rosegold-glow",
+    htmlExample: `<div class="animate-rosegold-glow">Elegant</div>`,
+    cssCode: `@keyframes rosegold-glow {
+  0%, 100% { 
+    box-shadow: 0 0 5px #B76E79, 0 0 10px #B76E79;
+    border-color: #B76E79;
   }
   50% { 
-    box-shadow: 0 0 30px rgba(0,255,255,0.8), inset 0 0 40px rgba(0,255,255,0.4), 0 0 60px rgba(0,255,255,0.3);
-    transform: scale(1.05);
+    box-shadow: 0 0 20px #E8B4B8, 0 0 40px #B76E79;
+    border-color: #E8B4B8;
   }
 }
-.animate-energy-shield { animation: energy-shield 2s ease-in-out infinite; }`
+.animate-rosegold-glow {
+  border: 2px solid #B76E79;
+  animation: rosegold-glow 2s ease-in-out infinite;
+  padding: 15px 30px;
+  border-radius: 30px;
+  background: transparent;
+  color: #B76E79;
+}`,
   },
   {
-    id: "F-86",
-    name: "Warp Drive",
-    category: "futuristic",
-    description: "Dobra espacial estilo Star Trek.",
-    animationClass: "animate-warp-drive",
-    htmlExample: `<div className="animate-warp-drive w-4 h-32 bg-gradient-to-b from-transparent via-primary to-transparent" />`,
-    cssCode: `@keyframes warp-drive {
-  0% { transform: scaleY(0.1) scaleX(1); opacity: 0; }
-  50% { transform: scaleY(1) scaleX(0.1); opacity: 1; }
-  100% { transform: scaleY(0.1) scaleX(1); opacity: 0; }
-}
-.animate-warp-drive { animation: warp-drive 0.5s ease-in-out infinite; }`
-  },
-  {
-    id: "F-87",
-    name: "Quantum Particles",
-    category: "futuristic",
-    description: "Partículas quânticas em movimento aleatório.",
-    animationClass: "animate-quantum-particles",
-    htmlExample: `<div className="animate-quantum-particles w-3 h-3 rounded-full bg-primary" />`,
-    cssCode: `@keyframes quantum-particles {
-  0% { transform: translate(0, 0) scale(1); opacity: 1; }
-  25% { transform: translate(20px, -30px) scale(0.8); opacity: 0.7; }
-  50% { transform: translate(-10px, 20px) scale(1.2); opacity: 0.9; }
-  75% { transform: translate(15px, 10px) scale(0.6); opacity: 0.5; }
-  100% { transform: translate(0, 0) scale(1); opacity: 1; }
-}
-.animate-quantum-particles { animation: quantum-particles 3s ease-in-out infinite; }`
-  },
-  {
-    id: "F-88",
-    name: "Neural Network",
-    category: "futuristic",
-    description: "Conexões neurais pulsando em rede.",
-    animationClass: "animate-neural-network",
-    htmlExample: `<div className="animate-neural-network w-4 h-4 rounded-full bg-primary" />`,
-    cssCode: `@keyframes neural-network {
-  0%, 100% { box-shadow: 30px 0 0 -2px currentColor, -30px 0 0 -2px currentColor, 0 30px 0 -2px currentColor, 0 -30px 0 -2px currentColor; }
-  50% { box-shadow: 30px 0 0 2px currentColor, -30px 0 0 2px currentColor, 0 30px 0 2px currentColor, 0 -30px 0 2px currentColor; }
-}
-.animate-neural-network { animation: neural-network 1.5s ease-in-out infinite; }`
-  },
-  {
-    id: "F-89",
-    name: "Plasma Ball",
-    category: "futuristic",
-    description: "Esfera de plasma com raios dinâmicos.",
-    animationClass: "animate-plasma-ball",
-    htmlExample: `<div className="animate-plasma-ball w-20 h-20 rounded-full bg-purple-600" />`,
-    cssCode: `@keyframes plasma-ball {
-  0%, 100% { background: radial-gradient(circle at 30% 30%, white 0%, #8b5cf6 40%, #4c1d95 100%); }
-  33% { background: radial-gradient(circle at 60% 40%, white 0%, #8b5cf6 40%, #4c1d95 100%); }
-  66% { background: radial-gradient(circle at 40% 60%, white 0%, #8b5cf6 40%, #4c1d95 100%); }
-}
-.animate-plasma-ball { animation: plasma-ball 2s ease-in-out infinite; box-shadow: 0 0 20px #8b5cf6, inset 0 0 30px rgba(255,255,255,0.5); }`
-  },
-  {
-    id: "F-90",
-    name: "Time Warp",
-    category: "futuristic",
-    description: "Distorção temporal com rotação e blur.",
-    animationClass: "animate-time-warp",
-    htmlExample: `<div className="animate-time-warp text-4xl">⏱️</div>`,
-    cssCode: `@keyframes time-warp {
-  0% { transform: rotate(0deg) scale(1); filter: blur(0); }
-  25% { transform: rotate(90deg) scale(0.8); filter: blur(2px); }
-  50% { transform: rotate(180deg) scale(1.2); filter: blur(0); }
-  75% { transform: rotate(270deg) scale(0.9); filter: blur(1px); }
-  100% { transform: rotate(360deg) scale(1); filter: blur(0); }
-}
-.animate-time-warp { animation: time-warp 4s ease-in-out infinite; }`
-  },
-  
-  // MODERN PREMIUM (10)
-  {
-    id: "M-81",
-    name: "Liquid Morph",
-    category: "modern",
-    description: "Forma líquida orgânica em transformação.",
-    animationClass: "animate-liquid-morph",
-    htmlExample: `<div className="animate-liquid-morph w-24 h-24 bg-gradient-to-br from-primary to-secondary" />`,
-    cssCode: `@keyframes liquid-morph {
-  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-  25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-  50% { border-radius: 50% 50% 40% 60% / 40% 50% 60% 50%; }
-  75% { border-radius: 40% 60% 50% 50% / 60% 40% 50% 50%; }
-}
-.animate-liquid-morph { animation: liquid-morph 8s ease-in-out infinite; }`
-  },
-  {
-    id: "M-82",
-    name: "Magnetic Hover",
-    category: "modern",
-    description: "Flutuação magnética com sombra dinâmica.",
-    animationClass: "animate-magnetic-hover",
-    htmlExample: `<button className="animate-magnetic-hover bg-primary px-6 py-3 rounded-lg">Magnetic</button>`,
-    cssCode: `@keyframes magnetic-hover {
-  0%, 100% { transform: translateY(0) scale(1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-  50% { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
-}
-.animate-magnetic-hover { animation: magnetic-hover 2s ease-in-out infinite; }`
-  },
-  {
-    id: "M-83",
-    name: "Elastic Pull",
-    category: "modern",
-    description: "Estiramento elástico como borracha.",
-    animationClass: "animate-elastic-pull",
-    htmlExample: `<div className="animate-elastic-pull w-16 h-16 bg-primary rounded-xl" />`,
-    cssCode: `@keyframes elastic-pull {
-  0%, 100% { transform: scaleX(1) scaleY(1); }
-  25% { transform: scaleX(1.2) scaleY(0.8); }
-  50% { transform: scaleX(0.9) scaleY(1.1); }
-  75% { transform: scaleX(1.05) scaleY(0.95); }
-}
-.animate-elastic-pull { animation: elastic-pull 1s ease-in-out infinite; }`
-  },
-  {
-    id: "M-84",
-    name: "Depth Push 3D",
-    category: "modern",
-    description: "Profundidade 3D com perspectiva realista.",
-    animationClass: "animate-depth-push",
-    htmlExample: `<div className="animate-depth-push bg-card p-6 rounded-xl">3D Depth</div>`,
-    cssCode: `@keyframes depth-push {
-  0%, 100% { transform: perspective(500px) translateZ(0); box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
-  50% { transform: perspective(500px) translateZ(30px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-}
-.animate-depth-push { animation: depth-push 3s ease-in-out infinite; }`
-  },
-  {
-    id: "M-85",
-    name: "Smooth Reveal",
-    category: "modern",
-    description: "Revelação com máscara deslizante elegante.",
-    animationClass: "animate-smooth-reveal",
-    htmlExample: `<div className="animate-smooth-reveal bg-card p-6 rounded-xl">Revealed!</div>`,
-    cssCode: `@keyframes smooth-reveal {
-  0% { clip-path: inset(0 100% 0 0); opacity: 0; }
-  100% { clip-path: inset(0 0 0 0); opacity: 1; }
-}
-.animate-smooth-reveal { animation: smooth-reveal 0.8s ease-out forwards; }`
-  },
-  {
-    id: "M-86",
-    name: "Typewriter Cursor",
-    category: "modern",
-    description: "Cursor de máquina de escrever piscando.",
-    animationClass: "animate-typewriter-cursor",
-    htmlExample: `<span className="animate-typewriter-cursor border-r-2 border-primary pr-1">Typing...</span>`,
-    cssCode: `@keyframes typewriter-cursor {
-  0%, 50% { border-color: currentColor; }
-  51%, 100% { border-color: transparent; }
-}
-.animate-typewriter-cursor { animation: typewriter-cursor 1s step-end infinite; }`
-  },
-  {
-    id: "M-87",
-    name: "Card Lift",
-    category: "modern",
-    description: "Cartão se elevando com perspectiva 3D.",
-    animationClass: "animate-card-lift",
-    htmlExample: `<div className="animate-card-lift bg-card p-6 rounded-xl">Lift Me</div>`,
-    cssCode: `@keyframes card-lift {
-  0% { transform: translateY(0) rotateX(0); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-  100% { transform: translateY(-10px) rotateX(5deg); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-}
-.animate-card-lift { animation: card-lift 0.3s ease-out forwards; transform-style: preserve-3d; }`
-  },
-  {
-    id: "M-88",
-    name: "Focus Ring",
-    category: "modern",
-    description: "Anel de foco animado para acessibilidade.",
-    animationClass: "animate-focus-ring",
-    htmlExample: `<input className="animate-focus-ring bg-muted px-4 py-2 rounded-lg" />`,
-    cssCode: `@keyframes focus-ring {
-  0% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.4); }
-  70% { box-shadow: 0 0 0 10px rgba(0, 255, 255, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); }
-}
-.animate-focus-ring:focus { animation: focus-ring 0.8s ease-out; box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.3); }`
-  },
-  {
-    id: "M-89",
-    name: "Stagger Fade",
-    category: "modern",
-    description: "Fade sequencial para listas e grids.",
-    animationClass: "animate-stagger-fade",
-    htmlExample: `<div className="animate-stagger-fade">Item</div>`,
-    cssCode: `@keyframes stagger-fade {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-.animate-stagger-fade { animation: stagger-fade 0.5s ease-out forwards; }
-/* Delays: nth-child(1) 0.1s, nth-child(2) 0.2s, etc. */`
-  },
-  {
-    id: "M-90",
-    name: "Smooth Collapse",
-    category: "modern",
-    description: "Colapso suave de altura para accordions.",
-    animationClass: "animate-smooth-collapse",
-    htmlExample: `<div className="animate-smooth-collapse overflow-hidden">Content</div>`,
-    cssCode: `@keyframes smooth-collapse {
-  0% { max-height: 500px; opacity: 1; }
-  100% { max-height: 0; opacity: 0; }
-}
-.animate-smooth-collapse { animation: smooth-collapse 0.3s ease-out forwards; }`
-  },
-  
-  // STYLISH PREMIUM (10)
-  {
-    id: "S-81",
-    name: "Spotlight Effect",
+    id: "S-04",
+    name: "Champagne Bubbles",
+    description: "Bolhas efervescentes em champagne.",
     category: "stylish",
-    description: "Holofote que ilumina o elemento dinamicamente.",
-    animationClass: "animate-spotlight",
-    htmlExample: `<div className="animate-spotlight bg-card p-6 rounded-xl overflow-hidden">Spotlight</div>`,
-    cssCode: `@keyframes spotlight {
-  0% { background: radial-gradient(circle at 0% 0%, rgba(255,255,255,0.3) 0%, transparent 50%); }
-  50% { background: radial-gradient(circle at 100% 100%, rgba(255,255,255,0.3) 0%, transparent 50%); }
-  100% { background: radial-gradient(circle at 0% 0%, rgba(255,255,255,0.3) 0%, transparent 50%); }
-}
-.animate-spotlight { animation: spotlight 4s ease-in-out infinite; }`
-  },
-  {
-    id: "S-82",
-    name: "Neon Sign",
-    category: "stylish",
-    description: "Letreiro neon com flicker realista.",
-    animationClass: "animate-neon-sign",
-    htmlExample: `<div className="animate-neon-sign text-4xl font-bold text-pink-500">OPEN</div>`,
-    cssCode: `@keyframes neon-sign {
-  0%, 100% { text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 20px currentColor, 0 0 40px currentColor; opacity: 1; }
-  42% { opacity: 0.8; }
-  43% { opacity: 1; }
-  45% { opacity: 0.3; }
-  46% { opacity: 1; }
-}
-.animate-neon-sign { animation: neon-sign 3s ease-in-out infinite; }`
-  },
-  {
-    id: "S-83",
-    name: "Glass Refraction",
-    category: "stylish",
-    description: "Luz se refratando através de vidro.",
-    animationClass: "animate-glass-refraction",
-    htmlExample: `<div className="animate-glass-refraction backdrop-blur-xl bg-white/10 p-6 rounded-xl">Glass</div>`,
-    cssCode: `@keyframes glass-refraction {
-  0%, 100% { background-position: 0% 50%; backdrop-filter: blur(10px) hue-rotate(0deg); }
-  50% { background-position: 100% 50%; backdrop-filter: blur(15px) hue-rotate(10deg); }
-}
-.animate-glass-refraction { animation: glass-refraction 5s ease-in-out infinite; background-size: 200% 200%; }`
-  },
-  {
-    id: "S-84",
-    name: "Metallic Shine",
-    category: "stylish",
-    description: "Brilho metálico deslizante luxuoso.",
-    animationClass: "animate-metallic-shine",
-    htmlExample: `<div className="animate-metallic-shine text-4xl font-bold">METAL</div>`,
-    cssCode: `@keyframes metallic-shine {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-.animate-metallic-shine { animation: metallic-shine 3s linear infinite; background: linear-gradient(90deg, #888 0%, #fff 25%, #888 50%, #fff 75%, #888 100%); background-size: 200% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }`
-  },
-  {
-    id: "S-85",
-    name: "Diamond Sparkle",
-    category: "stylish",
-    description: "Brilho cintilante de diamante.",
-    animationClass: "animate-diamond-sparkle",
-    htmlExample: `<div className="animate-diamond-sparkle text-4xl">💎</div>`,
-    cssCode: `@keyframes diamond-sparkle {
-  0%, 100% { filter: brightness(1) drop-shadow(0 0 5px white); transform: scale(1); }
-  25% { filter: brightness(1.5) drop-shadow(0 0 15px white); transform: scale(1.1); }
-  50% { filter: brightness(1) drop-shadow(0 0 5px white); transform: scale(1); }
-  75% { filter: brightness(1.3) drop-shadow(0 0 10px white); transform: scale(1.05); }
-}
-.animate-diamond-sparkle { animation: diamond-sparkle 2s ease-in-out infinite; }`
-  },
-  {
-    id: "S-86",
-    name: "Luxury Fade",
-    category: "stylish",
-    description: "Fade premium com espaçamento dourado.",
-    animationClass: "animate-luxury-fade",
-    htmlExample: `<div className="animate-luxury-fade text-amber-400 text-4xl font-bold">LUXURY</div>`,
-    cssCode: `@keyframes luxury-fade {
-  0% { opacity: 0; letter-spacing: 0.5em; filter: blur(10px); }
-  50% { opacity: 1; filter: blur(0); }
-  100% { opacity: 1; letter-spacing: 0.2em; }
-}
-.animate-luxury-fade { animation: luxury-fade 2s ease-out forwards; }`
-  },
-  {
-    id: "S-87",
-    name: "Velvet Hover",
-    category: "stylish",
-    description: "Gradiente aveludado suave.",
-    animationClass: "animate-velvet-hover",
-    htmlExample: `<button className="animate-velvet-hover bg-purple-900 px-6 py-3 rounded-lg text-white">Velvet</button>`,
-    cssCode: `@keyframes velvet-hover {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-.animate-velvet-hover { animation: velvet-hover 4s ease-in-out infinite; background: linear-gradient(135deg, #4a1d6b 0%, #7c3aed 50%, #4a1d6b 100%); background-size: 200% 200%; }`
-  },
-  {
-    id: "S-88",
-    name: "Ink Drop",
-    category: "stylish",
-    description: "Gota de tinta se expandindo organicamente.",
-    animationClass: "animate-ink-drop",
-    htmlExample: `<div className="animate-ink-drop w-4 h-4 bg-primary rounded-full" />`,
-    cssCode: `@keyframes ink-drop {
-  0% { transform: scale(0); opacity: 1; border-radius: 50%; }
-  50% { transform: scale(1); opacity: 0.8; border-radius: 45% 55% 50% 50%; }
-  100% { transform: scale(3); opacity: 0; border-radius: 40% 60% 55% 45%; }
-}
-.animate-ink-drop { animation: ink-drop 1s ease-out forwards; }`
-  },
-  {
-    id: "S-89",
-    name: "Ribbon Wave",
-    category: "stylish",
-    description: "Fita decorativa ondulando suavemente.",
-    animationClass: "animate-ribbon-wave",
-    htmlExample: `<div className="animate-ribbon-wave w-full h-2 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500" />`,
-    cssCode: `@keyframes ribbon-wave {
-  0%, 100% { transform: scaleY(1) translateY(0); border-radius: 0; }
-  25% { transform: scaleY(1.5) translateY(-2px); border-radius: 50% 0 50% 0; }
-  50% { transform: scaleY(1) translateY(0); border-radius: 0; }
-  75% { transform: scaleY(1.5) translateY(2px); border-radius: 0 50% 0 50%; }
-}
-.animate-ribbon-wave { animation: ribbon-wave 2s ease-in-out infinite; }`
-  },
-  {
-    id: "S-90",
-    name: "Crystal Rotate",
-    category: "stylish",
-    description: "Cristal girando com reflexos prismáticos.",
-    animationClass: "animate-crystal-rotate",
-    htmlExample: `<div className="animate-crystal-rotate w-16 h-16 bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400" style={{clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)"}} />`,
-    cssCode: `@keyframes crystal-rotate {
-  0% { transform: rotate(0deg); filter: hue-rotate(0deg) brightness(1); }
-  50% { transform: rotate(180deg); filter: hue-rotate(180deg) brightness(1.2); }
-  100% { transform: rotate(360deg); filter: hue-rotate(360deg) brightness(1); }
-}
-.animate-crystal-rotate { animation: crystal-rotate 5s linear infinite; clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }`
-  },
-  
-  // VIBRANT EXTREME (20)
-  {
-    id: "V-81",
-    name: "Fireworks Burst",
-    category: "vibrant",
-    description: "Explosão de fogos de artifício coloridos.",
-    animationClass: "animate-fireworks-burst",
-    htmlExample: `<div className="animate-fireworks-burst w-4 h-4 rounded-full bg-yellow-400" />`,
-    cssCode: `@keyframes fireworks-burst {
-  0% { transform: scale(0); opacity: 1; box-shadow: 0 0 0 0 #f59e0b, 0 0 0 0 #ef4444, 0 0 0 0 #10b981, 0 0 0 0 #3b82f6; }
-  50% { transform: scale(1); box-shadow: 30px -30px 0 0 #f59e0b, -30px -30px 0 0 #ef4444, 30px 30px 0 0 #10b981, -30px 30px 0 0 #3b82f6; }
-  100% { transform: scale(1); opacity: 0; box-shadow: 50px -50px 0 -5px #f59e0b, -50px -50px 0 -5px #ef4444, 50px 50px 0 -5px #10b981, -50px 50px 0 -5px #3b82f6; }
-}
-.animate-fireworks-burst { animation: fireworks-burst 1s ease-out infinite; }`
-  },
-  {
-    id: "V-82",
-    name: "Aurora Borealis",
-    category: "vibrant",
-    description: "Aurora boreal com cores dançantes.",
-    animationClass: "animate-aurora-borealis",
-    htmlExample: `<div className="animate-aurora-borealis w-full h-32 rounded-xl" />`,
-    cssCode: `@keyframes aurora-borealis {
-  0%, 100% { background: linear-gradient(45deg, #00ff87, #60efff, #ff00ff, #00ff87); background-size: 400% 400%; background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-.animate-aurora-borealis { animation: aurora-borealis 8s ease-in-out infinite; filter: blur(30px); opacity: 0.7; }`
-  },
-  {
-    id: "V-83",
-    name: "Disco Ball",
-    category: "vibrant",
-    description: "Bola de discoteca com luzes coloridas.",
-    animationClass: "animate-disco-ball",
-    htmlExample: `<div className="animate-disco-ball w-20 h-20 rounded-full bg-gradient-to-br from-white to-gray-300" />`,
-    cssCode: `@keyframes disco-ball {
-  0% { transform: rotateY(0deg); box-shadow: -20px -10px 0 0 #ff0000, 20px -10px 0 0 #00ff00, 0px 20px 0 0 #0000ff; }
-  33% { box-shadow: 20px -10px 0 0 #ff0000, 0px 20px 0 0 #00ff00, -20px -10px 0 0 #0000ff; }
-  66% { box-shadow: 0px 20px 0 0 #ff0000, -20px -10px 0 0 #00ff00, 20px -10px 0 0 #0000ff; }
-  100% { transform: rotateY(360deg); }
-}
-.animate-disco-ball { animation: disco-ball 3s linear infinite; }`
-  },
-  {
-    id: "V-84",
-    name: "Lava Lamp",
-    category: "vibrant",
-    description: "Bolhas de lava flutuantes.",
-    animationClass: "animate-lava-lamp",
-    htmlExample: `<div className="animate-lava-lamp w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-orange-500" />`,
-    cssCode: `@keyframes lava-lamp {
-  0%, 100% { transform: translateY(0) scale(1); border-radius: 50%; }
-  25% { transform: translateY(-50px) scale(0.8); border-radius: 40% 60% 50% 50%; }
-  50% { transform: translateY(-100px) scale(1.2); border-radius: 50%; }
-  75% { transform: translateY(-50px) scale(0.9); border-radius: 60% 40% 45% 55%; }
-}
-.animate-lava-lamp { animation: lava-lamp 5s ease-in-out infinite; }`
-  },
-  {
-    id: "V-85",
-    name: "Electric Storm",
-    category: "vibrant",
-    description: "Tempestade elétrica com raios.",
-    animationClass: "animate-electric-storm",
-    htmlExample: `<div className="animate-electric-storm text-4xl font-bold text-yellow-400">⚡</div>`,
-    cssCode: `@keyframes electric-storm {
-  0%, 90%, 100% { opacity: 1; filter: brightness(1); text-shadow: 0 0 5px currentColor; }
-  5% { opacity: 0.3; filter: brightness(3); text-shadow: 0 0 20px currentColor, 0 0 40px currentColor; }
-  15% { opacity: 0.5; filter: brightness(2); }
-}
-.animate-electric-storm { animation: electric-storm 2s infinite; }`
-  },
-  {
-    id: "V-86",
-    name: "Confetti Pop",
-    category: "vibrant",
-    description: "Confetes coloridos explodindo.",
-    animationClass: "animate-confetti-pop",
-    htmlExample: `<div className="animate-confetti-pop w-2 h-2 bg-pink-500 rounded" />`,
-    cssCode: `@keyframes confetti-pop {
-  0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
-  100% { transform: translateY(-200px) rotate(720deg) scale(0); opacity: 0; }
-}
-.animate-confetti-pop { animation: confetti-pop 1s ease-out forwards; }`
-  },
-  {
-    id: "V-87",
-    name: "Prism Split",
-    category: "vibrant",
-    description: "Luz se dividindo em arco-íris.",
-    animationClass: "animate-prism-split",
-    htmlExample: `<div className="animate-prism-split w-24 h-8 bg-white" />`,
-    cssCode: `@keyframes prism-split {
-  0% { background: white; box-shadow: none; }
-  50% { background: linear-gradient(90deg, #ff0000 0%, #ff7f00 16%, #ffff00 33%, #00ff00 50%, #0000ff 66%, #4b0082 83%, #9400d3 100%); box-shadow: 0 0 20px rgba(255,255,255,0.5); }
-  100% { background: white; box-shadow: none; }
-}
-.animate-prism-split { animation: prism-split 3s ease-in-out infinite; }`
-  },
-  {
-    id: "V-88",
-    name: "Neon Tubes",
-    category: "vibrant",
-    description: "Tubos de neon ligando em sequência.",
-    animationClass: "animate-neon-tubes",
-    htmlExample: `<div className="animate-neon-tubes h-1 w-full bg-cyan-400 rounded-full" />`,
-    cssCode: `@keyframes neon-tubes {
-  0%, 100% { box-shadow: 0 0 5px currentColor, 0 0 10px currentColor; opacity: 0.3; }
-  50% { box-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 40px currentColor, 0 0 80px currentColor; opacity: 1; }
-}
-.animate-neon-tubes { animation: neon-tubes 1.5s ease-in-out infinite; }`
-  },
-  {
-    id: "V-89",
-    name: "Supernova",
-    category: "vibrant",
-    description: "Explosão de supernova cósmica.",
-    animationClass: "animate-supernova",
-    htmlExample: `<div className="animate-supernova w-4 h-4 rounded-full bg-white" />`,
-    cssCode: `@keyframes supernova {
-  0% { transform: scale(0); box-shadow: 0 0 0 0 white; background: white; }
-  30% { transform: scale(1); box-shadow: 0 0 20px 10px white, 0 0 40px 20px #ffc800; }
-  60% { transform: scale(0.5); box-shadow: 0 0 60px 30px #ff6600; background: #ff6600; }
-  100% { transform: scale(0); box-shadow: 0 0 200px 100px transparent; background: transparent; }
-}
-.animate-supernova { animation: supernova 2s ease-out forwards; }`
-  },
-  {
-    id: "V-90",
-    name: "Black Hole",
-    category: "vibrant",
-    description: "Buraco negro sugando luz.",
-    animationClass: "animate-black-hole",
-    htmlExample: `<div className="animate-black-hole w-20 h-20 rounded-full bg-black" />`,
-    cssCode: `@keyframes black-hole {
-  0%, 100% { box-shadow: inset 0 0 30px rgba(255,255,255,0.1), 0 0 50px 20px rgba(128,0,255,0.3); transform: rotate(0deg); }
-  50% { box-shadow: inset 0 0 50px rgba(255,255,255,0.05), 0 0 80px 30px rgba(128,0,255,0.5); transform: rotate(180deg); }
-}
-.animate-black-hole { animation: black-hole 6s ease-in-out infinite; background: radial-gradient(circle at 30% 30%, rgba(50,0,100,1) 0%, black 50%); }`
-  },
-  {
-    id: "V-91",
-    name: "Galaxy Spiral",
-    category: "vibrant",
-    description: "Espiral galáctica com estrelas.",
-    animationClass: "animate-galaxy-spiral",
-    htmlExample: `<div className="animate-galaxy-spiral w-24 h-24 rounded-full" />`,
-    cssCode: `@keyframes galaxy-spiral {
-  0% { transform: rotate(0deg); background: conic-gradient(from 0deg, #1a0533, #4a0080, #00ffff, #ff00ff, #1a0533); }
-  100% { transform: rotate(360deg); }
-}
-.animate-galaxy-spiral { animation: galaxy-spiral 20s linear infinite; box-shadow: 0 0 30px rgba(128,0,255,0.5), inset 0 0 20px rgba(255,255,255,0.1); }`
-  },
-  {
-    id: "V-92",
-    name: "Neon Heartbeat",
-    category: "vibrant",
-    description: "Coração neon pulsando.",
-    animationClass: "animate-neon-heartbeat",
-    htmlExample: `<div className="animate-neon-heartbeat text-4xl text-red-500">❤️</div>`,
-    cssCode: `@keyframes neon-heartbeat {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px #ff0000); }
-  15% { transform: scale(1.3); filter: drop-shadow(0 0 20px #ff0000) drop-shadow(0 0 40px #ff0000); }
-  30% { transform: scale(1); filter: drop-shadow(0 0 5px #ff0000); }
-  45% { transform: scale(1.2); filter: drop-shadow(0 0 15px #ff0000); }
-}
-.animate-neon-heartbeat { animation: neon-heartbeat 1.5s ease-in-out infinite; }`
-  },
-  {
-    id: "V-93",
-    name: "Rainbow Wave",
-    category: "vibrant",
-    description: "Onda de arco-íris atravessando.",
-    animationClass: "animate-rainbow-wave",
-    htmlExample: `<div className="animate-rainbow-wave w-full h-4 rounded-full" />`,
-    cssCode: `@keyframes rainbow-wave {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
-}
-.animate-rainbow-wave { animation: rainbow-wave 2s linear infinite; background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000); background-size: 200% 100%; }`
-  },
-  {
-    id: "V-94",
-    name: "Particle Explosion",
-    category: "vibrant",
-    description: "Explosão de partículas em 360°.",
-    animationClass: "animate-particle-explosion",
-    htmlExample: `<div className="animate-particle-explosion w-2 h-2 bg-primary rounded-full" />`,
-    cssCode: `@keyframes particle-explosion {
-  0% { box-shadow: 0 0 0 0 currentColor; }
-  100% { box-shadow: 
-    0 -50px 0 -3px currentColor, 50px 0 0 -3px currentColor, 
-    0 50px 0 -3px currentColor, -50px 0 0 -3px currentColor,
-    35px -35px 0 -3px currentColor, 35px 35px 0 -3px currentColor,
-    -35px 35px 0 -3px currentColor, -35px -35px 0 -3px currentColor;
+    previewColor: "#F7E7CE",
+    animationClass: "animate-champagne",
+    htmlExample: `<div class="animate-champagne">🥂</div>`,
+    cssCode: `@keyframes champagne {
+  0% { 
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% { 
+    transform: translateY(-20px) scale(0.8);
     opacity: 0;
   }
 }
-.animate-particle-explosion { animation: particle-explosion 0.8s ease-out infinite; }`
+.animate-champagne {
+  animation: champagne 2s ease-out infinite;
+  color: #F7E7CE;
+  text-shadow: 0 0 10px #D4AF37;
+}`,
   },
   {
-    id: "V-95",
-    name: "Cyber Wave",
-    category: "vibrant",
-    description: "Onda cibernética digital.",
-    animationClass: "animate-cyber-wave",
-    htmlExample: `<div className="animate-cyber-wave h-1 w-full bg-cyan-400" />`,
-    cssCode: `@keyframes cyber-wave {
-  0% { transform: scaleX(0); transform-origin: left; }
-  50% { transform: scaleX(1); transform-origin: left; }
-  50.01% { transform-origin: right; }
-  100% { transform: scaleX(0); transform-origin: right; }
-}
-.animate-cyber-wave { animation: cyber-wave 2s ease-in-out infinite; box-shadow: 0 0 10px currentColor; }`
-  },
-  {
-    id: "V-96",
-    name: "Fire Blaze",
-    category: "vibrant",
-    description: "Chamas de fogo ardentes.",
-    animationClass: "animate-fire-blaze",
-    htmlExample: `<div className="animate-fire-blaze text-4xl">🔥</div>`,
-    cssCode: `@keyframes fire-blaze {
-  0%, 100% { transform: scale(1) rotate(-2deg); filter: brightness(1); }
-  25% { transform: scale(1.1) rotate(2deg); filter: brightness(1.2); }
-  50% { transform: scale(0.95) rotate(-1deg); filter: brightness(0.9); }
-  75% { transform: scale(1.05) rotate(1deg); filter: brightness(1.1); }
-}
-.animate-fire-blaze { animation: fire-blaze 0.5s ease-in-out infinite; }`
-  },
-  {
-    id: "V-97",
-    name: "Ice Crystals",
-    category: "vibrant",
-    description: "Cristais de gelo formando.",
-    animationClass: "animate-ice-crystals",
-    htmlExample: `<div className="animate-ice-crystals text-4xl text-cyan-300">❄️</div>`,
-    cssCode: `@keyframes ice-crystals {
-  0%, 100% { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 5px #00ffff); }
-  50% { transform: rotate(180deg) scale(1.2); filter: drop-shadow(0 0 15px #00ffff) brightness(1.3); }
-}
-.animate-ice-crystals { animation: ice-crystals 3s ease-in-out infinite; }`
-  },
-  {
-    id: "V-98",
-    name: "Energy Surge",
-    category: "vibrant",
-    description: "Surto de energia pulsando.",
-    animationClass: "animate-energy-surge",
-    htmlExample: `<div className="animate-energy-surge w-16 h-16 rounded-full bg-yellow-400" />`,
-    cssCode: `@keyframes energy-surge {
-  0%, 100% { box-shadow: 0 0 10px #fbbf24, 0 0 20px #fbbf24; transform: scale(1); }
-  50% { box-shadow: 0 0 30px #fbbf24, 0 0 60px #f59e0b, 0 0 90px #d97706; transform: scale(1.1); }
-}
-.animate-energy-surge { animation: energy-surge 1s ease-in-out infinite; }`
-  },
-  {
-    id: "V-99",
-    name: "Plasma Wave",
-    category: "vibrant",
-    description: "Onda de plasma fluindo.",
-    animationClass: "animate-plasma-wave",
-    htmlExample: `<div className="animate-plasma-wave w-full h-8" />`,
-    cssCode: `@keyframes plasma-wave {
-  0% { background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff); background-position: 0% 50%; }
-  50% { background: linear-gradient(90deg, #00ffff, #ff00ff, #00ffff); background-position: 100% 50%; }
-  100% { background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff); background-position: 0% 50%; }
-}
-.animate-plasma-wave { animation: plasma-wave 3s ease-in-out infinite; background-size: 200% 100%; border-radius: 4px; }`
-  },
-  {
-    id: "V-100",
-    name: "Cosmic Dust",
-    category: "vibrant",
-    description: "Poeira cósmica brilhando.",
-    animationClass: "animate-cosmic-dust",
-    htmlExample: `<div className="animate-cosmic-dust w-2 h-2 bg-white rounded-full" />`,
-    cssCode: `@keyframes cosmic-dust {
-  0%, 100% { opacity: 0.3; transform: scale(1); box-shadow: 0 0 5px white; }
-  50% { opacity: 1; transform: scale(1.5); box-shadow: 0 0 15px white, 0 0 30px rgba(255,255,255,0.5); }
-}
-.animate-cosmic-dust { animation: cosmic-dust 2s ease-in-out infinite; }
-/* Use múltiplos com delays diferentes para efeito de campo estelar */`
+    id: "S-05",
+    name: "Velvet Purple",
+    description: "Textura aveludada em roxo profundo.",
+    category: "stylish",
+    previewColor: "#4A0E4E",
+    animationClass: "animate-velvet-purple",
+    htmlExample: `<div class="animate-velvet-purple">Velvet</div>`,
+    cssCode: `@keyframes velvet-purple {
+  0%, 100% { 
+    background: linear-gradient(135deg, #4A0E4E 0%, #6B2D75 100%);
   }
-];
+  50% { 
+    background: linear-gradient(135deg, #6B2D75 0%, #8B4789 100%);
+  }
+}
+.animate-velvet-purple {
+  animation: velvet-purple 3s ease-in-out infinite;
+  color: #F5F5F5;
+  padding: 20px 40px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}`,
+  },
+  {
+    id: "S-06",
+    name: "Pearl Iridescent",
+    description: "Iridescência de pérola multicolor.",
+    category: "stylish",
+    previewColor: "#FDEEF4",
+    animationClass: "animate-pearl-iridescent",
+    htmlExample: `<div class="animate-pearl-iridescent">Pearl</div>`,
+    cssCode: `@keyframes pearl-iridescent {
+  0% { 
+    background: linear-gradient(45deg, #FDEEF4, #E8F5E8, #E8F0FA);
+    filter: hue-rotate(0deg);
+  }
+  50% { 
+    background: linear-gradient(45deg, #E8F0FA, #FDEEF4, #FFF9E8);
+    filter: hue-rotate(30deg);
+  }
+  100% { 
+    background: linear-gradient(45deg, #FDEEF4, #E8F5E8, #E8F0FA);
+    filter: hue-rotate(0deg);
+  }
+}
+.animate-pearl-iridescent {
+  animation: pearl-iridescent 4s ease-in-out infinite;
+  color: #333;
+  padding: 20px;
+  border-radius: 50px;
+}`,
+  },
+  {
+    id: "S-07",
+    name: "Marble Flow",
+    description: "Fluxo de mármore em cinza e branco.",
+    category: "stylish",
+    previewColor: "#E8E8E8",
+    animationClass: "animate-marble-flow",
+    htmlExample: `<div class="animate-marble-flow">Marble</div>`,
+    cssCode: `@keyframes marble-flow {
+  0% { 
+    background-position: 0% 0%;
+  }
+  50% { 
+    background-position: 100% 100%;
+  }
+  100% { 
+    background-position: 0% 0%;
+  }
+}
+.animate-marble-flow {
+  background: linear-gradient(135deg, #E8E8E8 25%, #FFFFFF 25%, #FFFFFF 50%, #E8E8E8 50%, #E8E8E8 75%, #D3D3D3 75%);
+  background-size: 40px 40px;
+  animation: marble-flow 5s linear infinite;
+  color: #333;
+  padding: 20px;
+  border-radius: 8px;
+}`,
+  },
+  {
+    id: "S-08",
+    name: "Bronze Patina",
+    description: "Pátina de bronze envelhecido.",
+    category: "stylish",
+    previewColor: "#CD7F32",
+    animationClass: "animate-bronze-patina",
+    htmlExample: `<div class="animate-bronze-patina">Antique</div>`,
+    cssCode: `@keyframes bronze-patina {
+  0%, 100% { 
+    color: #CD7F32;
+    text-shadow: 1px 1px 2px #8B4513;
+  }
+  50% { 
+    color: #B87333;
+    text-shadow: 2px 2px 4px #654321, 0 0 10px rgba(205, 127, 50, 0.3);
+  }
+}
+.animate-bronze-patina {
+  animation: bronze-patina 3s ease-in-out infinite;
+  font-weight: bold;
+}`,
+  },
+  {
+    id: "S-09",
+    name: "Sapphire Depth",
+    description: "Profundidade de safira azul royal.",
+    category: "stylish",
+    previewColor: "#0F52BA",
+    animationClass: "animate-sapphire",
+    htmlExample: `<div class="animate-sapphire">Sapphire</div>`,
+    cssCode: `@keyframes sapphire {
+  0%, 100% { 
+    background: linear-gradient(180deg, #0F52BA 0%, #1E3A8A 100%);
+    box-shadow: 0 5px 20px rgba(15, 82, 186, 0.4);
+  }
+  50% { 
+    background: linear-gradient(180deg, #1E3A8A 0%, #3B82F6 100%);
+    box-shadow: 0 10px 40px rgba(15, 82, 186, 0.6);
+  }
+}
+.animate-sapphire {
+  animation: sapphire 3s ease-in-out infinite;
+  color: white;
+  padding: 20px 40px;
+  border-radius: 8px;
+}`,
+  },
+  {
+    id: "S-10",
+    name: "Ruby Shine",
+    description: "Brilho de rubi vermelho intenso.",
+    category: "stylish",
+    previewColor: "#E0115F",
+    animationClass: "animate-ruby-shine",
+    htmlExample: `<div class="animate-ruby-shine">Ruby</div>`,
+    cssCode: `@keyframes ruby-shine {
+  0% { 
+    background-position: -100% 0;
+  }
+  100% { 
+    background-position: 200% 0;
+  }
+}
+.animate-ruby-shine {
+  background: linear-gradient(90deg, #E0115F 0%, #FF1744 25%, #FFFFFF 50%, #FF1744 75%, #E0115F 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: ruby-shine 2s linear infinite;
+  font-weight: bold;
+}`,
+  },
+  {
+    id: "S-11",
+    name: "Emerald Glow",
+    description: "Brilho esmeralda verde profundo.",
+    category: "stylish",
+    previewColor: "#046307",
+    animationClass: "animate-emerald-glow",
+    htmlExample: `<div class="animate-emerald-glow">Emerald</div>`,
+    cssCode: `@keyframes emerald-glow {
+  0%, 100% { 
+    box-shadow: 0 0 10px #046307, inset 0 0 5px rgba(4, 99, 7, 0.3);
+    background: linear-gradient(135deg, #046307 0%, #0A8A0D 100%);
+  }
+  50% { 
+    box-shadow: 0 0 30px #0A8A0D, 0 0 60px rgba(4, 99, 7, 0.5), inset 0 0 10px rgba(10, 138, 13, 0.5);
+    background: linear-gradient(135deg, #0A8A0D 0%, #12B012 100%);
+  }
+}
+.animate-emerald-glow {
+  animation: emerald-glow 2.5s ease-in-out infinite;
+  color: white;
+  padding: 20px 40px;
+  border-radius: 8px;
+}`,
+  },
+  {
+    id: "S-12",
+    name: "Onyx Depth",
+    description: "Profundidade ônix preto sofisticado.",
+    category: "stylish",
+    previewColor: "#353839",
+    animationClass: "animate-onyx-depth",
+    htmlExample: `<div class="animate-onyx-depth">Onyx</div>`,
+    cssCode: `@keyframes onyx-depth {
+  0%, 100% { 
+    background: linear-gradient(145deg, #353839 0%, #1A1A1A 100%);
+    box-shadow: 5px 5px 15px #0D0D0D, -5px -5px 15px #4D4D4D;
+  }
+  50% { 
+    background: linear-gradient(145deg, #4D4D4D 0%, #2A2A2A 100%);
+    box-shadow: 8px 8px 20px #0D0D0D, -8px -8px 20px #5A5A5A;
+  }
+}
+.animate-onyx-depth {
+  animation: onyx-depth 3s ease-in-out infinite;
+  color: #C0C0C0;
+  padding: 20px 40px;
+  border-radius: 12px;
+}`,
+  },
+  {
+    id: "S-13",
+    name: "Ivory Elegance",
+    description: "Elegância marfim clássica.",
+    category: "stylish",
+    previewColor: "#FFFFF0",
+    animationClass: "animate-ivory-elegance",
+    htmlExample: `<div class="animate-ivory-elegance">Ivory</div>`,
+    cssCode: `@keyframes ivory-elegance {
+  0%, 100% { 
+    background: #FFFFF0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  50% { 
+    background: #FAF0E6;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  }
+}
+.animate-ivory-elegance {
+  animation: ivory-elegance 3s ease-in-out infinite;
+  color: #8B4513;
+  padding: 20px 40px;
+  border-radius: 8px;
+  border: 1px solid #DEB887;
+}`,
+  },
+  {
+    id: "S-14",
+    name: "Amethyst Pulse",
+    description: "Pulsação de ametista violeta.",
+    category: "stylish",
+    previewColor: "#9966CC",
+    animationClass: "animate-amethyst-pulse",
+    htmlExample: `<div class="animate-amethyst-pulse">Amethyst</div>`,
+    cssCode: `@keyframes amethyst-pulse {
+  0%, 100% { 
+    transform: scale(1);
+    background: #9966CC;
+    box-shadow: 0 0 10px #9966CC;
+  }
+  50% { 
+    transform: scale(1.05);
+    background: #BA55D3;
+    box-shadow: 0 0 30px #BA55D3, 0 0 60px #9966CC;
+  }
+}
+.animate-amethyst-pulse {
+  animation: amethyst-pulse 2s ease-in-out infinite;
+  color: white;
+  padding: 20px;
+  border-radius: 50%;
+}`,
+  },
+  {
+    id: "S-15",
+    name: "Copper Warmth",
+    description: "Calor de cobre acolhedor.",
+    category: "stylish",
+    previewColor: "#B87333",
+    animationClass: "animate-copper-warmth",
+    htmlExample: `<div class="animate-copper-warmth">Copper</div>`,
+    cssCode: `@keyframes copper-warmth {
+  0%, 100% { 
+    background: linear-gradient(135deg, #B87333 0%, #DA8A67 100%);
+  }
+  50% { 
+    background: linear-gradient(135deg, #DA8A67 0%, #CD7F32 100%);
+  }
+}
+.animate-copper-warmth {
+  animation: copper-warmth 4s ease-in-out infinite;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 8px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}`,
+  },
+  {
+    id: "S-16",
+    name: "Topaz Gleam",
+    description: "Fulgor de topázio amarelo.",
+    category: "stylish",
+    previewColor: "#FFC87C",
+    animationClass: "animate-topaz-gleam",
+    htmlExample: `<div class="animate-topaz-gleam">Topaz</div>`,
+    cssCode: `@keyframes topaz-gleam {
+  0% { 
+    filter: brightness(1);
+    color: #FFC87C;
+  }
+  50% { 
+    filter: brightness(1.3);
+    color: #FFD700;
+    text-shadow: 0 0 20px #FFC87C;
+  }
+  100% { 
+    filter: brightness(1);
+    color: #FFC87C;
+  }
+}
+.animate-topaz-gleam {
+  animation: topaz-gleam 2s ease-in-out infinite;
+  font-weight: bold;
+}`,
+  },
+  {
+    id: "S-17",
+    name: "Malachite Swirl",
+    description: "Redemoinho de malaquita verde.",
+    category: "stylish",
+    previewColor: "#0BDA51",
+    animationClass: "animate-malachite-swirl",
+    htmlExample: `<div class="animate-malachite-swirl">Malachite</div>`,
+    cssCode: `@keyframes malachite-swirl {
+  0% { 
+    background: linear-gradient(0deg, #0BDA51 0%, #046307 50%, #0BDA51 100%);
+  }
+  100% { 
+    background: linear-gradient(360deg, #0BDA51 0%, #046307 50%, #0BDA51 100%);
+  }
+}
+.animate-malachite-swirl {
+  animation: malachite-swirl 3s linear infinite;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+}`,
+  },
+  {
+    id: "S-18",
+    name: "Opal Flash",
+    description: "Flash de opala multicolorida.",
+    category: "stylish",
+    previewColor: "#A8C3BC",
+    animationClass: "animate-opal-flash",
+    htmlExample: `<div class="animate-opal-flash">Opal</div>`,
+    cssCode: `@keyframes opal-flash {
+  0% { 
+    background: #A8C3BC;
+    filter: hue-rotate(0deg);
+  }
+  25% { 
+    background: #E6C7C7;
+    filter: hue-rotate(60deg);
+  }
+  50% { 
+    background: #C7D1E6;
+    filter: hue-rotate(120deg);
+  }
+  75% { 
+    background: #D1E6C7;
+    filter: hue-rotate(180deg);
+  }
+  100% { 
+    background: #A8C3BC;
+    filter: hue-rotate(360deg);
+  }
+}
+.animate-opal-flash {
+  animation: opal-flash 4s ease-in-out infinite;
+  color: #333;
+  padding: 20px;
+  border-radius: 50px;
+}`,
+  },
+  {
+    id: "S-19",
+    name: "Obsidian Edge",
+    description: "Borda afiada de obsidiana.",
+    category: "stylish",
+    previewColor: "#0B1215",
+    animationClass: "animate-obsidian-edge",
+    htmlExample: `<div class="animate-obsidian-edge">Obsidian</div>`,
+    cssCode: `@keyframes obsidian-edge {
+  0%, 100% { 
+    box-shadow: 0 0 0 2px #0B1215, 0 0 10px rgba(11, 18, 21, 0.5);
+  }
+  50% { 
+    box-shadow: 0 0 0 4px #2C3E50, 0 0 20px rgba(44, 62, 80, 0.7);
+  }
+}
+.animate-obsidian-edge {
+  animation: obsidian-edge 2s ease-in-out infinite;
+  background: linear-gradient(135deg, #0B1215 0%, #1A252F 100%);
+  color: #7F8C8D;
+  padding: 20px 40px;
+  border-radius: 4px;
+}`,
+  },
+  {
+    id: "S-20",
+    name: "Aquamarine Wave",
+    description: "Onda de água-marinha refrescante.",
+    category: "stylish",
+    previewColor: "#7FFFD4",
+    animationClass: "animate-aquamarine-wave",
+    htmlExample: `<div class="animate-aquamarine-wave">Aqua</div>`,
+    cssCode: `@keyframes aquamarine-wave {
+  0%, 100% { 
+    transform: translateY(0);
+    background: linear-gradient(180deg, #7FFFD4 0%, #40E0D0 100%);
+  }
+  25% { 
+    transform: translateY(-3px);
+  }
+  50% { 
+    transform: translateY(0);
+    background: linear-gradient(180deg, #40E0D0 0%, #48D1CC 100%);
+  }
+  75% { 
+    transform: translateY(3px);
+  }
+}
+.animate-aquamarine-wave {
+  animation: aquamarine-wave 2s ease-in-out infinite;
+  color: #004D40;
+  padding: 15px 30px;
+  border-radius: 25px;
+}`,
+  },
+  {
+    id: "S-21",
+    name: "Citrine Sparkle",
+    description: "Brilho cintilante de citrino.",
+    category: "stylish",
+    previewColor: "#E4D00A",
+    animationClass: "animate-citrine-sparkle",
+    htmlExample: `<div class="animate-citrine-sparkle">Citrine</div>`,
+    cssCode: `@keyframes citrine-sparkle {
+  0%, 100% { 
+    text-shadow: 0 0 5px #E4D00A;
+    color: #E4D00A;
+  }
+  25% { 
+    text-shadow: 2px -2px 10px #FFD700, -2px 2px 10px #FFA500;
+    color: #FFD700;
+  }
+  50% { 
+    text-shadow: 0 0 20px #FFA500, 0 0 40px #E4D00A;
+    color: #FFA500;
+  }
+  75% { 
+    text-shadow: -2px -2px 10px #FFD700, 2px 2px 10px #E4D00A;
+    color: #FFD700;
+  }
+}
+.animate-citrine-sparkle {
+  animation: citrine-sparkle 2s ease-in-out infinite;
+  font-weight: bold;
+}`,
+  },
+  {
+    id: "S-22",
+    name: "Garnet Fire",
+    description: "Fogo de granada vermelho escuro.",
+    category: "stylish",
+    previewColor: "#733635",
+    animationClass: "animate-garnet-fire",
+    htmlExample: `<div class="animate-garnet-fire">Garnet</div>`,
+    cssCode: `@keyframes garnet-fire {
+  0%, 100% { 
+    background: linear-gradient(180deg, #733635 0%, #8B0000 100%);
+    box-shadow: 0 5px 15px rgba(115, 54, 53, 0.5);
+  }
+  50% { 
+    background: linear-gradient(180deg, #8B0000 0%, #B22222 100%);
+    box-shadow: 0 10px 30px rgba(139, 0, 0, 0.7), 0 0 20px rgba(178, 34, 34, 0.5);
+  }
+}
+.animate-garnet-fire {
+  animation: garnet-fire 2s ease-in-out infinite;
+  color: #FFD700;
+  padding: 20px 40px;
+  border-radius: 8px;
+}`,
+  },
+  {
+    id: "S-23",
+    name: "Turquoise Calm",
+    description: "Calma turquesa relaxante.",
+    category: "stylish",
+    previewColor: "#40E0D0",
+    animationClass: "animate-turquoise-calm",
+    htmlExample: `<div class="animate-turquoise-calm">Turquoise</div>`,
+    cssCode: `@keyframes turquoise-calm {
+  0%, 100% { 
+    background: #40E0D0;
+    transform: scale(1);
+  }
+  50% { 
+    background: #48D1CC;
+    transform: scale(1.02);
+    box-shadow: 0 0 30px rgba(64, 224, 208, 0.4);
+  }
+}
+.animate-turquoise-calm {
+  animation: turquoise-calm 4s ease-in-out infinite;
+  color: #004D40;
+  padding: 20px 40px;
+  border-radius: 30px;
+}`,
+  },
+  {
+    id: "S-24",
+    name: "Lapis Lazuli Deep",
+    description: "Profundidade de lápis-lazúli.",
+    category: "stylish",
+    previewColor: "#26619C",
+    animationClass: "animate-lapis-deep",
+    htmlExample: `<div class="animate-lapis-deep">Lapis</div>`,
+    cssCode: `@keyframes lapis-deep {
+  0%, 100% { 
+    background: linear-gradient(135deg, #26619C 0%, #1E3A5F 50%, #26619C 100%);
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+  }
+  50% { 
+    background-position: 100% 50%;
+  }
+}
+.animate-lapis-deep {
+  animation: lapis-deep 4s ease-in-out infinite;
+  color: #FFD700;
+  padding: 20px 40px;
+  border-radius: 8px;
+}`,
+  },
+  {
+    id: "S-25",
+    name: "Moonstone Glow",
+    description: "Brilho de pedra da lua etéreo.",
+    category: "stylish",
+    previewColor: "#C4C4C4",
+    animationClass: "animate-moonstone-glow",
+    htmlExample: `<div class="animate-moonstone-glow">Moonstone</div>`,
+    cssCode: `@keyframes moonstone-glow {
+  0%, 100% { 
+    background: radial-gradient(circle, #FFFFFF 0%, #C4C4C4 50%, #A0A0A0 100%);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+  50% { 
+    background: radial-gradient(circle, #E8E8E8 0%, #D4D4D4 50%, #C4C4C4 100%);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.6), 0 0 60px rgba(200, 200, 200, 0.4);
+  }
+}
+.animate-moonstone-glow {
+  animation: moonstone-glow 3s ease-in-out infinite;
+  color: #333;
+  padding: 20px;
+  border-radius: 50%;
+}`,
+  },
 
-export const categories = [
-  { id: "all", name: "Todas", color: "foreground" },
-  { id: "futuristic", name: "Futurista", color: "neon-cyan" },
-  { id: "modern", name: "Moderno", color: "neon-green" },
-  { id: "stylish", name: "Estiloso", color: "neon-purple" },
-  { id: "vibrant", name: "Colorido Vibrante", color: "neon-magenta" },
-] as const;
+  // ==================== VIBRANTE (25 animações) ====================
+  {
+    id: "V-01",
+    name: "Rainbow Cycle",
+    description: "Ciclo completo do arco-íris vibrante.",
+    category: "vibrant",
+    previewColor: "#FF0000",
+    animationClass: "animate-rainbow-cycle",
+    htmlExample: `<div class="animate-rainbow-cycle">RAINBOW</div>`,
+    cssCode: `@keyframes rainbow-cycle {
+  0% { color: #FF0000; text-shadow: 0 0 10px #FF0000; }
+  16% { color: #FF7F00; text-shadow: 0 0 10px #FF7F00; }
+  33% { color: #FFFF00; text-shadow: 0 0 10px #FFFF00; }
+  50% { color: #00FF00; text-shadow: 0 0 10px #00FF00; }
+  66% { color: #0000FF; text-shadow: 0 0 10px #0000FF; }
+  83% { color: #8B00FF; text-shadow: 0 0 10px #8B00FF; }
+  100% { color: #FF0000; text-shadow: 0 0 10px #FF0000; }
+}
+.animate-rainbow-cycle {
+  animation: rainbow-cycle 3s linear infinite;
+  font-weight: bold;
+}`,
+  },
+  {
+    id: "V-02",
+    name: "Neon Pink Blast",
+    description: "Explosão de rosa neon intenso.",
+    category: "vibrant",
+    previewColor: "#FF1493",
+    animationClass: "animate-pink-blast",
+    htmlExample: `<div class="animate-pink-blast">PINK</div>`,
+    cssCode: `@keyframes pink-blast {
+  0%, 100% { 
+    transform: scale(1);
+    background: #FF1493;
+    box-shadow: 0 0 20px #FF1493;
+  }
+  50% { 
+    transform: scale(1.1);
+    background: #FF69B4;
+    box-shadow: 0 0 50px #FF1493, 0 0 100px #FF69B4;
+  }
+}
+.animate-pink-blast {
+  animation: pink-blast 1s ease-in-out infinite;
+  color: white;
+  padding: 20px 40px;
+  border-radius: 8px;
+}`,
+  },
+  {
+    id: "V-03",
+    name: "Electric Lime",
+    description: "Lima elétrica energizante.",
+    category: "vibrant",
+    previewColor: "#CCFF00",
+    animationClass: "animate-electric-lime",
+    htmlExample: `<div class="animate-electric-lime">LIME</div>`,
+    cssCode: `@keyframes electric-lime {
+  0%, 100% { 
+    color: #CCFF00;
+    text-shadow: 0 0 10px #CCFF00, 0 0 20px #CCFF00;
+  }
+  50% { 
+    color: #7FFF00;
+    text-shadow: 0 0 20px #7FFF00, 0 0 40px #CCFF00, 0 0 60px #7FFF00;
+  }
+}
+.animate-electric-lime {
+  animation: electric-lime 1.5s ease-in-out infinite;
+  font-weight: bold;
+  background: #111;
+  padding: 20px;
+}`,
+  },
+  {
+    id: "V-04",
+    name: "Hot Orange Pulse",
+    description: "Pulsação de laranja quente.",
+    category: "vibrant",
+    previewColor: "#FF4500",
+    animationClass: "animate-hot-orange",
+    htmlExample: `<div class="animate-hot-orange">🔥</div>`,
+    cssCode: `@keyframes hot-orange {
+  0%, 100% { 
+    color: #FF4500;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  25% { 
+    color: #FF6347;
+    transform: scale(1.05);
+  }
+  50% { 
+    color: #FF7F50;
+    transform: scale(1.1);
+    filter: brightness(1.2);
+  }
+  75% { 
+    color: #FF6347;
+    transform: scale(1.05);
+  }
+}
+.animate-hot-orange {
+  animation: hot-orange 0.8s ease-in-out infinite;
+  font-size: 2rem;
+}`,
+  },
+  {
+    id: "V-05",
+    name: "Vivid Violet",
+    description: "Violeta vívido pulsante.",
+    category: "vibrant",
+    previewColor: "#9400D3",
+    animationClass: "animate-vivid-violet",
+    htmlExample: `<div class="animate-vivid-violet">VIOLET</div>`,
+    cssCode: `@keyframes vivid-violet {
+  0%, 100% { 
+    background: linear-gradient(135deg, #9400D3 0%, #8A2BE2 100%);
+    box-shadow: 0 0 20px #9400D3;
+  }
+  50% { 
+    background: linear-gradient(135deg, #BA55D3 0%, #9400D3 100%);
+    box-shadow: 0 0 40px #BA55D3, 0 0 80px #9400D3;
+  }
+}
+.animate-vivid-violet {
+  animation: vivid-violet 2s ease-in-out infinite;
+  color: white;
+  padding: 20px 40px;
+  border-radius: 8px;
+}`,
+  },
+  {
+    id: "V-06",
+    name: "Sunshine Yellow",
+    description: "Amarelo sol radiante.",
+    category: "vibrant",
+    previewColor: "#FFD700",
+    animationClass: "animate-sunshine-yellow",
+    htmlExample: `<div class="animate-sunshine-yellow">☀️</div>`,
+    cssCode: `@keyframes sunshine-yellow {
+  0%, 100% { 
+    color: #FFD700;
+    transform: rotate(0deg) scale(1);
+    filter: drop-shadow(0 0 10px #FFD700);
+  }
+  50% { 
+    color: #FFA500;
+    transform: rotate(180deg) scale(1.2);
+    filter: drop-shadow(0 0 30px #FFD700);
+  }
+}
+.animate-sunshine-yellow {
+  animation: sunshine-yellow 3s ease-in-out infinite;
+  font-size: 3rem;
+  display: inline-block;
+}`,
+  },
+  {
+    id: "V-07",
+    name: "Ocean Blue Wave",
+    description: "Onda de azul oceano profundo.",
+    category: "vibrant",
+    previewColor: "#0077BE",
+    animationClass: "animate-ocean-blue",
+    htmlExample: `<div class="animate-ocean-blue">🌊</div>`,
+    cssCode: `@keyframes ocean-blue {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg);
+    color: #0077BE;
+  }
+  25% { 
+    transform: translateY(-10px) rotate(-5deg);
+    color: #00BFFF;
+  }
+  50% { 
+    transform: translateY(0) rotate(0deg);
+    color: #1E90FF;
+  }
+  75% { 
+    transform: translateY(10px) rotate(5deg);
+    color: #00BFFF;
+  }
+}
+.animate-ocean-blue {
+  animation: ocean-blue 2s ease-in-out infinite;
+  font-size: 2rem;
+  display: inline-block;
+}`,
+  },
+  {
+    id: "V-08",
+    name: "Fiery Red",
+    description: "Vermelho de fogo ardente.",
+    category: "vibrant",
+    previewColor: "#FF0000",
+    animationClass: "animate-fiery-red",
+    htmlExample: `<div class="animate-fiery-red">FIRE</div>`,
+    cssCode: `@keyframes fiery-red {
+  0%, 100% { 
+    background: linear-gradient(0deg, #FF0000 0%, #FF4500 50%, #FF6347 100%);
+    text-shadow: 0 0 10px #FF0000;
+  }
+  50% { 
+    background: linear-gradient(0deg, #FF4500 0%, #FF6347 50%, #FFA500 100%);
+    text-shadow: 0 0 30px #FF4500, 0 0 50px #FF0000;
+  }
+}
+.animate-fiery-red {
+  animation: fiery-red 1s ease-in-out infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}`,
+  },
+  {
+    id: "V-09",
+    name: "Tropical Teal",
+    description: "Verde-azulado tropical vibrante.",
+    category: "vibrant",
+    previewColor: "#20B2AA",
+    animationClass: "animate-tropical-teal",
+    htmlExample: `<div class="animate-tropical-teal">TROPIC</div>`,
+    cssCode: `@keyframes tropical-teal {
+  0% { 
+    background: linear-gradient(90deg, #20B2AA, #48D1CC, #40E0D0, #20B2AA);
+    background-position: 0% 50%;
+  }
+  100% { 
+    background: linear-gradient(90deg, #20B2AA, #48D1CC, #40E0D0, #20B2AA);
+    background-position: 100% 50%;
+  }
+}
+.animate-tropical-teal {
+  animation: tropical-teal 2s linear infinite;
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}`,
+  },
+  {
+    id: "V-10",
+    name: "Candy Pink",
+    description: "Rosa doce açucarado.",
+    category: "vibrant",
+    previewColor: "#FF6EC7",
+    animationClass: "animate-candy-pink",
+    htmlExample: `<div class="animate-candy-pink">CANDY</div>`,
+    cssCode: `@keyframes candy-pink {
+  0%, 100% { 
+    background: #FF6EC7;
+    transform: rotate(-2deg);
+  }
+  50% { 
+    background: #FF85D0;
+    transform: rotate(2deg);
+    box-shadow: 0 0 30px #FF6EC7;
+  }
+}
+.animate-candy-pink {
+  animation: candy-pink 1s ease-in-out infinite;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 20px;
+  font-weight: bold;
+}`,
+  },
+  {
+    id: "V-11",
+    name: "Grape Burst",
+    description: "Explosão de uva intensa.",
+    category: "vibrant",
+    previewColor: "#6F2DA8",
+    animationClass: "animate-grape-burst",
+    htmlExample: `<div class="animate-grape-burst">🍇</div>`,
+    cssCode: `@keyframes grape-burst {
+  0%, 100% { 
+    transform: scale(1);
+    color: #6F2DA8;
+    filter: drop-shadow(0 0 5px #6F2DA8);
+  }
+  50% { 
+    transform: scale(1.3);
+    color: #9932CC;
+    filter: drop-shadow(0 0 20px #9932CC);
+  }
+}
+.animate-grape-burst {
+  animation: grape-burst 0.8s ease-in-out infinite;
+  font-size: 2rem;
+}`,
+  },
+  {
+    id: "V-12",
+    name: "Mango Glow",
+    description: "Brilho de manga tropical.",
+    category: "vibrant",
+    previewColor: "#FF8243",
+    animationClass: "animate-mango-glow",
+    htmlExample: `<div class="animate-mango-glow">🥭</div>`,
+    cssCode: `@keyframes mango-glow {
+  0%, 100% { 
+    background: radial-gradient(circle, #FF8243 0%, #FF6600 100%);
+    box-shadow: 0 0 20px #FF8243;
+  }
+  50% { 
+    background: radial-gradient(circle, #FFAB00 0%, #FF8243 100%);
+    box-shadow: 0 0 40px #FFAB00, 0 0 60px #FF8243;
+  }
+}
+.animate-mango-glow {
+  animation: mango-glow 2s ease-in-out infinite;
+  padding: 30px;
+  border-radius: 50%;
+  font-size: 2rem;
+}`,
+  },
+  {
+    id: "V-13",
+    name: "Cherry Pop",
+    description: "Estalo de cereja vermelho vibrante.",
+    category: "vibrant",
+    previewColor: "#DE3163",
+    animationClass: "animate-cherry-pop",
+    htmlExample: `<div class="animate-cherry-pop">🍒</div>`,
+    cssCode: `@keyframes cherry-pop {
+  0% { 
+    transform: scale(0.8);
+    opacity: 0.5;
+    color: #DE3163;
+  }
+  50% { 
+    transform: scale(1.2);
+    opacity: 1;
+    color: #FF1744;
+  }
+  100% { 
+    transform: scale(1);
+    opacity: 1;
+    color: #DE3163;
+  }
+}
+.animate-cherry-pop {
+  animation: cherry-pop 0.6s ease-in-out infinite;
+  font-size: 2rem;
+}`,
+  },
+  {
+    id: "V-14",
+    name: "Kiwi Fresh",
+    description: "Frescor de kiwi verde.",
+    category: "vibrant",
+    previewColor: "#8EE53F",
+    animationClass: "animate-kiwi-fresh",
+    htmlExample: `<div class="animate-kiwi-fresh">🥝</div>`,
+    cssCode: `@keyframes kiwi-fresh {
+  0%, 100% { 
+    background: radial-gradient(circle, #8EE53F 30%, #6B8E23 100%);
+    transform: rotate(0deg);
+  }
+  50% { 
+    background: radial-gradient(circle, #ADFF2F 30%, #8EE53F 100%);
+    transform: rotate(10deg);
+  }
+}
+.animate-kiwi-fresh {
+  animation: kiwi-fresh 2s ease-in-out infinite;
+  padding: 25px;
+  border-radius: 50%;
+  font-size: 2rem;
+}`,
+  },
+  {
+    id: "V-15",
+    name: "Blueberry Bounce",
+    description: "Salto de mirtilo azul.",
+    category: "vibrant",
+    previewColor: "#4F86F7",
+    animationClass: "animate-blueberry-bounce",
+    htmlExample: `<div class="animate-blueberry-bounce">🫐</div>`,
+    cssCode: `@keyframes blueberry-bounce {
+  0%, 100% { 
+    transform: translateY(0);
+    color: #4F86F7;
+  }
+  25% { 
+    transform: translateY(-15px);
+    color: #6495ED;
+  }
+  50% { 
+    transform: translateY(0);
+    color: #4169E1;
+  }
+  75% { 
+    transform: translateY(-8px);
+    color: #6495ED;
+  }
+}
+.animate-blueberry-bounce {
+  animation: blueberry-bounce 1s ease-in-out infinite;
+  font-size: 2rem;
+  display: inline-block;
+}`,
+  },
+  {
+    id: "V-16",
+    name: "Watermelon Wave",
+    description: "Onda de melancia suculenta.",
+    category: "vibrant",
+    previewColor: "#FF3B58",
+    animationClass: "animate-watermelon-wave",
+    htmlExample: `<div class="animate-watermelon-wave">🍉</div>`,
+    cssCode: `@keyframes watermelon-wave {
+  0%, 100% { 
+    background: linear-gradient(180deg, #FF3B58 0%, #FF6B8A 50%, #7CB342 100%);
+    transform: rotate(-5deg);
+  }
+  50% { 
+    background: linear-gradient(180deg, #FF6B8A 0%, #FF3B58 50%, #8BC34A 100%);
+    transform: rotate(5deg);
+  }
+}
+.animate-watermelon-wave {
+  animation: watermelon-wave 1.5s ease-in-out infinite;
+  padding: 25px;
+  border-radius: 50%;
+  font-size: 2rem;
+}`,
+  },
+  {
+    id: "V-17",
+    name: "Lemon Zest",
+    description: "Zest de limão refrescante.",
+    category: "vibrant",
+    previewColor: "#FFF44F",
+    animationClass: "animate-lemon-zest",
+    htmlExample: `<div class="animate-lemon-zest">🍋</div>`,
+    cssCode: `@keyframes lemon-zest {
+  0%, 100% { 
+    color: #FFF44F;
+    filter: drop-shadow(0 0 5px #FFF44F);
+    transform: scale(1) rotate(0deg);
+  }
+  25% { 
+    transform: scale(1.1) rotate(-10deg);
+  }
+  50% { 
+    color: #F0E68C;
+    filter: drop-shadow(0 0 15px #FFF44F);
+    transform: scale(1) rotate(0deg);
+  }
+  75% { 
+    transform: scale(1.1) rotate(10deg);
+  }
+}
+.animate-lemon-zest {
+  animation: lemon-zest 1.2s ease-in-out infinite;
+  font-size: 2rem;
+  display: inline-block;
+}`,
+  },
+  {
+    id: "V-18",
+    name: "Peach Fuzz",
+    description: "Fofura de pêssego suave.",
+    category: "vibrant",
+    previewColor: "#FFBE98",
+    animationClass: "animate-peach-fuzz",
+    htmlExample: `<div class="animate-peach-fuzz">🍑</div>`,
+    cssCode: `@keyframes peach-fuzz {
+  0%, 100% { 
+    background: radial-gradient(circle, #FFBE98 0%, #FF8C69 100%);
+    box-shadow: 0 0 10px rgba(255, 190, 152, 0.5);
+  }
+  50% { 
+    background: radial-gradient(circle, #FFDAB9 0%, #FFBE98 100%);
+    box-shadow: 0 0 30px rgba(255, 218, 185, 0.8);
+  }
+}
+.animate-peach-fuzz {
+  animation: peach-fuzz 2s ease-in-out infinite;
+  padding: 25px;
+  border-radius: 40% 40% 50% 50%;
+  font-size: 2rem;
+}`,
+  },
+  {
+    id: "V-19",
+    name: "Strawberry Shake",
+    description: "Shake de morango delicioso.",
+    category: "vibrant",
+    previewColor: "#FF4D6D",
+    animationClass: "animate-strawberry-shake",
+    htmlExample: `<div class="animate-strawberry-shake">🍓</div>`,
+    cssCode: `@keyframes strawberry-shake {
+  0%, 100% { 
+    transform: translateX(0) rotate(0deg);
+    color: #FF4D6D;
+  }
+  10% { transform: translateX(-5px) rotate(-5deg); }
+  20% { transform: translateX(5px) rotate(5deg); }
+  30% { transform: translateX(-5px) rotate(-5deg); }
+  40% { transform: translateX(5px) rotate(5deg); }
+  50% { 
+    transform: translateX(0) rotate(0deg);
+    color: #FF6B8A;
+  }
+}
+.animate-strawberry-shake {
+  animation: strawberry-shake 0.8s ease-in-out infinite;
+  font-size: 2rem;
+  display: inline-block;
+}`,
+  },
+  {
+    id: "V-20",
+    name: "Avocado Roll",
+    description: "Rolagem de abacate cremoso.",
+    category: "vibrant",
+    previewColor: "#568203",
+    animationClass: "animate-avocado-roll",
+    htmlExample: `<div class="animate-avocado-roll">🥑</div>`,
+    cssCode: `@keyframes avocado-roll {
+  0% { 
+    transform: rotate(0deg) translateX(0);
+    background: linear-gradient(135deg, #568203 0%, #90EE90 100%);
+  }
+  25% { 
+    transform: rotate(90deg) translateX(10px);
+  }
+  50% { 
+    transform: rotate(180deg) translateX(0);
+    background: linear-gradient(135deg, #90EE90 0%, #568203 100%);
+  }
+  75% { 
+    transform: rotate(270deg) translateX(-10px);
+  }
+  100% { 
+    transform: rotate(360deg) translateX(0);
+  }
+}
+.animate-avocado-roll {
+  animation: avocado-roll 3s linear infinite;
+  font-size: 2rem;
+  display: inline-block;
+  padding: 20px;
+  border-radius: 50%;
+}`,
+  },
+  {
+    id: "V-21",
+    name: "Coconut Spin",
+    description: "Giro de coco tropical.",
+    category: "vibrant",
+    previewColor: "#C4A35A",
+    animationClass: "animate-coconut-spin",
+    htmlExample: `<div class="animate-coconut-spin">🥥</div>`,
+    cssCode: `@keyframes coconut-spin {
+  0% { 
+    transform: rotateY(0deg);
+    filter: brightness(1);
+  }
+  50% { 
+    transform: rotateY(180deg);
+    filter: brightness(1.2);
+  }
+  100% { 
+    transform: rotateY(360deg);
+    filter: brightness(1);
+  }
+}
+.animate-coconut-spin {
+  animation: coconut-spin 2s ease-in-out infinite;
+  font-size: 2rem;
+  display: inline-block;
+}`,
+  },
+  {
+    id: "V-22",
+    name: "Pineapple Twist",
+    description: "Torção de abacaxi tropical.",
+    category: "vibrant",
+    previewColor: "#FFD700",
+    animationClass: "animate-pineapple-twist",
+    htmlExample: `<div class="animate-pineapple-twist">🍍</div>`,
+    cssCode: `@keyframes pineapple-twist {
+  0%, 100% { 
+    transform: rotate(-10deg) scale(1);
+    filter: saturate(1);
+  }
+  25% { 
+    transform: rotate(10deg) scale(1.05);
+  }
+  50% { 
+    transform: rotate(-10deg) scale(1.1);
+    filter: saturate(1.3);
+  }
+  75% { 
+    transform: rotate(10deg) scale(1.05);
+  }
+}
+.animate-pineapple-twist {
+  animation: pineapple-twist 1.5s ease-in-out infinite;
+  font-size: 2rem;
+  display: inline-block;
+}`,
+  },
+  {
+    id: "V-23",
+    name: "Dragon Fruit Glow",
+    description: "Brilho de pitaya exótico.",
+    category: "vibrant",
+    previewColor: "#FF1493",
+    animationClass: "animate-dragonfruit-glow",
+    htmlExample: `<div class="animate-dragonfruit-glow">🐉</div>`,
+    cssCode: `@keyframes dragonfruit-glow {
+  0%, 100% { 
+    background: radial-gradient(circle, #FF1493 0%, #8B008B 100%);
+    box-shadow: 0 0 20px #FF1493;
+  }
+  50% { 
+    background: radial-gradient(circle, #FF69B4 0%, #FF1493 100%);
+    box-shadow: 0 0 40px #FF1493, 0 0 60px #FF69B4;
+  }
+}
+.animate-dragonfruit-glow {
+  animation: dragonfruit-glow 2s ease-in-out infinite;
+  padding: 30px;
+  border-radius: 50%;
+  font-size: 2rem;
+}`,
+  },
+  {
+    id: "V-24",
+    name: "Passion Fruit Pulse",
+    description: "Pulsação de maracujá vibrante.",
+    category: "vibrant",
+    previewColor: "#9B30FF",
+    animationClass: "animate-passionfruit-pulse",
+    htmlExample: `<div class="animate-passionfruit-pulse">💜</div>`,
+    cssCode: `@keyframes passionfruit-pulse {
+  0%, 100% { 
+    transform: scale(1);
+    color: #9B30FF;
+    filter: drop-shadow(0 0 5px #9B30FF);
+  }
+  25% { 
+    transform: scale(1.15);
+    color: #DA70D6;
+  }
+  50% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 20px #9B30FF);
+  }
+  75% { 
+    transform: scale(1.1);
+    color: #BA55D3;
+  }
+}
+.animate-passionfruit-pulse {
+  animation: passionfruit-pulse 1s ease-in-out infinite;
+  font-size: 2rem;
+}`,
+  },
+  {
+    id: "V-25",
+    name: "Starfruit Shine",
+    description: "Brilho de carambola estelar.",
+    category: "vibrant",
+    previewColor: "#FFFF00",
+    animationClass: "animate-starfruit-shine",
+    htmlExample: `<div class="animate-starfruit-shine">⭐</div>`,
+    cssCode: `@keyframes starfruit-shine {
+  0%, 100% { 
+    transform: rotate(0deg) scale(1);
+    color: #FFFF00;
+    filter: drop-shadow(0 0 5px #FFFF00);
+  }
+  25% { 
+    transform: rotate(72deg) scale(1.1);
+    color: #FFD700;
+  }
+  50% { 
+    transform: rotate(144deg) scale(1);
+    color: #FFFF00;
+    filter: drop-shadow(0 0 15px #FFFF00);
+  }
+  75% { 
+    transform: rotate(216deg) scale(1.1);
+    color: #FFD700;
+  }
+}
+.animate-starfruit-shine {
+  animation: starfruit-shine 2s linear infinite;
+  font-size: 2.5rem;
+  display: inline-block;
+}`,
+  },
+];
