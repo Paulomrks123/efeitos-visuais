@@ -126,10 +126,10 @@ export const designStyles: StyleDefinition[] = [
     id: "dark-tech",
     name: "Dark Tech / Futurista",
     subtitle: "Tech • Gaming • Dashboards",
-    description: "Tema escuro predominante com fundo preto/grafite. Destaques em azul, roxo ou neon. Visual de painel de controle com cards que possuem glow sutil e microanimações.",
+    description: "Tema escuro predominante com fundo preto/grafite. Destaques em azul, roxo ou neon. Visual de painel de controle com cards que possuem glow sutil, efeitos de glitch e scan lines animadas.",
     objective: "Transmitir tecnologia avançada, controle e inteligência artificial.",
     colors: ["#0F172A", "#1E293B", "#06B6D4", "#8B5CF6", "#22D3EE"],
-    features: ["Dark Mode", "Neon Glow", "Futurista", "Tech"],
+    features: ["Dark Mode", "Neon Glow", "Glitch Effects", "Scan Lines"],
     iconStyle: "Ícones geométricos, estilo tech/futurista, lineares ou semi-fill. Monocromáticos com destaque neon.",
     layoutStyle: "Visual de painel de controle, cards com glow sutil, densidade média-alta de informação.",
     typography: "Geométrica moderna. Inter, Space Grotesk, JetBrains Mono para dados.",
@@ -143,41 +143,240 @@ export const designStyles: StyleDefinition[] = [
     sampleCSS: `:root {
   --background: #0F172A;
   --surface: #1E293B;
+  --surface-glow: #1E293B;
   --text-primary: #F1F5F9;
   --text-secondary: #94A3B8;
   --primary: #06B6D4;
   --accent: #8B5CF6;
+  --danger: #EF4444;
   --glow-primary: 0 0 20px rgba(6, 182, 212, 0.3);
   --glow-accent: 0 0 20px rgba(139, 92, 246, 0.3);
+  --glow-intense: 0 0 40px rgba(6, 182, 212, 0.5);
 }
 
+/* ===== GLITCH TEXT EFFECT ===== */
+.glitch-text {
+  position: relative;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  color: var(--primary);
+  animation: glitchLeft 0.3s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translate(-2px, -1px);
+}
+
+.glitch-text::after {
+  color: var(--accent);
+  animation: glitchRight 0.3s infinite;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  transform: translate(2px, 1px);
+}
+
+@keyframes glitchLeft {
+  0%, 100% { transform: translate(-2px, -1px); }
+  20% { transform: translate(2px, 1px); }
+  40% { transform: translate(-1px, -2px); }
+  60% { transform: translate(1px, 2px); }
+  80% { transform: translate(-2px, 1px); }
+}
+
+@keyframes glitchRight {
+  0%, 100% { transform: translate(2px, 1px); }
+  20% { transform: translate(-2px, -1px); }
+  40% { transform: translate(1px, 2px); }
+  60% { transform: translate(-1px, -2px); }
+  80% { transform: translate(2px, -1px); }
+}
+
+/* ===== SCAN LINE OVERLAY ===== */
+.scanlines {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanlines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+.scanlines::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  right: 0;
+  height: 200%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(6, 182, 212, 0.03) 50%,
+    transparent 100%
+  );
+  animation: scanMove 4s linear infinite;
+  pointer-events: none;
+  z-index: 11;
+}
+
+@keyframes scanMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(50%); }
+}
+
+/* ===== ANIMATED BORDER CARD ===== */
 .card {
   background: var(--surface);
   border: 1px solid rgba(6, 182, 212, 0.2);
   border-radius: 12px;
   padding: 20px;
-  box-shadow: var(--glow-primary);
+  position: relative;
+  overflow: hidden;
 }
 
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  animation: borderScan 3s linear infinite;
+}
+
+@keyframes borderScan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* ===== GLOWING BUTTON ===== */
 .button-primary {
   background: transparent;
   border: 1px solid var(--primary);
   color: var(--primary);
-  padding: 10px 24px;
+  padding: 12px 28px;
   border-radius: 8px;
-  text-shadow: var(--glow-primary);
-  transition: all 0.3s;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.button-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--primary);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+  z-index: -1;
+}
+
+.button-primary:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 .button-primary:hover {
-  background: var(--primary);
   color: var(--background);
-  box-shadow: var(--glow-primary);
+  box-shadow: var(--glow-intense);
 }
 
+/* ===== DATA TERMINAL ===== */
 .data-display {
   font-family: 'JetBrains Mono', monospace;
   color: var(--primary);
+  background: rgba(6, 182, 212, 0.05);
+  border-left: 3px solid var(--primary);
+  padding: 16px;
+  position: relative;
+}
+
+.data-display::before {
+  content: '>';
+  position: absolute;
+  left: 8px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ===== HUD CORNERS ===== */
+.hud-frame {
+  position: relative;
+  padding: 20px;
+}
+
+.hud-frame::before,
+.hud-frame::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--primary);
+  border-style: solid;
+}
+
+.hud-frame::before {
+  top: 0;
+  left: 0;
+  border-width: 2px 0 0 2px;
+}
+
+.hud-frame::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 2px 2px 0;
+}
+
+/* ===== FLICKERING NEON ===== */
+.neon-flicker {
+  animation: flicker 2s infinite;
+  text-shadow: var(--glow-primary);
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 
+      0 0 4px var(--primary),
+      0 0 11px var(--primary),
+      0 0 19px var(--primary);
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
 }`,
   },
   {
