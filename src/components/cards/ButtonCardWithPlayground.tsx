@@ -8,6 +8,7 @@ import { ButtonLivePreview } from "@/components/LivePreview";
 interface ButtonCardProps {
   button: ButtonAnimation;
   isCompact?: boolean;
+  index?: number;
 }
 
 const categoryColors = {
@@ -20,7 +21,7 @@ const categoryBadgeColors = {
   pulse: "bg-neon-magenta/20 text-neon-magenta",
 };
 
-export function ButtonCardWithPlayground({ button, isCompact = false }: ButtonCardProps) {
+export function ButtonCardWithPlayground({ button, isCompact = false, index }: ButtonCardProps) {
   const [isPlaying, setIsPlaying] = useState(true);
   const [copiedCSS, setCopiedCSS] = useState(false);
   const [copiedHTML, setCopiedHTML] = useState(false);
@@ -58,7 +59,14 @@ export function ButtonCardWithPlayground({ button, isCompact = false }: ButtonCa
           onClick={() => setShowPlayground(true)}
         >
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-muted-foreground">{button.id}</span>
+            <div className="flex items-center gap-2">
+              {index && (
+                <span className="text-xs font-bold text-neon-cyan bg-neon-cyan/20 px-2 py-0.5 rounded">
+                  #{index}
+                </span>
+              )}
+              <span className="text-xs font-mono text-muted-foreground">{button.id}</span>
+            </div>
             <div className="flex gap-1">
               <FavoriteButton id={button.id} type="button" size="sm" />
               <button
@@ -105,6 +113,11 @@ export function ButtonCardWithPlayground({ button, isCompact = false }: ButtonCa
         <div className="flex items-start justify-between mb-4">
           <div>
             <div className="flex items-center gap-2 mb-1">
+              {index && (
+                <span className="text-sm font-bold text-neon-cyan bg-neon-cyan/20 px-2.5 py-0.5 rounded">
+                  #{index}
+                </span>
+              )}
               <span className="text-xs font-mono text-muted-foreground">{button.id}</span>
               <span className={`text-xs px-2 py-0.5 rounded-full ${categoryBadgeColors[button.category]}`}>
                 {button.category}
