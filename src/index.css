@@ -2,14 +2,14 @@
 
 /* Espiral Galáctica Title Animation */
 .espiral-galactica {
-  font-size: 2rem;
-  font-weight: 900;
+  font-size: 1.875rem;
+  font-weight: 700;
   display: flex;
   perspective: 500px;
 }
 @media (min-width: 768px) {
   .espiral-galactica {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
   }
 }
 .espiral-galactica span {
