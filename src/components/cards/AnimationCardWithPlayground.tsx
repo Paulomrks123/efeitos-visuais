@@ -8,6 +8,7 @@ import { AnimationLivePreview } from "@/components/LivePreview";
 interface AnimationCardProps {
   animation: Animation;
   isCompact?: boolean;
+  index?: number;
 }
 
 const categoryColors = {
@@ -24,7 +25,7 @@ const categoryBadgeColors = {
   vibrant: "bg-neon-magenta/20 text-neon-magenta",
 };
 
-export function AnimationCardWithPlayground({ animation, isCompact = false }: AnimationCardProps) {
+export function AnimationCardWithPlayground({ animation, isCompact = false, index }: AnimationCardProps) {
   const [isPlaying, setIsPlaying] = useState(true);
   const [copiedCSS, setCopiedCSS] = useState(false);
   const [copiedHTML, setCopiedHTML] = useState(false);
@@ -50,7 +51,14 @@ export function AnimationCardWithPlayground({ animation, isCompact = false }: An
           onClick={() => setShowPlayground(true)}
         >
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-muted-foreground">{animation.id}</span>
+            <div className="flex items-center gap-2">
+              {index && (
+                <span className="text-xs font-bold text-primary bg-primary/20 px-2 py-0.5 rounded">
+                  #{index}
+                </span>
+              )}
+              <span className="text-xs font-mono text-muted-foreground">{animation.id}</span>
+            </div>
             <div className="flex gap-1">
               <FavoriteButton id={animation.id} type="animation" size="sm" />
               <button
@@ -97,6 +105,11 @@ export function AnimationCardWithPlayground({ animation, isCompact = false }: An
         <div className="flex items-start justify-between mb-4">
           <div>
             <div className="flex items-center gap-2 mb-1">
+              {index && (
+                <span className="text-sm font-bold text-primary bg-primary/20 px-2.5 py-0.5 rounded">
+                  #{index}
+                </span>
+              )}
               <span className="text-xs font-mono text-muted-foreground">{animation.id}</span>
               <span className={`text-xs px-2 py-0.5 rounded-full ${categoryBadgeColors[animation.category]}`}>
                 {animation.category}

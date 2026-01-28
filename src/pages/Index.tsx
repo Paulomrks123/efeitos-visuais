@@ -1,4 +1,5 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { ArrowUp } from "lucide-react";
 import { Header } from "@/components/Header";
 import { LibraryToggle } from "@/components/LibraryToggle";
 import { CategoryFilter } from "@/components/CategoryFilter";
@@ -15,6 +16,20 @@ import { useFavorites } from "@/providers/FavoritesProvider";
 import { useViewMode } from "@/hooks/useViewMode";
 
 const Index = () => {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  // Show/hide scroll to top button based on scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   const [activeLibrary, setActiveLibrary] = useState<"animations" | "effects" | "buttons">("animations");
   const [animationCategory, setAnimationCategory] = useState("all");
   const [effectCategory, setEffectCategory] = useState("all");
@@ -165,8 +180,8 @@ const Index = () => {
               </div>
 
               <div className={`grid ${config.gridCols} gap-6`}>
-                {filteredAnimations.map((animation) => (
-                  <AnimationCardWithPlayground key={animation.id} animation={animation} isCompact={isCompact} />
+                {filteredAnimations.map((animation, index) => (
+                  <AnimationCardWithPlayground key={animation.id} animation={animation} isCompact={isCompact} index={index + 1} />
                 ))}
               </div>
 
@@ -196,8 +211,8 @@ const Index = () => {
               </div>
 
               <div className={`grid ${config.gridCols} gap-6`}>
-                {filteredEffects.map((effect) => (
-                  <EffectCardWithPlayground key={effect.id} effect={effect} isCompact={isCompact} />
+                {filteredEffects.map((effect, index) => (
+                  <EffectCardWithPlayground key={effect.id} effect={effect} isCompact={isCompact} index={index + 1} />
                 ))}
               </div>
 
@@ -227,8 +242,8 @@ const Index = () => {
               </div>
 
               <div className={`grid ${config.gridCols} gap-6`}>
-                {filteredButtons.map((button) => (
-                  <ButtonCardWithPlayground key={button.id} button={button} isCompact={isCompact} />
+                {filteredButtons.map((button, index) => (
+                  <ButtonCardWithPlayground key={button.id} button={button} isCompact={isCompact} index={index + 1} />
                 ))}
               </div>
 
@@ -254,6 +269,20 @@ const Index = () => {
           </p>
         </footer>
       </div>
+
+      {/* Floating Scroll to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-8 right-8 p-4 rounded-full bg-primary text-primary-foreground shadow-lg transition-all duration-300 z-50 hover:scale-110 ${
+          showScrollTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
+        }`}
+        style={{
+          boxShadow: "0 0 20px hsl(var(--primary) / 0.5), 0 4px 20px rgba(0,0,0,0.3)",
+        }}
+        aria-label="Voltar ao topo"
+      >
+        <ArrowUp size={24} />
+      </button>
     </div>
   );
 };

@@ -8,6 +8,7 @@ import { EffectLivePreview } from "@/components/LivePreview";
 interface EffectCardProps {
   effect: Effect;
   isCompact?: boolean;
+  index?: number;
 }
 
 const categoryColors = {
@@ -24,7 +25,7 @@ const categoryBadgeColors = {
   gradients: "bg-neon-magenta/20 text-neon-magenta",
 };
 
-export function EffectCardWithPlayground({ effect, isCompact = false }: EffectCardProps) {
+export function EffectCardWithPlayground({ effect, isCompact = false, index }: EffectCardProps) {
   const [copiedCSS, setCopiedCSS] = useState(false);
   const [copiedHTML, setCopiedHTML] = useState(false);
   const [activeTab, setActiveTab] = useState<"css" | "html">("css");
@@ -49,7 +50,14 @@ export function EffectCardWithPlayground({ effect, isCompact = false }: EffectCa
           onClick={() => setShowPlayground(true)}
         >
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-muted-foreground">{effect.id}</span>
+            <div className="flex items-center gap-2">
+              {index && (
+                <span className="text-xs font-bold text-secondary bg-secondary/20 px-2 py-0.5 rounded">
+                  #{index}
+                </span>
+              )}
+              <span className="text-xs font-mono text-muted-foreground">{effect.id}</span>
+            </div>
             <div className="flex gap-1">
               <FavoriteButton id={effect.id} type="effect" size="sm" />
               <button
@@ -90,6 +98,11 @@ export function EffectCardWithPlayground({ effect, isCompact = false }: EffectCa
         <div className="flex items-start justify-between mb-4">
           <div>
             <div className="flex items-center gap-2 mb-1">
+              {index && (
+                <span className="text-sm font-bold text-secondary bg-secondary/20 px-2.5 py-0.5 rounded">
+                  #{index}
+                </span>
+              )}
               <span className="text-xs font-mono text-muted-foreground">{effect.id}</span>
               <span className={`text-xs px-2 py-0.5 rounded-full ${categoryBadgeColors[effect.category]}`}>
                 {effect.category}
