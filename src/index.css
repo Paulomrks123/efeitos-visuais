@@ -1,26 +1,30 @@
 @tailwind base;
 
-/* Lightning Flash Title Animation */
-.relampago-flash {
+/* Espiral Galáctica Title Animation */
+.espiral-galactica {
   font-size: 2rem;
   font-weight: 900;
   display: flex;
+  perspective: 500px;
 }
 @media (min-width: 768px) {
-  .relampago-flash {
+  .espiral-galactica {
     font-size: 2.5rem;
   }
 }
-.relampago-flash span {
-  color: #FFFFFF;
-  text-shadow: 0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 40px #FFFFFF;
-  animation: lightningFlash 5s ease-in-out infinite;
-  animation-delay: calc(var(--i) * 0.1s);
+.espiral-galactica span {
+  background: linear-gradient(135deg, #9400D3, #FF00FF, #00FFFF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: spiralRotate 3s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.15s);
+  transform-origin: center;
 }
-@keyframes lightningFlash {
-  0%, 90%, 100% { opacity: 0.3; filter: brightness(0.5); }
-  5%, 15%, 25% { opacity: 1; filter: brightness(2); }
-  10%, 20% { opacity: 0.5; filter: brightness(0.8); }
+@keyframes spiralRotate {
+  0% { transform: rotateY(0deg) scale(1); }
+  50% { transform: rotateY(180deg) scale(1.2); }
+  100% { transform: rotateY(360deg) scale(1); }
 }
 @tailwind components;
 @tailwind utilities;
