@@ -666,11 +666,11 @@
 }
 
 .animated-title-fire span {
-  background: linear-gradient(180deg, #FF4500, #FF8C00, #FFD700);
+  background: linear-gradient(180deg, #FFFF00, #FFD700, #FF8C00, #FF4500);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 0 20px #FF4500;
+  text-shadow: 0 0 20px #FF8C00, 0 -10px 40px #FFD700, 0 0 60px #FF4500;
   animation: zoomExplode 2s ease-out infinite;
   animation-delay: calc(var(--i) * 0.15s);
   display: inline-block;
