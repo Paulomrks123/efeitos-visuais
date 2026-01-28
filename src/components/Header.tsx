@@ -10,7 +10,7 @@ export function Header({ activeLibrary }: HeaderProps) {
   const isButtons = activeLibrary === "buttons";
 
   const getTitle = () => {
-    if (isAnimations) return ["Biblioteca", "Visual"];
+    if (isAnimations) return ["Biblioteca", "Virtual"];
     if (isEffects) return "Biblioteca de Efeitos";
     return "Biblioteca de Botões";
   };
