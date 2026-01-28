@@ -374,6 +374,47 @@ export function EffectLivePreview({ effect, size = "md" }: EffectLivePreviewProp
         />
       );
 
+    case "images":
+      // Image effects preview with animated placeholder
+      const imageId = parseInt(effect.id.replace("I-", "")) || 1;
+      const animations = [
+        "imgFadeIn", "imgZoomReveal", "imgSlideLeft", "imgSlideRight",
+        "imgFlipH", "imgFlipV", "imgBlurClear", "imgRotateIn",
+        "imgBounceIn", "imgSlideUp", "imgCurtain", "imgCircleExpand",
+        "imgDiagonalWipe", "imgShutter", "imgGlitchReveal", "imgTvStatic",
+        "imgPolaroidDrop", "imgCardFlip", "imgPixelDissolve", "imgKenBurns",
+        "imgNeonFrame", "imgSplitReveal", "imgElasticPop", "imgWaveDistort",
+        "imgHexagon", "imgParallaxFloat", "imgSpotlight", "imgVintageFilm",
+        "imgHoloShine", "imgPortal"
+      ];
+      const animName = animations[(imageId - 1) % animations.length];
+      
+      return (
+        <div
+          className="relative overflow-hidden rounded-lg"
+          style={{
+            width: dimensions.width + 20,
+            height: dimensions.height + 10,
+          }}
+        >
+          {/* Image placeholder with effect animation */}
+          <div
+            className="w-full h-full rounded-lg flex items-center justify-center text-xs font-bold"
+            style={{
+              background: `linear-gradient(135deg, ${previewColor}40, ${previewColor}80, ${previewColor}40)`,
+              backgroundSize: "200% 200%",
+              color: "#fff",
+              textShadow: `0 0 10px ${previewColor}`,
+              boxShadow: `0 0 20px ${previewColor}44, inset 0 0 30px ${previewColor}22`,
+              animation: `${animName} 2s ease-in-out infinite, liveGradientMove 4s ease infinite`,
+              border: `2px solid ${previewColor}66`,
+            }}
+          >
+            📷
+          </div>
+        </div>
+      );
+
     default:
       return (
         <div

@@ -2,7 +2,7 @@ export interface Effect {
   id: string;
   name: string;
   description: string;
-  category: "glassmorphism" | "neumorphism" | "filters" | "gradients" | "text";
+  category: "glassmorphism" | "neumorphism" | "filters" | "gradients" | "text" | "images";
   cssCode: string;
   htmlExample: string;
   previewColor?: string;
@@ -15,6 +15,7 @@ export const effectCategories = [
   { id: "filters", name: "Filtros" },
   { id: "gradients", name: "Gradientes" },
   { id: "text", name: "Efeitos de Texto" },
+  { id: "images", name: "Efeitos de Imagem" },
 ];
 
 export const effects: Effect[] = [
@@ -3743,6 +3744,556 @@ export const effects: Effect[] = [
   30% { transform: scale(2); opacity: 1; filter: brightness(3); }
   60% { transform: scale(0.8); background-position: 50% 50%; filter: brightness(1.5); }
   100% { transform: scale(1); opacity: 1; background-position: 100% 50%; filter: brightness(1); }
+}`,
+  },
+
+  // ==================== EFEITOS DE IMAGEM (30 efeitos I-01 a I-30) ====================
+  {
+    id: "I-01",
+    name: "Fade In Suave",
+    description: "Imagem aparece suavemente do invisível.",
+    category: "images",
+    previewColor: "#3498DB",
+    htmlExample: `<div class="img-fade-in"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-fade-in {
+  opacity: 0;
+  animation: imgFadeIn 1s ease-out forwards;
+}
+@keyframes imgFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}`,
+  },
+  {
+    id: "I-02",
+    name: "Zoom Reveal",
+    description: "Imagem surge com zoom de longe para perto.",
+    category: "images",
+    previewColor: "#9B59B6",
+    htmlExample: `<div class="img-zoom-reveal"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-zoom-reveal {
+  transform: scale(0.5);
+  opacity: 0;
+  animation: imgZoomReveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes imgZoomReveal {
+  0% { transform: scale(0.5); opacity: 0; filter: blur(10px); }
+  100% { transform: scale(1); opacity: 1; filter: blur(0); }
+}`,
+  },
+  {
+    id: "I-03",
+    name: "Slide From Left",
+    description: "Imagem desliza da esquerda.",
+    category: "images",
+    previewColor: "#E74C3C",
+    htmlExample: `<div class="img-slide-left"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-slide-left {
+  transform: translateX(-100%);
+  opacity: 0;
+  animation: imgSlideLeft 0.7s ease-out forwards;
+}
+@keyframes imgSlideLeft {
+  0% { transform: translateX(-100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}`,
+  },
+  {
+    id: "I-04",
+    name: "Slide From Right",
+    description: "Imagem desliza da direita.",
+    category: "images",
+    previewColor: "#1ABC9C",
+    htmlExample: `<div class="img-slide-right"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-slide-right {
+  transform: translateX(100%);
+  opacity: 0;
+  animation: imgSlideRight 0.7s ease-out forwards;
+}
+@keyframes imgSlideRight {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}`,
+  },
+  {
+    id: "I-05",
+    name: "Flip Horizontal",
+    description: "Imagem gira horizontalmente entrando em cena.",
+    category: "images",
+    previewColor: "#F39C12",
+    htmlExample: `<div class="img-flip-h"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-flip-h {
+  transform: perspective(1000px) rotateY(-90deg);
+  opacity: 0;
+  animation: imgFlipH 0.8s ease-out forwards;
+}
+@keyframes imgFlipH {
+  0% { transform: perspective(1000px) rotateY(-90deg); opacity: 0; }
+  100% { transform: perspective(1000px) rotateY(0deg); opacity: 1; }
+}`,
+  },
+  {
+    id: "I-06",
+    name: "Flip Vertical",
+    description: "Imagem gira verticalmente aparecendo.",
+    category: "images",
+    previewColor: "#8E44AD",
+    htmlExample: `<div class="img-flip-v"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-flip-v {
+  transform: perspective(1000px) rotateX(-90deg);
+  opacity: 0;
+  animation: imgFlipV 0.8s ease-out forwards;
+}
+@keyframes imgFlipV {
+  0% { transform: perspective(1000px) rotateX(-90deg); opacity: 0; }
+  100% { transform: perspective(1000px) rotateX(0deg); opacity: 1; }
+}`,
+  },
+  {
+    id: "I-07",
+    name: "Blur to Clear",
+    description: "Imagem desfocada clareia gradualmente.",
+    category: "images",
+    previewColor: "#2ECC71",
+    htmlExample: `<div class="img-blur-clear"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-blur-clear {
+  filter: blur(20px);
+  opacity: 0.3;
+  animation: imgBlurClear 1.2s ease-out forwards;
+}
+@keyframes imgBlurClear {
+  0% { filter: blur(20px); opacity: 0.3; transform: scale(1.1); }
+  100% { filter: blur(0); opacity: 1; transform: scale(1); }
+}`,
+  },
+  {
+    id: "I-08",
+    name: "Rotate In",
+    description: "Imagem entra girando 360°.",
+    category: "images",
+    previewColor: "#E91E63",
+    htmlExample: `<div class="img-rotate-in"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-rotate-in {
+  transform: rotate(-180deg) scale(0);
+  opacity: 0;
+  animation: imgRotateIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes imgRotateIn {
+  0% { transform: rotate(-180deg) scale(0); opacity: 0; }
+  100% { transform: rotate(0deg) scale(1); opacity: 1; }
+}`,
+  },
+  {
+    id: "I-09",
+    name: "Bounce In",
+    description: "Imagem aparece com bounce elástico.",
+    category: "images",
+    previewColor: "#FF5722",
+    htmlExample: `<div class="img-bounce-in"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-bounce-in {
+  transform: scale(0);
+  animation: imgBounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+@keyframes imgBounceIn {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}`,
+  },
+  {
+    id: "I-10",
+    name: "Slide Up Fade",
+    description: "Imagem sobe de baixo com fade.",
+    category: "images",
+    previewColor: "#00BCD4",
+    htmlExample: `<div class="img-slide-up"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-slide-up {
+  transform: translateY(50px);
+  opacity: 0;
+  animation: imgSlideUp 0.6s ease-out forwards;
+}
+@keyframes imgSlideUp {
+  0% { transform: translateY(50px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}`,
+  },
+  {
+    id: "I-11",
+    name: "Curtain Reveal",
+    description: "Efeito de cortina revelando a imagem.",
+    category: "images",
+    previewColor: "#673AB7",
+    htmlExample: `<div class="img-curtain"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-curtain {
+  clip-path: inset(0 50% 0 50%);
+  animation: imgCurtain 0.8s ease-out forwards;
+}
+@keyframes imgCurtain {
+  0% { clip-path: inset(0 50% 0 50%); }
+  100% { clip-path: inset(0 0 0 0); }
+}`,
+  },
+  {
+    id: "I-12",
+    name: "Circle Expand",
+    description: "Imagem aparece em círculo expandindo.",
+    category: "images",
+    previewColor: "#4CAF50",
+    htmlExample: `<div class="img-circle-expand"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-circle-expand {
+  clip-path: circle(0% at 50% 50%);
+  animation: imgCircleExpand 0.8s ease-out forwards;
+}
+@keyframes imgCircleExpand {
+  0% { clip-path: circle(0% at 50% 50%); }
+  100% { clip-path: circle(100% at 50% 50%); }
+}`,
+  },
+  {
+    id: "I-13",
+    name: "Diagonal Wipe",
+    description: "Revelação diagonal da imagem.",
+    category: "images",
+    previewColor: "#FF9800",
+    htmlExample: `<div class="img-diagonal-wipe"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-diagonal-wipe {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  animation: imgDiagonalWipe 0.8s ease-out forwards;
+}
+@keyframes imgDiagonalWipe {
+  0% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+}`,
+  },
+  {
+    id: "I-14",
+    name: "Shutter Open",
+    description: "Efeito de obturador de câmera abrindo.",
+    category: "images",
+    previewColor: "#607D8B",
+    htmlExample: `<div class="img-shutter"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-shutter {
+  clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+  animation: imgShutter 0.6s ease-out forwards;
+}
+@keyframes imgShutter {
+  0% { clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%); }
+  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+}`,
+  },
+  {
+    id: "I-15",
+    name: "Glitch Reveal",
+    description: "Imagem aparece com efeito glitch digital.",
+    category: "images",
+    previewColor: "#00FFFF",
+    htmlExample: `<div class="img-glitch-reveal"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-glitch-reveal {
+  animation: imgGlitchReveal 1s steps(10) forwards;
+}
+@keyframes imgGlitchReveal {
+  0%, 10% { opacity: 0; clip-path: inset(0 100% 0 0); filter: hue-rotate(90deg); }
+  20% { clip-path: inset(30% 0 70% 0); filter: hue-rotate(180deg); }
+  30% { clip-path: inset(70% 0 10% 0); filter: hue-rotate(0deg); }
+  40% { clip-path: inset(10% 0 30% 0); filter: hue-rotate(270deg); }
+  50% { clip-path: inset(50% 0 20% 0); opacity: 1; }
+  100% { clip-path: inset(0 0 0 0); filter: hue-rotate(0deg); opacity: 1; }
+}`,
+  },
+  {
+    id: "I-16",
+    name: "TV Static",
+    description: "Efeito de TV antiga ligando.",
+    category: "images",
+    previewColor: "#212121",
+    htmlExample: `<div class="img-tv-static"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-tv-static {
+  animation: imgTvStatic 0.5s ease-out forwards;
+}
+@keyframes imgTvStatic {
+  0% { transform: scaleY(0.01) scaleX(1.5); filter: brightness(3) saturate(0); }
+  20% { transform: scaleY(0.1) scaleX(1.3); filter: brightness(2); }
+  40% { transform: scaleY(0.5) scaleX(1.1); filter: brightness(1.5); }
+  100% { transform: scaleY(1) scaleX(1); filter: brightness(1) saturate(1); }
+}`,
+  },
+  {
+    id: "I-17",
+    name: "Polaroid Drop",
+    description: "Imagem cai como uma foto polaroid.",
+    category: "images",
+    previewColor: "#FAFAFA",
+    htmlExample: `<div class="img-polaroid-drop"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-polaroid-drop {
+  transform: translateY(-100%) rotate(-15deg);
+  opacity: 0;
+  animation: imgPolaroidDrop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+@keyframes imgPolaroidDrop {
+  0% { transform: translateY(-100%) rotate(-15deg); opacity: 0; }
+  60% { transform: translateY(10%) rotate(5deg); opacity: 1; }
+  100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+}`,
+  },
+  {
+    id: "I-18",
+    name: "3D Card Flip",
+    description: "Card 3D que vira revelando a imagem.",
+    category: "images",
+    previewColor: "#795548",
+    htmlExample: `<div class="img-card-flip"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-card-flip {
+  transform: perspective(1000px) rotateY(180deg);
+  opacity: 0;
+  animation: imgCardFlip 1s ease-out forwards;
+  backface-visibility: hidden;
+}
+@keyframes imgCardFlip {
+  0% { transform: perspective(1000px) rotateY(180deg); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: perspective(1000px) rotateY(0deg); opacity: 1; }
+}`,
+  },
+  {
+    id: "I-19",
+    name: "Pixel Dissolve",
+    description: "Imagem aparece em pixeis dissolvendo.",
+    category: "images",
+    previewColor: "#9C27B0",
+    htmlExample: `<div class="img-pixel-dissolve"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-pixel-dissolve {
+  filter: blur(20px) saturate(0);
+  animation: imgPixelDissolve 1s ease-out forwards;
+}
+@keyframes imgPixelDissolve {
+  0% { filter: blur(20px) saturate(0); transform: scale(1.2); opacity: 0; }
+  30% { filter: blur(10px) saturate(0.5); }
+  60% { filter: blur(5px) saturate(1); }
+  100% { filter: blur(0) saturate(1); transform: scale(1); opacity: 1; }
+}`,
+  },
+  {
+    id: "I-20",
+    name: "Ken Burns Zoom",
+    description: "Clássico efeito Ken Burns de documentários.",
+    category: "images",
+    previewColor: "#3F51B5",
+    htmlExample: `<div class="img-ken-burns"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-ken-burns {
+  animation: imgKenBurns 8s ease-in-out infinite alternate;
+}
+@keyframes imgKenBurns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.3) translate(-5%, -5%); }
+}`,
+  },
+  {
+    id: "I-21",
+    name: "Neon Frame Glow",
+    description: "Moldura neon brilhante ao redor da imagem.",
+    category: "images",
+    previewColor: "#FF00FF",
+    htmlExample: `<div class="img-neon-frame"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-neon-frame {
+  border: 3px solid #FF00FF;
+  box-shadow: 0 0 0 0 rgba(255,0,255,0);
+  animation: imgNeonFrame 2s ease-in-out infinite;
+}
+@keyframes imgNeonFrame {
+  0%, 100% { 
+    box-shadow: 0 0 10px #FF00FF, 0 0 20px #FF00FF, 0 0 30px #FF00FF, inset 0 0 10px rgba(255,0,255,0.3); 
+  }
+  50% { 
+    box-shadow: 0 0 20px #00FFFF, 0 0 40px #00FFFF, 0 0 60px #00FFFF, inset 0 0 20px rgba(0,255,255,0.3);
+    border-color: #00FFFF;
+  }
+}`,
+  },
+  {
+    id: "I-22",
+    name: "Split Reveal",
+    description: "Imagem se divide e revela.",
+    category: "images",
+    previewColor: "#E91E63",
+    htmlExample: `<div class="img-split-reveal"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-split-reveal {
+  clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+  animation: imgSplitReveal 0.8s ease-out forwards;
+}
+@keyframes imgSplitReveal {
+  0% { clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%); }
+  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+}`,
+  },
+  {
+    id: "I-23",
+    name: "Elastic Pop",
+    description: "Imagem surge com efeito elástico divertido.",
+    category: "images",
+    previewColor: "#FFEB3B",
+    htmlExample: `<div class="img-elastic-pop"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-elastic-pop {
+  transform: scale(0);
+  animation: imgElasticPop 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+@keyframes imgElasticPop {
+  0% { transform: scale(0) rotate(-10deg); }
+  40% { transform: scale(1.3) rotate(5deg); }
+  60% { transform: scale(0.85) rotate(-3deg); }
+  80% { transform: scale(1.1) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}`,
+  },
+  {
+    id: "I-24",
+    name: "Wave Distortion",
+    description: "Imagem aparece com ondulação líquida.",
+    category: "images",
+    previewColor: "#00BCD4",
+    htmlExample: `<div class="img-wave-distort"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-wave-distort {
+  animation: imgWaveDistort 1.5s ease-out forwards;
+  filter: url('#wave-filter');
+}
+@keyframes imgWaveDistort {
+  0% { transform: scaleX(0.8); filter: blur(5px) hue-rotate(180deg); opacity: 0; }
+  50% { transform: scaleX(1.1); filter: blur(2px) hue-rotate(90deg); opacity: 0.8; }
+  100% { transform: scaleX(1); filter: blur(0) hue-rotate(0deg); opacity: 1; }
+}`,
+  },
+  {
+    id: "I-25",
+    name: "Hexagon Mask",
+    description: "Imagem revelada através de máscara hexagonal.",
+    category: "images",
+    previewColor: "#FF5722",
+    htmlExample: `<div class="img-hexagon"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-hexagon {
+  clip-path: polygon(50% 0%, 50% 0%, 50% 100%, 50% 100%);
+  animation: imgHexagon 0.8s ease-out forwards;
+}
+@keyframes imgHexagon {
+  0% { clip-path: polygon(50% 0%, 50% 0%, 50% 100%, 50% 100%); }
+  100% { clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); }
+}`,
+  },
+  {
+    id: "I-26",
+    name: "Parallax Float",
+    description: "Efeito parallax flutuante contínuo.",
+    category: "images",
+    previewColor: "#9C27B0",
+    htmlExample: `<div class="img-parallax-float"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-parallax-float {
+  animation: imgParallaxFloat 4s ease-in-out infinite;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+@keyframes imgParallaxFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-15px) rotate(1deg); }
+  50% { transform: translateY(-5px) rotate(-1deg); }
+  75% { transform: translateY(-20px) rotate(0.5deg); }
+}`,
+  },
+  {
+    id: "I-27",
+    name: "Spotlight Reveal",
+    description: "Foco de luz revelando a imagem gradualmente.",
+    category: "images",
+    previewColor: "#FFC107",
+    htmlExample: `<div class="img-spotlight"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-spotlight {
+  filter: brightness(0);
+  animation: imgSpotlight 1.5s ease-out forwards;
+}
+@keyframes imgSpotlight {
+  0% { filter: brightness(0); clip-path: circle(0% at 50% 50%); }
+  50% { filter: brightness(2); }
+  100% { filter: brightness(1); clip-path: circle(100% at 50% 50%); }
+}`,
+  },
+  {
+    id: "I-28",
+    name: "Vintage Film",
+    description: "Efeito de filme antigo com sepia.",
+    category: "images",
+    previewColor: "#8D6E63",
+    htmlExample: `<div class="img-vintage-film"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-vintage-film {
+  animation: imgVintageFilm 3s ease-in-out infinite;
+}
+@keyframes imgVintageFilm {
+  0%, 100% { filter: sepia(0.8) contrast(1.1) brightness(0.9); }
+  25% { filter: sepia(0.6) contrast(1.2) brightness(1.1); }
+  50% { filter: sepia(1) contrast(0.9) brightness(0.8); }
+  75% { filter: sepia(0.7) contrast(1) brightness(1); }
+}`,
+  },
+  {
+    id: "I-29",
+    name: "Holographic Shine",
+    description: "Brilho holográfico passando pela imagem.",
+    category: "images",
+    previewColor: "#E0E0E0",
+    htmlExample: `<div class="img-holo-shine"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-holo-shine {
+  position: relative;
+  overflow: hidden;
+}
+.img-holo-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255,255,255,0.4), 
+    rgba(255,0,255,0.2),
+    rgba(0,255,255,0.2),
+    transparent
+  );
+  animation: imgHoloShine 2s ease-in-out infinite;
+}
+@keyframes imgHoloShine {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}`,
+  },
+  {
+    id: "I-30",
+    name: "Portal Dimension",
+    description: "Imagem surge de um portal dimensional.",
+    category: "images",
+    previewColor: "#7C4DFF",
+    htmlExample: `<div class="img-portal"><img src="photo.jpg" alt="Photo" /></div>`,
+    cssCode: `.img-portal {
+  animation: imgPortal 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  border-radius: 50%;
+}
+@keyframes imgPortal {
+  0% { 
+    transform: scale(0) rotate(180deg); 
+    border-radius: 50%; 
+    opacity: 0;
+    filter: hue-rotate(180deg) blur(10px);
+    box-shadow: 0 0 50px #7C4DFF, 0 0 100px #E040FB;
+  }
+  50% { 
+    border-radius: 30%; 
+    filter: hue-rotate(90deg) blur(5px);
+    box-shadow: 0 0 30px #7C4DFF;
+  }
+  100% { 
+    transform: scale(1) rotate(0deg); 
+    border-radius: 0; 
+    opacity: 1;
+    filter: hue-rotate(0deg) blur(0);
+    box-shadow: none;
+  }
 }`,
   },
 ];
