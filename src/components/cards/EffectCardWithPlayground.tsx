@@ -16,6 +16,7 @@ const categoryColors = {
   neumorphism: "border-neon-green/30 hover:border-neon-green/60",
   filters: "border-neon-purple/30 hover:border-neon-purple/60",
   gradients: "border-neon-magenta/30 hover:border-neon-magenta/60",
+  text: "border-neon-orange/30 hover:border-neon-orange/60",
 };
 
 const categoryBadgeColors = {
@@ -23,6 +24,7 @@ const categoryBadgeColors = {
   neumorphism: "bg-neon-green/20 text-neon-green",
   filters: "bg-neon-purple/20 text-neon-purple",
   gradients: "bg-neon-magenta/20 text-neon-magenta",
+  text: "bg-neon-orange/20 text-neon-orange",
 };
 
 export function EffectCardWithPlayground({ effect, isCompact = false, index }: EffectCardProps) {
