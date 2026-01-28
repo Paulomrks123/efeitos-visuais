@@ -4,9 +4,9 @@ import { LibraryToggle } from "@/components/LibraryToggle";
 import { CategoryFilter } from "@/components/CategoryFilter";
 import { EffectCategoryFilter } from "@/components/EffectCategoryFilter";
 import ButtonCategoryFilter from "@/components/ButtonCategoryFilter";
-import { AnimationCard } from "@/components/AnimationCard";
-import { EffectCard } from "@/components/EffectCard";
-import ButtonCard from "@/components/ButtonCard";
+import { AnimationCardWithPlayground } from "@/components/cards/AnimationCardWithPlayground";
+import { EffectCardWithPlayground } from "@/components/cards/EffectCardWithPlayground";
+import { ButtonCardWithPlayground } from "@/components/cards/ButtonCardWithPlayground";
 import { Toolbar } from "@/components/layout/Toolbar";
 import { animations } from "@/data/animations";
 import { effects } from "@/data/effects";
@@ -166,7 +166,7 @@ const Index = () => {
 
               <div className={`grid ${config.gridCols} gap-6`}>
                 {filteredAnimations.map((animation) => (
-                  <AnimationCard key={animation.id} animation={animation} isCompact={isCompact} />
+                  <AnimationCardWithPlayground key={animation.id} animation={animation} isCompact={isCompact} />
                 ))}
               </div>
 
@@ -197,7 +197,7 @@ const Index = () => {
 
               <div className={`grid ${config.gridCols} gap-6`}>
                 {filteredEffects.map((effect) => (
-                  <EffectCard key={effect.id} effect={effect} isCompact={isCompact} />
+                  <EffectCardWithPlayground key={effect.id} effect={effect} isCompact={isCompact} />
                 ))}
               </div>
 
@@ -228,7 +228,7 @@ const Index = () => {
 
               <div className={`grid ${config.gridCols} gap-6`}>
                 {filteredButtons.map((button) => (
-                  <ButtonCard key={button.id} button={button} isCompact={isCompact} />
+                  <ButtonCardWithPlayground key={button.id} button={button} isCompact={isCompact} />
                 ))}
               </div>
 
