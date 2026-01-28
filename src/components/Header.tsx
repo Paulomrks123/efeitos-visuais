@@ -1,4 +1,4 @@
-import { Sparkles, Layers, MousePointerClick } from "lucide-react";
+import { useMemo } from "react";
 
 interface HeaderProps {
   activeLibrary: "animations" | "effects" | "buttons";
@@ -14,6 +14,9 @@ export function Header({ activeLibrary }: HeaderProps) {
     if (isEffects) return "Biblioteca de Efeitos";
     return "Biblioteca de Botões";
   };
+
+  const title = getTitle();
+  const letters = useMemo(() => title.split(''), [title]);
   
   return (
     <header className="py-12 px-4 text-center relative overflow-hidden">
@@ -23,26 +26,19 @@ export function Header({ activeLibrary }: HeaderProps) {
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
       
       <div className="relative z-10 max-w-4xl mx-auto">
-        <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 ${
-          isButtons 
-            ? "bg-neon-cyan/10 border border-neon-cyan/20" 
-            : "bg-primary/10 border border-primary/20"
-        }`}>
-          {isAnimations ? (
-            <Sparkles className="w-4 h-4 text-primary animate-neon-pulse" />
-          ) : isEffects ? (
-            <Layers className="w-4 h-4 text-secondary animate-neon-pulse" />
-          ) : (
-            <MousePointerClick className="w-4 h-4 text-neon-cyan animate-neon-pulse" />
-          )}
-          <span className={`text-sm font-medium ${isButtons ? "text-neon-cyan" : "text-primary"}`}>
-            {isAnimations ? "80 Animações Profissionais" : isEffects ? "80 Efeitos Visuais Profissionais" : "60 Animações de Botões"}
-          </span>
-        </div>
-        
-        <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-          {getTitle()}
-        </h1>
+        {isAnimations ? (
+          <h1 className="relampago-flash justify-center mb-4">
+            {letters.map((letter, index) => (
+              <span key={index} style={{ '--i': index + 1 } as React.CSSProperties}>
+                {letter === ' ' ? '\u00A0' : letter}
+              </span>
+            ))}
+          </h1>
+        ) : (
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            {title}
+          </h1>
+        )}
         
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
           {isAnimations 
