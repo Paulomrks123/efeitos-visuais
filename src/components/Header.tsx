@@ -1,5 +1,6 @@
 import { useMemo } from "react";
-
+import { Link } from "react-router-dom";
+import { Palette } from "lucide-react";
 interface HeaderProps {
   activeLibrary: "animations" | "effects" | "buttons";
 }
@@ -107,6 +108,15 @@ export function Header({ activeLibrary }: HeaderProps) {
             </div>
           </div>
         )}
+
+        {/* Link to Showcase */}
+        <Link 
+          to="/showcase" 
+          className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-xl bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 hover:border-primary/60 text-foreground transition-all hover:scale-105"
+        >
+          <Palette size={18} className="text-primary" />
+          <span className="font-medium">Ver Showcase de Estilos de Design</span>
+        </Link>
       </div>
     </header>
   );
