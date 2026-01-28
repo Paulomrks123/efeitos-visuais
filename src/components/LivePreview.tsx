@@ -392,7 +392,7 @@ export function EffectLivePreview({ effect, size = "md" }: EffectLivePreviewProp
 }
 
 /**
- * Preview ao vivo para botões - mostra animação contínua
+ * Preview ao vivo para botões - mostra animação contínua única por botão
  */
 export function ButtonLivePreview({
   button,
@@ -407,24 +407,200 @@ export function ButtonLivePreview({
     lg: "px-8 py-4 text-base",
   };
 
-  // Determine animation based on category
-  const animation = button.category === "pulse" 
-    ? "liveNeonPulse 2s ease-in-out infinite"
-    : "liveScale 1.5s ease-in-out infinite";
+  // Get unique animation style based on button ID and category
+  const getButtonAnimation = (): CSSProperties => {
+    const baseStyle: CSSProperties = {
+      background: `linear-gradient(135deg, ${previewColor}, ${previewColor}cc)`,
+      color: "#fff",
+      boxShadow: `0 4px 20px ${previewColor}55, 0 0 15px ${previewColor}33`,
+      animationPlayState: isPlaying ? "running" : "paused",
+      "--preview-color": previewColor,
+    } as CSSProperties;
+
+    // Category-specific animations with unique variations
+    switch (button.category) {
+      case "scale":
+        return {
+          ...baseStyle,
+          animation: getScaleAnimation(button.id),
+        };
+      case "pulse":
+        return {
+          ...baseStyle,
+          animation: getPulseAnimation(button.id),
+        };
+      case "glow":
+        return {
+          ...baseStyle,
+          animation: getGlowAnimation(button.id),
+          boxShadow: `0 0 20px ${previewColor}, 0 0 40px ${previewColor}66, 0 0 60px ${previewColor}33`,
+        };
+      case "fill":
+        return {
+          ...baseStyle,
+          animation: getFillAnimation(button.id),
+          background: `linear-gradient(90deg, ${previewColor} 50%, ${previewColor}44 50%)`,
+          backgroundSize: "200% 100%",
+        };
+      case "3d":
+        return {
+          ...baseStyle,
+          animation: get3DAnimation(button.id),
+          transformStyle: "preserve-3d",
+          perspective: "500px",
+        };
+      case "icon":
+        return {
+          ...baseStyle,
+          animation: getIconAnimation(button.id),
+        };
+      default:
+        return {
+          ...baseStyle,
+          animation: "liveNeonPulse 2s ease-in-out infinite",
+        };
+    }
+  };
+
+  // Get icon for icon category buttons
+  const getButtonIcon = (): string => {
+    if (button.category !== "icon") return "";
+    const id = button.id;
+    if (id.includes("spin")) return "⚙️";
+    if (id.includes("bounce")) return "🎾";
+    if (id.includes("flip")) return "🔄";
+    if (id.includes("shake")) return "📳";
+    if (id.includes("pulse")) return "💫";
+    if (id.includes("rotate")) return "🔁";
+    if (id.includes("swing")) return "🎵";
+    if (id.includes("beat") || id.includes("heart")) return "❤️";
+    if (id.includes("float")) return "🎈";
+    if (id.includes("morph")) return "🎭";
+    if (id.includes("jelly")) return "🍮";
+    if (id.includes("sparkle") || id.includes("diamond")) return "💎";
+    if (id.includes("fire")) return "🔥";
+    if (id.includes("lightning") || id.includes("bolt")) return "⚡";
+    if (id.includes("magic") || id.includes("wand")) return "✨";
+    if (id.includes("rocket") || id.includes("launch")) return "🚀";
+    if (id.includes("wave")) return "👋";
+    return "⭐";
+  };
 
   return (
     <button
-      className={`${buttonSizes[size]} rounded-lg font-medium`}
-      style={{
-        background: `linear-gradient(135deg, ${previewColor}, ${previewColor}cc)`,
-        color: "#fff",
-        boxShadow: `0 4px 20px ${previewColor}55, 0 0 15px ${previewColor}33`,
-        animation: isPlaying ? animation : "none",
-        animationPlayState: isPlaying ? "running" : "paused",
-        "--preview-color": previewColor,
-      } as CSSProperties}
+      className={`${buttonSizes[size]} rounded-lg font-medium transition-all`}
+      style={getButtonAnimation()}
     >
-      {button.name}
+      {button.category === "icon" && <span className="mr-1">{getButtonIcon()}</span>}
+      {button.name.split(" ")[0]}
     </button>
   );
+}
+
+// Unique scale animations for each button
+function getScaleAnimation(id: string): string {
+  const num = parseInt(id.replace(/\D/g, "")) || 1;
+  const variations = [
+    "liveScale 1.5s ease-in-out infinite",
+    "liveBounce 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite",
+    "liveJello 2s ease-in-out infinite",
+    "liveTada 2s ease-in-out infinite",
+    "liveSwing 2s ease-in-out infinite",
+    "liveHeartbeat 1.5s ease-in-out infinite",
+    "liveZap 0.5s ease-in-out infinite",
+    "liveRubberBand 1s ease infinite",
+    "liveWobble 1.5s ease-in-out infinite",
+    "liveFlip3D 2s ease-in-out infinite",
+  ];
+  return variations[num % variations.length];
+}
+
+// Unique pulse animations for each button
+function getPulseAnimation(id: string): string {
+  const num = parseInt(id.replace(/\D/g, "")) || 1;
+  const variations = [
+    "liveNeonPulse 2s ease-in-out infinite",
+    "livePulseRing 1.5s ease-out infinite",
+    "livePulseGlow 2s ease-in-out infinite",
+    "liveSonarPing 2s ease-out infinite",
+    "liveHeartbeat 1.5s ease-in-out infinite",
+    "liveEnergyPulse 2s ease-in-out infinite",
+    "liveRipple 1.5s ease-out infinite",
+    "livePulseWave 2s ease-in-out infinite",
+    "liveRadarPing 2s linear infinite",
+    "livePulseExpand 1.8s ease-in-out infinite",
+  ];
+  return variations[num % variations.length];
+}
+
+// Unique glow animations for each button
+function getGlowAnimation(id: string): string {
+  const num = parseInt(id.replace(/\D/g, "")) || 1;
+  const variations = [
+    "liveGlowPulse 2s ease-in-out infinite",
+    "liveNeonFlicker 1.5s ease-in-out infinite",
+    "liveAuroraShift 4s ease-in-out infinite",
+    "livePlasmaFlow 3s ease-in-out infinite",
+    "liveHolographicShine 2s linear infinite",
+    "liveElectricStorm 0.3s ease-in-out infinite",
+    "liveGlowRotate 2s linear infinite",
+    "liveGlowBreath 3s ease-in-out infinite",
+    "liveGlowPulseDouble 2s ease-in-out infinite",
+    "liveGlowWave 2.5s ease-in-out infinite",
+  ];
+  return variations[num % variations.length];
+}
+
+// Unique fill animations for each button
+function getFillAnimation(id: string): string {
+  const num = parseInt(id.replace(/\D/g, "")) || 1;
+  const variations = [
+    "liveFillSlide 1.5s ease-in-out infinite",
+    "liveFillWipe 2s ease-in-out infinite",
+    "liveGradientMove 3s ease infinite",
+    "liveFillExpand 2s ease-in-out infinite",
+    "liveFillReveal 2s ease-in-out infinite",
+    "liveFillDiagonal 2s ease-in-out infinite",
+    "liveLiquidFill 3s ease-in-out infinite",
+    "liveFillPulse 2s ease-in-out infinite",
+    "liveFillShimmer 2s linear infinite",
+    "liveFillMagnetic 2.5s ease-in-out infinite",
+  ];
+  return variations[num % variations.length];
+}
+
+// Unique 3D animations for each button
+function get3DAnimation(id: string): string {
+  const num = parseInt(id.replace(/\D/g, "")) || 1;
+  const variations = [
+    "liveFlip3D 2s ease-in-out infinite",
+    "liveTilt3D 2s ease-in-out infinite",
+    "liveCubeRotate 3s ease-in-out infinite",
+    "liveFloat3D 3s ease-in-out infinite",
+    "livePerspectiveShift 2s ease-in-out infinite",
+    "liveDepthPush 1.5s ease-in-out infinite",
+    "liveCardFlip 2.5s ease-in-out infinite",
+    "live3DWobble 2s ease-in-out infinite",
+    "live3DSpin 4s linear infinite",
+    "live3DBounce 2s ease-in-out infinite",
+  ];
+  return variations[num % variations.length];
+}
+
+// Unique icon animations for each button
+function getIconAnimation(id: string): string {
+  const num = parseInt(id.replace(/\D/g, "")) || 1;
+  const variations = [
+    "liveSpin 2s linear infinite",
+    "liveBounce 1s ease-in-out infinite",
+    "liveSwing 2s ease-in-out infinite",
+    "liveHeartbeat 1.5s ease-in-out infinite",
+    "liveFloat 3s ease-in-out infinite",
+    "liveZap 0.5s ease-in-out infinite",
+    "livePulseGlow 2s ease-in-out infinite",
+    "liveJello 2s ease-in-out infinite",
+    "liveRocket 2s ease-in-out infinite",
+    "liveMagicSparkle 1.5s ease-in-out infinite",
+  ];
+  return variations[num % variations.length];
 }
