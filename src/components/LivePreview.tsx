@@ -285,36 +285,71 @@ export function EffectLivePreview({ effect, size = "md" }: EffectLivePreviewProp
   switch (effect.category) {
     case "glassmorphism":
       return (
-        <div className="relative" style={{ minWidth, minHeight: dimensions.height + 20 }}>
-          {/* Background pattern to show blur effect */}
+        <div className="relative" style={{ minWidth: minWidth + 40, minHeight: dimensions.height + 40 }}>
+          {/* Animated gradient background */}
           <div 
-            className="absolute inset-0 rounded-2xl"
+            className="absolute inset-0 rounded-2xl overflow-hidden"
             style={{
-              background: `
-                linear-gradient(45deg, ${previewColor}33 25%, transparent 25%),
-                linear-gradient(-45deg, ${previewColor}33 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, ${previewColor}33 75%),
-                linear-gradient(-45deg, transparent 75%, ${previewColor}33 75%)
-              `,
-              backgroundSize: "20px 20px",
-              backgroundPosition: "0 0, 0 10px, 10px -10px, -10px 0px",
+              background: `linear-gradient(45deg, ${previewColor}44, #FF00FF44, #00FFFF44, ${previewColor}44)`,
+              backgroundSize: "400% 400%",
               animation: "liveGradientMove 4s ease infinite",
             }}
           />
+          
+          {/* Floating bubbles behind the glass */}
+          <div className="absolute inset-0 overflow-hidden rounded-2xl">
+            {[...Array(6)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute rounded-full"
+                style={{
+                  width: 8 + (i * 4),
+                  height: 8 + (i * 4),
+                  background: `radial-gradient(circle, ${previewColor}, transparent)`,
+                  left: `${15 + (i * 15)}%`,
+                  animation: `liveFloat ${2 + i * 0.5}s ease-in-out infinite`,
+                  animationDelay: `${i * 0.3}s`,
+                  opacity: 0.8,
+                }}
+              />
+            ))}
+          </div>
+          
           {/* Glassmorphism card */}
           <div
-            className="relative backdrop-blur-xl border rounded-2xl p-3 text-xs font-medium flex items-center justify-center"
+            className="relative backdrop-blur-xl border-2 rounded-2xl p-4 flex flex-col items-center justify-center gap-1"
             style={{
-              background: `linear-gradient(135deg, ${previewColor}30, ${previewColor}10)`,
-              borderColor: `${previewColor}50`,
-              boxShadow: `0 8px 32px ${previewColor}22, inset 0 0 20px ${previewColor}11`,
-              color: previewColor,
-              minHeight: dimensions.height,
-              animation: "liveNeonPulse 3s ease-in-out infinite",
-              "--preview-color": previewColor,
-            } as CSSProperties}
+              background: `linear-gradient(135deg, ${previewColor}25, ${previewColor}10)`,
+              borderColor: `${previewColor}40`,
+              boxShadow: `
+                0 8px 32px ${previewColor}22, 
+                inset 0 1px 0 ${previewColor}40,
+                inset 0 0 20px ${previewColor}08
+              `,
+              minHeight: dimensions.height + 20,
+              minWidth: minWidth + 20,
+            }}
           >
-            Glass
+            {/* Light reflection */}
+            <div 
+              className="absolute top-0 left-0 right-0 h-1/3 rounded-t-2xl"
+              style={{
+                background: `linear-gradient(180deg, ${previewColor}20, transparent)`,
+                pointerEvents: 'none',
+              }}
+            />
+            <span 
+              className="text-xs font-bold opacity-90"
+              style={{ color: previewColor }}
+            >
+              GLASS
+            </span>
+            <span 
+              className="text-[10px] opacity-60"
+              style={{ color: previewColor }}
+            >
+              {effect.name}
+            </span>
           </div>
         </div>
       );
