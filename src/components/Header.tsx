@@ -27,7 +27,7 @@ export function Header({ activeLibrary }: HeaderProps) {
       
       <div className="relative z-10 max-w-4xl mx-auto">
         {isAnimations ? (
-          <h1 className="relampago-flash justify-center mb-4">
+          <h1 className="espiral-galactica justify-center mb-4">
             {letters.map((letter, index) => (
               <span key={index} style={{ '--i': index + 1 } as React.CSSProperties}>
                 {letter === ' ' ? '\u00A0' : letter}
