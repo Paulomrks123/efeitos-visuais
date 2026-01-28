@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { X, Star, Sparkles, Layers, MousePointerClick, Trash2, Download, Type } from "lucide-react";
+import { X, Star, Sparkles, Layers, MousePointerClick, Trash2, Download, Type, Copy, Check, ChevronDown, ChevronUp, Code } from "lucide-react";
 import { useFavorites } from "@/providers/FavoritesProvider";
 import { animations } from "@/data/animations";
 import { effects } from "@/data/effects";
@@ -9,6 +9,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { toast } from "sonner";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 interface FavoritesPanelProps {
   isOpen: boolean;
@@ -24,6 +29,8 @@ interface FavoritesPanelPropsInternal {
 export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
   const { favorites, getFavoritesByType, removeFavorite, clearAllFavorites } = useFavorites();
   const [activeTab, setActiveTab] = useState<TabType>("all");
+  const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
+  const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const favoriteAnimations = getFavoritesByType("animation");
   const favoriteEffects = getFavoritesByType("effect");
@@ -36,6 +43,23 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
   const getAnimationById = (id: string) => animations.find(a => a.id === id);
   const getEffectById = (id: string) => effects.find(e => e.id === id);
   const getButtonById = (id: string) => buttonAnimations.find(b => b.id === id);
+
+  const toggleExpanded = (id: string) => {
+    const newExpanded = new Set(expandedItems);
+    if (newExpanded.has(id)) {
+      newExpanded.delete(id);
+    } else {
+      newExpanded.add(id);
+    }
+    setExpandedItems(newExpanded);
+  };
+
+  const copyCode = async (id: string, code: string) => {
+    await navigator.clipboard.writeText(code);
+    setCopiedId(id);
+    toast.success("Código copiado!");
+    setTimeout(() => setCopiedId(null), 2000);
+  };
 
   const exportFavorites = () => {
     const exportData = {
@@ -66,36 +90,112 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
     name: string,
     type: "animation" | "effect" | "button",
     color: string,
+    cssCode: string,
     category?: string
-  ) => (
-    <div
-      key={id}
-      className="flex items-center justify-between p-3 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors group"
-    >
-      <div className="flex items-center gap-3">
-        <div
-          className="w-8 h-8 rounded-lg flex items-center justify-center"
-          style={{ backgroundColor: `${color}33`, border: `1px solid ${color}66` }}
-        >
-          <span className="text-xs font-bold" style={{ color }}>{id.split("-")[0]}</span>
-        </div>
-        <div>
-          <p className="text-sm font-medium text-foreground">{name}</p>
-          <p className="text-xs text-muted-foreground">
-            {type === "animation" ? "Animação" : type === "effect" ? "Efeito" : "Botão"}
-            {category && ` • ${category}`}
-          </p>
-        </div>
-      </div>
-      <button
-        onClick={() => removeFavorite(id)}
-        className="p-1.5 rounded-lg opacity-0 group-hover:opacity-100 hover:bg-destructive/20 text-destructive transition-all"
-        title="Remover dos favoritos"
+  ) => {
+    const isExpanded = expandedItems.has(id);
+    const isCopied = copiedId === id;
+    
+    return (
+      <Collapsible
+        key={id}
+        open={isExpanded}
+        onOpenChange={() => toggleExpanded(id)}
+        className="rounded-xl bg-muted/30 hover:bg-muted/40 transition-colors border border-border/50 overflow-hidden"
       >
-        <X size={14} />
-      </button>
-    </div>
-  );
+        <div className="flex items-center justify-between p-3 group">
+          <div className="flex items-center gap-3 flex-1">
+            <div
+              className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+              style={{ 
+                backgroundColor: `${color}22`, 
+                border: `2px solid ${color}55`,
+                boxShadow: `0 0 10px ${color}22`
+              }}
+            >
+              <span className="text-xs font-bold" style={{ color }}>{id.split("-")[0]}</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium text-foreground truncate">{name}</p>
+              <p className="text-xs text-muted-foreground">
+                {type === "animation" ? "Animação" : type === "effect" ? "Efeito" : "Botão"}
+                {category && ` • ${category}`}
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-1">
+            <CollapsibleTrigger asChild>
+              <button
+                className="p-2 rounded-lg hover:bg-muted transition-colors"
+                style={{ color }}
+                title={isExpanded ? "Ocultar código" : "Ver código"}
+              >
+                {isExpanded ? <ChevronUp size={16} /> : <Code size={16} />}
+              </button>
+            </CollapsibleTrigger>
+            
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                copyCode(id, cssCode);
+              }}
+              className="p-2 rounded-lg hover:bg-primary/20 transition-colors"
+              style={{ color: isCopied ? "#00FF00" : color }}
+              title="Copiar código"
+            >
+              {isCopied ? <Check size={16} /> : <Copy size={16} />}
+            </button>
+            
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                removeFavorite(id);
+              }}
+              className="p-2 rounded-lg opacity-0 group-hover:opacity-100 hover:bg-destructive/20 text-destructive transition-all"
+              title="Remover dos favoritos"
+            >
+              <X size={14} />
+            </button>
+          </div>
+        </div>
+        
+        <CollapsibleContent>
+          <div className="px-3 pb-3">
+            <div 
+              className="relative rounded-lg overflow-hidden"
+              style={{ 
+                background: `linear-gradient(135deg, ${color}08, ${color}03)`,
+                border: `1px solid ${color}22`
+              }}
+            >
+              <div className="flex items-center justify-between px-3 py-2 border-b" style={{ borderColor: `${color}22` }}>
+                <span className="text-xs font-mono text-muted-foreground flex items-center gap-1.5">
+                  <Code size={12} style={{ color }} />
+                  CSS
+                </span>
+                <button
+                  onClick={() => copyCode(id, cssCode)}
+                  className="text-xs px-2 py-1 rounded-md flex items-center gap-1 hover:bg-muted transition-colors"
+                  style={{ color }}
+                >
+                  {isCopied ? <Check size={12} /> : <Copy size={12} />}
+                  {isCopied ? "Copiado!" : "Copiar"}
+                </button>
+              </div>
+              <ScrollArea className="max-h-[200px]">
+                <pre className="p-3 text-xs font-mono overflow-x-auto">
+                  <code className="text-muted-foreground whitespace-pre-wrap break-words">
+                    {cssCode}
+                  </code>
+                </pre>
+              </ScrollArea>
+            </div>
+          </div>
+        </CollapsibleContent>
+      </Collapsible>
+    );
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -154,7 +254,7 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
                         {favoriteAnimations.map(id => {
                           const anim = getAnimationById(id);
                           if (!anim) return null;
-                          return renderFavoriteItem(id, anim.name, "animation", anim.previewColor || "#00FFFF", anim.category);
+                          return renderFavoriteItem(id, anim.name, "animation", anim.previewColor || "#00FFFF", anim.cssCode, anim.category);
                         })}
                       </div>
                     </div>
@@ -170,7 +270,7 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
                         {favoriteVisualEffects.map(id => {
                           const effect = getEffectById(id);
                           if (!effect) return null;
-                          return renderFavoriteItem(id, effect.name, "effect", effect.previewColor || "#FF00FF", effect.category);
+                          return renderFavoriteItem(id, effect.name, "effect", effect.previewColor || "#FF00FF", effect.cssCode, effect.category);
                         })}
                       </div>
                     </div>
@@ -186,7 +286,7 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
                         {favoriteTextEffects.map(id => {
                           const effect = getEffectById(id);
                           if (!effect) return null;
-                          return renderFavoriteItem(id, effect.name, "effect", effect.previewColor || "#FF1493", "text");
+                          return renderFavoriteItem(id, effect.name, "effect", effect.previewColor || "#FF1493", effect.cssCode, "text");
                         })}
                       </div>
                     </div>
@@ -202,7 +302,7 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
                         {favoriteButtons.map(id => {
                           const btn = getButtonById(id);
                           if (!btn) return null;
-                          return renderFavoriteItem(id, btn.name, "button", btn.previewColor || "#00FF00", btn.category);
+                          return renderFavoriteItem(id, btn.name, "button", btn.previewColor || "#00FF00", btn.cssCode, btn.category);
                         })}
                       </div>
                     </div>
@@ -222,7 +322,7 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
                 favoriteAnimations.map(id => {
                   const anim = getAnimationById(id);
                   if (!anim) return null;
-                  return renderFavoriteItem(id, anim.name, "animation", anim.previewColor || "#00FFFF", anim.category);
+                  return renderFavoriteItem(id, anim.name, "animation", anim.previewColor || "#00FFFF", anim.cssCode, anim.category);
                 })
               )}
             </TabsContent>
@@ -238,7 +338,7 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
                 favoriteVisualEffects.map(id => {
                   const effect = getEffectById(id);
                   if (!effect) return null;
-                  return renderFavoriteItem(id, effect.name, "effect", effect.previewColor || "#FF00FF", effect.category);
+                  return renderFavoriteItem(id, effect.name, "effect", effect.previewColor || "#FF00FF", effect.cssCode, effect.category);
                 })
               )}
             </TabsContent>
@@ -254,7 +354,7 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
                 favoriteTextEffects.map(id => {
                   const effect = getEffectById(id);
                   if (!effect) return null;
-                  return renderFavoriteItem(id, effect.name, "effect", effect.previewColor || "#FF1493", "text");
+                  return renderFavoriteItem(id, effect.name, "effect", effect.previewColor || "#FF1493", effect.cssCode, "text");
                 })
               )}
             </TabsContent>
@@ -270,7 +370,7 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
                 favoriteButtons.map(id => {
                   const btn = getButtonById(id);
                   if (!btn) return null;
-                  return renderFavoriteItem(id, btn.name, "button", btn.previewColor || "#00FF00", btn.category);
+                  return renderFavoriteItem(id, btn.name, "button", btn.previewColor || "#00FF00", btn.cssCode, btn.category);
                 })
               )}
             </TabsContent>
