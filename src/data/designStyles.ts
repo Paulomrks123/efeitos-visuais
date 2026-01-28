@@ -1,3 +1,12 @@
+import stylePremiumMinimal from "@/assets/showcase/style-premium-minimal.jpg";
+import styleIllustratedCartoon from "@/assets/showcase/style-illustrated-cartoon.jpg";
+import styleDarkTech from "@/assets/showcase/style-dark-tech.jpg";
+import styleRetroModern from "@/assets/showcase/style-retro-modern.jpg";
+import styleIndustrial from "@/assets/showcase/style-industrial.jpg";
+import styleHybrid from "@/assets/showcase/style-hybrid.jpg";
+import styleHybridSerious from "@/assets/showcase/style-hybrid-serious.jpg";
+import styleHybridFriendly from "@/assets/showcase/style-hybrid-friendly.jpg";
+
 import { StyleDefinition } from "@/components/showcase/StyleCard";
 
 export const designStyles: StyleDefinition[] = [
@@ -12,6 +21,7 @@ export const designStyles: StyleDefinition[] = [
     iconStyle: "Ícones lineares minimalistas, monocromáticos, traço fino e consistente. Sem ilustrações ou cores chamativas.",
     layoutStyle: "Grid rígido, espaçamentos amplos, hierarquia clara. Cards com bordas sutis.",
     typography: "Inter, SF Pro, sans-serif. Hierarquia clara entre títulos e corpo.",
+    previewImage: stylePremiumMinimal,
     cssVariables: {
       "--background": "0 0% 100%",
       "--foreground": "0 0% 10%",
@@ -55,6 +65,7 @@ export const designStyles: StyleDefinition[] = [
     iconStyle: "Ícones ilustrados estilo cartoon, flat design, cores sólidas e vivas, sem contorno externo.",
     layoutStyle: "Cards grandes e chamativos, bordas muito arredondadas, visual acolhedor.",
     typography: "Rounded, amigável. Poppins, Nunito ou similar.",
+    previewImage: styleIllustratedCartoon,
     cssVariables: {
       "--background": "30 100% 98%",
       "--foreground": "20 80% 20%",
@@ -109,6 +120,7 @@ export const designStyles: StyleDefinition[] = [
     iconStyle: "Ícones geométricos, estilo tech/futurista, lineares ou semi-fill. Monocromáticos com destaque neon.",
     layoutStyle: "Visual de painel de controle, cards com glow sutil, densidade média-alta de informação.",
     typography: "Geométrica moderna. Inter, Space Grotesk, JetBrains Mono para dados.",
+    previewImage: styleDarkTech,
     cssVariables: {
       "--background": "222 47% 11%",
       "--foreground": "210 40% 98%",
@@ -166,6 +178,7 @@ export const designStyles: StyleDefinition[] = [
     iconStyle: "Ícones ilustrados retrô, flat com personalidade, cores suaves. Coerência total entre ícones.",
     layoutStyle: "Cards com aparência de papel, texturas leves, bordas arredondadas médias.",
     typography: "Com personalidade moderada. Playfair Display para títulos, Source Sans para corpo.",
+    previewImage: styleRetroModern,
     cssVariables: {
       "--background": "48 96% 89%",
       "--foreground": "28 80% 25%",
@@ -215,6 +228,7 @@ h1, h2, h3 {
     iconStyle: "Ícones funcionais e claros, estilo sólido ou semi-line. Alto contraste, foco em leitura rápida.",
     layoutStyle: "Layout denso, grid informativo, separação clara de áreas. Visual de sistema de controle.",
     typography: "Simples e objetiva. Roboto, Arial. Tamanhos consistentes.",
+    previewImage: styleIndustrial,
     cssVariables: {
       "--background": "220 14% 96%",
       "--foreground": "220 13% 18%",
@@ -271,6 +285,7 @@ h1, h2, h3 {
     iconStyle: "Ícones ilustrados simples (flat), estilo consistente, cores sólidas sem gradientes. Claros em tamanhos pequenos.",
     layoutStyle: "Cards funcionais, grid bem definido, bordas levemente arredondadas. Sem excesso de sombras.",
     typography: "Sem serifa moderna, hierarquia clara. Inter, Nunito Sans.",
+    previewImage: styleHybrid,
     cssVariables: {
       "--background": "0 0% 100%",
       "--foreground": "220 13% 18%",
@@ -334,6 +349,7 @@ h1, h2, h3 {
     iconStyle: "Ilustrados simples porém discretos, pouca saturação. Ícones nunca chamam mais atenção que os dados.",
     layoutStyle: "Cards retangulares com leve arredondamento, grid rígido e previsível. Densidade média.",
     typography: "Neutra e funcional. Inter, Roboto.",
+    previewImage: styleHybridSerious,
     cssVariables: {
       "--background": "0 0% 100%",
       "--foreground": "220 13% 18%",
@@ -390,6 +406,7 @@ h1, h2, h3 {
     iconStyle: "Ícones ilustrados mais expressivos, cores um pouco mais saturadas. Ajudam na compreensão rápida.",
     layoutStyle: "Cards mais arredondados, espaçamentos generosos, menos densidade visual. Interface respirável.",
     typography: "Friendly e acessível. Nunito, Poppins.",
+    previewImage: styleHybridFriendly,
     cssVariables: {
       "--background": "0 0% 100%",
       "--foreground": "220 13% 18%",

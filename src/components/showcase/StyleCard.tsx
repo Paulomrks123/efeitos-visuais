@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Copy, Check, ExternalLink, Palette, Layout, Type, Sparkles } from "lucide-react";
+import { Copy, Check, ExternalLink, Palette, Layout, Type, Sparkles, Image } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { toast } from "@/hooks/use-toast";
 
 export interface StyleDefinition {
   id: string;
@@ -31,6 +32,10 @@ export function StyleCard({ style, index }: StyleCardProps) {
   const copyCSS = async () => {
     await navigator.clipboard.writeText(style.sampleCSS);
     setCopied(true);
+    toast({
+      title: "✅ Código copiado!",
+      description: `CSS do estilo "${style.name}" copiado para a área de transferência.`,
+    });
     setTimeout(() => setCopied(false), 2000);
   };
 
@@ -44,12 +49,26 @@ export function StyleCard({ style, index }: StyleCardProps) {
         <div 
           className="h-48 relative overflow-hidden"
           style={{ 
-            background: `linear-gradient(135deg, ${style.colors[0]}22, ${style.colors[1]}22)` 
+            background: style.previewImage ? 'transparent' : `linear-gradient(135deg, ${style.colors[0]}22, ${style.colors[1]}22)` 
           }}
         >
+          {/* AI Generated Preview Image */}
+          {style.previewImage ? (
+            <img 
+              src={style.previewImage} 
+              alt={`Preview ${style.name}`}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            /* Sample UI Preview Fallback */
+            <div className="absolute inset-0 flex items-center justify-center p-4">
+              <StylePreviewMini style={style} />
+            </div>
+          )}
+
           {/* Style Number Badge */}
           <div 
-            className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold"
+            className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold shadow-lg"
             style={{ 
               background: style.colors[0],
               color: style.colors[0] === '#FFFFFF' || style.colors[0] === '#F5F5F5' ? '#000' : '#FFF'
@@ -63,16 +82,11 @@ export function StyleCard({ style, index }: StyleCardProps) {
             {style.colors.slice(0, 5).map((color, i) => (
               <div
                 key={i}
-                className="w-6 h-6 rounded-full border border-white/20 shadow-lg"
+                className="w-6 h-6 rounded-full border-2 border-white/40 shadow-lg"
                 style={{ background: color }}
                 title={color}
               />
             ))}
-          </div>
-
-          {/* Sample UI Preview */}
-          <div className="absolute inset-0 flex items-center justify-center p-4">
-            <StylePreviewMini style={style} />
           </div>
 
           {/* Hover Overlay */}
@@ -89,15 +103,26 @@ export function StyleCard({ style, index }: StyleCardProps) {
           <h3 className="font-bold text-lg mb-1">{style.name}</h3>
           <p className="text-sm text-muted-foreground mb-3">{style.subtitle}</p>
           
-          <div className="flex flex-wrap gap-1">
-            {style.features.slice(0, 3).map((feature, i) => (
-              <span
-                key={i}
-                className="px-2 py-0.5 text-xs rounded-full bg-muted text-muted-foreground"
-              >
-                {feature}
-              </span>
-            ))}
+          <div className="flex items-center justify-between">
+            <div className="flex flex-wrap gap-1">
+              {style.features.slice(0, 2).map((feature, i) => (
+                <span
+                  key={i}
+                  className="px-2 py-0.5 text-xs rounded-full bg-muted text-muted-foreground"
+                >
+                  {feature}
+                </span>
+              ))}
+            </div>
+            
+            {/* Quick Copy Button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); copyCSS(); }}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+            >
+              {copied ? <Check size={14} /> : <Copy size={14} />}
+              {copied ? "Copiado!" : "Copiar CSS"}
+            </button>
           </div>
         </div>
       </div>
@@ -122,7 +147,22 @@ export function StyleCard({ style, index }: StyleCardProps) {
           
           <ScrollArea className="max-h-[70vh] pr-4">
             <div className="space-y-6">
-              {/* Large Preview */}
+              {/* AI Generated Image Preview */}
+              {style.previewImage && (
+                <div className="rounded-xl overflow-hidden border border-border/50">
+                  <img 
+                    src={style.previewImage} 
+                    alt={`Exemplo visual ${style.name}`}
+                    className="w-full h-auto"
+                  />
+                  <div className="p-3 bg-muted/30 flex items-center gap-2 text-sm text-muted-foreground">
+                    <Image size={14} />
+                    Exemplo visual gerado por IA
+                  </div>
+                </div>
+              )}
+
+              {/* Interactive Preview */}
               <div 
                 className="rounded-xl overflow-hidden p-6"
                 style={{ 
@@ -193,18 +233,18 @@ export function StyleCard({ style, index }: StyleCardProps) {
 
               {/* Sample CSS */}
               <div>
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center justify-between mb-3">
                   <h4 className="font-semibold">CSS de Exemplo</h4>
                   <button
                     onClick={copyCSS}
-                    className="flex items-center gap-1 px-3 py-1 text-xs rounded-lg bg-muted hover:bg-muted/80 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-sm"
                   >
-                    {copied ? <Check size={12} className="text-green-500" /> : <Copy size={12} />}
-                    {copied ? "Copiado!" : "Copiar"}
+                    {copied ? <Check size={16} /> : <Copy size={16} />}
+                    {copied ? "Código Copiado!" : "Copiar Código CSS"}
                   </button>
                 </div>
-                <pre className="p-4 rounded-lg bg-background/80 border border-border/50 text-xs overflow-x-auto font-mono">
-                  <code>{style.sampleCSS}</code>
+                <pre className="p-4 rounded-lg bg-gray-900 border border-border/50 text-xs overflow-x-auto font-mono">
+                  <code className="text-green-400">{style.sampleCSS}</code>
                 </pre>
               </div>
             </div>
