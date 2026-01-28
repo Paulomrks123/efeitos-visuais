@@ -465,4 +465,21 @@
     0% { stroke-dashoffset: 400; }
     100% { stroke-dashoffset: 0; }
   }
+
+  /* Reveal animation for clip-path */
+  @keyframes reveal {
+    from { clip-path: inset(50%); }
+    to { clip-path: inset(0%); }
+  }
+
+  /* Circle reveal */
+  @keyframes circle-reveal {
+    from { clip-path: circle(0% at 50% 50%); }
+    to { clip-path: circle(100% at 50% 50%); }
+  }
+
+  /* Stripe move */
+  @keyframes stripe-move {
+    to { background-position: 28px 0; }
+  }
 }
