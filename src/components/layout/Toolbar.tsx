@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Download, Heart, Star } from "lucide-react";
+import { Download, Heart, Star, Play } from "lucide-react";
 import { SearchBar } from "@/components/filters/SearchBar";
 import { ViewModeToggle } from "@/components/layout/ViewModeToggle";
 import { ExportModal } from "@/components/features/ExportModal";
 import { FavoritesPanel } from "@/components/features/FavoritesPanel";
+import { SlideshowMode } from "@/components/features/SlideshowMode";
 import { Button } from "@/components/ui/button";
 import { ViewMode } from "@/hooks/useViewMode";
 import { useFavorites } from "@/providers/FavoritesProvider";
@@ -40,6 +41,7 @@ export function Toolbar({
 }: ToolbarProps) {
   const { favoritesCount } = useFavorites();
   const [showFavoritesPanel, setShowFavoritesPanel] = useState(false);
+  const [showSlideshow, setShowSlideshow] = useState(false);
 
   return (
     <>
@@ -54,6 +56,17 @@ export function Toolbar({
 
         {/* Controls Row */}
         <div className="flex flex-wrap items-center justify-center gap-3">
+          {/* Slideshow Mode */}
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setShowSlideshow(true)}
+            className="gap-2 border-neon-cyan/50 hover:border-neon-cyan hover:bg-neon-cyan/10 text-neon-cyan"
+          >
+            <Play size={16} className="fill-current" />
+            Slideshow
+          </Button>
+
           {/* Favorites Toggle - Filter */}
           <Button
             variant={showFavoritesOnly ? "default" : "outline"}
@@ -103,6 +116,13 @@ export function Toolbar({
       <FavoritesPanel
         isOpen={showFavoritesPanel}
         onClose={() => setShowFavoritesPanel(false)}
+      />
+
+      {/* Slideshow Mode */}
+      <SlideshowMode
+        isOpen={showSlideshow}
+        onClose={() => setShowSlideshow(false)}
+        initialCategory="all"
       />
     </>
   );

@@ -375,9 +375,9 @@ export function EffectLivePreview({ effect, size = "md" }: EffectLivePreviewProp
       );
 
     case "images":
-      // Image effects preview with animated placeholder
+      // Image effects preview with animal images
       const imageId = parseInt(effect.id.replace("I-", "")) || 1;
-      const animations = [
+      const imageAnimations = [
         "imgFadeIn", "imgZoomReveal", "imgSlideLeft", "imgSlideRight",
         "imgFlipH", "imgFlipV", "imgBlurClear", "imgRotateIn",
         "imgBounceIn", "imgSlideUp", "imgCurtain", "imgCircleExpand",
@@ -387,7 +387,52 @@ export function EffectLivePreview({ effect, size = "md" }: EffectLivePreviewProp
         "imgHexagon", "imgParallaxFloat", "imgSpotlight", "imgVintageFilm",
         "imgHoloShine", "imgPortal"
       ];
-      const animName = animations[(imageId - 1) % animations.length];
+      
+      // Different animal emojis for each image effect
+      const animalEmojis = [
+        "🦁", "🐯", "🐻", "🦊", "🐺", "🦄", "🐸", "🦋",
+        "🦅", "🐬", "🦈", "🐙", "🦜", "🦩", "🐧", "🦥",
+        "🦘", "🐨", "🦒", "🦓", "🐆", "🦏", "🦛", "🐊",
+        "🦚", "🦢", "🦃", "🐓", "🦔", "🐢"
+      ];
+      
+      // Animal image URLs from Unsplash (placeholder)
+      const animalImages = [
+        "https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=200&h=200&fit=crop", // lion
+        "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=200&h=200&fit=crop", // tiger
+        "https://images.unsplash.com/photo-1589656966895-2f33e7653819?w=200&h=200&fit=crop", // bear
+        "https://images.unsplash.com/photo-1474511320723-9a56873571b7?w=200&h=200&fit=crop", // fox
+        "https://images.unsplash.com/photo-1564466809058-bf4114d55352?w=200&h=200&fit=crop", // wolf
+        "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?w=200&h=200&fit=crop", // horse
+        "https://images.unsplash.com/photo-1559253664-ca249d4608c6?w=200&h=200&fit=crop", // frog
+        "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=200&h=200&fit=crop", // butterfly
+        "https://images.unsplash.com/photo-1611689342806-0863700ce1e4?w=200&h=200&fit=crop", // eagle
+        "https://images.unsplash.com/photo-1607153333879-c174d265f1d2?w=200&h=200&fit=crop", // dolphin
+        "https://images.unsplash.com/photo-1560275619-4662e36fa65c?w=200&h=200&fit=crop", // shark
+        "https://images.unsplash.com/photo-1545671913-b89ac1b4ac10?w=200&h=200&fit=crop", // octopus
+        "https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=200&h=200&fit=crop", // parrot
+        "https://images.unsplash.com/photo-1497206365907-f5e630693df0?w=200&h=200&fit=crop", // flamingo
+        "https://images.unsplash.com/photo-1551986782-d0169b3f8fa7?w=200&h=200&fit=crop", // penguin
+        "https://images.unsplash.com/photo-1577936003568-4d2ad79eb789?w=200&h=200&fit=crop", // sloth
+        "https://images.unsplash.com/photo-1555169062-013468b47731?w=200&h=200&fit=crop", // kangaroo
+        "https://images.unsplash.com/photo-1459262838948-3e2de6c1ec80?w=200&h=200&fit=crop", // koala
+        "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=200&h=200&fit=crop", // giraffe
+        "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?w=200&h=200&fit=crop", // zebra
+        "https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=200&h=200&fit=crop", // leopard
+        "https://images.unsplash.com/photo-1598894000329-23c07728de99?w=200&h=200&fit=crop", // rhino
+        "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=200&h=200&fit=crop", // dog
+        "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=200&h=200&fit=crop", // crocodile
+        "https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=200&h=200&fit=crop", // peacock
+        "https://images.unsplash.com/photo-1524024973431-2ad916746881?w=200&h=200&fit=crop", // swan
+        "https://images.unsplash.com/photo-1612024782955-49fae79e42bb?w=200&h=200&fit=crop", // turkey
+        "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=200&h=200&fit=crop", // rooster
+        "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=200&h=200&fit=crop", // hedgehog
+        "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=200&h=200&fit=crop", // turtle
+      ];
+      
+      const animName = imageAnimations[(imageId - 1) % imageAnimations.length];
+      const animalEmoji = animalEmojis[(imageId - 1) % animalEmojis.length];
+      const animalImage = animalImages[(imageId - 1) % animalImages.length];
       
       return (
         <div
@@ -397,20 +442,38 @@ export function EffectLivePreview({ effect, size = "md" }: EffectLivePreviewProp
             height: dimensions.height + 10,
           }}
         >
-          {/* Image placeholder with effect animation */}
+          {/* Animal image with effect animation */}
           <div
-            className="w-full h-full rounded-lg flex items-center justify-center text-xs font-bold"
+            className="w-full h-full rounded-lg overflow-hidden relative"
             style={{
-              background: `linear-gradient(135deg, ${previewColor}40, ${previewColor}80, ${previewColor}40)`,
-              backgroundSize: "200% 200%",
-              color: "#fff",
-              textShadow: `0 0 10px ${previewColor}`,
-              boxShadow: `0 0 20px ${previewColor}44, inset 0 0 30px ${previewColor}22`,
-              animation: `${animName} 2s ease-in-out infinite, liveGradientMove 4s ease infinite`,
+              animation: `${animName} 2s ease-in-out infinite`,
+              boxShadow: `0 0 20px ${previewColor}44`,
               border: `2px solid ${previewColor}66`,
             }}
           >
-            📷
+            <img
+              src={animalImage}
+              alt={`Animal ${imageId}`}
+              className="w-full h-full object-cover"
+              style={{
+                filter: `drop-shadow(0 0 5px ${previewColor})`,
+              }}
+              onError={(e) => {
+                // Fallback to emoji if image fails to load
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                target.nextElementSibling?.classList.remove('hidden');
+              }}
+            />
+            {/* Emoji fallback */}
+            <div 
+              className="hidden absolute inset-0 flex items-center justify-center text-4xl"
+              style={{
+                background: `linear-gradient(135deg, ${previewColor}40, ${previewColor}80)`,
+              }}
+            >
+              {animalEmoji}
+            </div>
           </div>
         </div>
       );
