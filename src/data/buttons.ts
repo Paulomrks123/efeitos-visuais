@@ -2816,4 +2816,966 @@ export const buttonAnimations: ButtonAnimation[] = [
   <span class="icon">❤️</span> Amor
 </button>`
   },
+
+  // ==================== SPECIAL EFFECTS (30 novos efeitos únicos) ====================
+  
+  // Neon Glow Effects
+  {
+    id: "glow-11",
+    name: "Neon Pulse Core",
+    category: "glow",
+    description: "Núcleo pulsante com múltiplas camadas neon",
+    duration: "2s",
+    intensity: "extreme glow",
+    previewColor: "#00FFFF",
+    cssCode: `.neon-pulse-core {
+  background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+  color: #00FFFF;
+  border: 2px solid #00FFFF;
+  position: relative;
+  overflow: hidden;
+}
+.neon-pulse-core::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(from 0deg, transparent, #00FFFF, transparent 30%);
+  animation: neonRotate 2s linear infinite;
+}
+.neon-pulse-core::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: #0a0a0a;
+  border-radius: inherit;
+}
+.neon-pulse-core span { position: relative; z-index: 1; }
+@keyframes neonRotate {
+  to { transform: rotate(360deg); }
+}`,
+    htmlCode: `<button class="neon-pulse-core"><span>Cyber Core</span></button>`
+  },
+  {
+    id: "glow-12",
+    name: "Electric Storm",
+    category: "glow",
+    description: "Tempestade elétrica com raios",
+    duration: "0.3s",
+    intensity: "lightning flash",
+    previewColor: "#FFFF00",
+    cssCode: `.electric-storm {
+  background: #1a1a2e;
+  color: #FFFF00;
+  border: 2px solid transparent;
+  position: relative;
+}
+.electric-storm:hover {
+  animation: electricStorm 0.3s ease-out;
+  border-color: #FFFF00;
+  box-shadow: 
+    0 0 10px #FFFF00,
+    0 0 40px #FFFF00,
+    0 0 80px rgba(255,255,0,0.5),
+    inset 0 0 20px rgba(255,255,0,0.2);
+}
+@keyframes electricStorm {
+  0%, 100% { filter: brightness(1); }
+  25% { filter: brightness(3); }
+  50% { filter: brightness(0.8); }
+  75% { filter: brightness(2.5); }
+}`,
+    htmlCode: `<button class="electric-storm">⚡ Storm</button>`
+  },
+  {
+    id: "glow-13",
+    name: "Plasma Wave",
+    category: "glow",
+    description: "Onda de plasma fluindo",
+    duration: "3s",
+    intensity: "flowing plasma",
+    previewColor: "#FF00FF",
+    cssCode: `.plasma-wave {
+  background: linear-gradient(90deg, #FF00FF, #00FFFF, #FF00FF);
+  background-size: 200% 100%;
+  color: white;
+  border: none;
+  animation: plasmaFlow 3s ease-in-out infinite;
+  box-shadow: 0 0 30px rgba(255,0,255,0.5);
+}
+@keyframes plasmaFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}`,
+    htmlCode: `<button class="plasma-wave">Plasma</button>`
+  },
+  {
+    id: "glow-14",
+    name: "Aurora Borealis",
+    category: "glow",
+    description: "Aurora boreal animada",
+    duration: "4s",
+    intensity: "aurora shift",
+    previewColor: "#00FF88",
+    cssCode: `.aurora-borealis {
+  background: linear-gradient(135deg, #00FF88, #00BFFF, #FF00FF, #00FF88);
+  background-size: 400% 400%;
+  color: white;
+  text-shadow: 0 0 10px rgba(0,0,0,0.5);
+  animation: auroraShift 4s ease-in-out infinite;
+  box-shadow: 0 0 40px rgba(0,255,136,0.4);
+}
+@keyframes auroraShift {
+  0%, 100% { background-position: 0% 50%; }
+  25% { background-position: 100% 0%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+}`,
+    htmlCode: `<button class="aurora-borealis">Aurora</button>`
+  },
+  {
+    id: "glow-15",
+    name: "Holographic Shine",
+    category: "glow",
+    description: "Brilho holográfico iridescente",
+    duration: "2s",
+    intensity: "holo shine",
+    previewColor: "#C0C0C0",
+    cssCode: `.holographic-shine {
+  background: linear-gradient(135deg, 
+    #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff
+  );
+  background-size: 300% 300%;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  animation: holoShine 2s linear infinite;
+  -webkit-background-clip: padding-box;
+  border: 2px solid transparent;
+  position: relative;
+}
+.holographic-shine::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  filter: blur(15px);
+  opacity: 0.5;
+  z-index: -1;
+}
+@keyframes holoShine {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 300% 300%; }
+}`,
+    htmlCode: `<button class="holographic-shine">Holographic</button>`
+  },
+
+  // Glass Morph Effects
+  {
+    id: "fill-11",
+    name: "Glass Morph",
+    category: "fill",
+    description: "Glassmorphism com blur dinâmico",
+    duration: "0.4s",
+    intensity: "glass blur",
+    previewColor: "#FFFFFF",
+    cssCode: `.glass-morph {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  transition: all 0.4s ease;
+}
+.glass-morph:hover {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(20px);
+  border-color: rgba(255,255,255,0.4);
+  box-shadow: 0 8px 32px rgba(255,255,255,0.1);
+  transform: translateY(-3px);
+}`,
+    htmlCode: `<button class="glass-morph">Glass</button>`
+  },
+  {
+    id: "fill-12",
+    name: "Frosted Crystal",
+    category: "fill",
+    description: "Cristal fosco com reflexo",
+    duration: "0.5s",
+    intensity: "crystal refract",
+    previewColor: "#E0F7FA",
+    cssCode: `.frosted-crystal {
+  background: linear-gradient(135deg, 
+    rgba(224,247,250,0.3), 
+    rgba(255,255,255,0.1)
+  );
+  backdrop-filter: blur(15px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #0097A7;
+  position: relative;
+  overflow: hidden;
+}
+.frosted-crystal::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: rotate(45deg) translateY(-100%);
+  transition: transform 0.5s;
+}
+.frosted-crystal:hover::before {
+  transform: rotate(45deg) translateY(100%);
+}`,
+    htmlCode: `<button class="frosted-crystal">Crystal</button>`
+  },
+  {
+    id: "fill-13",
+    name: "Liquid Metal",
+    category: "fill",
+    description: "Metal líquido fluindo",
+    duration: "2s",
+    intensity: "mercury flow",
+    previewColor: "#B0BEC5",
+    cssCode: `.liquid-metal {
+  background: linear-gradient(135deg, 
+    #2c3e50, #bdc3c7, #2c3e50, #95a5a6
+  );
+  background-size: 400% 400%;
+  color: white;
+  border: none;
+  animation: liquidMetal 2s ease infinite;
+  box-shadow: 
+    inset 0 2px 10px rgba(255,255,255,0.3),
+    0 5px 15px rgba(0,0,0,0.3);
+}
+@keyframes liquidMetal {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}`,
+    htmlCode: `<button class="liquid-metal">Mercury</button>`
+  },
+  {
+    id: "fill-14",
+    name: "Magnetic Pull",
+    category: "fill",
+    description: "Efeito de atração magnética",
+    duration: "0.3s",
+    intensity: "magnetic force",
+    previewColor: "#3F51B5",
+    cssCode: `.magnetic-pull {
+  background: #3F51B5;
+  color: white;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+.magnetic-pull::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
+    rgba(255,255,255,0.3) 0%, 
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.magnetic-pull:hover::before { opacity: 1; }
+.magnetic-pull:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 40px rgba(63,81,181,0.4);
+}`,
+    htmlCode: `<button class="magnetic-pull">Magnetic</button>`
+  },
+  {
+    id: "fill-15",
+    name: "Gradient Sweep",
+    category: "fill",
+    description: "Varredura de gradiente diagonal",
+    duration: "0.6s",
+    intensity: "sweep diagonal",
+    previewColor: "#9C27B0",
+    cssCode: `.gradient-sweep {
+  background: linear-gradient(135deg, #9C27B0 50%, #E91E63 50%);
+  background-size: 300% 100%;
+  background-position: 100% 0;
+  color: white;
+  transition: background-position 0.6s ease;
+}
+.gradient-sweep:hover {
+  background-position: 0% 0;
+}`,
+    htmlCode: `<button class="gradient-sweep">Sweep</button>`
+  },
+
+  // 3D Effects
+  {
+    id: "3d-11",
+    name: "Cube Flip",
+    category: "3d",
+    description: "Cubo 3D girando",
+    duration: "0.6s",
+    intensity: "full flip",
+    previewColor: "#FF5722",
+    cssCode: `.cube-flip {
+  background: #FF5722;
+  color: white;
+  transform-style: preserve-3d;
+  perspective: 500px;
+}
+.cube-flip:hover {
+  animation: cubeFlip 0.6s ease-out;
+}
+@keyframes cubeFlip {
+  0% { transform: rotateX(0) rotateY(0); }
+  50% { transform: rotateX(180deg) rotateY(90deg); }
+  100% { transform: rotateX(360deg) rotateY(0); }
+}`,
+    htmlCode: `<button class="cube-flip">Cube</button>`
+  },
+  {
+    id: "3d-12",
+    name: "Depth Push",
+    category: "3d",
+    description: "Profundidade com push 3D",
+    duration: "0.3s",
+    intensity: "deep push",
+    previewColor: "#4CAF50",
+    cssCode: `.depth-push {
+  background: #4CAF50;
+  color: white;
+  box-shadow: 
+    0 6px 0 #2E7D32,
+    0 8px 15px rgba(0,0,0,0.3);
+  transform: translateY(0);
+  transition: all 0.15s ease;
+}
+.depth-push:hover {
+  transform: translateY(3px);
+  box-shadow: 
+    0 3px 0 #2E7D32,
+    0 4px 8px rgba(0,0,0,0.3);
+}
+.depth-push:active {
+  transform: translateY(6px);
+  box-shadow: 
+    0 0 0 #2E7D32,
+    0 1px 3px rgba(0,0,0,0.3);
+}`,
+    htmlCode: `<button class="depth-push">Push Me</button>`
+  },
+  {
+    id: "3d-13",
+    name: "Floating Card",
+    category: "3d",
+    description: "Card flutuante com sombra dinâmica",
+    duration: "0.4s",
+    intensity: "float shadow",
+    previewColor: "#2196F3",
+    cssCode: `.floating-card {
+  background: #2196F3;
+  color: white;
+  box-shadow: 0 4px 15px rgba(33,150,243,0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.floating-card:hover {
+  transform: translateY(-8px) rotateX(5deg);
+  box-shadow: 
+    0 20px 40px rgba(33,150,243,0.4),
+    0 0 0 1px rgba(255,255,255,0.1);
+}`,
+    htmlCode: `<button class="floating-card">Float</button>`
+  },
+  {
+    id: "3d-14",
+    name: "Perspective Tilt",
+    category: "3d",
+    description: "Inclinação perspectiva interativa",
+    duration: "0.3s",
+    intensity: "tilt 15deg",
+    previewColor: "#673AB7",
+    cssCode: `.perspective-tilt {
+  background: linear-gradient(135deg, #673AB7, #9C27B0);
+  color: white;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+.perspective-tilt:hover {
+  transform: perspective(500px) rotateX(-10deg) rotateY(10deg) scale(1.05);
+  box-shadow: 
+    -5px 5px 20px rgba(103,58,183,0.4),
+    5px -5px 20px rgba(156,39,176,0.4);
+}`,
+    htmlCode: `<button class="perspective-tilt">Tilt</button>`
+  },
+  {
+    id: "3d-15",
+    name: "Extruded Text",
+    category: "3d",
+    description: "Texto 3D extrudado",
+    duration: "0.4s",
+    intensity: "text extrude",
+    previewColor: "#795548",
+    cssCode: `.extruded-text {
+  background: #795548;
+  color: white;
+  text-shadow: 
+    1px 1px 0 #5D4037,
+    2px 2px 0 #4E342E,
+    3px 3px 0 #3E2723,
+    4px 4px 10px rgba(0,0,0,0.4);
+  transition: all 0.4s ease;
+}
+.extruded-text:hover {
+  transform: translate(-2px, -2px);
+  text-shadow: 
+    1px 1px 0 #5D4037,
+    2px 2px 0 #4E342E,
+    3px 3px 0 #3E2723,
+    4px 4px 0 #3E2723,
+    5px 5px 0 #3E2723,
+    6px 6px 15px rgba(0,0,0,0.5);
+}`,
+    htmlCode: `<button class="extruded-text">Extrude</button>`
+  },
+
+  // Particle & Special Effects
+  {
+    id: "pulse-31",
+    name: "Particle Burst",
+    category: "pulse",
+    description: "Explosão de partículas",
+    duration: "0.8s",
+    intensity: "burst particles",
+    previewColor: "#E91E63",
+    cssCode: `.particle-burst {
+  background: #E91E63;
+  color: white;
+  position: relative;
+  overflow: visible;
+}
+.particle-burst::before,
+.particle-burst::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #E91E63;
+  opacity: 0;
+}
+.particle-burst:hover::before {
+  animation: particleBurst1 0.8s ease-out;
+}
+.particle-burst:hover::after {
+  animation: particleBurst2 0.8s ease-out 0.1s;
+}
+@keyframes particleBurst1 {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(-40px, -40px) scale(0); opacity: 0; }
+}
+@keyframes particleBurst2 {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(40px, -30px) scale(0); opacity: 0; }
+}`,
+    htmlCode: `<button class="particle-burst">✨ Burst</button>`
+  },
+  {
+    id: "pulse-32",
+    name: "Ripple Echo",
+    category: "pulse",
+    description: "Ondas concêntricas em eco",
+    duration: "1.5s",
+    intensity: "triple ripple",
+    previewColor: "#00BCD4",
+    cssCode: `.ripple-echo {
+  background: #00BCD4;
+  color: white;
+  position: relative;
+  overflow: visible;
+}
+.ripple-echo::before,
+.ripple-echo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid #00BCD4;
+  opacity: 0;
+}
+.ripple-echo:hover::before {
+  animation: rippleEcho 1.5s ease-out infinite;
+}
+.ripple-echo:hover::after {
+  animation: rippleEcho 1.5s ease-out 0.5s infinite;
+}
+@keyframes rippleEcho {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}`,
+    htmlCode: `<button class="ripple-echo">Ripple</button>`
+  },
+  {
+    id: "pulse-33",
+    name: "Heartbeat Glow",
+    category: "pulse",
+    description: "Batimento com aura brilhante",
+    duration: "1.5s",
+    intensity: "heart glow",
+    previewColor: "#F44336",
+    cssCode: `.heartbeat-glow {
+  background: #F44336;
+  color: white;
+  animation: heartbeatGlow 1.5s ease-in-out infinite;
+}
+@keyframes heartbeatGlow {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 0 0 0 0 rgba(244,67,54,0.7);
+  }
+  14% { 
+    transform: scale(1.1); 
+    box-shadow: 0 0 30px 10px rgba(244,67,54,0.5);
+  }
+  28% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244,67,54,0.4); }
+  42% { 
+    transform: scale(1.1); 
+    box-shadow: 0 0 30px 10px rgba(244,67,54,0.5);
+  }
+  70% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244,67,54,0); }
+}`,
+    htmlCode: `<button class="heartbeat-glow">❤️ Beat</button>`
+  },
+  {
+    id: "pulse-34",
+    name: "Sonar Ping",
+    category: "pulse",
+    description: "Ping de sonar detectando",
+    duration: "2s",
+    intensity: "sonar detect",
+    previewColor: "#4CAF50",
+    cssCode: `.sonar-ping {
+  background: #4CAF50;
+  color: white;
+  position: relative;
+}
+.sonar-ping::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: #4CAF50;
+  animation: sonarPing 2s ease-out infinite;
+  z-index: -1;
+}
+@keyframes sonarPing {
+  0% { transform: scale(1); opacity: 0.8; }
+  70% { transform: scale(1.8); opacity: 0; }
+  100% { transform: scale(1.8); opacity: 0; }
+}`,
+    htmlCode: `<button class="sonar-ping">📡 Sonar</button>`
+  },
+  {
+    id: "pulse-35",
+    name: "Energy Core",
+    category: "pulse",
+    description: "Núcleo de energia pulsante",
+    duration: "2s",
+    intensity: "core energy",
+    previewColor: "#FFEB3B",
+    cssCode: `.energy-core {
+  background: radial-gradient(circle, #FFEB3B 0%, #FF9800 100%);
+  color: #333;
+  animation: energyCore 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(255,235,59,0.5);
+}
+@keyframes energyCore {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(255,235,59,0.5);
+    filter: brightness(1);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(255,235,59,0.8), 0 0 60px rgba(255,152,0,0.4);
+    filter: brightness(1.2);
+  }
+}`,
+    htmlCode: `<button class="energy-core">⚡ Energy</button>`
+  },
+
+  // Cyberpunk Effects
+  {
+    id: "scale-31",
+    name: "Cyber Glitch",
+    category: "scale",
+    description: "Glitch cyberpunk intenso",
+    duration: "0.5s",
+    intensity: "glitch shift",
+    previewColor: "#FF0080",
+    cssCode: `.cyber-glitch {
+  background: #1a1a2e;
+  color: #FF0080;
+  border: 2px solid #FF0080;
+  position: relative;
+}
+.cyber-glitch:hover {
+  animation: cyberGlitch 0.5s steps(10) infinite;
+}
+.cyber-glitch::before,
+.cyber-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+.cyber-glitch:hover::before {
+  color: #00FFFF;
+  animation: glitchLeft 0.3s steps(3) infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  opacity: 1;
+}
+.cyber-glitch:hover::after {
+  color: #FF0080;
+  animation: glitchRight 0.3s steps(3) infinite reverse;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+  opacity: 1;
+}
+@keyframes cyberGlitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-3px, 3px); }
+  40% { transform: translate(3px, -3px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(2px, 2px); }
+}
+@keyframes glitchLeft {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-5px); }
+}
+@keyframes glitchRight {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}`,
+    htmlCode: `<button class="cyber-glitch" data-text="GLITCH">GLITCH</button>`
+  },
+  {
+    id: "scale-32",
+    name: "Matrix Rain",
+    category: "scale",
+    description: "Chuva matrix digital",
+    duration: "3s",
+    intensity: "matrix flow",
+    previewColor: "#00FF00",
+    cssCode: `.matrix-rain {
+  background: #0a0a0a;
+  color: #00FF00;
+  border: 1px solid #00FF00;
+  font-family: monospace;
+  position: relative;
+  overflow: hidden;
+}
+.matrix-rain::before {
+  content: '10101010';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  font-size: 8px;
+  color: rgba(0,255,0,0.3);
+  animation: matrixRain 3s linear infinite;
+}
+@keyframes matrixRain {
+  0% { top: -100%; opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}`,
+    htmlCode: `<button class="matrix-rain">MATRIX</button>`
+  },
+  {
+    id: "scale-33",
+    name: "Neon Sign",
+    category: "scale",
+    description: "Letreiro neon piscando",
+    duration: "2s",
+    intensity: "neon flicker",
+    previewColor: "#FF1493",
+    cssCode: `.neon-sign {
+  background: transparent;
+  color: #FF1493;
+  border: 3px solid #FF1493;
+  text-shadow: 
+    0 0 10px #FF1493,
+    0 0 20px #FF1493,
+    0 0 40px #FF1493;
+  box-shadow: 
+    0 0 10px #FF1493,
+    inset 0 0 10px rgba(255,20,147,0.3);
+  animation: neonSign 2s ease-in-out infinite;
+}
+@keyframes neonSign {
+  0%, 100% { opacity: 1; filter: brightness(1); }
+  8% { opacity: 0.8; filter: brightness(0.8); }
+  10% { opacity: 1; filter: brightness(1.2); }
+  20% { opacity: 0.9; }
+  50% { opacity: 1; filter: brightness(1); }
+  52% { opacity: 0.7; filter: brightness(0.7); }
+  54% { opacity: 1; filter: brightness(1.1); }
+}`,
+    htmlCode: `<button class="neon-sign">OPEN</button>`
+  },
+  {
+    id: "scale-34",
+    name: "Laser Scan",
+    category: "scale",
+    description: "Varredura laser horizontal",
+    duration: "1.5s",
+    intensity: "scan line",
+    previewColor: "#00BFFF",
+    cssCode: `.laser-scan {
+  background: #1a1a2e;
+  color: #00BFFF;
+  border: 1px solid #00BFFF;
+  position: relative;
+  overflow: hidden;
+}
+.laser-scan::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(0,191,255,0.4), 
+    transparent
+  );
+  animation: laserScan 1.5s ease-in-out infinite;
+}
+@keyframes laserScan {
+  0% { left: -50%; }
+  100% { left: 150%; }
+}`,
+    htmlCode: `<button class="laser-scan">SCAN</button>`
+  },
+  {
+    id: "scale-35",
+    name: "Retro Arcade",
+    category: "scale",
+    description: "Estilo arcade retrô",
+    duration: "0.3s",
+    intensity: "pixel press",
+    previewColor: "#FF6B6B",
+    cssCode: `.retro-arcade {
+  background: #FF6B6B;
+  color: white;
+  border: 4px solid #C0392B;
+  border-radius: 0;
+  box-shadow: 
+    4px 4px 0 #C0392B,
+    8px 8px 0 #922B21;
+  font-family: 'Press Start 2P', monospace;
+  text-transform: uppercase;
+  transition: all 0.1s ease;
+}
+.retro-arcade:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 
+    2px 2px 0 #C0392B,
+    4px 4px 0 #922B21;
+}
+.retro-arcade:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}`,
+    htmlCode: `<button class="retro-arcade">PLAY</button>`
+  },
+
+  // Premium Effects
+  {
+    id: "icon-16",
+    name: "Diamond Sparkle",
+    category: "icon",
+    description: "Diamante com brilho premium",
+    duration: "2s",
+    intensity: "diamond shine",
+    previewColor: "#E0E0E0",
+    cssCode: `.diamond-sparkle {
+  background: linear-gradient(135deg, #E0E0E0, #FAFAFA, #BDBDBD);
+  color: #333;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.diamond-sparkle .icon {
+  animation: diamondSparkle 2s ease-in-out infinite;
+}
+.diamond-sparkle::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(255,255,255,0.8) 50%,
+    transparent 60%
+  );
+  animation: diamondShine 3s linear infinite;
+}
+@keyframes diamondSparkle {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(180deg); }
+}
+@keyframes diamondShine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}`,
+    htmlCode: `<button class="diamond-sparkle">
+  <span class="icon">💎</span> Premium
+</button>`
+  },
+  {
+    id: "icon-17",
+    name: "Fire Trail",
+    category: "icon",
+    description: "Rastro de fogo animado",
+    duration: "1s",
+    intensity: "fire trail",
+    previewColor: "#FF5722",
+    cssCode: `.fire-trail {
+  background: linear-gradient(135deg, #FF5722, #FF9800);
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+.fire-trail .icon {
+  animation: fireTrail 1s ease-in-out infinite;
+  filter: drop-shadow(0 0 5px #FF5722);
+}
+@keyframes fireTrail {
+  0%, 100% { 
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 0 5px #FF5722);
+  }
+  50% { 
+    transform: translateY(-5px) scale(1.2);
+    filter: drop-shadow(0 0 15px #FF9800) drop-shadow(0 5px 10px #FF5722);
+  }
+}`,
+    htmlCode: `<button class="fire-trail">
+  <span class="icon">🔥</span> Hot Deal
+</button>`
+  },
+  {
+    id: "icon-18",
+    name: "Lightning Bolt",
+    category: "icon",
+    description: "Raio com flash elétrico",
+    duration: "0.8s",
+    intensity: "electric flash",
+    previewColor: "#FFC107",
+    cssCode: `.lightning-bolt {
+  background: #1a1a2e;
+  color: #FFC107;
+  border: 2px solid #FFC107;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.lightning-bolt .icon {
+  animation: lightningBolt 0.8s ease-in-out infinite;
+}
+.lightning-bolt:hover {
+  box-shadow: 0 0 30px rgba(255,193,7,0.5);
+}
+@keyframes lightningBolt {
+  0%, 100% { 
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  10% { filter: brightness(3); transform: scale(1.3); }
+  20% { filter: brightness(0.8); transform: scale(1); }
+  30% { filter: brightness(2); transform: scale(1.2); }
+  40% { filter: brightness(1); transform: scale(1); }
+}`,
+    htmlCode: `<button class="lightning-bolt">
+  <span class="icon">⚡</span> Fast
+</button>`
+  },
+  {
+    id: "icon-19",
+    name: "Magic Wand",
+    category: "icon",
+    description: "Varinha mágica com estrelas",
+    duration: "1.5s",
+    intensity: "magic sparkle",
+    previewColor: "#9C27B0",
+    cssCode: `.magic-wand {
+  background: linear-gradient(135deg, #9C27B0, #E91E63);
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: visible;
+}
+.magic-wand .icon {
+  animation: magicWand 1.5s ease-in-out infinite;
+}
+@keyframes magicWand {
+  0%, 100% { 
+    transform: rotate(0deg) scale(1);
+    filter: drop-shadow(0 0 3px #FFD700);
+  }
+  25% { transform: rotate(-20deg) scale(1.1); }
+  50% { 
+    transform: rotate(20deg) scale(1.2);
+    filter: drop-shadow(0 0 15px #FFD700) drop-shadow(0 0 30px #FF69B4);
+  }
+  75% { transform: rotate(-10deg) scale(1.1); }
+}`,
+    htmlCode: `<button class="magic-wand">
+  <span class="icon">✨</span> Magic
+</button>`
+  },
+  {
+    id: "icon-20",
+    name: "Rocket Launch",
+    category: "icon",
+    description: "Foguete decolando com chamas",
+    duration: "1s",
+    intensity: "launch thrust",
+    previewColor: "#3F51B5",
+    cssCode: `.rocket-launch {
+  background: linear-gradient(135deg, #3F51B5, #2196F3);
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+.rocket-launch .icon {
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.rocket-launch:hover {
+  box-shadow: 0 10px 30px rgba(63,81,181,0.4);
+}
+.rocket-launch:hover .icon {
+  transform: translateY(-15px) rotate(-45deg);
+  filter: drop-shadow(0 10px 10px rgba(255,87,34,0.6));
+}`,
+    htmlCode: `<button class="rocket-launch">
+  <span class="icon">🚀</span> Launch
+</button>`
+  },
 ];
