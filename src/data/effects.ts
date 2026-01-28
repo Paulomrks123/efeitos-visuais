@@ -1200,697 +1200,962 @@ export const effects: Effect[] = [
   // ==================== TEXT EFFECTS (30 efeitos) ====================
   {
     id: "T-01",
-    name: "Neon Blaze",
-    description: "Texto com brilho neon intenso pulsante.",
+    name: "Cascata Neon",
+    description: "Letras caem em cascata uma por uma com brilho neon.",
     category: "text",
     previewColor: "#FF0080",
-    htmlExample: `<span class="neon-blaze">NEON</span>`,
-    cssCode: `.neon-blaze {
+    htmlExample: `<div class="cascata-neon">
+  <span style="--i:1">C</span>
+  <span style="--i:2">A</span>
+  <span style="--i:3">S</span>
+  <span style="--i:4">C</span>
+  <span style="--i:5">A</span>
+  <span style="--i:6">T</span>
+  <span style="--i:7">A</span>
+</div>`,
+    cssCode: `.cascata-neon {
   font-size: 3rem;
   font-weight: 900;
-  color: #FF0080;
-  text-shadow: 
-    0 0 5px #FF0080,
-    0 0 10px #FF0080,
-    0 0 20px #FF0080,
-    0 0 40px #FF0080,
-    0 0 80px #FF0080;
-  animation: neonBlaze 1.5s ease-in-out infinite alternate;
+  display: flex;
 }
-@keyframes neonBlaze {
-  from { text-shadow: 0 0 5px #FF0080, 0 0 10px #FF0080, 0 0 20px #FF0080; }
-  to { text-shadow: 0 0 10px #FF0080, 0 0 20px #FF0080, 0 0 40px #FF0080, 0 0 80px #FF0080, 0 0 120px #FF0080; }
+.cascata-neon span {
+  color: #FF0080;
+  text-shadow: 0 0 10px #FF0080, 0 0 20px #FF0080, 0 0 40px #FF0080;
+  animation: cascataDrop 2s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes cascataDrop {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(-20px); opacity: 0.5; }
 }`,
   },
   {
     id: "T-02",
-    name: "Chrome Metallic",
-    description: "Efeito cromado metálico com reflexo.",
+    name: "Espiral Galáctica",
+    description: "Letras giram em espiral como uma galáxia.",
     category: "text",
-    previewColor: "#E8E8E8",
-    htmlExample: `<span class="chrome-metallic">CHROME</span>`,
-    cssCode: `.chrome-metallic {
+    previewColor: "#9400D3",
+    htmlExample: `<div class="espiral-galactica">
+  <span style="--i:1">E</span>
+  <span style="--i:2">S</span>
+  <span style="--i:3">P</span>
+  <span style="--i:4">I</span>
+  <span style="--i:5">R</span>
+  <span style="--i:6">A</span>
+  <span style="--i:7">L</span>
+</div>`,
+    cssCode: `.espiral-galactica {
   font-size: 3rem;
   font-weight: 900;
-  background: linear-gradient(180deg, #FFFFFF 0%, #B8B8B8 25%, #FFFFFF 50%, #8C8C8C 75%, #FFFFFF 100%);
+  display: flex;
+  perspective: 500px;
+}
+.espiral-galactica span {
+  background: linear-gradient(135deg, #9400D3, #FF00FF, #00FFFF);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-  animation: chromeShine 3s linear infinite;
-  background-size: 100% 200%;
+  animation: spiralRotate 3s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.15s);
+  transform-origin: center;
 }
-@keyframes chromeShine {
-  0%, 100% { background-position: 0% 0%; }
-  50% { background-position: 0% 100%; }
+@keyframes spiralRotate {
+  0% { transform: rotateY(0deg) scale(1); }
+  50% { transform: rotateY(180deg) scale(1.2); }
+  100% { transform: rotateY(360deg) scale(1); }
 }`,
   },
   {
     id: "T-03",
-    name: "Fire Text",
-    description: "Texto em chamas com animação de fogo.",
+    name: "Onda do Mar",
+    description: "Letras ondulam como ondas do oceano.",
     category: "text",
-    previewColor: "#FF4500",
-    htmlExample: `<span class="fire-text">FIRE</span>`,
-    cssCode: `.fire-text {
+    previewColor: "#00CED1",
+    htmlExample: `<div class="onda-mar">
+  <span style="--i:1">O</span>
+  <span style="--i:2">N</span>
+  <span style="--i:3">D</span>
+  <span style="--i:4">A</span>
+  <span style="--i:5">S</span>
+</div>`,
+    cssCode: `.onda-mar {
   font-size: 3rem;
   font-weight: 900;
-  color: #FF4500;
-  background: linear-gradient(180deg, #FFFF00 0%, #FF8C00 30%, #FF4500 60%, #8B0000 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 
-    0 0 10px #FF4500,
-    0 -5px 20px #FF8C00,
-    0 -10px 40px #FFFF00;
-  animation: fireFlicker 0.5s ease-in-out infinite alternate;
+  display: flex;
 }
-@keyframes fireFlicker {
-  from { filter: brightness(1); }
-  to { filter: brightness(1.3); }
+.onda-mar span {
+  color: #00CED1;
+  text-shadow: 0 0 15px #00CED1, 0 5px 20px rgba(0,206,209,0.5);
+  animation: waveMotion 2s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes waveMotion {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-15px) rotate(-5deg); }
+  75% { transform: translateY(10px) rotate(5deg); }
 }`,
   },
   {
     id: "T-04",
-    name: "Frozen Ice",
-    description: "Texto congelado com cristais de gelo.",
+    name: "Digitação Hacker",
+    description: "Letras aparecem uma por uma como digitação de terminal.",
     category: "text",
-    previewColor: "#87CEEB",
-    htmlExample: `<span class="frozen-ice">FROZEN</span>`,
-    cssCode: `.frozen-ice {
+    previewColor: "#00FF00",
+    htmlExample: `<div class="digitacao-hacker">
+  <span style="--i:1">H</span>
+  <span style="--i:2">A</span>
+  <span style="--i:3">C</span>
+  <span style="--i:4">K</span>
+  <span style="--i:5">E</span>
+  <span style="--i:6">R</span>
+</div>`,
+    cssCode: `.digitacao-hacker {
   font-size: 3rem;
   font-weight: 900;
-  color: #E0F7FA;
-  background: linear-gradient(180deg, #FFFFFF 0%, #B3E5FC 30%, #81D4FA 60%, #4FC3F7 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 
-    0 0 10px rgba(255,255,255,0.8),
-    0 0 20px rgba(129,212,250,0.6),
-    0 0 30px rgba(79,195,247,0.4);
-  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
+  font-family: 'Courier New', monospace;
+  display: flex;
+}
+.digitacao-hacker span {
+  color: #00FF00;
+  text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00;
+  opacity: 0;
+  animation: typeReveal 3s steps(1) infinite;
+  animation-delay: calc(var(--i) * 0.3s);
+}
+@keyframes typeReveal {
+  0%, 15% { opacity: 0; }
+  16%, 100% { opacity: 1; }
 }`,
   },
   {
     id: "T-05",
-    name: "Glitch Matrix",
-    description: "Efeito glitch estilo Matrix.",
+    name: "Explosão de Fogo",
+    description: "Letras explodem do centro com chamas.",
     category: "text",
-    previewColor: "#00FF00",
-    htmlExample: `<span class="glitch-matrix">GLITCH</span>`,
-    cssCode: `.glitch-matrix {
+    previewColor: "#FF4500",
+    htmlExample: `<div class="explosao-fogo">
+  <span style="--i:1">F</span>
+  <span style="--i:2">O</span>
+  <span style="--i:3">G</span>
+  <span style="--i:4">O</span>
+</div>`,
+    cssCode: `.explosao-fogo {
   font-size: 3rem;
   font-weight: 900;
-  color: #00FF00;
-  text-shadow: 
-    2px 0 #FF0000,
-    -2px 0 #00FFFF;
-  animation: glitchMatrix 0.3s infinite;
-  position: relative;
+  display: flex;
+  gap: 5px;
 }
-@keyframes glitchMatrix {
-  0%, 100% { text-shadow: 2px 0 #FF0000, -2px 0 #00FFFF; transform: translate(0); }
-  25% { text-shadow: -2px 0 #FF0000, 2px 0 #00FFFF; transform: translate(-2px, 1px); }
-  50% { text-shadow: 1px 0 #FF0000, -1px 0 #00FFFF; transform: translate(1px, -1px); }
-  75% { text-shadow: -1px 0 #FF0000, 1px 0 #00FFFF; transform: translate(-1px, 2px); }
+.explosao-fogo span {
+  background: linear-gradient(180deg, #FFFF00, #FF8C00, #FF4500, #8B0000);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px #FF4500, 0 -10px 30px #FF8C00;
+  animation: fireExplode 1.5s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes fireExplode {
+  0% { transform: scale(0) translateY(50px); opacity: 0; }
+  50% { transform: scale(1.3) translateY(-10px); opacity: 1; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
 }`,
   },
   {
     id: "T-06",
-    name: "Rainbow Wave",
-    description: "Onda arco-íris animada.",
+    name: "Nuvem Flutuante",
+    description: "Letras flutuam suavemente como nuvens.",
     category: "text",
-    previewColor: "#FF6B6B",
-    htmlExample: `<span class="rainbow-wave">RAINBOW</span>`,
-    cssCode: `.rainbow-wave {
+    previewColor: "#87CEEB",
+    htmlExample: `<div class="nuvem-flutuante">
+  <span style="--i:1">N</span>
+  <span style="--i:2">U</span>
+  <span style="--i:3">V</span>
+  <span style="--i:4">E</span>
+  <span style="--i:5">M</span>
+</div>`,
+    cssCode: `.nuvem-flutuante {
   font-size: 3rem;
   font-weight: 900;
-  background: linear-gradient(90deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #9400D3, #FF0000);
-  background-size: 400% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: rainbowWave 4s linear infinite;
+  display: flex;
 }
-@keyframes rainbowWave {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 400% 50%; }
+.nuvem-flutuante span {
+  color: #87CEEB;
+  text-shadow: 0 0 20px rgba(135,206,235,0.8), 0 0 40px rgba(255,255,255,0.5);
+  animation: cloudFloat 4s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.2s);
+}
+@keyframes cloudFloat {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.8; }
+  25% { transform: translateY(-10px) translateX(5px); opacity: 1; }
+  50% { transform: translateY(-5px) translateX(-5px); opacity: 0.9; }
+  75% { transform: translateY(-15px) translateX(3px); opacity: 1; }
 }`,
   },
   {
     id: "T-07",
-    name: "Gold Emboss",
-    description: "Texto dourado em relevo 3D.",
+    name: "Pulso Cardíaco",
+    description: "Letras pulsam como batimentos do coração.",
     category: "text",
-    previewColor: "#FFD700",
-    htmlExample: `<span class="gold-emboss">GOLD</span>`,
-    cssCode: `.gold-emboss {
+    previewColor: "#DC143C",
+    htmlExample: `<div class="pulso-cardiaco">
+  <span style="--i:1">❤</span>
+  <span style="--i:2">P</span>
+  <span style="--i:3">U</span>
+  <span style="--i:4">L</span>
+  <span style="--i:5">S</span>
+  <span style="--i:6">O</span>
+</div>`,
+    cssCode: `.pulso-cardiaco {
   font-size: 3rem;
   font-weight: 900;
-  background: linear-gradient(180deg, #FFF9C4 0%, #FFD700 25%, #FFA000 50%, #FFD700 75%, #FFF9C4 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 
-    1px 1px 1px rgba(0,0,0,0.3),
-    2px 2px 2px rgba(0,0,0,0.2),
-    3px 3px 3px rgba(0,0,0,0.1);
-  filter: drop-shadow(0 0 10px rgba(255,215,0,0.5));
+  display: flex;
+}
+.pulso-cardiaco span {
+  color: #DC143C;
+  text-shadow: 0 0 10px #DC143C, 0 0 30px #FF0000;
+  animation: heartPulse 1s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.3); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.2); }
+  60% { transform: scale(1); }
 }`,
   },
   {
     id: "T-08",
-    name: "Electric Shock",
-    description: "Texto com descarga elétrica.",
+    name: "Flip 3D",
+    description: "Letras giram em 3D uma após a outra.",
     category: "text",
-    previewColor: "#00BFFF",
-    htmlExample: `<span class="electric-shock">SHOCK</span>`,
-    cssCode: `.electric-shock {
+    previewColor: "#FFD700",
+    htmlExample: `<div class="flip-3d">
+  <span style="--i:1">F</span>
+  <span style="--i:2">L</span>
+  <span style="--i:3">I</span>
+  <span style="--i:4">P</span>
+</div>`,
+    cssCode: `.flip-3d {
   font-size: 3rem;
   font-weight: 900;
-  color: #00BFFF;
-  text-shadow: 
-    0 0 5px #00BFFF,
-    0 0 10px #00BFFF,
-    0 0 20px #00BFFF,
-    0 0 40px #1E90FF;
-  animation: electricShock 0.1s infinite;
+  display: flex;
+  perspective: 1000px;
 }
-@keyframes electricShock {
-  0%, 100% { opacity: 1; transform: skewX(0deg); }
-  50% { opacity: 0.8; transform: skewX(2deg); }
+.flip-3d span {
+  background: linear-gradient(180deg, #FFF9C4, #FFD700, #FFA000);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  animation: flip3d 2s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.2s);
+  transform-style: preserve-3d;
+}
+@keyframes flip3d {
+  0%, 100% { transform: rotateX(0deg); }
+  50% { transform: rotateX(360deg); }
 }`,
   },
   {
     id: "T-09",
-    name: "Retro Synthwave",
-    description: "Estilo synthwave retrô anos 80.",
+    name: "Elástico Bounce",
+    description: "Letras saltam com efeito elástico.",
     category: "text",
-    previewColor: "#FF1493",
-    htmlExample: `<span class="retro-synthwave">RETRO</span>`,
-    cssCode: `.retro-synthwave {
+    previewColor: "#FF69B4",
+    htmlExample: `<div class="elastico-bounce">
+  <span style="--i:1">B</span>
+  <span style="--i:2">O</span>
+  <span style="--i:3">U</span>
+  <span style="--i:4">N</span>
+  <span style="--i:5">C</span>
+  <span style="--i:6">E</span>
+</div>`,
+    cssCode: `.elastico-bounce {
   font-size: 3rem;
   font-weight: 900;
-  background: linear-gradient(180deg, #FF1493 0%, #FF69B4 50%, #FFB6C1 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 
-    3px 3px 0 #00CED1,
-    6px 6px 0 #FF1493;
-  filter: drop-shadow(0 0 30px rgba(255,20,147,0.5));
+  display: flex;
+}
+.elastico-bounce span {
+  color: #FF69B4;
+  text-shadow: 0 0 15px #FF69B4;
+  animation: elasticBounce 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes elasticBounce {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  30% { transform: translateY(-30px) scaleY(1.1); }
+  50% { transform: translateY(0) scaleY(0.9); }
+  70% { transform: translateY(-15px) scaleY(1.05); }
 }`,
   },
   {
     id: "T-10",
-    name: "Holographic Prism",
-    description: "Efeito holográfico prismático.",
+    name: "Glitch Cyberpunk",
+    description: "Letras com glitch cyberpunk intenso.",
     category: "text",
-    previewColor: "#E0E7FF",
-    htmlExample: `<span class="holographic-prism">HOLO</span>`,
-    cssCode: `.holographic-prism {
+    previewColor: "#39FF14",
+    htmlExample: `<div class="glitch-cyber">
+  <span style="--i:1">G</span>
+  <span style="--i:2">L</span>
+  <span style="--i:3">I</span>
+  <span style="--i:4">T</span>
+  <span style="--i:5">C</span>
+  <span style="--i:6">H</span>
+</div>`,
+    cssCode: `.glitch-cyber {
   font-size: 3rem;
   font-weight: 900;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #667eea 100%);
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: holoPrism 5s ease infinite;
-  filter: drop-shadow(0 0 15px rgba(102,126,234,0.5));
+  display: flex;
 }
-@keyframes holoPrism {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+.glitch-cyber span {
+  color: #39FF14;
+  text-shadow: 2px 0 #FF0080, -2px 0 #00FFFF;
+  animation: glitchLetter 0.5s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.05s);
+}
+@keyframes glitchLetter {
+  0%, 100% { transform: translate(0); text-shadow: 2px 0 #FF0080, -2px 0 #00FFFF; }
+  20% { transform: translate(-2px, 2px); text-shadow: -2px 0 #FF0080, 2px 0 #00FFFF; }
+  40% { transform: translate(2px, -2px); clip-path: inset(30% 0 40% 0); }
+  60% { transform: translate(-1px, 1px); clip-path: inset(50% 0 20% 0); }
+  80% { transform: translate(1px, -1px); clip-path: inset(10% 0 60% 0); }
 }`,
   },
   {
     id: "T-11",
-    name: "Blood Drip",
-    description: "Texto com efeito de sangue escorrendo.",
+    name: "Fade Sequencial",
+    description: "Letras aparecem em fade uma por uma.",
     category: "text",
-    previewColor: "#8B0000",
-    htmlExample: `<span class="blood-drip">BLOOD</span>`,
-    cssCode: `.blood-drip {
+    previewColor: "#E0E7FF",
+    htmlExample: `<div class="fade-sequencial">
+  <span style="--i:1">F</span>
+  <span style="--i:2">A</span>
+  <span style="--i:3">D</span>
+  <span style="--i:4">E</span>
+</div>`,
+    cssCode: `.fade-sequencial {
   font-size: 3rem;
   font-weight: 900;
-  color: #8B0000;
-  background: linear-gradient(180deg, #DC143C 0%, #8B0000 50%, #4A0000 100%);
+  display: flex;
+}
+.fade-sequencial span {
+  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 
-    0 2px 4px rgba(139,0,0,0.8),
-    0 4px 8px rgba(139,0,0,0.6);
-  filter: drop-shadow(0 5px 10px rgba(139,0,0,0.4));
+  animation: fadeIn 3s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.3s);
+}
+@keyframes fadeIn {
+  0%, 20% { opacity: 0; transform: translateY(20px); }
+  30%, 70% { opacity: 1; transform: translateY(0); }
+  80%, 100% { opacity: 0; transform: translateY(-20px); }
 }`,
   },
   {
     id: "T-12",
-    name: "Candy Stripe",
-    description: "Listras doces coloridas.",
+    name: "Rotação Orbital",
+    description: "Letras orbitam em círculo.",
     category: "text",
-    previewColor: "#FF69B4",
-    htmlExample: `<span class="candy-stripe">CANDY</span>`,
-    cssCode: `.candy-stripe {
+    previewColor: "#00BFFF",
+    htmlExample: `<div class="rotacao-orbital">
+  <span style="--i:1">O</span>
+  <span style="--i:2">R</span>
+  <span style="--i:3">B</span>
+  <span style="--i:4">I</span>
+  <span style="--i:5">T</span>
+</div>`,
+    cssCode: `.rotacao-orbital {
   font-size: 3rem;
   font-weight: 900;
-  background: repeating-linear-gradient(
-    45deg,
-    #FF69B4 0px,
-    #FF69B4 10px,
-    #FFFFFF 10px,
-    #FFFFFF 20px,
-    #87CEEB 20px,
-    #87CEEB 30px,
-    #FFFFFF 30px,
-    #FFFFFF 40px
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: candyMove 2s linear infinite;
-  background-size: 200% 200%;
+  display: flex;
+  gap: 5px;
 }
-@keyframes candyMove {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 100% 100%; }
+.rotacao-orbital span {
+  color: #00BFFF;
+  text-shadow: 0 0 15px #00BFFF, 0 0 30px #1E90FF;
+  animation: orbitalSpin 4s linear infinite;
+  animation-delay: calc(var(--i) * 0.2s);
+}
+@keyframes orbitalSpin {
+  0% { transform: rotate(0deg) translateY(0); }
+  25% { transform: rotate(10deg) translateY(-10px); }
+  50% { transform: rotate(0deg) translateY(0); }
+  75% { transform: rotate(-10deg) translateY(10px); }
+  100% { transform: rotate(0deg) translateY(0); }
 }`,
   },
   {
     id: "T-13",
-    name: "Cyber Punk",
-    description: "Estilo cyberpunk futurista.",
+    name: "Zoom Explosivo",
+    description: "Letras crescem do nada com zoom.",
     category: "text",
-    previewColor: "#39FF14",
-    htmlExample: `<span class="cyber-punk">CYBER</span>`,
-    cssCode: `.cyber-punk {
+    previewColor: "#FF4500",
+    htmlExample: `<div class="zoom-explosivo">
+  <span style="--i:1">Z</span>
+  <span style="--i:2">O</span>
+  <span style="--i:3">O</span>
+  <span style="--i:4">M</span>
+</div>`,
+    cssCode: `.zoom-explosivo {
   font-size: 3rem;
   font-weight: 900;
-  color: #39FF14;
-  text-shadow: 
-    0 0 5px #39FF14,
-    0 0 10px #39FF14,
-    0 0 20px #39FF14,
-    0 0 40px #00FF00,
-    4px 4px 0 #FF0080,
-    -4px -4px 0 #00FFFF;
-  animation: cyberGlitch 2s infinite;
+  display: flex;
 }
-@keyframes cyberGlitch {
-  0%, 90%, 100% { transform: translate(0); }
-  92% { transform: translate(-3px, 2px); }
-  94% { transform: translate(3px, -2px); }
-  96% { transform: translate(-2px, -3px); }
-  98% { transform: translate(2px, 3px); }
+.zoom-explosivo span {
+  background: linear-gradient(180deg, #FF4500, #FF8C00, #FFD700);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px #FF4500;
+  animation: zoomExplode 2s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.15s);
+}
+@keyframes zoomExplode {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.5); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
 }`,
   },
   {
     id: "T-14",
-    name: "Smoke Effect",
-    description: "Texto com efeito de fumaça.",
+    name: "Shake Terremoto",
+    description: "Letras tremem como terremoto.",
     category: "text",
-    previewColor: "#696969",
-    htmlExample: `<span class="smoke-effect">SMOKE</span>`,
-    cssCode: `.smoke-effect {
+    previewColor: "#8B4513",
+    htmlExample: `<div class="shake-terremoto">
+  <span style="--i:1">S</span>
+  <span style="--i:2">H</span>
+  <span style="--i:3">A</span>
+  <span style="--i:4">K</span>
+  <span style="--i:5">E</span>
+</div>`,
+    cssCode: `.shake-terremoto {
   font-size: 3rem;
   font-weight: 900;
-  color: #696969;
-  text-shadow: 
-    0 0 10px rgba(128,128,128,0.5),
-    0 -5px 20px rgba(128,128,128,0.4),
-    0 -10px 30px rgba(128,128,128,0.3),
-    0 -15px 40px rgba(128,128,128,0.2);
-  animation: smokeRise 3s ease-in-out infinite;
+  display: flex;
 }
-@keyframes smokeRise {
-  0%, 100% { filter: blur(0px); transform: translateY(0); }
-  50% { filter: blur(1px); transform: translateY(-5px); }
+.shake-terremoto span {
+  color: #8B4513;
+  text-shadow: 2px 2px 4px #654321;
+  animation: earthquake 0.3s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.05s);
+}
+@keyframes earthquake {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-3px, 2px) rotate(-2deg); }
+  50% { transform: translate(3px, -2px) rotate(2deg); }
+  75% { transform: translate(-2px, -3px) rotate(-1deg); }
 }`,
   },
   {
     id: "T-15",
-    name: "Aurora Borealis",
-    description: "Aurora boreal mágica.",
+    name: "Slide Lateral",
+    description: "Letras deslizam da esquerda para posição.",
     category: "text",
-    previewColor: "#00FF7F",
-    htmlExample: `<span class="aurora-text">AURORA</span>`,
-    cssCode: `.aurora-text {
+    previewColor: "#9370DB",
+    htmlExample: `<div class="slide-lateral">
+  <span style="--i:1">S</span>
+  <span style="--i:2">L</span>
+  <span style="--i:3">I</span>
+  <span style="--i:4">D</span>
+  <span style="--i:5">E</span>
+</div>`,
+    cssCode: `.slide-lateral {
   font-size: 3rem;
   font-weight: 900;
-  background: linear-gradient(90deg, #00FF7F, #00CED1, #9370DB, #FF69B4, #00FF7F);
-  background-size: 400% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: auroraShift 6s ease infinite;
-  text-shadow: 0 0 30px rgba(0,255,127,0.3);
+  display: flex;
 }
-@keyframes auroraShift {
-  0%, 100% { background-position: 0% 50%; filter: brightness(1); }
-  50% { background-position: 100% 50%; filter: brightness(1.2); }
+.slide-lateral span {
+  color: #9370DB;
+  text-shadow: 0 0 15px #9370DB, 0 0 30px #8A2BE2;
+  animation: slideIn 3s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.2s);
+}
+@keyframes slideIn {
+  0%, 10% { transform: translateX(-100px); opacity: 0; }
+  20%, 80% { transform: translateX(0); opacity: 1; }
+  90%, 100% { transform: translateX(100px); opacity: 0; }
 }`,
   },
   {
     id: "T-16",
-    name: "Liquid Metal",
-    description: "Metal líquido fluido.",
+    name: "Jelly Gelatina",
+    description: "Letras balançam como gelatina.",
     category: "text",
-    previewColor: "#C0C0C0",
-    htmlExample: `<span class="liquid-metal">LIQUID</span>`,
-    cssCode: `.liquid-metal {
+    previewColor: "#FF1493",
+    htmlExample: `<div class="jelly-gelatina">
+  <span style="--i:1">J</span>
+  <span style="--i:2">E</span>
+  <span style="--i:3">L</span>
+  <span style="--i:4">L</span>
+  <span style="--i:5">Y</span>
+</div>`,
+    cssCode: `.jelly-gelatina {
   font-size: 3rem;
   font-weight: 900;
-  background: linear-gradient(90deg, #D4D4D4 0%, #FFFFFF 20%, #A0A0A0 40%, #FFFFFF 60%, #D4D4D4 80%, #A0A0A0 100%);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: liquidFlow 3s ease infinite;
-  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
+  display: flex;
 }
-@keyframes liquidFlow {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+.jelly-gelatina span {
+  color: #FF1493;
+  text-shadow: 0 0 10px #FF1493, 0 0 20px #FF69B4;
+  animation: jellyWobble 1.5s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes jellyWobble {
+  0%, 100% { transform: scaleX(1) scaleY(1); }
+  25% { transform: scaleX(1.2) scaleY(0.8); }
+  50% { transform: scaleX(0.9) scaleY(1.1); }
+  75% { transform: scaleX(1.1) scaleY(0.9); }
 }`,
   },
   {
     id: "T-17",
-    name: "Toxic Glow",
-    description: "Brilho tóxico radioativo.",
+    name: "Swing Pêndulo",
+    description: "Letras balançam como pêndulos.",
     category: "text",
-    previewColor: "#ADFF2F",
-    htmlExample: `<span class="toxic-glow">TOXIC</span>`,
-    cssCode: `.toxic-glow {
+    previewColor: "#20B2AA",
+    htmlExample: `<div class="swing-pendulo">
+  <span style="--i:1">S</span>
+  <span style="--i:2">W</span>
+  <span style="--i:3">I</span>
+  <span style="--i:4">N</span>
+  <span style="--i:5">G</span>
+</div>`,
+    cssCode: `.swing-pendulo {
   font-size: 3rem;
   font-weight: 900;
-  color: #ADFF2F;
-  text-shadow: 
-    0 0 5px #ADFF2F,
-    0 0 10px #ADFF2F,
-    0 0 20px #7FFF00,
-    0 0 40px #7FFF00,
-    0 0 80px #00FF00;
-  animation: toxicPulse 1s ease-in-out infinite alternate;
+  display: flex;
 }
-@keyframes toxicPulse {
-  from { filter: brightness(1) drop-shadow(0 0 10px #ADFF2F); }
-  to { filter: brightness(1.3) drop-shadow(0 0 30px #7FFF00); }
+.swing-pendulo span {
+  color: #20B2AA;
+  text-shadow: 0 0 10px #20B2AA;
+  transform-origin: top center;
+  animation: pendulumSwing 2s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes pendulumSwing {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(15deg); }
+  75% { transform: rotate(-15deg); }
 }`,
   },
   {
     id: "T-18",
-    name: "Lava Flow",
-    description: "Fluxo de lava incandescente.",
+    name: "Pop Bolha",
+    description: "Letras aparecem como bolhas estourando.",
     category: "text",
-    previewColor: "#FF4500",
-    htmlExample: `<span class="lava-flow">LAVA</span>`,
-    cssCode: `.lava-flow {
+    previewColor: "#87CEEB",
+    htmlExample: `<div class="pop-bolha">
+  <span style="--i:1">P</span>
+  <span style="--i:2">O</span>
+  <span style="--i:3">P</span>
+</div>`,
+    cssCode: `.pop-bolha {
   font-size: 3rem;
   font-weight: 900;
-  background: linear-gradient(180deg, #FFFF00 0%, #FF8C00 25%, #FF4500 50%, #DC143C 75%, #8B0000 100%);
-  background-size: 100% 300%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: lavaFlow 3s ease infinite;
-  filter: drop-shadow(0 0 10px rgba(255,69,0,0.6));
+  display: flex;
+  gap: 5px;
 }
-@keyframes lavaFlow {
-  0%, 100% { background-position: 50% 0%; }
-  50% { background-position: 50% 100%; }
+.pop-bolha span {
+  color: #87CEEB;
+  text-shadow: 0 0 20px rgba(135,206,235,0.8);
+  animation: bubblePop 2s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.3s);
+}
+@keyframes bubblePop {
+  0% { transform: scale(0); opacity: 0; border-radius: 50%; }
+  50% { transform: scale(1.3); opacity: 1; }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
 }`,
   },
   {
     id: "T-19",
-    name: "Ocean Deep",
-    description: "Profundezas do oceano.",
+    name: "Máquina Escrever",
+    description: "Efeito typewriter com cursor piscando.",
     category: "text",
-    previewColor: "#006994",
-    htmlExample: `<span class="ocean-deep">OCEAN</span>`,
-    cssCode: `.ocean-deep {
+    previewColor: "#00FF00",
+    htmlExample: `<div class="maquina-escrever">
+  <span style="--i:1">T</span>
+  <span style="--i:2">Y</span>
+  <span style="--i:3">P</span>
+  <span style="--i:4">E</span>
+  <span class="cursor">|</span>
+</div>`,
+    cssCode: `.maquina-escrever {
   font-size: 3rem;
-  font-weight: 900;
-  background: linear-gradient(180deg, #87CEEB 0%, #00CED1 25%, #006994 50%, #003366 75%, #001a33 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 2px 10px rgba(0,105,148,0.5);
-  animation: oceanWave 4s ease-in-out infinite;
+  font-weight: 400;
+  font-family: 'Courier New', monospace;
+  display: flex;
 }
-@keyframes oceanWave {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
+.maquina-escrever span {
+  color: #00FF00;
+  text-shadow: 0 0 10px #00FF00;
+  opacity: 0;
+  animation: typeChar 4s steps(1) infinite;
+  animation-delay: calc(var(--i) * 0.4s);
+}
+.maquina-escrever .cursor {
+  animation: blinkCursor 0.5s infinite;
+}
+@keyframes typeChar {
+  0%, 20% { opacity: 0; }
+  25%, 100% { opacity: 1; }
+}
+@keyframes blinkCursor {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }`,
   },
   {
     id: "T-20",
-    name: "Diamond Sparkle",
-    description: "Brilho de diamante cintilante.",
+    name: "Raio Elétrico",
+    description: "Letras com descarga elétrica entre elas.",
     category: "text",
-    previewColor: "#E0E0E0",
-    htmlExample: `<span class="diamond-sparkle">DIAMOND</span>`,
-    cssCode: `.diamond-sparkle {
+    previewColor: "#FFFF00",
+    htmlExample: `<div class="raio-eletrico">
+  <span style="--i:1">⚡</span>
+  <span style="--i:2">Z</span>
+  <span style="--i:3">A</span>
+  <span style="--i:4">P</span>
+  <span style="--i:5">⚡</span>
+</div>`,
+    cssCode: `.raio-eletrico {
   font-size: 3rem;
   font-weight: 900;
-  background: linear-gradient(135deg, #FFFFFF 0%, #E0E0E0 20%, #FFFFFF 40%, #C0C0C0 60%, #FFFFFF 80%, #E0E0E0 100%);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: diamondSparkle 2s ease infinite;
-  filter: drop-shadow(0 0 5px rgba(255,255,255,0.8));
+  display: flex;
 }
-@keyframes diamondSparkle {
-  0%, 100% { background-position: 0% 0%; filter: brightness(1); }
-  50% { background-position: 100% 100%; filter: brightness(1.5); }
+.raio-eletrico span {
+  color: #FFFF00;
+  text-shadow: 0 0 10px #FFFF00, 0 0 20px #FFD700, 0 0 40px #FFA500;
+  animation: electricZap 0.2s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.05s);
+}
+@keyframes electricZap {
+  0%, 100% { transform: translateX(0); filter: brightness(1); }
+  25% { transform: translateX(-2px); filter: brightness(1.5); }
+  50% { transform: translateX(2px); filter: brightness(2); }
+  75% { transform: translateX(-1px); filter: brightness(1.3); }
 }`,
   },
   {
     id: "T-21",
-    name: "Neon Outline",
-    description: "Contorno neon sem preenchimento.",
+    name: "Fumaça Subindo",
+    description: "Letras sobem e dissipam como fumaça.",
     category: "text",
-    previewColor: "#FF00FF",
-    htmlExample: `<span class="neon-outline">OUTLINE</span>`,
-    cssCode: `.neon-outline {
+    previewColor: "#696969",
+    htmlExample: `<div class="fumaca-subindo">
+  <span style="--i:1">S</span>
+  <span style="--i:2">M</span>
+  <span style="--i:3">O</span>
+  <span style="--i:4">K</span>
+  <span style="--i:5">E</span>
+</div>`,
+    cssCode: `.fumaca-subindo {
   font-size: 3rem;
   font-weight: 900;
-  color: transparent;
-  -webkit-text-stroke: 2px #FF00FF;
-  text-shadow: 
-    0 0 10px #FF00FF,
-    0 0 20px #FF00FF,
-    0 0 40px #FF00FF;
-  animation: neonOutlinePulse 2s ease-in-out infinite alternate;
+  display: flex;
 }
-@keyframes neonOutlinePulse {
-  from { filter: drop-shadow(0 0 5px #FF00FF); }
-  to { filter: drop-shadow(0 0 20px #FF00FF); }
+.fumaca-subindo span {
+  color: #696969;
+  animation: smokeRise 4s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.2s);
+}
+@keyframes smokeRise {
+  0% { transform: translateY(0); opacity: 1; filter: blur(0); }
+  50% { transform: translateY(-30px); opacity: 0.6; filter: blur(1px); }
+  100% { transform: translateY(-60px); opacity: 0; filter: blur(3px); }
 }`,
   },
   {
     id: "T-22",
-    name: "Vintage Stamp",
-    description: "Estilo carimbo vintage retrô.",
+    name: "Arco-Íris Dança",
+    description: "Letras dançam com cores arco-íris.",
     category: "text",
-    previewColor: "#8B4513",
-    htmlExample: `<span class="vintage-stamp">VINTAGE</span>`,
-    cssCode: `.vintage-stamp {
+    previewColor: "#FF0000",
+    htmlExample: `<div class="arco-iris-danca">
+  <span style="--i:1; --c:#FF0000">D</span>
+  <span style="--i:2; --c:#FF7F00">A</span>
+  <span style="--i:3; --c:#FFFF00">N</span>
+  <span style="--i:4; --c:#00FF00">C</span>
+  <span style="--i:5; --c:#0000FF">E</span>
+</div>`,
+    cssCode: `.arco-iris-danca {
   font-size: 3rem;
   font-weight: 900;
-  color: #8B4513;
-  text-shadow: 
-    2px 2px 0 #D2691E,
-    4px 4px 0 #A0522D;
-  border: 4px double #8B4513;
-  padding: 10px 20px;
-  transform: rotate(-5deg);
-  filter: sepia(0.3);
+  display: flex;
+}
+.arco-iris-danca span {
+  color: var(--c);
+  text-shadow: 0 0 10px var(--c), 0 0 20px var(--c);
+  animation: rainbowDance 1s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes rainbowDance {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-15px) rotate(-10deg); }
+  50% { transform: translateY(0) rotate(0deg); }
+  75% { transform: translateY(-10px) rotate(10deg); }
 }`,
   },
   {
     id: "T-23",
-    name: "3D Extrude",
-    description: "Extrusão 3D profunda.",
+    name: "Gotejamento",
+    description: "Letras pingam como líquido.",
     category: "text",
-    previewColor: "#FF6347",
-    htmlExample: `<span class="extrude-3d">3D TEXT</span>`,
-    cssCode: `.extrude-3d {
+    previewColor: "#8B0000",
+    htmlExample: `<div class="gotejamento">
+  <span style="--i:1">D</span>
+  <span style="--i:2">R</span>
+  <span style="--i:3">I</span>
+  <span style="--i:4">P</span>
+</div>`,
+    cssCode: `.gotejamento {
   font-size: 3rem;
   font-weight: 900;
-  color: #FF6347;
-  text-shadow: 
-    1px 1px 0 #E55039,
-    2px 2px 0 #D4402A,
-    3px 3px 0 #C3301B,
-    4px 4px 0 #B2200C,
-    5px 5px 0 #A11000,
-    6px 6px 10px rgba(0,0,0,0.5);
+  display: flex;
+}
+.gotejamento span {
+  background: linear-gradient(180deg, #DC143C, #8B0000, #4A0000);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: dripDown 3s ease-in infinite;
+  animation-delay: calc(var(--i) * 0.3s);
+}
+@keyframes dripDown {
+  0%, 20% { transform: translateY(-20px); opacity: 0; }
+  40% { transform: translateY(5px); opacity: 1; }
+  60% { transform: translateY(-3px); }
+  80%, 100% { transform: translateY(0); opacity: 1; }
 }`,
   },
   {
     id: "T-24",
-    name: "Plasma Energy",
-    description: "Energia plasmática vibrante.",
+    name: "Cristal Gelo",
+    description: "Letras cristalizam como gelo.",
     category: "text",
-    previewColor: "#9400D3",
-    htmlExample: `<span class="plasma-energy">PLASMA</span>`,
-    cssCode: `.plasma-energy {
+    previewColor: "#E0FFFF",
+    htmlExample: `<div class="cristal-gelo">
+  <span style="--i:1">I</span>
+  <span style="--i:2">C</span>
+  <span style="--i:3">E</span>
+</div>`,
+    cssCode: `.cristal-gelo {
   font-size: 3rem;
   font-weight: 900;
-  background: linear-gradient(90deg, #FF00FF, #9400D3, #4B0082, #0000FF, #4B0082, #9400D3, #FF00FF);
-  background-size: 400% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: plasmaEnergy 3s linear infinite;
-  filter: drop-shadow(0 0 15px rgba(148,0,211,0.6));
+  display: flex;
 }
-@keyframes plasmaEnergy {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 400% 50%; }
+.cristal-gelo span {
+  color: #E0FFFF;
+  text-shadow: 0 0 10px #00CED1, 0 0 20px #87CEEB, 0 0 30px #E0FFFF;
+  animation: iceForm 2s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.2s);
+}
+@keyframes iceForm {
+  0% { transform: scale(0.5); opacity: 0; filter: blur(5px); }
+  50% { transform: scale(1.1); opacity: 1; filter: blur(0); }
+  100% { transform: scale(1); opacity: 1; filter: blur(0) brightness(1.2); }
 }`,
   },
   {
     id: "T-25",
-    name: "Starfield",
-    description: "Campo estelar cintilante.",
+    name: "Helicóptero",
+    description: "Letras giram caindo como hélice.",
     category: "text",
-    previewColor: "#1a1a2e",
-    htmlExample: `<span class="starfield-text">STARS</span>`,
-    cssCode: `.starfield-text {
+    previewColor: "#32CD32",
+    htmlExample: `<div class="helicoptero">
+  <span style="--i:1">H</span>
+  <span style="--i:2">E</span>
+  <span style="--i:3">L</span>
+  <span style="--i:4">I</span>
+</div>`,
+    cssCode: `.helicoptero {
   font-size: 3rem;
   font-weight: 900;
-  background: 
-    radial-gradient(white 1px, transparent 1px),
-    radial-gradient(white 1px, transparent 1px),
-    linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-  background-size: 50px 50px, 30px 30px, 100% 100%;
-  background-position: 0 0, 25px 25px, 0 0;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: starTwinkle 4s ease infinite;
+  display: flex;
 }
-@keyframes starTwinkle {
-  0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(1.3); }
+.helicoptero span {
+  color: #32CD32;
+  text-shadow: 0 0 10px #32CD32;
+  animation: heliSpin 3s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.2s);
+}
+@keyframes heliSpin {
+  0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
+  50% { transform: translateY(0) rotate(360deg); opacity: 1; }
+  100% { transform: translateY(50px) rotate(720deg); opacity: 0; }
 }`,
   },
   {
     id: "T-26",
-    name: "Sunset Gradient",
-    description: "Gradiente de pôr do sol quente.",
+    name: "Explosão Estrelas",
+    description: "Letras explodem como estrelas.",
     category: "text",
-    previewColor: "#FF7F50",
-    htmlExample: `<span class="sunset-text">SUNSET</span>`,
-    cssCode: `.sunset-text {
+    previewColor: "#FFD700",
+    htmlExample: `<div class="explosao-estrelas">
+  <span style="--i:1">★</span>
+  <span style="--i:2">S</span>
+  <span style="--i:3">T</span>
+  <span style="--i:4">A</span>
+  <span style="--i:5">R</span>
+  <span style="--i:6">★</span>
+</div>`,
+    cssCode: `.explosao-estrelas {
   font-size: 3rem;
   font-weight: 900;
-  background: linear-gradient(180deg, #FFD700 0%, #FF8C00 25%, #FF6347 50%, #FF4500 75%, #DC143C 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 2px 20px rgba(255,99,71,0.4);
-  filter: drop-shadow(0 0 10px rgba(255,140,0,0.3));
+  display: flex;
+}
+.explosao-estrelas span {
+  color: #FFD700;
+  text-shadow: 0 0 10px #FFD700, 0 0 20px #FFA500, 0 0 40px #FF8C00;
+  animation: starBurst 2s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes starBurst {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.5) rotate(180deg); opacity: 1; }
+  100% { transform: scale(1) rotate(360deg); opacity: 1; }
 }`,
   },
   {
     id: "T-27",
-    name: "Typewriter Blink",
-    description: "Cursor de máquina de escrever.",
+    name: "Dominó Queda",
+    description: "Letras caem como peças de dominó.",
     category: "text",
-    previewColor: "#00FF00",
-    htmlExample: `<span class="typewriter-blink">TYPE_</span>`,
-    cssCode: `.typewriter-blink {
+    previewColor: "#1E90FF",
+    htmlExample: `<div class="domino-queda">
+  <span style="--i:1">D</span>
+  <span style="--i:2">O</span>
+  <span style="--i:3">M</span>
+  <span style="--i:4">I</span>
+  <span style="--i:5">N</span>
+  <span style="--i:6">O</span>
+</div>`,
+    cssCode: `.domino-queda {
   font-size: 3rem;
-  font-weight: 400;
-  font-family: 'Courier New', monospace;
-  color: #00FF00;
-  border-right: 4px solid #00FF00;
-  padding-right: 5px;
-  animation: cursorBlink 1s step-end infinite;
-  text-shadow: 0 0 10px #00FF00;
+  font-weight: 900;
+  display: flex;
 }
-@keyframes cursorBlink {
-  0%, 100% { border-color: #00FF00; }
-  50% { border-color: transparent; }
+.domino-queda span {
+  color: #1E90FF;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  transform-origin: bottom center;
+  animation: dominoFall 3s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.15s);
+}
+@keyframes dominoFall {
+  0%, 20% { transform: rotateX(-90deg); opacity: 0; }
+  30%, 70% { transform: rotateX(0deg); opacity: 1; }
+  80%, 100% { transform: rotateX(90deg); opacity: 0; }
 }`,
   },
   {
     id: "T-28",
-    name: "Bubble Pop",
-    description: "Bolhas coloridas divertidas.",
+    name: "Píxel Formando",
+    description: "Letras se formam de pixels.",
     category: "text",
-    previewColor: "#87CEEB",
-    htmlExample: `<span class="bubble-pop">BUBBLE</span>`,
-    cssCode: `.bubble-pop {
+    previewColor: "#00FF00",
+    htmlExample: `<div class="pixel-formando">
+  <span style="--i:1">P</span>
+  <span style="--i:2">I</span>
+  <span style="--i:3">X</span>
+  <span style="--i:4">E</span>
+  <span style="--i:5">L</span>
+</div>`,
+    cssCode: `.pixel-formando {
   font-size: 3rem;
   font-weight: 900;
-  background: linear-gradient(135deg, #87CEEB 0%, #DDA0DD 33%, #98FB98 66%, #FFB6C1 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 
-    0 0 20px rgba(135,206,235,0.5),
-    0 0 40px rgba(221,160,221,0.3);
-  animation: bubbleFloat 3s ease-in-out infinite;
+  font-family: 'Courier New', monospace;
+  display: flex;
 }
-@keyframes bubbleFloat {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-10px) scale(1.05); }
+.pixel-formando span {
+  color: #00FF00;
+  text-shadow: 0 0 5px #00FF00;
+  animation: pixelForm 2s steps(5) infinite;
+  animation-delay: calc(var(--i) * 0.2s);
+}
+@keyframes pixelForm {
+  0% { opacity: 0; filter: blur(10px); transform: scale(2); }
+  25% { opacity: 0.3; filter: blur(5px); transform: scale(1.5); }
+  50% { opacity: 0.6; filter: blur(2px); transform: scale(1.2); }
+  75% { opacity: 0.9; filter: blur(1px); transform: scale(1.05); }
+  100% { opacity: 1; filter: blur(0); transform: scale(1); }
 }`,
   },
   {
     id: "T-29",
-    name: "Gradient Wave",
-    description: "Onda de gradiente fluida.",
+    name: "Relâmpago Flash",
+    description: "Letras brilham como relâmpagos.",
     category: "text",
-    previewColor: "#00CED1",
-    htmlExample: `<span class="gradient-wave">WAVE</span>`,
-    cssCode: `.gradient-wave {
+    previewColor: "#FFFFFF",
+    htmlExample: `<div class="relampago-flash">
+  <span style="--i:1">⚡</span>
+  <span style="--i:2">F</span>
+  <span style="--i:3">L</span>
+  <span style="--i:4">A</span>
+  <span style="--i:5">S</span>
+  <span style="--i:6">H</span>
+</div>`,
+    cssCode: `.relampago-flash {
   font-size: 3rem;
   font-weight: 900;
-  background: linear-gradient(90deg, #00CED1, #20B2AA, #00FA9A, #7FFFD4, #40E0D0, #00CED1);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradientWave 4s ease infinite;
+  display: flex;
 }
-@keyframes gradientWave {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+.relampago-flash span {
+  color: #FFFFFF;
+  text-shadow: 0 0 10px #FFFFFF, 0 0 20px #87CEEB, 0 0 40px #00BFFF;
+  animation: lightningFlash 2s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes lightningFlash {
+  0%, 90%, 100% { opacity: 0.3; filter: brightness(0.5); }
+  5%, 15%, 25% { opacity: 1; filter: brightness(2); }
+  10%, 20% { opacity: 0.5; filter: brightness(0.8); }
 }`,
   },
   {
     id: "T-30",
-    name: "Galaxy Nebula",
-    description: "Nebulosa galáctica épica.",
+    name: "Galáxia Espiral",
+    description: "Letras em espiral cósmica.",
     category: "text",
-    previewColor: "#4B0082",
-    htmlExample: `<span class="galaxy-nebula">GALAXY</span>`,
-    cssCode: `.galaxy-nebula {
+    previewColor: "#9400D3",
+    htmlExample: `<div class="galaxia-espiral">
+  <span style="--i:1">G</span>
+  <span style="--i:2">A</span>
+  <span style="--i:3">L</span>
+  <span style="--i:4">A</span>
+  <span style="--i:5">X</span>
+  <span style="--i:6">Y</span>
+</div>`,
+    cssCode: `.galaxia-espiral {
   font-size: 3rem;
   font-weight: 900;
-  background: linear-gradient(135deg, #0f0c29 0%, #302b63 25%, #24243e 50%, #4B0082 75%, #8B008B 100%);
+  display: flex;
+  perspective: 800px;
+}
+.galaxia-espiral span {
+  background: linear-gradient(135deg, #9400D3, #4B0082, #00BFFF, #9400D3);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: nebulaShift 8s ease infinite;
-  text-shadow: 
-    0 0 20px rgba(75,0,130,0.5),
-    0 0 40px rgba(139,0,139,0.3);
+  text-shadow: 0 0 20px rgba(148,0,211,0.5);
+  animation: galaxySpin 5s ease-in-out infinite, galaxyColor 3s ease infinite;
+  animation-delay: calc(var(--i) * 0.1s);
 }
-@keyframes nebulaShift {
+@keyframes galaxySpin {
+  0% { transform: rotateZ(0deg) rotateY(0deg) translateZ(0); }
+  25% { transform: rotateZ(90deg) rotateY(180deg) translateZ(20px); }
+  50% { transform: rotateZ(180deg) rotateY(360deg) translateZ(0); }
+  75% { transform: rotateZ(270deg) rotateY(180deg) translateZ(-20px); }
+  100% { transform: rotateZ(360deg) rotateY(0deg) translateZ(0); }
+}
+@keyframes galaxyColor {
   0%, 100% { background-position: 0% 50%; }
-  25% { background-position: 50% 0%; }
   50% { background-position: 100% 50%; }
-  75% { background-position: 50% 100%; }
 }`,
   },
 ];
