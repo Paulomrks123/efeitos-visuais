@@ -11,6 +11,8 @@ const categoryStyles = {
   neumorphism: "data-[active=true]:bg-neon-green/10 data-[active=true]:border-neon-green data-[active=true]:text-neon-green",
   filters: "data-[active=true]:bg-neon-purple/10 data-[active=true]:border-neon-purple data-[active=true]:text-neon-purple",
   gradients: "data-[active=true]:bg-neon-magenta/10 data-[active=true]:border-neon-magenta data-[active=true]:text-neon-magenta",
+  text: "data-[active=true]:bg-neon-orange/10 data-[active=true]:border-neon-orange data-[active=true]:text-neon-orange",
+  images: "data-[active=true]:bg-pink-500/10 data-[active=true]:border-pink-500 data-[active=true]:text-pink-500",
 };
 
 export function EffectCategoryFilter({ activeCategory, onCategoryChange }: EffectCategoryFilterProps) {
