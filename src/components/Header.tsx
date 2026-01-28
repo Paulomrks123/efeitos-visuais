@@ -10,13 +10,13 @@ export function Header({ activeLibrary }: HeaderProps) {
   const isButtons = activeLibrary === "buttons";
 
   const getTitle = () => {
-    if (isAnimations) return "Biblioteca de Animações";
+    if (isAnimations) return ["Biblioteca", "Visual"];
     if (isEffects) return "Biblioteca de Efeitos";
     return "Biblioteca de Botões";
   };
 
   const title = getTitle();
-  const letters = useMemo(() => title.split(''), [title]);
+  const animationLines = isAnimations ? (title as string[]) : null;
   
   return (
     <header className="py-12 px-4 text-center relative overflow-hidden">
@@ -26,17 +26,21 @@ export function Header({ activeLibrary }: HeaderProps) {
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
       
       <div className="relative z-10 max-w-4xl mx-auto">
-        {isAnimations ? (
-          <h1 className="espiral-galactica justify-center mb-4">
-            {letters.map((letter, index) => (
-              <span key={index} style={{ '--i': index + 1 } as React.CSSProperties}>
-                {letter === ' ' ? '\u00A0' : letter}
-              </span>
+        {isAnimations && animationLines ? (
+          <div className="mb-4">
+            {animationLines.map((line, lineIndex) => (
+              <h1 key={lineIndex} className="espiral-galactica justify-center">
+                {line.split('').map((letter, index) => (
+                  <span key={index} style={{ '--i': index + 1 } as React.CSSProperties}>
+                    {letter === ' ' ? '\u00A0' : letter}
+                  </span>
+                ))}
+              </h1>
             ))}
-          </h1>
+          </div>
         ) : (
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            {title}
+            {title as string}
           </h1>
         )}
         
