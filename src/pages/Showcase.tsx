@@ -33,7 +33,7 @@ export default function Showcase() {
                   Showcase de Estilos
                 </h1>
                 <p className="text-sm text-muted-foreground">
-                  8 estilos de design para diferentes contextos
+                  19 estilos de design para diferentes contextos
                 </p>
               </div>
             </div>
@@ -64,7 +64,7 @@ export default function Showcase() {
               <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
                 <Palette size={16} className="text-primary" />
               </div>
-              <span className="font-medium">18 Estilos</span>
+              <span className="font-medium">19 Estilos</span>
             </div>
             <p className="text-sm text-muted-foreground">
               De Premium Minimalista a Cyberpunk Neon
@@ -114,6 +114,7 @@ export default function Showcase() {
             { id: "watercolor", label: "Watercolor" },
             { id: "glass", label: "Glass 3D" },
             { id: "nature", label: "Nature" },
+            { id: "vizion", label: "Vizion" },
           ].map((f) => (
             <button
               key={f.id}
