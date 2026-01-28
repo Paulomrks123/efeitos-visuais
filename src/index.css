@@ -495,4 +495,159 @@
     70% { transform: scale(1.08); box-shadow: 0 0 0 12px rgba(0,255,255,0); }
     100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,255,255,0); }
   }
+
+  /* ============================================== */
+  /* LIVE PREVIEW ANIMATIONS - EFEITOS VISUAIS AO VIVO */
+  /* ============================================== */
+
+  /* Neon Glow Pulse - Brilho intenso pulsante */
+  @keyframes liveNeonPulse {
+    0%, 100% { 
+      box-shadow: 0 0 5px var(--preview-color), 0 0 10px var(--preview-color), 0 0 15px var(--preview-color);
+      transform: scale(1);
+    }
+    50% { 
+      box-shadow: 0 0 10px var(--preview-color), 0 0 25px var(--preview-color), 0 0 50px var(--preview-color), 0 0 80px var(--preview-color);
+      transform: scale(1.05);
+    }
+  }
+
+  /* Flicker Effect - Piscar neon */
+  @keyframes liveFlicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      opacity: 1;
+      box-shadow: 0 0 10px var(--preview-color), 0 0 20px var(--preview-color);
+    }
+    20%, 24%, 55% {
+      opacity: 0.3;
+      box-shadow: 0 0 2px var(--preview-color);
+    }
+  }
+
+  /* Shake/Zap - Tremor elétrico */
+  @keyframes liveZap {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
+    20%, 40%, 60%, 80% { transform: translateX(3px); }
+  }
+
+  /* Rotate/Spin - Rotação contínua */
+  @keyframes liveSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Bounce - Saltar */
+  @keyframes liveBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  /* Scale Pulse - Crescer/diminuir */
+  @keyframes liveScale {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  /* Float - Flutuar suave */
+  @keyframes liveFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-8px) rotate(2deg); }
+    75% { transform: translateY(8px) rotate(-2deg); }
+  }
+
+  /* Color Shift - Mudança de cor */
+  @keyframes liveColorShift {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+
+  /* Morph Shape - Morfar forma */
+  @keyframes liveMorph {
+    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  }
+
+  /* Plasma Gradient - Gradiente plasma */
+  @keyframes livePlasma {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Shimmer - Brilho percorrendo */
+  @keyframes liveShimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  /* Heartbeat - Batimento */
+  @keyframes liveHeartbeat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.2); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.2); }
+    70% { transform: scale(1); }
+  }
+
+  /* Jello - Gelatina */
+  @keyframes liveJello {
+    0%, 100% { transform: scale3d(1, 1, 1); }
+    30% { transform: scale3d(1.25, 0.75, 1); }
+    40% { transform: scale3d(0.75, 1.25, 1); }
+    50% { transform: scale3d(1.15, 0.85, 1); }
+    65% { transform: scale3d(0.95, 1.05, 1); }
+    75% { transform: scale3d(1.05, 0.95, 1); }
+  }
+
+  /* Swing - Balanço */
+  @keyframes liveSwing {
+    20% { transform: rotate(10deg); }
+    40% { transform: rotate(-8deg); }
+    60% { transform: rotate(5deg); }
+    80% { transform: rotate(-3deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  /* Tada - Atenção */
+  @keyframes liveTada {
+    0% { transform: scale3d(1, 1, 1); }
+    10%, 20% { transform: scale3d(0.9, 0.9, 0.9) rotate(-3deg); }
+    30%, 50%, 70%, 90% { transform: scale3d(1.1, 1.1, 1.1) rotate(3deg); }
+    40%, 60%, 80% { transform: scale3d(1.1, 1.1, 1.1) rotate(-3deg); }
+    100% { transform: scale3d(1, 1, 1); }
+  }
+
+  /* 3D Flip - Giro 3D */
+  @keyframes liveFlip3D {
+    0% { transform: perspective(400px) rotateY(0); }
+    100% { transform: perspective(400px) rotateY(360deg); }
+  }
+
+  /* Gradient Moving - Gradiente em movimento */
+  @keyframes liveGradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Neumorphism Press - Pressão neumórfica */
+  @keyframes liveNeumorphPress {
+    0%, 100% { 
+      box-shadow: 8px 8px 16px rgba(0,0,0,0.4), -8px -8px 16px rgba(255,255,255,0.1);
+      transform: translateY(0);
+    }
+    50% { 
+      box-shadow: 4px 4px 8px rgba(0,0,0,0.4), -4px -4px 8px rgba(255,255,255,0.1);
+      transform: translateY(2px);
+    }
+  }
+
+  /* Filter Animate - Filtros animados */
+  @keyframes liveFilterAnimate {
+    0%, 100% { filter: saturate(1) contrast(1); }
+    25% { filter: saturate(1.5) contrast(1.2); }
+    50% { filter: saturate(2) contrast(1.1) brightness(1.1); }
+    75% { filter: saturate(1.3) contrast(1.3); }
+  }
 }
