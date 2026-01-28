@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Copy, Check, Play, Pause, Expand } from "lucide-react";
+import { Copy, Check, Play, Pause, Expand, Lightbulb } from "lucide-react";
 import { FavoriteButton } from "@/components/features/FavoriteButton";
 import {
   Dialog,
@@ -17,6 +17,7 @@ interface CompactCardProps {
   htmlCode: string;
   renderPreview: (isPlaying: boolean) => React.ReactNode;
   categoryColor: string;
+  useCaseExample?: string;
 }
 
 export function CompactCard({
@@ -28,6 +29,7 @@ export function CompactCard({
   htmlCode,
   renderPreview,
   categoryColor,
+  useCaseExample,
 }: CompactCardProps) {
   const [isPlaying, setIsPlaying] = useState(true);
   const [copied, setCopied] = useState(false);
@@ -108,6 +110,17 @@ export function CompactCard({
             <div className="bg-background/50 rounded-lg p-8 flex items-center justify-center min-h-[150px] border border-border/50">
               {renderPreview(isPlaying)}
             </div>
+
+            {/* Use Case Example */}
+            {useCaseExample && (
+              <div className="flex items-start gap-2 p-3 rounded-lg bg-primary/5 border border-primary/20">
+                <Lightbulb size={14} className="text-primary shrink-0 mt-0.5" />
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  <span className="font-medium text-primary">Uso: </span>
+                  {useCaseExample}
+                </p>
+              </div>
+            )}
 
             {/* Controls */}
             <div className="flex gap-2">

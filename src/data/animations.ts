@@ -7,6 +7,20 @@ export interface Animation {
   htmlExample: string;
   animationClass: string;
   previewColor?: string;
+  useCaseExample?: string;
+}
+
+// Exemplos de uso por categoria
+export const animationUseCasesByCategory: Record<string, string> = {
+  futuristic: "Ideal para interfaces de games, dashboards tech ou sites cyberpunk.",
+  modern: "Perfeito para landing pages, portfólios e apps empresariais modernos.",
+  stylish: "Excelente para sites de moda, joalherias e marcas de luxo.",
+  vibrant: "Ótimo para apps infantis, sites de entretenimento e redes sociais.",
+};
+
+// Função para obter exemplo de uso
+export function getAnimationUseCase(animation: Animation): string {
+  return animation.useCaseExample || animationUseCasesByCategory[animation.category] || "Use em projetos web para adicionar dinamismo visual.";
 }
 
 export const categories = [

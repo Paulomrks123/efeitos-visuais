@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { X, Star, Sparkles, Layers, MousePointerClick, Trash2, Download, Type, Copy, Check, ChevronDown, ChevronUp, Code } from "lucide-react";
+import { X, Star, Sparkles, Layers, MousePointerClick, Trash2, Download, Type, Copy, Check, ChevronDown, ChevronUp, Code, Lightbulb } from "lucide-react";
 import { useFavorites } from "@/providers/FavoritesProvider";
-import { animations } from "@/data/animations";
-import { effects } from "@/data/effects";
-import { buttonAnimations } from "@/data/buttons";
+import { animations, getAnimationUseCase } from "@/data/animations";
+import { effects, getEffectUseCase } from "@/data/effects";
+import { buttonAnimations, getButtonUseCase } from "@/data/buttons";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -91,7 +91,8 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
     type: "animation" | "effect" | "button",
     color: string,
     cssCode: string,
-    category?: string
+    category?: string,
+    useCaseExample?: string
   ) => {
     const isExpanded = expandedItems.has(id);
     const isCopied = copiedId === id;
@@ -161,7 +162,25 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
         </div>
         
         <CollapsibleContent>
-          <div className="px-3 pb-3">
+          <div className="px-3 pb-3 space-y-3">
+            {/* Exemplo de Uso */}
+            {useCaseExample && (
+              <div 
+                className="flex items-start gap-2 p-2.5 rounded-lg"
+                style={{ 
+                  background: `linear-gradient(135deg, ${color}15, ${color}08)`,
+                  border: `1px solid ${color}33`
+                }}
+              >
+                <Lightbulb size={14} style={{ color }} className="shrink-0 mt-0.5" />
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  <span className="font-medium" style={{ color }}>Uso: </span>
+                  {useCaseExample}
+                </p>
+              </div>
+            )}
+            
+            {/* Código CSS */}
             <div 
               className="relative rounded-lg overflow-hidden"
               style={{ 
@@ -254,7 +273,7 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
                         {favoriteAnimations.map(id => {
                           const anim = getAnimationById(id);
                           if (!anim) return null;
-                          return renderFavoriteItem(id, anim.name, "animation", anim.previewColor || "#00FFFF", anim.cssCode, anim.category);
+                          return renderFavoriteItem(id, anim.name, "animation", anim.previewColor || "#00FFFF", anim.cssCode, anim.category, getAnimationUseCase(anim));
                         })}
                       </div>
                     </div>
@@ -270,7 +289,7 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
                         {favoriteVisualEffects.map(id => {
                           const effect = getEffectById(id);
                           if (!effect) return null;
-                          return renderFavoriteItem(id, effect.name, "effect", effect.previewColor || "#FF00FF", effect.cssCode, effect.category);
+                          return renderFavoriteItem(id, effect.name, "effect", effect.previewColor || "#FF00FF", effect.cssCode, effect.category, getEffectUseCase(effect));
                         })}
                       </div>
                     </div>
@@ -286,7 +305,7 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
                         {favoriteTextEffects.map(id => {
                           const effect = getEffectById(id);
                           if (!effect) return null;
-                          return renderFavoriteItem(id, effect.name, "effect", effect.previewColor || "#FF1493", effect.cssCode, "text");
+                          return renderFavoriteItem(id, effect.name, "effect", effect.previewColor || "#FF1493", effect.cssCode, "text", getEffectUseCase(effect));
                         })}
                       </div>
                     </div>
@@ -302,7 +321,7 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
                         {favoriteButtons.map(id => {
                           const btn = getButtonById(id);
                           if (!btn) return null;
-                          return renderFavoriteItem(id, btn.name, "button", btn.previewColor || "#00FF00", btn.cssCode, btn.category);
+                          return renderFavoriteItem(id, btn.name, "button", btn.previewColor || "#00FF00", btn.cssCode, btn.category, getButtonUseCase(btn));
                         })}
                       </div>
                     </div>
@@ -322,7 +341,7 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
                 favoriteAnimations.map(id => {
                   const anim = getAnimationById(id);
                   if (!anim) return null;
-                  return renderFavoriteItem(id, anim.name, "animation", anim.previewColor || "#00FFFF", anim.cssCode, anim.category);
+                  return renderFavoriteItem(id, anim.name, "animation", anim.previewColor || "#00FFFF", anim.cssCode, anim.category, getAnimationUseCase(anim));
                 })
               )}
             </TabsContent>
@@ -338,7 +357,7 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
                 favoriteVisualEffects.map(id => {
                   const effect = getEffectById(id);
                   if (!effect) return null;
-                  return renderFavoriteItem(id, effect.name, "effect", effect.previewColor || "#FF00FF", effect.cssCode, effect.category);
+                  return renderFavoriteItem(id, effect.name, "effect", effect.previewColor || "#FF00FF", effect.cssCode, effect.category, getEffectUseCase(effect));
                 })
               )}
             </TabsContent>
@@ -354,7 +373,7 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
                 favoriteTextEffects.map(id => {
                   const effect = getEffectById(id);
                   if (!effect) return null;
-                  return renderFavoriteItem(id, effect.name, "effect", effect.previewColor || "#FF1493", effect.cssCode, "text");
+                  return renderFavoriteItem(id, effect.name, "effect", effect.previewColor || "#FF1493", effect.cssCode, "text", getEffectUseCase(effect));
                 })
               )}
             </TabsContent>
@@ -370,7 +389,7 @@ export function FavoritesPanel({ isOpen, onClose }: FavoritesPanelProps) {
                 favoriteButtons.map(id => {
                   const btn = getButtonById(id);
                   if (!btn) return null;
-                  return renderFavoriteItem(id, btn.name, "button", btn.previewColor || "#00FF00", btn.cssCode, btn.category);
+                  return renderFavoriteItem(id, btn.name, "button", btn.previewColor || "#00FF00", btn.cssCode, btn.category, getButtonUseCase(btn));
                 })
               )}
             </TabsContent>

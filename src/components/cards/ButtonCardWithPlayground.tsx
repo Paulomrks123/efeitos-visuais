@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Copy, Check, Sliders, Play, Pause } from "lucide-react";
-import { ButtonAnimation } from "@/data/buttons";
+import { Copy, Check, Sliders, Play, Pause, Lightbulb } from "lucide-react";
+import { ButtonAnimation, getButtonUseCase } from "@/data/buttons";
 import { FavoriteButton } from "@/components/features/FavoriteButton";
 import { AnimationPlayground } from "@/components/playground/AnimationPlayground";
 import { ButtonLivePreview } from "@/components/LivePreview";
@@ -153,7 +153,16 @@ export function ButtonCardWithPlayground({ button, isCompact = false, index }: B
         </div>
 
         {/* Description */}
-        <p className="text-sm text-muted-foreground mb-4">{button.description}</p>
+        <p className="text-sm text-muted-foreground mb-2">{button.description}</p>
+        
+        {/* Use Case Example */}
+        <div className="flex items-start gap-2 p-2.5 mb-4 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20">
+          <Lightbulb size={14} className="text-neon-cyan shrink-0 mt-0.5" />
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            <span className="font-medium text-neon-cyan">Uso: </span>
+            {getButtonUseCase(button)}
+          </p>
+        </div>
 
         {/* Preview */}
         <div 

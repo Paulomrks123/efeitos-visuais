@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Copy, Check, Sliders } from "lucide-react";
-import { Effect } from "@/data/effects";
+import { Copy, Check, Sliders, Lightbulb } from "lucide-react";
+import { Effect, getEffectUseCase } from "@/data/effects";
 import { FavoriteButton } from "@/components/features/FavoriteButton";
 import { AnimationPlayground } from "@/components/playground/AnimationPlayground";
 import { EffectLivePreview } from "@/components/LivePreview";
@@ -125,7 +125,16 @@ export function EffectCardWithPlayground({ effect, isCompact = false, index }: E
         </div>
 
         {/* Description */}
-        <p className="text-sm text-muted-foreground mb-4">{effect.description}</p>
+        <p className="text-sm text-muted-foreground mb-2">{effect.description}</p>
+        
+        {/* Use Case Example */}
+        <div className="flex items-start gap-2 p-2.5 mb-4 rounded-lg bg-secondary/5 border border-secondary/20">
+          <Lightbulb size={14} className="text-secondary shrink-0 mt-0.5" />
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            <span className="font-medium text-secondary">Uso: </span>
+            {getEffectUseCase(effect)}
+          </p>
+        </div>
 
         {/* Preview */}
         <div 

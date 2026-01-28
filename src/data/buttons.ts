@@ -10,6 +10,22 @@ export interface ButtonAnimation {
   duration: string;
   intensity: string;
   previewColor?: string;
+  useCaseExample?: string;
+}
+
+// Exemplos de uso por categoria
+export const buttonUseCasesByCategory: Record<string, string> = {
+  scale: "Ideal para CTAs, botões de ação e interações de destaque.",
+  pulse: "Perfeito para notificações, alertas e elementos que precisam chamar atenção.",
+  glow: "Excelente para botões premium, games e interfaces futuristas.",
+  fill: "Ótimo para menus, navegação e botões com feedback visual claro.",
+  "3d": "Use em interfaces imersivas, jogos e experiências interativas.",
+  icon: "Aplique em botões com ícones, redes sociais e ações rápidas.",
+};
+
+// Função para obter exemplo de uso
+export function getButtonUseCase(button: ButtonAnimation): string {
+  return button.useCaseExample || buttonUseCasesByCategory[button.category] || "Use em botões e elementos interativos do seu projeto.";
 }
 
 export const buttonCategories = [
