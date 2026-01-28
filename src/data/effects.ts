@@ -2158,4 +2158,667 @@ export const effects: Effect[] = [
   50% { background-position: 100% 50%; }
 }`,
   },
+
+  // ==================== TEXT APPEARANCE EFFECTS (20 efeitos) ====================
+  {
+    id: "T-31",
+    name: "Portal Dimensional",
+    description: "Letras emergem de um portal mágico.",
+    category: "text",
+    previewColor: "#8A2BE2",
+    htmlExample: `<div class="portal-dimensional">
+  <span style="--i:1">P</span>
+  <span style="--i:2">O</span>
+  <span style="--i:3">R</span>
+  <span style="--i:4">T</span>
+  <span style="--i:5">A</span>
+  <span style="--i:6">L</span>
+</div>`,
+    cssCode: `.portal-dimensional {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+  perspective: 1000px;
+}
+.portal-dimensional span {
+  color: #8A2BE2;
+  text-shadow: 0 0 20px #8A2BE2, 0 0 40px #9400D3;
+  animation: portalEmerge 3s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.15s);
+}
+@keyframes portalEmerge {
+  0% { transform: translateZ(-500px) rotateY(720deg) scale(0); opacity: 0; filter: blur(20px); }
+  50% { transform: translateZ(50px) rotateY(360deg) scale(1.2); opacity: 1; filter: blur(0); }
+  100% { transform: translateZ(0) rotateY(0deg) scale(1); opacity: 1; }
+}`,
+  },
+  {
+    id: "T-32",
+    name: "Hologram Scan",
+    description: "Texto aparece com linhas de varredura holográfica.",
+    category: "text",
+    previewColor: "#00FFFF",
+    htmlExample: `<div class="hologram-scan">
+  <span style="--i:1">H</span>
+  <span style="--i:2">O</span>
+  <span style="--i:3">L</span>
+  <span style="--i:4">O</span>
+</div>`,
+    cssCode: `.hologram-scan {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+  position: relative;
+}
+.hologram-scan span {
+  color: #00FFFF;
+  text-shadow: 0 0 10px #00FFFF, 0 0 20px #00CED1;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(0,255,255,0.1) 2px,
+    rgba(0,255,255,0.1) 4px
+  );
+  -webkit-background-clip: text;
+  animation: holoScan 2s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes holoScan {
+  0% { opacity: 0; transform: translateY(20px); clip-path: inset(100% 0 0 0); }
+  50% { opacity: 0.7; clip-path: inset(50% 0 0 0); }
+  100% { opacity: 1; transform: translateY(0); clip-path: inset(0 0 0 0); }
+}`,
+  },
+  {
+    id: "T-33",
+    name: "DNA Helix",
+    description: "Letras formam uma espiral de DNA.",
+    category: "text",
+    previewColor: "#00FF7F",
+    htmlExample: `<div class="dna-helix">
+  <span style="--i:1">D</span>
+  <span style="--i:2">N</span>
+  <span style="--i:3">A</span>
+</div>`,
+    cssCode: `.dna-helix {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+  gap: 10px;
+  perspective: 500px;
+}
+.dna-helix span {
+  color: #00FF7F;
+  text-shadow: 0 0 15px #00FF7F, 0 0 30px #32CD32;
+  animation: dnaSpiral 3s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.3s);
+}
+@keyframes dnaSpiral {
+  0% { transform: rotateX(0deg) translateY(0) translateZ(0); }
+  25% { transform: rotateX(90deg) translateY(-20px) translateZ(30px); }
+  50% { transform: rotateX(180deg) translateY(0) translateZ(0); }
+  75% { transform: rotateX(270deg) translateY(20px) translateZ(-30px); }
+  100% { transform: rotateX(360deg) translateY(0) translateZ(0); }
+}`,
+  },
+  {
+    id: "T-34",
+    name: "Partículas Magnéticas",
+    description: "Partículas se juntam formando letras.",
+    category: "text",
+    previewColor: "#FF6347",
+    htmlExample: `<div class="particulas-magneticas">
+  <span style="--i:1; --x:-50px; --y:-30px">M</span>
+  <span style="--i:2; --x:40px; --y:-40px">A</span>
+  <span style="--i:3; --x:-30px; --y:50px">G</span>
+  <span style="--i:4; --x:60px; --y:30px">N</span>
+  <span style="--i:5; --x:-40px; --y:-50px">E</span>
+  <span style="--i:6; --x:50px; --y:40px">T</span>
+</div>`,
+    cssCode: `.particulas-magneticas {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+}
+.particulas-magneticas span {
+  color: #FF6347;
+  text-shadow: 0 0 10px #FF6347, 0 0 20px #FF4500;
+  animation: magneticPull 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes magneticPull {
+  0% { transform: translate(var(--x, 0), var(--y, 0)) rotate(360deg) scale(0); opacity: 0; }
+  50% { transform: translate(calc(var(--x, 0) / 2), calc(var(--y, 0) / 2)) rotate(180deg) scale(1.3); opacity: 1; }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+}`,
+  },
+  {
+    id: "T-35",
+    name: "Gravidade Zero",
+    description: "Letras flutuam em gravidade zero.",
+    category: "text",
+    previewColor: "#E0E0E0",
+    htmlExample: `<div class="gravidade-zero">
+  <span style="--i:1; --r:5deg">Z</span>
+  <span style="--i:2; --r:-3deg">E</span>
+  <span style="--i:3; --r:4deg">R</span>
+  <span style="--i:4; --r:-6deg">O</span>
+</div>`,
+    cssCode: `.gravidade-zero {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+}
+.gravidade-zero span {
+  color: #E0E0E0;
+  text-shadow: 0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(200,200,200,0.5);
+  animation: zeroGravity 6s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.5s);
+}
+@keyframes zeroGravity {
+  0%, 100% { transform: translateY(0) rotate(var(--r, 0)); }
+  25% { transform: translateY(-20px) rotate(calc(var(--r, 0) * -1)); }
+  50% { transform: translateY(10px) rotate(var(--r, 0)); }
+  75% { transform: translateY(-15px) rotate(calc(var(--r, 0) * 2)); }
+}`,
+  },
+  {
+    id: "T-36",
+    name: "Cortina Revelação",
+    description: "Texto revelado como cortina abrindo.",
+    category: "text",
+    previewColor: "#FFD700",
+    htmlExample: `<div class="cortina-revelacao">
+  <span style="--i:1">C</span>
+  <span style="--i:2">O</span>
+  <span style="--i:3">R</span>
+  <span style="--i:4">T</span>
+  <span style="--i:5">I</span>
+  <span style="--i:6">N</span>
+  <span style="--i:7">A</span>
+</div>`,
+    cssCode: `.cortina-revelacao {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+}
+.cortina-revelacao span {
+  background: linear-gradient(180deg, #FFD700, #FFA500);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  animation: curtainReveal 4s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes curtainReveal {
+  0% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); transform: scaleX(0); }
+  50% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: scaleX(1); }
+  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: scaleX(1); }
+}`,
+  },
+  {
+    id: "T-37",
+    name: "Explosão Supernova",
+    description: "Letras explodem como uma supernova.",
+    category: "text",
+    previewColor: "#FF4500",
+    htmlExample: `<div class="explosao-supernova">
+  <span style="--i:1">N</span>
+  <span style="--i:2">O</span>
+  <span style="--i:3">V</span>
+  <span style="--i:4">A</span>
+</div>`,
+    cssCode: `.explosao-supernova {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+}
+.explosao-supernova span {
+  background: linear-gradient(135deg, #FFFF00, #FF8C00, #FF4500, #FF0000);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 30px #FF4500, 0 0 60px #FF8C00;
+  animation: supernovaExplode 2s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes supernovaExplode {
+  0% { transform: scale(0); opacity: 0; filter: brightness(0); }
+  30% { transform: scale(2); opacity: 1; filter: brightness(3); }
+  60% { transform: scale(0.8); filter: brightness(1.5); }
+  100% { transform: scale(1); opacity: 1; filter: brightness(1); }
+}`,
+  },
+  {
+    id: "T-38",
+    name: "Onda Sísmica",
+    description: "Texto aparece com ondas sísmicas.",
+    category: "text",
+    previewColor: "#8B4513",
+    htmlExample: `<div class="onda-sismica">
+  <span style="--i:1">Q</span>
+  <span style="--i:2">U</span>
+  <span style="--i:3">A</span>
+  <span style="--i:4">K</span>
+  <span style="--i:5">E</span>
+</div>`,
+    cssCode: `.onda-sismica {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+}
+.onda-sismica span {
+  color: #8B4513;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+  animation: seismicWave 1.5s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.08s);
+}
+@keyframes seismicWave {
+  0% { transform: translateY(100px) scaleY(0); opacity: 0; }
+  20% { transform: translateY(-20px) scaleY(1.3); opacity: 1; }
+  40% { transform: translateY(10px) scaleY(0.9); }
+  60% { transform: translateY(-5px) scaleY(1.1); }
+  80% { transform: translateY(3px) scaleY(0.95); }
+  100% { transform: translateY(0) scaleY(1); opacity: 1; }
+}`,
+  },
+  {
+    id: "T-39",
+    name: "Teletransporte",
+    description: "Letras teletransportam com efeito sci-fi.",
+    category: "text",
+    previewColor: "#00CED1",
+    htmlExample: `<div class="teletransporte">
+  <span style="--i:1">B</span>
+  <span style="--i:2">E</span>
+  <span style="--i:3">A</span>
+  <span style="--i:4">M</span>
+</div>`,
+    cssCode: `.teletransporte {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+}
+.teletransporte span {
+  color: #00CED1;
+  text-shadow: 0 0 20px #00CED1, 0 0 40px #00FFFF;
+  animation: teleportBeam 3s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.2s);
+}
+@keyframes teleportBeam {
+  0% { transform: scaleY(0) translateY(-50px); opacity: 0; filter: blur(10px); }
+  30% { transform: scaleY(3) translateY(0); opacity: 0.5; filter: blur(5px); }
+  50% { transform: scaleY(1) translateY(0); opacity: 1; filter: blur(0); }
+  100% { transform: scaleY(1) translateY(0); opacity: 1; filter: blur(0); }
+}`,
+  },
+  {
+    id: "T-40",
+    name: "Origami Dobra",
+    description: "Letras se desdobram como origami.",
+    category: "text",
+    previewColor: "#FF69B4",
+    htmlExample: `<div class="origami-dobra">
+  <span style="--i:1">F</span>
+  <span style="--i:2">O</span>
+  <span style="--i:3">L</span>
+  <span style="--i:4">D</span>
+</div>`,
+    cssCode: `.origami-dobra {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+  perspective: 800px;
+}
+.origami-dobra span {
+  color: #FF69B4;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  transform-origin: left center;
+  animation: origamiFold 3s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.2s);
+}
+@keyframes origamiFold {
+  0% { transform: rotateY(-90deg); opacity: 0; }
+  50% { transform: rotateY(20deg); opacity: 1; }
+  70% { transform: rotateY(-10deg); }
+  100% { transform: rotateY(0deg); opacity: 1; }
+}`,
+  },
+  {
+    id: "T-41",
+    name: "Buraco Negro",
+    description: "Letras emergem de um buraco negro.",
+    category: "text",
+    previewColor: "#4B0082",
+    htmlExample: `<div class="buraco-negro">
+  <span style="--i:1">V</span>
+  <span style="--i:2">O</span>
+  <span style="--i:3">I</span>
+  <span style="--i:4">D</span>
+</div>`,
+    cssCode: `.buraco-negro {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+  perspective: 1000px;
+}
+.buraco-negro span {
+  background: linear-gradient(135deg, #4B0082, #8A2BE2, #9400D3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 30px #4B0082;
+  animation: blackHoleEmerge 4s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.2s);
+}
+@keyframes blackHoleEmerge {
+  0% { transform: scale(0) rotate(720deg) translateZ(-200px); opacity: 0; filter: blur(20px); }
+  50% { transform: scale(1.3) rotate(360deg) translateZ(50px); opacity: 1; filter: blur(0); }
+  100% { transform: scale(1) rotate(0deg) translateZ(0); opacity: 1; }
+}`,
+  },
+  {
+    id: "T-42",
+    name: "Código Matrix",
+    description: "Letras caem como código Matrix.",
+    category: "text",
+    previewColor: "#00FF00",
+    htmlExample: `<div class="codigo-matrix">
+  <span style="--i:1; --d:0.3s">M</span>
+  <span style="--i:2; --d:0.6s">A</span>
+  <span style="--i:3; --d:0.1s">T</span>
+  <span style="--i:4; --d:0.8s">R</span>
+  <span style="--i:5; --d:0.4s">I</span>
+  <span style="--i:6; --d:0.2s">X</span>
+</div>`,
+    cssCode: `.codigo-matrix {
+  font-size: 3rem;
+  font-weight: 900;
+  font-family: 'Courier New', monospace;
+  display: flex;
+}
+.codigo-matrix span {
+  color: #00FF00;
+  text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 40px #00FF00;
+  animation: matrixFall 2s linear infinite;
+  animation-delay: var(--d, 0s);
+}
+@keyframes matrixFall {
+  0% { transform: translateY(-100px); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100px); opacity: 0; }
+}`,
+  },
+  {
+    id: "T-43",
+    name: "Cristalização",
+    description: "Letras cristalizam do nada.",
+    category: "text",
+    previewColor: "#E0FFFF",
+    htmlExample: `<div class="cristalizacao">
+  <span style="--i:1">C</span>
+  <span style="--i:2">R</span>
+  <span style="--i:3">Y</span>
+  <span style="--i:4">S</span>
+  <span style="--i:5">T</span>
+  <span style="--i:6">A</span>
+  <span style="--i:7">L</span>
+</div>`,
+    cssCode: `.cristalizacao {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+}
+.cristalizacao span {
+  color: #E0FFFF;
+  text-shadow: 0 0 10px #E0FFFF, 0 0 20px #87CEEB, 0 0 40px #00CED1;
+  animation: crystalForm 3s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.15s);
+}
+@keyframes crystalForm {
+  0% { transform: scale(0) rotate(-45deg); opacity: 0; filter: blur(10px) brightness(3); }
+  30% { transform: scale(1.2) rotate(10deg); opacity: 1; filter: blur(0) brightness(2); }
+  50% { transform: scale(0.9) rotate(-5deg); filter: brightness(1.5); }
+  70% { transform: scale(1.05) rotate(2deg); filter: brightness(1.2); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; filter: brightness(1); }
+}`,
+  },
+  {
+    id: "T-44",
+    name: "Fenda Temporal",
+    description: "Letras emergem de uma fenda no tempo.",
+    category: "text",
+    previewColor: "#FF00FF",
+    htmlExample: `<div class="fenda-temporal">
+  <span style="--i:1">T</span>
+  <span style="--i:2">I</span>
+  <span style="--i:3">M</span>
+  <span style="--i:4">E</span>
+</div>`,
+    cssCode: `.fenda-temporal {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+}
+.fenda-temporal span {
+  color: #FF00FF;
+  text-shadow: 0 0 15px #FF00FF, 0 0 30px #8A2BE2, -3px 0 #00FFFF, 3px 0 #FF0000;
+  animation: timeRift 3s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.15s);
+}
+@keyframes timeRift {
+  0% { transform: scaleX(0) skewX(45deg); opacity: 0; filter: hue-rotate(0deg); }
+  30% { transform: scaleX(1.3) skewX(-10deg); opacity: 1; filter: hue-rotate(180deg); }
+  60% { transform: scaleX(0.9) skewX(5deg); filter: hue-rotate(360deg); }
+  100% { transform: scaleX(1) skewX(0deg); opacity: 1; filter: hue-rotate(0deg); }
+}`,
+  },
+  {
+    id: "T-45",
+    name: "Implosão Cósmica",
+    description: "Letras implodem de todas as direções.",
+    category: "text",
+    previewColor: "#1E90FF",
+    htmlExample: `<div class="implosao-cosmica">
+  <span style="--i:1; --x:-100px; --y:-80px; --r:180deg">C</span>
+  <span style="--i:2; --x:90px; --y:-60px; --r:-90deg">O</span>
+  <span style="--i:3; --x:-80px; --y:70px; --r:270deg">S</span>
+  <span style="--i:4; --x:100px; --y:90px; --r:-180deg">M</span>
+  <span style="--i:5; --x:-60px; --y:-100px; --r:90deg">O</span>
+  <span style="--i:6; --x:70px; --y:80px; --r:-270deg">S</span>
+</div>`,
+    cssCode: `.implosao-cosmica {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+}
+.implosao-cosmica span {
+  color: #1E90FF;
+  text-shadow: 0 0 20px #1E90FF, 0 0 40px #00BFFF;
+  animation: cosmicImplode 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes cosmicImplode {
+  0% { transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(0); opacity: 0; }
+  60% { transform: translate(0, 0) rotate(0deg) scale(1.2); opacity: 1; }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+}`,
+  },
+  {
+    id: "T-46",
+    name: "Aurora Mágica",
+    description: "Letras brilham com aurora boreal.",
+    category: "text",
+    previewColor: "#00FF7F",
+    htmlExample: `<div class="aurora-magica">
+  <span style="--i:1">A</span>
+  <span style="--i:2">U</span>
+  <span style="--i:3">R</span>
+  <span style="--i:4">O</span>
+  <span style="--i:5">R</span>
+  <span style="--i:6">A</span>
+</div>`,
+    cssCode: `.aurora-magica {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+}
+.aurora-magica span {
+  background: linear-gradient(180deg, #00FF7F, #00CED1, #9370DB, #FF69B4);
+  background-size: 100% 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: auroraGlow 4s ease-in-out infinite, auroraAppear 3s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.2s);
+}
+@keyframes auroraGlow {
+  0%, 100% { background-position: 0% 0%; filter: brightness(1); }
+  50% { background-position: 0% 100%; filter: brightness(1.5); }
+}
+@keyframes auroraAppear {
+  0% { transform: translateY(30px) scaleY(0); opacity: 0; }
+  50% { transform: translateY(-10px) scaleY(1.2); opacity: 1; }
+  100% { transform: translateY(0) scaleY(1); opacity: 1; }
+}`,
+  },
+  {
+    id: "T-47",
+    name: "Ondas Sonoras",
+    description: "Letras vibram como ondas de som.",
+    category: "text",
+    previewColor: "#FF1493",
+    htmlExample: `<div class="ondas-sonoras">
+  <span style="--i:1">S</span>
+  <span style="--i:2">O</span>
+  <span style="--i:3">U</span>
+  <span style="--i:4">N</span>
+  <span style="--i:5">D</span>
+</div>`,
+    cssCode: `.ondas-sonoras {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+}
+.ondas-sonoras span {
+  color: #FF1493;
+  text-shadow: 0 0 10px #FF1493, 0 0 20px #FF69B4;
+  animation: soundWave 0.8s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.05s);
+}
+@keyframes soundWave {
+  0%, 100% { transform: scaleY(1); }
+  25% { transform: scaleY(1.5); }
+  50% { transform: scaleY(0.7); }
+  75% { transform: scaleY(1.3); }
+}`,
+  },
+  {
+    id: "T-48",
+    name: "Redemoinho",
+    description: "Letras giram em um redemoinho.",
+    category: "text",
+    previewColor: "#20B2AA",
+    htmlExample: `<div class="redemoinho">
+  <span style="--i:1">S</span>
+  <span style="--i:2">P</span>
+  <span style="--i:3">I</span>
+  <span style="--i:4">N</span>
+</div>`,
+    cssCode: `.redemoinho {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+  perspective: 500px;
+}
+.redemoinho span {
+  color: #20B2AA;
+  text-shadow: 0 0 15px #20B2AA, 0 0 30px #40E0D0;
+  animation: vortexSpin 3s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.2s);
+}
+@keyframes vortexSpin {
+  0% { transform: rotate(720deg) scale(0) translateY(-50px); opacity: 0; }
+  50% { transform: rotate(360deg) scale(1.3) translateY(10px); opacity: 1; }
+  100% { transform: rotate(0deg) scale(1) translateY(0); opacity: 1; }
+}`,
+  },
+  {
+    id: "T-49",
+    name: "Cartas Viradas",
+    description: "Letras viram como cartas de baralho.",
+    category: "text",
+    previewColor: "#DC143C",
+    htmlExample: `<div class="cartas-viradas">
+  <span style="--i:1">C</span>
+  <span style="--i:2">A</span>
+  <span style="--i:3">R</span>
+  <span style="--i:4">D</span>
+  <span style="--i:5">S</span>
+</div>`,
+    cssCode: `.cartas-viradas {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+  perspective: 1000px;
+}
+.cartas-viradas span {
+  color: #DC143C;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #FFFFFF, #F0F0F0);
+  -webkit-background-clip: text;
+  animation: cardFlip 2s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.15s);
+  transform-style: preserve-3d;
+}
+@keyframes cardFlip {
+  0% { transform: rotateY(-180deg) translateZ(-50px); opacity: 0; }
+  50% { transform: rotateY(-90deg) translateZ(0); opacity: 0.5; }
+  100% { transform: rotateY(0deg) translateZ(0); opacity: 1; }
+}`,
+  },
+  {
+    id: "T-50",
+    name: "Fragmentos Quânticos",
+    description: "Letras se materializam de fragmentos quânticos.",
+    category: "text",
+    previewColor: "#7B68EE",
+    htmlExample: `<div class="fragmentos-quanticos">
+  <span style="--i:1">Q</span>
+  <span style="--i:2">U</span>
+  <span style="--i:3">A</span>
+  <span style="--i:4">N</span>
+  <span style="--i:5">T</span>
+  <span style="--i:6">U</span>
+  <span style="--i:7">M</span>
+</div>`,
+    cssCode: `.fragmentos-quanticos {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+}
+.fragmentos-quanticos span {
+  background: linear-gradient(135deg, #7B68EE, #9370DB, #BA55D3, #FF00FF);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(123,104,238,0.5);
+  animation: quantumForm 3s ease-out infinite, quantumColor 2s ease infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes quantumForm {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; filter: blur(20px); }
+  30% { transform: scale(0.5) rotate(180deg); opacity: 0.3; filter: blur(10px); }
+  60% { transform: scale(1.2) rotate(360deg); opacity: 0.8; filter: blur(2px); }
+  100% { transform: scale(1) rotate(360deg); opacity: 1; filter: blur(0); }
+}
+@keyframes quantumColor {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}`,
+  },
 ];
