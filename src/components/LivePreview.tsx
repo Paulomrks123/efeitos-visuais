@@ -2,6 +2,7 @@ import { CSSProperties } from "react";
 import { Animation } from "@/data/animations";
 import { Effect } from "@/data/effects";
 import { ButtonAnimation } from "@/data/buttons";
+import { TextEffectPreview } from "./TextEffectPreview";
 
 interface AnimationLivePreviewProps {
   animation: Animation;
@@ -366,22 +367,11 @@ export function EffectLivePreview({ effect, size = "md" }: EffectLivePreviewProp
 
     case "text":
       return (
-        <div
-          className="font-bold text-center"
-          style={{
-            fontSize: size === "sm" ? "0.75rem" : size === "md" ? "1rem" : "1.25rem",
-            background: `linear-gradient(90deg, ${previewColor}, #FF00FF, #00FFFF, ${previewColor})`,
-            backgroundSize: "300% 100%",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            color: "transparent",
-            animation: "liveGradientMove 3s ease infinite",
-            textShadow: `0 0 20px ${previewColor}66`,
-            filter: `drop-shadow(0 0 10px ${previewColor}44)`,
-          }}
-        >
-          Esse é um modelo único
-        </div>
+        <TextEffectPreview 
+          effect={effect} 
+          size={size} 
+          text="ÚNICO"
+        />
       );
 
     default:
