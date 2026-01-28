@@ -369,7 +369,7 @@ export function EffectLivePreview({ effect, size = "md" }: EffectLivePreviewProp
         <div
           className="font-bold text-center"
           style={{
-            fontSize: size === "sm" ? "1rem" : size === "md" ? "1.25rem" : "1.5rem",
+            fontSize: size === "sm" ? "0.75rem" : size === "md" ? "1rem" : "1.25rem",
             background: `linear-gradient(90deg, ${previewColor}, #FF00FF, #00FFFF, ${previewColor})`,
             backgroundSize: "300% 100%",
             WebkitBackgroundClip: "text",
@@ -380,7 +380,7 @@ export function EffectLivePreview({ effect, size = "md" }: EffectLivePreviewProp
             filter: `drop-shadow(0 0 10px ${previewColor}44)`,
           }}
         >
-          TEXT
+          Esse é um modelo único
         </div>
       );
 
