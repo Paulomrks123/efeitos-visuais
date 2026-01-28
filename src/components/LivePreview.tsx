@@ -364,6 +364,26 @@ export function EffectLivePreview({ effect, size = "md" }: EffectLivePreviewProp
         />
       );
 
+    case "text":
+      return (
+        <div
+          className="font-bold text-center"
+          style={{
+            fontSize: size === "sm" ? "1rem" : size === "md" ? "1.25rem" : "1.5rem",
+            background: `linear-gradient(90deg, ${previewColor}, #FF00FF, #00FFFF, ${previewColor})`,
+            backgroundSize: "300% 100%",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            color: "transparent",
+            animation: "liveGradientMove 3s ease infinite",
+            textShadow: `0 0 20px ${previewColor}66`,
+            filter: `drop-shadow(0 0 10px ${previewColor}44)`,
+          }}
+        >
+          TEXT
+        </div>
+      );
+
     default:
       return (
         <div
