@@ -29,7 +29,7 @@ export function Header({ activeLibrary }: HeaderProps) {
         {isAnimations && animationLines ? (
           <div className="mb-4">
             {animationLines.map((line, lineIndex) => (
-              <h1 key={lineIndex} className="espiral-galactica justify-center">
+              <h1 key={lineIndex} className="liquid-rainbow justify-center">
                 {line.split('').map((letter, index) => (
                   <span key={index} style={{ '--i': index + 1 } as React.CSSProperties}>
                     {letter === ' ' ? '\u00A0' : letter}
