@@ -1,5 +1,4 @@
 import { Sparkles, Layers, MousePointerClick } from "lucide-react";
-import { AnimatedTitle } from "./AnimatedTitle";
 
 interface HeaderProps {
   activeLibrary: "animations" | "effects" | "buttons";
@@ -15,22 +14,16 @@ export function Header({ activeLibrary }: HeaderProps) {
     if (isEffects) return "Biblioteca de Efeitos";
     return "Biblioteca de Botões";
   };
-
-  const getVariant = (): "fire" | "neon" | "rainbow" => {
-    if (isAnimations) return "neon";
-    if (isEffects) return "fire";
-    return "rainbow";
-  };
   
   return (
-    <header className="py-16 px-4 text-center relative overflow-hidden">
+    <header className="py-12 px-4 text-center relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
       
       <div className="relative z-10 max-w-4xl mx-auto">
-        <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 ${
+        <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 ${
           isButtons 
             ? "bg-neon-cyan/10 border border-neon-cyan/20" 
             : "bg-primary/10 border border-primary/20"
@@ -47,7 +40,9 @@ export function Header({ activeLibrary }: HeaderProps) {
           </span>
         </div>
         
-        <AnimatedTitle text={getTitle()} variant={getVariant()} />
+        <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          {getTitle()}
+        </h1>
         
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
           {isAnimations 
