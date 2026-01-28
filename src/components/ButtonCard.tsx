@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Copy, Check, Play, Pause } from "lucide-react";
 import { ButtonAnimation } from "@/data/buttons";
+import { FavoriteButton } from "@/components/features/FavoriteButton";
 
 interface ButtonCardProps {
   button: ButtonAnimation;
+  isCompact?: boolean;
 }
 
-const ButtonCard = ({ button }: ButtonCardProps) => {
+const ButtonCard = ({ button, isCompact = false }: ButtonCardProps) => {
   const [copied, setCopied] = useState<"css" | "html" | null>(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
@@ -27,7 +29,6 @@ const ButtonCard = ({ button }: ButtonCardProps) => {
     }
   };
 
-  // Extract keyframes from CSS code and create inline style
   const getInlineKeyframes = () => {
     const keyframesMatch = button.cssCode.match(/@keyframes\s+(\w+)\s*\{([^}]+\{[^}]+\})+\s*\}/);
     if (keyframesMatch) {
@@ -46,9 +47,42 @@ const ButtonCard = ({ button }: ButtonCardProps) => {
     if (!animName) return {};
     
     return {
-      animation: `${animName} ${button.duration} ${button.category === "pulse" ? "infinite" : "infinite"} ease-in-out`
+      animation: `${animName} ${button.duration} infinite ease-in-out`
     };
   };
+
+  // Compact view for grid compact mode
+  if (isCompact) {
+    return (
+      <div className="glass-card p-4 border-2 border-border/50 hover:border-primary/30 transition-all duration-300 group">
+        <div className="flex items-center justify-between mb-2">
+          <span className={`text-xs font-mono px-2 py-0.5 rounded-full bg-gradient-to-r ${getCategoryColor(button.category)} text-background`}>
+            {button.id}
+          </span>
+          <FavoriteButton id={button.id} type="button" size="sm" />
+        </div>
+        
+        <div className="relative h-16 rounded-lg bg-gradient-to-br from-muted/30 to-muted/10 flex items-center justify-center mb-2 overflow-hidden">
+          <style>{getInlineKeyframes()}</style>
+          <button
+            className={`px-4 py-2 rounded-lg text-xs font-semibold bg-gradient-to-r ${getCategoryColor(button.category)} text-background`}
+            style={isPlaying ? getPreviewStyle() : {}}
+          >
+            Demo
+          </button>
+        </div>
+        
+        <h3 className="text-sm font-medium text-foreground truncate">{button.name}</h3>
+        <button
+          onClick={() => copyToClipboard(button.cssCode, "css")}
+          className="mt-2 w-full flex items-center justify-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors py-1.5 rounded-lg bg-muted/50"
+        >
+          {copied === "css" ? <Check size={12} className="text-neon-green" /> : <Copy size={12} />}
+          {copied === "css" ? "Copiado!" : "Copiar CSS"}
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="glass-card p-5 group hover:border-primary/30 transition-all duration-300">
@@ -66,17 +100,20 @@ const ButtonCard = ({ button }: ButtonCardProps) => {
           <h3 className="font-semibold text-foreground">{button.name}</h3>
           <p className="text-sm text-muted-foreground">{button.description}</p>
         </div>
-        <button
-          onClick={() => setIsPlaying(!isPlaying)}
-          className="p-2 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
-          title={isPlaying ? "Pausar" : "Reproduzir"}
-        >
-          {isPlaying ? (
-            <Pause className="w-4 h-4 text-muted-foreground" />
-          ) : (
-            <Play className="w-4 h-4 text-muted-foreground" />
-          )}
-        </button>
+        <div className="flex items-center gap-2">
+          <FavoriteButton id={button.id} type="button" />
+          <button
+            onClick={() => setIsPlaying(!isPlaying)}
+            className="p-2 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
+            title={isPlaying ? "Pausar" : "Reproduzir"}
+          >
+            {isPlaying ? (
+              <Pause className="w-4 h-4 text-muted-foreground" />
+            ) : (
+              <Play className="w-4 h-4 text-muted-foreground" />
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Preview */}
