@@ -1,14 +1,8 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { ArrowUp } from "lucide-react";
-import { Header } from "@/components/Header";
 import { LibraryToggle } from "@/components/LibraryToggle";
-import { CategoryFilter } from "@/components/CategoryFilter";
-import { EffectCategoryFilter } from "@/components/EffectCategoryFilter";
-import ButtonCategoryFilter from "@/components/ButtonCategoryFilter";
-import { AnimationCardWithPlayground } from "@/components/cards/AnimationCardWithPlayground";
-import { EffectCardWithPlayground } from "@/components/cards/EffectCardWithPlayground";
-import { ButtonCardWithPlayground } from "@/components/cards/ButtonCardWithPlayground";
-import { Toolbar } from "@/components/layout/Toolbar";
+import { HeroSection } from "@/components/layout/HeroSection";
+import { LibrarySection } from "@/components/layout/LibrarySection";
 import { animations } from "@/data/animations";
 import { effects } from "@/data/effects";
 import { buttonAnimations, ButtonCategory } from "@/data/buttons";
@@ -17,8 +11,8 @@ import { useViewMode } from "@/hooks/useViewMode";
 
 const Index = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const librarySectionRef = useRef<HTMLDivElement>(null);
 
-  // Show/hide scroll to top button based on scroll position
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 400);
@@ -30,6 +24,11 @@ const Index = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const scrollToLibrary = () => {
+    librarySectionRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const [activeLibrary, setActiveLibrary] = useState<"animations" | "effects" | "buttons">("animations");
   const [animationCategory, setAnimationCategory] = useState("all");
   const [effectCategory, setEffectCategory] = useState("all");
@@ -40,16 +39,19 @@ const Index = () => {
   const { isFavorite } = useFavorites();
   const { viewMode, setViewMode, config } = useViewMode();
 
+  const handleLibraryChange = (library: "animations" | "effects" | "buttons") => {
+    setActiveLibrary(library);
+    setTimeout(() => scrollToLibrary(), 100);
+  };
+
   // Filter animations
   const filteredAnimations = useMemo(() => {
     let result = animations;
 
-    // Category filter
     if (animationCategory !== "all") {
       result = result.filter((anim) => anim.category === animationCategory);
     }
 
-    // Search filter
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
       result = result.filter(
@@ -61,7 +63,6 @@ const Index = () => {
       );
     }
 
-    // Favorites filter
     if (showFavoritesOnly) {
       result = result.filter((anim) => isFavorite(anim.id));
     }
@@ -121,154 +122,66 @@ const Index = () => {
     return result;
   }, [buttonCategory, searchQuery, showFavoritesOnly, isFavorite]);
 
-  // Get current counts
-  const getCurrentResults = () => {
-    if (activeLibrary === "animations") return filteredAnimations;
-    if (activeLibrary === "effects") return filteredEffects;
-    return filteredButtons;
-  };
-
-  const getTotalItems = () => {
-    if (activeLibrary === "animations") return animations.length;
-    if (activeLibrary === "effects") return effects.length;
-    return buttonAnimations.length;
-  };
-
   const isCompact = viewMode === "compact";
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Decorative grid background */}
-      <div className="fixed inset-0 bg-[linear-gradient(rgba(0,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px] pointer-events-none" />
-      
-      <div className="relative z-10">
-        <Header activeLibrary={activeLibrary} />
-        
-        <main className="container mx-auto px-4 pb-20">
-          <LibraryToggle 
-            activeLibrary={activeLibrary} 
-            onToggle={setActiveLibrary} 
+      {/* Hero Section */}
+      <HeroSection
+        onLibraryChange={handleLibraryChange}
+        animationsCount={animations.length}
+        effectsCount={effects.length}
+        buttonsCount={buttonAnimations.length}
+      />
+
+      {/* Library Content */}
+      <div ref={librarySectionRef}>
+        <div className="container mx-auto px-4 pb-8">
+          <LibraryToggle
+            activeLibrary={activeLibrary}
+            onToggle={setActiveLibrary}
           />
+        </div>
 
-          {/* Toolbar with Search, View Mode, Export */}
-          <Toolbar
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-            viewMode={viewMode}
-            onViewModeChange={setViewMode}
-            resultCount={getCurrentResults().length}
-            totalCount={getTotalItems()}
-            animations={filteredAnimations}
-            effects={filteredEffects}
-            buttons={filteredButtons}
-            showFavoritesOnly={showFavoritesOnly}
-            onToggleFavoritesOnly={() => setShowFavoritesOnly(!showFavoritesOnly)}
-          />
+        <LibrarySection
+          activeLibrary={activeLibrary}
+          animationCategory={animationCategory}
+          effectCategory={effectCategory}
+          buttonCategory={buttonCategory}
+          onAnimationCategoryChange={setAnimationCategory}
+          onEffectCategoryChange={setEffectCategory}
+          onButtonCategoryChange={setButtonCategory}
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          viewMode={viewMode}
+          onViewModeChange={setViewMode}
+          showFavoritesOnly={showFavoritesOnly}
+          onToggleFavoritesOnly={() => setShowFavoritesOnly(!showFavoritesOnly)}
+          filteredAnimations={filteredAnimations}
+          filteredEffects={filteredEffects}
+          filteredButtons={filteredButtons}
+          totalAnimations={animations.length}
+          totalEffects={effects.length}
+          totalButtons={buttonAnimations.length}
+          gridCols={config.gridCols}
+          isCompact={isCompact}
+        />
+      </div>
 
-          {activeLibrary === "animations" && (
-            <>
-              <CategoryFilter 
-                activeCategory={animationCategory} 
-                onCategoryChange={setAnimationCategory} 
-              />
-              
-              <div className="mb-8 text-center">
-                <p className="text-muted-foreground">
-                  Mostrando <span className="text-primary font-semibold">{filteredAnimations.length}</span> animações
-                  {showFavoritesOnly && " (favoritos)"}
-                </p>
-              </div>
-
-              <div className={`grid ${config.gridCols} gap-6`}>
-                {filteredAnimations.map((animation, index) => (
-                  <AnimationCardWithPlayground key={animation.id} animation={animation} isCompact={isCompact} index={index + 1} />
-                ))}
-              </div>
-
-              {filteredAnimations.length === 0 && (
-                <div className="text-center py-16">
-                  <p className="text-muted-foreground text-lg">Nenhuma animação encontrada</p>
-                  <p className="text-muted-foreground/60 text-sm mt-2">
-                    Tente ajustar os filtros ou termos de busca
-                  </p>
-                </div>
-              )}
-            </>
-          )}
-
-          {activeLibrary === "effects" && (
-            <>
-              <EffectCategoryFilter 
-                activeCategory={effectCategory} 
-                onCategoryChange={setEffectCategory} 
-              />
-              
-              <div className="mb-8 text-center">
-                <p className="text-muted-foreground">
-                  Mostrando <span className="text-secondary font-semibold">{filteredEffects.length}</span> efeitos visuais
-                  {showFavoritesOnly && " (favoritos)"}
-                </p>
-              </div>
-
-              <div className={`grid ${config.gridCols} gap-6`}>
-                {filteredEffects.map((effect, index) => (
-                  <EffectCardWithPlayground key={effect.id} effect={effect} isCompact={isCompact} index={index + 1} />
-                ))}
-              </div>
-
-              {filteredEffects.length === 0 && (
-                <div className="text-center py-16">
-                  <p className="text-muted-foreground text-lg">Nenhum efeito encontrado</p>
-                  <p className="text-muted-foreground/60 text-sm mt-2">
-                    Tente ajustar os filtros ou termos de busca
-                  </p>
-                </div>
-              )}
-            </>
-          )}
-
-          {activeLibrary === "buttons" && (
-            <>
-              <ButtonCategoryFilter 
-                activeCategory={buttonCategory} 
-                onCategoryChange={setButtonCategory} 
-              />
-              
-              <div className="mb-8 text-center">
-                <p className="text-muted-foreground">
-                  Mostrando <span className="text-neon-cyan font-semibold">{filteredButtons.length}</span> animações de botões
-                  {showFavoritesOnly && " (favoritos)"}
-                </p>
-              </div>
-
-              <div className={`grid ${config.gridCols} gap-6`}>
-                {filteredButtons.map((button, index) => (
-                  <ButtonCardWithPlayground key={button.id} button={button} isCompact={isCompact} index={index + 1} />
-                ))}
-              </div>
-
-              {filteredButtons.length === 0 && (
-                <div className="text-center py-16">
-                  <p className="text-muted-foreground text-lg">Nenhum botão encontrado</p>
-                  <p className="text-muted-foreground/60 text-sm mt-2">
-                    Tente ajustar os filtros ou termos de busca
-                  </p>
-                </div>
-              )}
-            </>
-          )}
-        </main>
-
-        {/* Footer */}
-        <footer className="border-t border-border py-8 text-center">
+      {/* Footer */}
+      <footer className="border-t border-border py-12 text-center bg-card/30">
+        <div className="container mx-auto px-4">
+          <p className="text-lg font-medium text-foreground mb-2">
+            Biblioteca Virtual
+          </p>
           <p className="text-sm text-muted-foreground">
-            Biblioteca de {animations.length + effects.length + buttonAnimations.length} Animações, Efeitos Visuais e Botões Profissionais
+            {animations.length + effects.length + buttonAnimations.length} Animações, Efeitos Visuais e Botões Profissionais
           </p>
           <p className="text-xs text-muted-foreground/60 mt-2">
             CSS puro & Tailwind CSS • Copie e use em seus projetos
           </p>
-        </footer>
-      </div>
+        </div>
+      </footer>
 
       {/* Floating Scroll to Top Button */}
       <button

@@ -17,6 +17,8 @@ import styleMatrixHacker from "@/assets/showcase/style-matrix-hacker.jpg";
 import styleWatercolorArt from "@/assets/showcase/style-watercolor-art.jpg";
 import styleGlass3D from "@/assets/showcase/style-glass-3d.jpg";
 import styleNatureOrganic from "@/assets/showcase/style-nature-organic.jpg";
+// Vizion Layout style
+import styleVizionLayout from "@/assets/showcase/style-vizion-layout.jpg";
 
 import { StyleDefinition } from "@/components/showcase/StyleCard";
 
@@ -1643,6 +1645,100 @@ h1, h2, h3 {
   background: var(--forest-light);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(45, 80, 22, 0.3);
+}`,
+  },
+
+  // ==================== VIZION LAYOUT - CONVERSION STYLE ====================
+
+  {
+    id: "vizion-layout",
+    name: "Vizion Layout",
+    subtitle: "Conversão • Landing Page • Dark SaaS",
+    description: "Design de alta conversão com estética dark tech. Fundo preto profundo com destaques em verde neon, elementos de escassez, prova social e comparativos visuais. Otimizado para landing pages de vendas.",
+    objective: "Maximizar conversões com visual impactante, urgência e prova social. Ideal para landing pages de produtos digitais e SaaS.",
+    colors: ["#000000", "#0F172A", "#00FF88", "#FFFFFF", "#6B7280"],
+    features: ["Alta Conversão", "Dark Mode", "Neon Green", "Urgency Elements"],
+    iconStyle: "Ícones lineares com glow verde neon, minimalistas e modernos. Foco em clareza e impacto visual.",
+    layoutStyle: "Hero centralizado com headline massiva, cards com bordas glowing, grid de prova social, comparativos visuais.",
+    typography: "Inter ou Space Grotesk para títulos bold, JetBrains Mono para código e dados.",
+    previewImage: styleVizionLayout,
+    cssVariables: {
+      "--background": "0 0% 0%",
+      "--foreground": "0 0% 100%",
+      "--primary": "150 100% 50%",
+      "--accent": "220 14% 10%",
+    },
+    sampleCSS: `:root {
+  --background: #000000;
+  --surface: #0F172A;
+  --surface-light: #1E293B;
+  --text-primary: #FFFFFF;
+  --text-secondary: #94A3B8;
+  --neon-green: #00FF88;
+  --glow-green: 0 0 20px rgba(0, 255, 136, 0.4);
+  --glow-green-intense: 0 0 40px rgba(0, 255, 136, 0.6);
+}
+
+body {
+  background: var(--background);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
+    linear-gradient(rgba(0, 255, 136, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 50px 50px, 50px 50px;
+}
+
+.hero-headline {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+.hero-headline .highlight {
+  color: var(--neon-green);
+  text-shadow: var(--glow-green);
+}
+
+.offer-box {
+  background: var(--surface);
+  border: 2px solid var(--neon-green);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: var(--glow-green);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, var(--neon-green), #00CC6A);
+  color: #000000;
+  font-weight: 700;
+  padding: 16px 40px;
+  border-radius: 12px;
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
+  box-shadow: var(--glow-green);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--glow-green-intense);
+}
+
+.testimonial-card {
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.countdown-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--neon-green);
+  text-shadow: var(--glow-green);
 }`,
   },
 ];
