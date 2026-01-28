@@ -1,11 +1,13 @@
-import { Sparkles, Layers } from "lucide-react";
+import { Sparkles, Layers, MousePointerClick } from "lucide-react";
 
 interface HeaderProps {
-  activeLibrary: "animations" | "effects";
+  activeLibrary: "animations" | "effects" | "buttons";
 }
 
 export function Header({ activeLibrary }: HeaderProps) {
   const isAnimations = activeLibrary === "animations";
+  const isEffects = activeLibrary === "effects";
+  const isButtons = activeLibrary === "buttons";
   
   return (
     <header className="py-16 px-4 text-center relative overflow-hidden">
@@ -15,29 +17,37 @@ export function Header({ activeLibrary }: HeaderProps) {
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
       
       <div className="relative z-10 max-w-4xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+        <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 ${
+          isButtons 
+            ? "bg-neon-cyan/10 border border-neon-cyan/20" 
+            : "bg-primary/10 border border-primary/20"
+        }`}>
           {isAnimations ? (
             <Sparkles className="w-4 h-4 text-primary animate-neon-pulse" />
-          ) : (
+          ) : isEffects ? (
             <Layers className="w-4 h-4 text-secondary animate-neon-pulse" />
+          ) : (
+            <MousePointerClick className="w-4 h-4 text-neon-cyan animate-neon-pulse" />
           )}
-          <span className="text-sm text-primary font-medium">
-            80 {isAnimations ? "Animações" : "Efeitos Visuais"} Profissionais
+          <span className={`text-sm font-medium ${isButtons ? "text-neon-cyan" : "text-primary"}`}>
+            {isAnimations ? "80 Animações Profissionais" : isEffects ? "80 Efeitos Visuais Profissionais" : "60 Animações de Botões"}
           </span>
         </div>
         
         <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-secondary bg-clip-text text-transparent">
-          {isAnimations ? "Biblioteca de Animações" : "Biblioteca de Efeitos"}
+          {isAnimations ? "Biblioteca de Animações" : isEffects ? "Biblioteca de Efeitos" : "Biblioteca de Botões"}
         </h1>
         
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
           {isAnimations 
             ? "Coleção completa de animações CSS modernas e profissionais. Copie o código e use diretamente em seus projetos."
-            : "Coleção de efeitos visuais modernos incluindo Glassmorphism, Neumorphism, Filtros e Gradientes dinâmicos."
+            : isEffects
+            ? "Coleção de efeitos visuais modernos incluindo Glassmorphism, Neumorphism, Filtros e Gradientes dinâmicos."
+            : "Coleção de 60 animações Scale e Pulse para botões promocionais. Perfeito para CTAs e botões de WhatsApp."
           }
         </p>
 
-        {isAnimations ? (
+        {isAnimations && (
           <div className="flex flex-wrap justify-center gap-3">
             <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-neon-cyan/10 border border-neon-cyan/30">
               <div className="w-2 h-2 rounded-full bg-neon-cyan animate-neon-pulse" />
@@ -56,7 +66,9 @@ export function Header({ activeLibrary }: HeaderProps) {
               <span className="text-sm text-neon-magenta">Colorido</span>
             </div>
           </div>
-        ) : (
+        )}
+
+        {isEffects && (
           <div className="flex flex-wrap justify-center gap-3">
             <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-neon-cyan/10 border border-neon-cyan/30">
               <div className="w-2 h-2 rounded-full bg-neon-cyan animate-neon-pulse" />
@@ -73,6 +85,19 @@ export function Header({ activeLibrary }: HeaderProps) {
             <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-neon-magenta/10 border border-neon-magenta/30">
               <div className="w-2 h-2 rounded-full bg-neon-magenta" />
               <span className="text-sm text-neon-magenta">Gradientes</span>
+            </div>
+          </div>
+        )}
+
+        {isButtons && (
+          <div className="flex flex-wrap justify-center gap-3">
+            <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-neon-cyan/10 border border-neon-cyan/30">
+              <div className="w-2 h-2 rounded-full bg-neon-cyan animate-neon-pulse" />
+              <span className="text-sm text-neon-cyan">Scale (30)</span>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-neon-magenta/10 border border-neon-magenta/30">
+              <div className="w-2 h-2 rounded-full bg-neon-magenta animate-neon-pulse" />
+              <span className="text-sm text-neon-magenta">Pulse (30)</span>
             </div>
           </div>
         )}

@@ -3,15 +3,19 @@ import { Header } from "@/components/Header";
 import { LibraryToggle } from "@/components/LibraryToggle";
 import { CategoryFilter } from "@/components/CategoryFilter";
 import { EffectCategoryFilter } from "@/components/EffectCategoryFilter";
+import ButtonCategoryFilter from "@/components/ButtonCategoryFilter";
 import { AnimationCard } from "@/components/AnimationCard";
 import { EffectCard } from "@/components/EffectCard";
+import ButtonCard from "@/components/ButtonCard";
 import { animations } from "@/data/animations";
 import { effects } from "@/data/effects";
+import { buttonAnimations, ButtonCategory } from "@/data/buttons";
 
 const Index = () => {
-  const [activeLibrary, setActiveLibrary] = useState<"animations" | "effects">("animations");
+  const [activeLibrary, setActiveLibrary] = useState<"animations" | "effects" | "buttons">("animations");
   const [animationCategory, setAnimationCategory] = useState("all");
   const [effectCategory, setEffectCategory] = useState("all");
+  const [buttonCategory, setButtonCategory] = useState<ButtonCategory | "all">("all");
 
   const filteredAnimations = useMemo(() => {
     if (animationCategory === "all") return animations;
@@ -22,6 +26,17 @@ const Index = () => {
     if (effectCategory === "all") return effects;
     return effects.filter((effect) => effect.category === effectCategory);
   }, [effectCategory]);
+
+  const filteredButtons = useMemo(() => {
+    if (buttonCategory === "all") return buttonAnimations;
+    return buttonAnimations.filter((btn) => btn.category === buttonCategory);
+  }, [buttonCategory]);
+
+  const getLibraryCount = () => {
+    if (activeLibrary === "animations") return 80;
+    if (activeLibrary === "effects") return 80;
+    return 60;
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -37,7 +52,7 @@ const Index = () => {
             onToggle={setActiveLibrary} 
           />
 
-          {activeLibrary === "animations" ? (
+          {activeLibrary === "animations" && (
             <>
               <CategoryFilter 
                 activeCategory={animationCategory} 
@@ -56,7 +71,9 @@ const Index = () => {
                 ))}
               </div>
             </>
-          ) : (
+          )}
+
+          {activeLibrary === "effects" && (
             <>
               <EffectCategoryFilter 
                 activeCategory={effectCategory} 
@@ -76,12 +93,33 @@ const Index = () => {
               </div>
             </>
           )}
+
+          {activeLibrary === "buttons" && (
+            <>
+              <ButtonCategoryFilter 
+                activeCategory={buttonCategory} 
+                onCategoryChange={setButtonCategory} 
+              />
+              
+              <div className="mb-8 text-center">
+                <p className="text-muted-foreground">
+                  Mostrando <span className="text-neon-cyan font-semibold">{filteredButtons.length}</span> animações de botões
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                {filteredButtons.map((button) => (
+                  <ButtonCard key={button.id} button={button} />
+                ))}
+              </div>
+            </>
+          )}
         </main>
 
         {/* Footer */}
         <footer className="border-t border-border py-8 text-center">
           <p className="text-sm text-muted-foreground">
-            Biblioteca de 160 Animações e Efeitos Visuais Profissionais
+            Biblioteca de 220 Animações, Efeitos Visuais e Botões Profissionais
           </p>
           <p className="text-xs text-muted-foreground/60 mt-2">
             CSS puro & Tailwind CSS • Copie e use em seus projetos
