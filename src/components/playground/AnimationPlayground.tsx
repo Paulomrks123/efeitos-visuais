@@ -15,8 +15,10 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import { Copy, Check, Play, Pause, RotateCcw, Palette, Clock, Waves, Repeat } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Copy, Check, Play, Pause, RotateCcw, Palette, Clock, Waves, Repeat, Type } from "lucide-react";
 import { FavoriteButton } from "@/components/features/FavoriteButton";
+import { TextEffectPreview } from "@/components/TextEffectPreview";
 
 interface PlaygroundProps {
   isOpen: boolean;
@@ -61,6 +63,10 @@ export function AnimationPlayground({ isOpen, onClose, item, type }: PlaygroundP
   const [color, setColor] = useState(item.previewColor || "#00FFFF");
   const [copied, setCopied] = useState(false);
   const [copiedHTML, setCopiedHTML] = useState(false);
+  const [customText, setCustomText] = useState("EFEITO");
+
+  // Check if this is a text effect
+  const isTextEffect = type === "effect" && item.category === "text";
 
   // Reset quando o item mudar
   useEffect(() => {
@@ -70,6 +76,7 @@ export function AnimationPlayground({ isOpen, onClose, item, type }: PlaygroundP
     setEasing("ease-in-out");
     setIsInfinite(true);
     setIsPlaying(true);
+    setCustomText("EFEITO");
   }, [item.id, item.previewColor]);
 
   // Gera CSS customizado
@@ -133,6 +140,7 @@ export function AnimationPlayground({ isOpen, onClose, item, type }: PlaygroundP
     setIsInfinite(true);
     setColor(item.previewColor || "#00FFFF");
     setIsPlaying(true);
+    setCustomText("EFEITO");
   };
 
   return (
@@ -164,16 +172,47 @@ export function AnimationPlayground({ isOpen, onClose, item, type }: PlaygroundP
                 }}
               />
               
-              {/* Preview Element */}
-              <div
-                className={`relative z-10 w-24 h-24 rounded-xl transition-all ${isPlaying ? "animate-pulse" : ""}`}
-                style={{
-                  ...previewStyle,
-                  background: `linear-gradient(135deg, ${color}, ${color}88)`,
-                  boxShadow: `0 0 30px ${color}66, 0 0 60px ${color}33`,
-                }}
-              />
+              {/* Preview Element - Text Effect or Shape */}
+              {isTextEffect ? (
+                <div className="relative z-10">
+                  <TextEffectPreview 
+                    effect={item as any} 
+                    size="lg" 
+                    text={customText}
+                  />
+                </div>
+              ) : (
+                <div
+                  className={`relative z-10 w-24 h-24 rounded-xl transition-all ${isPlaying ? "animate-pulse" : ""}`}
+                  style={{
+                    ...previewStyle,
+                    background: `linear-gradient(135deg, ${color}, ${color}88)`,
+                    boxShadow: `0 0 30px ${color}66, 0 0 60px ${color}33`,
+                  }}
+                />
+              )}
             </div>
+
+            {/* Custom Text Input for Text Effects */}
+            {isTextEffect && (
+              <div className="space-y-2 p-4 rounded-xl bg-muted/30 border border-border/50">
+                <div className="flex items-center gap-2 text-sm font-medium">
+                  <Type size={16} className="text-neon-orange" />
+                  <Label>Texto Personalizado</Label>
+                </div>
+                <Input
+                  type="text"
+                  value={customText}
+                  onChange={(e) => setCustomText(e.target.value.slice(0, 30))}
+                  placeholder="Digite seu texto..."
+                  maxLength={30}
+                  className="bg-background border-border"
+                />
+                <p className="text-xs text-muted-foreground">
+                  Máximo 30 caracteres ({customText.length}/30)
+                </p>
+              </div>
+            )}
 
             {/* Playback Controls */}
             <div className="flex items-center justify-center gap-3">
