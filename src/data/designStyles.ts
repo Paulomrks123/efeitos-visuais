@@ -6,6 +6,17 @@ import styleIndustrial from "@/assets/showcase/style-industrial.jpg";
 import styleHybrid from "@/assets/showcase/style-hybrid.jpg";
 import styleHybridSerious from "@/assets/showcase/style-hybrid-serious.jpg";
 import styleHybridFriendly from "@/assets/showcase/style-hybrid-friendly.jpg";
+// New 10 styles
+import styleCyberpunkNeon from "@/assets/showcase/style-cyberpunk-neon.jpg";
+import styleAuroraBorealis from "@/assets/showcase/style-aurora-borealis.jpg";
+import styleBrutalist from "@/assets/showcase/style-brutalist.jpg";
+import styleVaporwave from "@/assets/showcase/style-vaporwave.jpg";
+import styleLuxuryGold from "@/assets/showcase/style-luxury-gold.jpg";
+import styleCandyPop from "@/assets/showcase/style-candy-pop.jpg";
+import styleMatrixHacker from "@/assets/showcase/style-matrix-hacker.jpg";
+import styleWatercolorArt from "@/assets/showcase/style-watercolor-art.jpg";
+import styleGlass3D from "@/assets/showcase/style-glass-3d.jpg";
+import styleNatureOrganic from "@/assets/showcase/style-nature-organic.jpg";
 
 import { StyleDefinition } from "@/components/showcase/StyleCard";
 
@@ -457,6 +468,1181 @@ h1, h2, h3 {
   padding: 8px 16px;
   border-radius: 20px;
   font-weight: 500;
+}`,
+  },
+  
+  // ==================== 10 NOVOS ESTILOS SURPREENDENTES ====================
+
+  {
+    id: "cyberpunk-neon",
+    name: "Cyberpunk Neon",
+    subtitle: "Sci-Fi • Gaming • Night City",
+    description: "Estética cyberpunk intensa com neons vibrantes em magenta e ciano. Efeitos de glitch, hologramas e HUD futurista. Perfeito para interfaces de jogos e aplicações de alta tecnologia.",
+    objective: "Criar imersão total em um universo cyberpunk, transmitindo tecnologia avançada, rebeldia e futurismo intenso.",
+    colors: ["#0D0D0D", "#FF00FF", "#00FFFF", "#FF0080", "#8B00FF"],
+    features: ["Neon Intenso", "Glitch Effects", "Holográfico", "Sci-Fi"],
+    iconStyle: "Ícones com glow neon intenso, traços finos com efeito de digitalização. Animações de glitch e scan lines.",
+    layoutStyle: "Cards flutuantes com bordas neon, efeitos de hologramas, HUD style com cantos cortados.",
+    typography: "Futurista com glow. Orbitron, Rajdhani, Audiowide.",
+    previewImage: styleCyberpunkNeon,
+    cssVariables: {
+      "--background": "0 0% 5%",
+      "--foreground": "300 100% 50%",
+      "--primary": "300 100% 50%",
+      "--accent": "180 100% 50%",
+    },
+    sampleCSS: `:root {
+  --background: #0D0D0D;
+  --surface: #1A1A2E;
+  --neon-pink: #FF00FF;
+  --neon-cyan: #00FFFF;
+  --neon-purple: #8B00FF;
+}
+
+.card-cyberpunk {
+  background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+  border: 1px solid var(--neon-pink);
+  border-radius: 4px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 
+    0 0 10px var(--neon-pink),
+    0 0 20px var(--neon-pink),
+    inset 0 0 30px rgba(255, 0, 255, 0.1);
+  animation: neonPulse 2s ease-in-out infinite alternate;
+}
+
+/* Glitch effect */
+.glitch-text {
+  position: relative;
+  animation: glitch 0.5s infinite;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.glitch-text::before {
+  color: var(--neon-cyan);
+  animation: glitchLeft 0.3s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+
+.glitch-text::after {
+  color: var(--neon-pink);
+  animation: glitchRight 0.3s infinite;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+}
+
+@keyframes neonPulse {
+  from { box-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink); }
+  to { box-shadow: 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink), 0 0 60px var(--neon-pink); }
+}
+
+@keyframes glitchLeft {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-3px); }
+  40% { transform: translateX(3px); }
+}
+
+@keyframes glitchRight {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(3px); }
+  40% { transform: translateX(-3px); }
+}
+
+.button-cyber {
+  background: transparent;
+  border: 2px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  padding: 12px 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.button-cyber::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+  animation: scanLine 2s linear infinite;
+}
+
+@keyframes scanLine {
+  from { left: -100%; }
+  to { left: 100%; }
+}`,
+  },
+  {
+    id: "aurora-borealis",
+    name: "Aurora Borealis",
+    subtitle: "Cosmic • Ethereal • Mystical",
+    description: "Inspirado nas auroras boreais com gradientes fluidos em verde, roxo e azul. Ondas animadas e efeitos etéreos que criam uma atmosfera mágica e cósmica.",
+    objective: "Transmitir misticismo, natureza cósmica e beleza etérea — ideal para apps de meditação, wellness e espiritualidade.",
+    colors: ["#0F0C29", "#302B63", "#24243E", "#00FF88", "#8B5CF6"],
+    features: ["Gradientes Fluidos", "Ondas Animadas", "Cósmico", "Etéreo"],
+    iconStyle: "Ícones com gradientes sutis, traços suaves com efeito de brilho etéreo. Animações de pulso suave.",
+    layoutStyle: "Cards com fundo de gradiente ondulante, bordas suaves com glow, efeito de profundidade cósmica.",
+    typography: "Elegante e leve. Quicksand, Comfortaa, Montserrat Light.",
+    previewImage: styleAuroraBorealis,
+    cssVariables: {
+      "--background": "238 37% 10%",
+      "--foreground": "151 100% 50%",
+      "--primary": "151 100% 50%",
+      "--accent": "262 83% 58%",
+    },
+    sampleCSS: `:root {
+  --background: #0F0C29;
+  --surface: rgba(48, 43, 99, 0.5);
+  --aurora-green: #00FF88;
+  --aurora-purple: #8B5CF6;
+  --aurora-blue: #06B6D4;
+}
+
+.aurora-container {
+  background: linear-gradient(180deg, #0F0C29 0%, #302B63 50%, #24243E 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.aurora-waves {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 255, 136, 0.1) 20%,
+    rgba(139, 92, 246, 0.15) 40%,
+    rgba(6, 182, 212, 0.1) 60%,
+    transparent 100%
+  );
+  animation: auroraWave 8s ease-in-out infinite;
+}
+
+@keyframes auroraWave {
+  0%, 100% { 
+    transform: translateX(-25%) translateY(0) rotate(-5deg); 
+    opacity: 0.5;
+  }
+  50% { 
+    transform: translateX(0%) translateY(-20px) rotate(5deg); 
+    opacity: 1;
+  }
+}
+
+.card-aurora {
+  background: rgba(48, 43, 99, 0.3);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 
+    0 8px 32px rgba(0, 255, 136, 0.1),
+    inset 0 0 60px rgba(139, 92, 246, 0.1);
+}
+
+.glow-orb {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--aurora-green), transparent);
+  filter: blur(30px);
+  animation: orbFloat 6s ease-in-out infinite;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
+  50% { transform: translateY(-30px) scale(1.2); opacity: 0.8; }
+}
+
+.button-aurora {
+  background: linear-gradient(135deg, var(--aurora-purple), var(--aurora-green));
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.button-aurora:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(0, 255, 136, 0.5);
+}`,
+  },
+  {
+    id: "brutalist",
+    name: "Brutalist Raw",
+    subtitle: "Anti-Design • Bold • Impactful",
+    description: "Design brutalist cru com tipografia massiva, layouts quebrados e estética anti-design. Preto e branco com acentos agressivos. Impacto visual máximo.",
+    objective: "Quebrar convenções, causar impacto imediato e transmitir autenticidade crua — ideal para portfolios artísticos e marcas ousadas.",
+    colors: ["#FFFFFF", "#000000", "#FF0000", "#FFFF00", "#0000FF"],
+    features: ["Anti-Design", "Bold Typography", "Raw", "Impactante"],
+    iconStyle: "Ícones sólidos, grossos, sem refinamento. Formas geométricas brutas. Sem gradientes ou sombras suaves.",
+    layoutStyle: "Grids quebrados, sobreposições, tipografia gigante. Bordas duras, sem arredondamento.",
+    typography: "Massiva e crua. Impact, Helvetica Bold, Arial Black. Tamanhos exagerados.",
+    previewImage: styleBrutalist,
+    cssVariables: {
+      "--background": "0 0% 100%",
+      "--foreground": "0 0% 0%",
+      "--primary": "0 100% 50%",
+      "--accent": "60 100% 50%",
+    },
+    sampleCSS: `:root {
+  --background: #FFFFFF;
+  --text: #000000;
+  --accent-red: #FF0000;
+  --accent-yellow: #FFFF00;
+  --accent-blue: #0000FF;
+}
+
+.brutalist-container {
+  background: var(--background);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.brutal-title {
+  font-size: clamp(4rem, 15vw, 12rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  color: var(--text);
+  mix-blend-mode: difference;
+}
+
+.brutal-card {
+  background: var(--background);
+  border: 4px solid var(--text);
+  padding: 20px;
+  position: relative;
+  transition: none;
+}
+
+.brutal-card:hover {
+  background: var(--text);
+  color: var(--background);
+}
+
+.brutal-card::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: -8px;
+  bottom: -8px;
+  background: var(--accent-red);
+  z-index: -1;
+}
+
+.button-brutal {
+  background: var(--text);
+  color: var(--background);
+  border: 3px solid var(--text);
+  padding: 16px 32px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.button-brutal:hover {
+  background: var(--accent-yellow);
+  color: var(--text);
+  transform: translate(-4px, -4px);
+  box-shadow: 4px 4px 0 var(--text);
+}
+
+.button-brutal:active {
+  transform: translate(0, 0);
+  box-shadow: none;
+}
+
+/* Marquee text */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  background: var(--text);
+  color: var(--background);
+  padding: 10px 0;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}`,
+  },
+  {
+    id: "vaporwave",
+    name: "Vaporwave Dreams",
+    subtitle: "Retro 80s • Synthwave • Nostalgic",
+    description: "Estética vaporwave nostálgica com gradientes rosa/roxo/ciano, pôr do sol retrô, grids de perspectiva e palmeiras. Viagem no tempo para os anos 80.",
+    objective: "Evocar nostalgia, criar atmosfera onírica e transportar para um universo retrofuturista — ideal para projetos criativos e musicais.",
+    colors: ["#2E0854", "#FF6AD5", "#C774E8", "#AD8CFF", "#00FFFF"],
+    features: ["Retrowave", "Sunset Grid", "Nostálgico", "Synthwave"],
+    iconStyle: "Ícones com gradientes sunset, contornos brilhantes. Estética arcade retrô. Glows suaves.",
+    layoutStyle: "Grids de perspectiva, elementos flutuantes, sol retrô. Bordas com glow colorido.",
+    typography: "Retro-futurista. VCR OSD Mono, Lazer84, Streamster.",
+    previewImage: styleVaporwave,
+    cssVariables: {
+      "--background": "270 60% 18%",
+      "--foreground": "317 100% 70%",
+      "--primary": "317 100% 70%",
+      "--accent": "180 100% 50%",
+    },
+    sampleCSS: `:root {
+  --bg-dark: #2E0854;
+  --bg-purple: #120458;
+  --neon-pink: #FF6AD5;
+  --neon-purple: #C774E8;
+  --neon-cyan: #00FFFF;
+  --sunset-orange: #FF8C00;
+  --sunset-pink: #FF1493;
+}
+
+.vaporwave-bg {
+  background: linear-gradient(
+    180deg,
+    var(--bg-dark) 0%,
+    var(--bg-purple) 40%,
+    var(--sunset-pink) 70%,
+    var(--sunset-orange) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+/* Retro sun */
+.retro-sun {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(
+    180deg,
+    #FF6AD5 0%,
+    #FF8C00 50%,
+    #FFD700 100%
+  );
+  position: relative;
+  animation: sunPulse 4s ease-in-out infinite;
+}
+
+.retro-sun::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 8px,
+    var(--bg-purple) 8px,
+    var(--bg-purple) 16px
+  );
+}
+
+@keyframes sunPulse {
+  0%, 100% { filter: drop-shadow(0 0 30px #FF6AD5); }
+  50% { filter: drop-shadow(0 0 60px #FF8C00); }
+}
+
+/* Perspective grid */
+.grid-floor {
+  background: 
+    linear-gradient(90deg, var(--neon-cyan) 1px, transparent 1px),
+    linear-gradient(0deg, var(--neon-cyan) 1px, transparent 1px);
+  background-size: 50px 50px;
+  transform: perspective(500px) rotateX(60deg);
+  animation: gridMove 2s linear infinite;
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to { background-position: 0 50px; }
+}
+
+.card-vapor {
+  background: rgba(46, 8, 84, 0.7);
+  border: 2px solid var(--neon-pink);
+  border-radius: 0;
+  padding: 24px;
+  box-shadow: 
+    0 0 20px var(--neon-pink),
+    inset 0 0 20px rgba(255, 106, 213, 0.2);
+}
+
+.button-vapor {
+  background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple));
+  border: none;
+  color: white;
+  padding: 14px 32px;
+  font-family: 'VCR OSD Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  box-shadow: 0 4px 20px rgba(255, 106, 213, 0.5);
+  animation: buttonGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes buttonGlow {
+  from { box-shadow: 0 4px 20px var(--neon-pink); }
+  to { box-shadow: 0 4px 40px var(--neon-cyan); }
+}`,
+  },
+  {
+    id: "luxury-gold",
+    name: "Luxury Gold",
+    subtitle: "Premium • Elegant • High-End",
+    description: "Design luxuoso com dourado e preto, texturas de mármore e tipografia sofisticada. Elegância máxima para marcas premium e experiências exclusivas.",
+    objective: "Transmitir exclusividade, sofisticação e status — ideal para joalheria, moda de luxo e serviços premium.",
+    colors: ["#0A0A0A", "#1A1A1A", "#D4AF37", "#FFD700", "#B8860B"],
+    features: ["Luxuoso", "Dourado", "Elegante", "Premium"],
+    iconStyle: "Ícones finos e refinados, dourados com shimmer sutil. Linhas elegantes e sofisticadas.",
+    layoutStyle: "Espaçamento generoso, hierarquia clara. Bordas finas douradas, texturas de mármore.",
+    typography: "Serifada elegante. Playfair Display, Cormorant Garamond, Bodoni.",
+    previewImage: styleLuxuryGold,
+    cssVariables: {
+      "--background": "0 0% 4%",
+      "--foreground": "45 59% 53%",
+      "--primary": "45 59% 53%",
+      "--accent": "51 100% 50%",
+    },
+    sampleCSS: `:root {
+  --bg-black: #0A0A0A;
+  --bg-dark: #1A1A1A;
+  --gold: #D4AF37;
+  --gold-light: #FFD700;
+  --gold-dark: #B8860B;
+}
+
+.luxury-container {
+  background: var(--bg-black);
+  color: var(--gold);
+}
+
+.card-luxury {
+  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-black) 100%);
+  border: 1px solid var(--gold);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gold shimmer effect */
+.card-luxury::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(212, 175, 55, 0.1) 50%,
+    transparent 70%
+  );
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+/* Gold text gradient */
+.gold-text {
+  background: linear-gradient(
+    135deg,
+    var(--gold-dark) 0%,
+    var(--gold-light) 25%,
+    var(--gold) 50%,
+    var(--gold-light) 75%,
+    var(--gold-dark) 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: goldShine 3s ease-in-out infinite;
+}
+
+@keyframes goldShine {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Marble texture overlay */
+.marble-bg {
+  background-image: 
+    linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255,255,255,0.03) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.03) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.03) 75%);
+  background-size: 20px 20px;
+}
+
+.button-luxury {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold-light), var(--gold-dark));
+  background-size: 200% 200%;
+  border: none;
+  color: var(--bg-black);
+  padding: 16px 40px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  animation: goldShine 3s ease-in-out infinite;
+}
+
+.button-luxury:hover {
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+  transform: translateY(-2px);
+}`,
+  },
+  {
+    id: "candy-pop",
+    name: "Candy Pop",
+    subtitle: "Playful • Sweet • Kawaii",
+    description: "Estética doce e colorida com tons pastel, formas arredondadas e animações bouncy. Perfeito para apps infantis, jogos casuais e marcas divertidas.",
+    objective: "Criar alegria, diversão e acessibilidade — ideal para público jovem, apps infantis e marcas lúdicas.",
+    colors: ["#FFF0F5", "#FFB6C1", "#87CEEB", "#DDA0DD", "#98FB98"],
+    features: ["Pastel", "Bouncy", "Kawaii", "Divertido"],
+    iconStyle: "Ícones fofos e arredondados, cores pastel vibrantes. Animações bouncy e playful.",
+    layoutStyle: "Cards muito arredondados, sombras coloridas suaves. Espaçamento generoso e alegre.",
+    typography: "Rounded e friendly. Quicksand, Nunito, Varela Round.",
+    previewImage: styleCandyPop,
+    cssVariables: {
+      "--background": "340 100% 97%",
+      "--foreground": "340 60% 70%",
+      "--primary": "340 60% 70%",
+      "--accent": "197 71% 73%",
+    },
+    sampleCSS: `:root {
+  --bg-pink: #FFF0F5;
+  --candy-pink: #FFB6C1;
+  --candy-blue: #87CEEB;
+  --candy-purple: #DDA0DD;
+  --candy-green: #98FB98;
+  --candy-yellow: #FFFACD;
+}
+
+.candy-container {
+  background: linear-gradient(135deg, var(--bg-pink) 0%, #E6E6FA 100%);
+}
+
+.card-candy {
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 
+    0 10px 30px rgba(255, 182, 193, 0.3),
+    0 0 0 4px var(--candy-pink);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-candy:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(255, 182, 193, 0.4),
+    0 0 0 4px var(--candy-purple);
+}
+
+/* Bouncy animation */
+.bouncy {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-10px) scale(1.02); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(-5px); }
+}
+
+/* Floating bubbles */
+.bubble {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--candy-pink), var(--candy-purple));
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.button-candy {
+  background: linear-gradient(135deg, var(--candy-pink), var(--candy-purple));
+  border: none;
+  border-radius: 50px;
+  color: white;
+  padding: 14px 32px;
+  font-weight: 700;
+  font-size: 16px;
+  box-shadow: 0 6px 20px rgba(221, 160, 221, 0.4);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.button-candy:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(255, 182, 193, 0.5);
+}
+
+.button-candy:active {
+  transform: scale(0.95);
+}
+
+/* Rainbow text */
+.rainbow-text {
+  background: linear-gradient(
+    90deg,
+    var(--candy-pink),
+    var(--candy-purple),
+    var(--candy-blue),
+    var(--candy-green),
+    var(--candy-yellow),
+    var(--candy-pink)
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow 3s linear infinite;
+}
+
+@keyframes rainbow {
+  to { background-position: 200% center; }
+}`,
+  },
+  {
+    id: "matrix-hacker",
+    name: "Matrix Hacker",
+    subtitle: "Terminal • Cybersecurity • Code",
+    description: "Estética de terminal hacker com verde fosforescente sobre preto, código caindo estilo Matrix e interface de linha de comando. Para devs e entusiastas de segurança.",
+    objective: "Transmitir poder técnico, segurança cibernética e atmosfera de hacking — ideal para ferramentas de dev e segurança.",
+    colors: ["#000000", "#0D0D0D", "#00FF00", "#00CC00", "#003300"],
+    features: ["Terminal", "Code Rain", "Hacker", "Monospace"],
+    iconStyle: "Ícones ASCII ou pixel art, verde fosforescente. Estética de terminal DOS/Unix.",
+    layoutStyle: "Interface de terminal, grids de dados, scanlines. Bordas finas verde sobre preto.",
+    typography: "Monospace estrita. Fira Code, JetBrains Mono, Consolas.",
+    previewImage: styleMatrixHacker,
+    cssVariables: {
+      "--background": "0 0% 0%",
+      "--foreground": "120 100% 50%",
+      "--primary": "120 100% 50%",
+      "--accent": "120 100% 40%",
+    },
+    sampleCSS: `:root {
+  --bg-black: #000000;
+  --bg-dark: #0D0D0D;
+  --matrix-green: #00FF00;
+  --matrix-dim: #00CC00;
+  --matrix-dark: #003300;
+}
+
+.matrix-container {
+  background: var(--bg-black);
+  color: var(--matrix-green);
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Matrix rain effect */
+.matrix-rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 255, 0, 0.03) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* Scanlines */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.3) 2px,
+    rgba(0, 0, 0, 0.3) 4px
+  );
+  pointer-events: none;
+}
+
+.card-matrix {
+  background: var(--bg-dark);
+  border: 1px solid var(--matrix-green);
+  padding: 20px;
+  position: relative;
+}
+
+.card-matrix::before {
+  content: '> ';
+  color: var(--matrix-green);
+}
+
+/* Blinking cursor */
+.cursor::after {
+  content: '_';
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Typing effect */
+.typing {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--matrix-green);
+  animation: 
+    typing 3s steps(30) forwards,
+    blinkCursor 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blinkCursor {
+  50% { border-color: transparent; }
+}
+
+.button-matrix {
+  background: transparent;
+  border: 1px solid var(--matrix-green);
+  color: var(--matrix-green);
+  padding: 12px 24px;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.button-matrix:hover {
+  background: var(--matrix-green);
+  color: var(--bg-black);
+  box-shadow: 0 0 20px var(--matrix-green);
+}
+
+/* Glitch effect on hover */
+.button-matrix:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 255, 0, 0.1) 2px,
+    rgba(0, 255, 0, 0.1) 4px
+  );
+  animation: glitch 0.2s infinite;
+}`,
+  },
+  {
+    id: "watercolor-art",
+    name: "Watercolor Art",
+    subtitle: "Artistic • Soft • Creative",
+    description: "Design artístico com texturas de aquarela, cores fluidas e bordas orgânicas. Perfeito para portfolios criativos, galerias de arte e marcas artesanais.",
+    objective: "Transmitir criatividade, sensibilidade artística e originalidade — ideal para artistas, designers e marcas handmade.",
+    colors: ["#FFF8F0", "#FFB4A2", "#E5989B", "#B5838D", "#6D6875"],
+    features: ["Aquarela", "Artístico", "Orgânico", "Soft"],
+    iconStyle: "Ícones com efeito de aquarela, bordas suaves e imperfeitas. Traços artísticos manuais.",
+    layoutStyle: "Cards com bordas orgânicas, manchas de aquarela como decoração. Layout fluido.",
+    typography: "Manuscrita elegante combinada com sans-serif leve. Dancing Script, Satisfy + Lato.",
+    previewImage: styleWatercolorArt,
+    cssVariables: {
+      "--background": "30 100% 97%",
+      "--foreground": "316 18% 40%",
+      "--primary": "8 80% 75%",
+      "--accent": "352 40% 60%",
+    },
+    sampleCSS: `:root {
+  --bg-cream: #FFF8F0;
+  --watercolor-peach: #FFB4A2;
+  --watercolor-rose: #E5989B;
+  --watercolor-mauve: #B5838D;
+  --watercolor-gray: #6D6875;
+}
+
+.watercolor-container {
+  background: var(--bg-cream);
+  position: relative;
+}
+
+/* Watercolor splash */
+.watercolor-splash {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 180, 162, 0.3),
+    rgba(229, 152, 155, 0.2),
+    transparent
+  );
+  filter: blur(20px);
+  animation: morphBlob 8s ease-in-out infinite;
+}
+
+@keyframes morphBlob {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50% { border-radius: 50% 50% 40% 60% / 40% 50% 50% 60%; }
+  75% { border-radius: 40% 60% 50% 50% / 60% 40% 60% 40%; }
+}
+
+.card-watercolor {
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 20px 60px 20px 60px;
+  padding: 32px;
+  box-shadow: 
+    0 10px 40px rgba(181, 131, 141, 0.15),
+    inset 0 0 60px rgba(255, 180, 162, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-watercolor::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 180, 162, 0.2) 0%,
+    transparent 70%
+  );
+}
+
+/* Paint drip effect */
+.paint-drip {
+  position: relative;
+}
+
+.paint-drip::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 20px;
+  background: var(--watercolor-rose);
+  border-radius: 0 0 50% 50%;
+  animation: drip 3s ease-in-out infinite;
+}
+
+@keyframes drip {
+  0%, 100% { height: 0; opacity: 0; }
+  50% { height: 20px; opacity: 1; }
+}
+
+.button-watercolor {
+  background: linear-gradient(
+    135deg,
+    var(--watercolor-peach),
+    var(--watercolor-rose)
+  );
+  border: none;
+  border-radius: 30px 10px 30px 10px;
+  color: white;
+  padding: 14px 32px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 18px;
+  box-shadow: 0 4px 20px rgba(229, 152, 155, 0.4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.button-watercolor:hover {
+  transform: scale(1.05) rotate(-2deg);
+  border-radius: 10px 30px 10px 30px;
+}`,
+  },
+  {
+    id: "glass-3d",
+    name: "Glassmorphism 3D",
+    subtitle: "Glass • Depth • Modern iOS",
+    description: "Glassmorphism avançado com camadas de profundidade, blur intenso e gradientes vibrantes ao fundo. Estilo iOS moderno com cards flutuantes transparentes.",
+    objective: "Criar profundidade visual e modernidade — ideal para dashboards, apps de produtividade e interfaces premium.",
+    colors: ["#667EEA", "#764BA2", "#F093FB", "#F5576C", "#4FACFE"],
+    features: ["Glass Effect", "3D Depth", "Blur", "Modern"],
+    iconStyle: "Ícones SF Symbols style, lineares com fill sutil. Cores adaptativas ao fundo.",
+    layoutStyle: "Cards de vidro flutuantes em múltiplas camadas. Fundo com gradientes vibrantes animados.",
+    typography: "SF Pro Display style. Inter, -apple-system.",
+    previewImage: styleGlass3D,
+    cssVariables: {
+      "--background": "237 65% 66%",
+      "--foreground": "0 0% 100%",
+      "--primary": "237 65% 66%",
+      "--accent": "313 78% 78%",
+    },
+    sampleCSS: `:root {
+  --gradient-1: #667EEA;
+  --gradient-2: #764BA2;
+  --gradient-3: #F093FB;
+  --gradient-4: #F5576C;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+.glass-container {
+  background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated gradient background */
+.animated-bg {
+  background: linear-gradient(
+    -45deg,
+    var(--gradient-1),
+    var(--gradient-2),
+    var(--gradient-3),
+    var(--gradient-4)
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating orbs */
+.glass-orb {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gradient-3), var(--gradient-4));
+  filter: blur(60px);
+  opacity: 0.6;
+  animation: orbFloat 8s ease-in-out infinite;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+.card-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card-glass:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* 3D layer effect */
+.glass-layer-1 { transform: translateZ(10px); }
+.glass-layer-2 { transform: translateZ(20px); }
+.glass-layer-3 { transform: translateZ(30px); }
+
+.button-glass {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  color: white;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.button-glass:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}`,
+  },
+  {
+    id: "nature-organic",
+    name: "Nature Organic",
+    subtitle: "Eco • Natural • Sustainable",
+    description: "Design inspirado na natureza com tons terrosos, texturas de madeira e folhagens. Formas orgânicas e curvas naturais para marcas sustentáveis.",
+    objective: "Transmitir sustentabilidade, conexão com a natureza e consciência ambiental — ideal para marcas eco-friendly.",
+    colors: ["#F5E6D3", "#2D5016", "#4A7C23", "#8B4513", "#D4A574"],
+    features: ["Eco-Friendly", "Orgânico", "Natural", "Terroso"],
+    iconStyle: "Ícones de folhas, plantas e elementos naturais. Traços orgânicos, cores terrosas.",
+    layoutStyle: "Cards com bordas orgânicas irregulares. Texturas de papel reciclado e madeira.",
+    typography: "Natural e friendly. Merriweather para títulos, Open Sans para corpo.",
+    previewImage: styleNatureOrganic,
+    cssVariables: {
+      "--background": "30 45% 91%",
+      "--foreground": "93 53% 20%",
+      "--primary": "93 53% 20%",
+      "--accent": "93 53% 30%",
+    },
+    sampleCSS: `:root {
+  --bg-cream: #F5E6D3;
+  --forest-dark: #2D5016;
+  --forest-light: #4A7C23;
+  --wood-brown: #8B4513;
+  --sand: #D4A574;
+}
+
+.nature-container {
+  background: var(--bg-cream);
+  position: relative;
+}
+
+/* Paper texture */
+.paper-texture {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+.card-nature {
+  background: linear-gradient(135deg, #FFFEF9, #F5E6D3);
+  border: 2px solid var(--forest-dark);
+  border-radius: 20px 5px 20px 5px;
+  padding: 24px;
+  position: relative;
+  box-shadow: 
+    4px 4px 0 var(--forest-dark),
+    0 10px 30px rgba(45, 80, 22, 0.1);
+}
+
+/* Leaf decoration */
+.leaf-decor::before {
+  content: '🌿';
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  font-size: 24px;
+  transform: rotate(15deg);
+}
+
+/* Organic blob shape */
+.organic-blob {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  background: linear-gradient(135deg, var(--forest-light), var(--forest-dark));
+  animation: morphShape 10s ease-in-out infinite;
+}
+
+@keyframes morphShape {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50% { border-radius: 50% 50% 40% 60% / 40% 50% 50% 60%; }
+  75% { border-radius: 40% 60% 50% 50% / 60% 40% 60% 40%; }
+}
+
+/* Growing vine animation */
+.vine {
+  stroke: var(--forest-light);
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: growVine 3s ease forwards;
+}
+
+@keyframes growVine {
+  to { stroke-dashoffset: 0; }
+}
+
+.button-nature {
+  background: var(--forest-dark);
+  border: none;
+  border-radius: 30px 10px 30px 10px;
+  color: var(--bg-cream);
+  padding: 14px 28px;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.button-nature::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(74, 124, 35, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.button-nature:hover::before {
+  left: 100%;
+}
+
+.button-nature:hover {
+  background: var(--forest-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(45, 80, 22, 0.3);
 }`,
   },
 ];

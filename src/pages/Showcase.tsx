@@ -64,10 +64,10 @@ export default function Showcase() {
               <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
                 <Palette size={16} className="text-primary" />
               </div>
-              <span className="font-medium">8 Estilos</span>
+              <span className="font-medium">18 Estilos</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              De Premium Minimalista a Dark Tech Futurista
+              De Premium Minimalista a Cyberpunk Neon
             </p>
           </div>
           <div className="p-4 rounded-xl bg-muted/30 border border-border/50">
@@ -96,23 +96,35 @@ export default function Showcase() {
 
         {/* Filter */}
         <div className="flex flex-wrap justify-center gap-2 mb-8">
-          {["all", "premium", "cartoon", "dark", "retro", "industrial", "hybrid"].map((f) => (
+          {[
+            { id: "all", label: "Todos" },
+            { id: "premium", label: "Premium" },
+            { id: "cartoon", label: "Ilustrado" },
+            { id: "dark", label: "Dark/Tech" },
+            { id: "retro", label: "Retrô" },
+            { id: "industrial", label: "Industrial" },
+            { id: "hybrid", label: "Híbrido" },
+            { id: "cyberpunk", label: "Cyberpunk" },
+            { id: "aurora", label: "Aurora" },
+            { id: "brutalist", label: "Brutalist" },
+            { id: "vaporwave", label: "Vaporwave" },
+            { id: "luxury", label: "Luxury" },
+            { id: "candy", label: "Candy" },
+            { id: "matrix", label: "Matrix" },
+            { id: "watercolor", label: "Watercolor" },
+            { id: "glass", label: "Glass 3D" },
+            { id: "nature", label: "Nature" },
+          ].map((f) => (
             <button
-              key={f}
-              onClick={() => setFilter(f)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                filter === f
+              key={f.id}
+              onClick={() => setFilter(f.id)}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                filter === f.id
                   ? "bg-primary text-primary-foreground"
                   : "bg-muted/50 text-muted-foreground hover:bg-muted"
               }`}
             >
-              {f === "all" ? "Todos" : 
-               f === "premium" ? "Premium" :
-               f === "cartoon" ? "Ilustrado" :
-               f === "dark" ? "Dark Tech" :
-               f === "retro" ? "Retrô" :
-               f === "industrial" ? "Industrial" :
-               "Híbrido"}
+              {f.label}
             </button>
           ))}
         </div>
