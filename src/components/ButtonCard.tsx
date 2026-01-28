@@ -27,15 +27,27 @@ const ButtonCard = ({ button }: ButtonCardProps) => {
     }
   };
 
-  const getButtonAnimation = () => {
-    if (!isPlaying) return "";
-    
-    // For scale animations, we apply on hover simulation
-    if (button.category === "scale") {
-      return `animate-[${button.id.replace("-", "")}Preview_1s_ease-in-out_infinite]`;
+  // Extract keyframes from CSS code and create inline style
+  const getInlineKeyframes = () => {
+    const keyframesMatch = button.cssCode.match(/@keyframes\s+(\w+)\s*\{([^}]+\{[^}]+\})+\s*\}/);
+    if (keyframesMatch) {
+      return keyframesMatch[0];
     }
-    // For pulse animations, they run continuously
-    return `animate-[${button.id.replace("-", "")}Preview_${button.duration}_infinite]`;
+    return "";
+  };
+
+  const getAnimationName = () => {
+    const match = button.cssCode.match(/@keyframes\s+(\w+)/);
+    return match ? match[1] : "";
+  };
+
+  const getPreviewStyle = (): React.CSSProperties => {
+    const animName = getAnimationName();
+    if (!animName) return {};
+    
+    return {
+      animation: `${animName} ${button.duration} ${button.category === "pulse" ? "infinite" : "infinite"} ease-in-out`
+    };
   };
 
   return (
@@ -71,25 +83,14 @@ const ButtonCard = ({ button }: ButtonCardProps) => {
       <div className="relative h-28 rounded-lg bg-gradient-to-br from-muted/30 to-muted/10 flex items-center justify-center mb-4 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,255,0.03),transparent_70%)]" />
         
-        {button.category === "scale" ? (
-          <button
-            className={`px-6 py-3 rounded-lg font-semibold text-sm bg-gradient-to-r ${getCategoryColor(button.category)} text-background transition-transform ${isPlaying ? "hover:scale-110" : ""}`}
-            style={{
-              animation: isPlaying ? `scalePreview ${button.duration} ease-in-out infinite` : "none"
-            }}
-          >
-            Hover Me
-          </button>
-        ) : (
-          <button
-            className={`px-6 py-3 rounded-lg font-semibold text-sm bg-gradient-to-r ${getCategoryColor(button.category)} text-background`}
-            style={{
-              animation: isPlaying ? `pulsePreview ${button.duration} infinite` : "none"
-            }}
-          >
-            Clique
-          </button>
-        )}
+        <style>{getInlineKeyframes()}</style>
+        
+        <button
+          className={`px-6 py-3 rounded-lg font-semibold text-sm bg-gradient-to-r ${getCategoryColor(button.category)} text-background border-2 border-white/20`}
+          style={isPlaying ? getPreviewStyle() : {}}
+        >
+          {button.category === "scale" ? "Hover Me" : "Clique"}
+        </button>
         
         {/* Intensity badge */}
         <span className="absolute top-2 right-2 text-xs font-mono text-muted-foreground bg-background/50 px-2 py-0.5 rounded">

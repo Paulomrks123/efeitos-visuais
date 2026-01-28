@@ -12,883 +12,1054 @@ export interface ButtonAnimation {
 }
 
 export const buttonAnimations: ButtonAnimation[] = [
-  // ========== SCALE ANIMATIONS (30) ==========
+  // ========== SCALE ANIMATIONS (30) - Cada uma única ==========
   {
     id: "scale-1",
-    name: "Scale Suave",
+    name: "Bounce Up",
     category: "scale",
-    description: "Escala sutil e rápida",
-    duration: "0.3s",
-    intensity: "1.05x",
-    cssCode: `.scale-1:hover { animation: scale1 0.3s ease; }
-@keyframes scale1 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.05); } 
+    description: "Escala com bounce para cima",
+    duration: "0.4s",
+    intensity: "1.1x",
+    cssCode: `.bounce-up:hover { 
+  animation: bounceUp 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+}
+@keyframes bounceUp { 
+  0% { transform: scale(1) translateY(0); } 
+  50% { transform: scale(1.1) translateY(-5px); } 
+  100% { transform: scale(1) translateY(0); } 
 }`,
-    htmlCode: `<button className="scale-1">Hover Me</button>`
+    htmlCode: `<button className="bounce-up">Hover Me</button>`
   },
   {
     id: "scale-2",
-    name: "Scale Médio",
+    name: "Rotate Grow",
     category: "scale",
-    description: "Escala média com timing suave",
-    duration: "0.4s",
-    intensity: "1.08x",
-    cssCode: `.scale-2:hover { animation: scale2 0.4s ease; }
-@keyframes scale2 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.08); } 
+    description: "Rotação com crescimento",
+    duration: "0.5s",
+    intensity: "1.08x + 5deg",
+    cssCode: `.rotate-grow:hover { 
+  animation: rotateGrow 0.5s ease-out; 
+}
+@keyframes rotateGrow { 
+  0% { transform: scale(1) rotate(0deg); } 
+  50% { transform: scale(1.08) rotate(5deg); } 
+  100% { transform: scale(1) rotate(0deg); } 
 }`,
-    htmlCode: `<button className="scale-2">Hover Me</button>`
+    htmlCode: `<button className="rotate-grow">Hover Me</button>`
   },
   {
     id: "scale-3",
-    name: "Scale Bounce",
+    name: "Skew Pop",
     category: "scale",
-    description: "Escala com efeito de bounce",
-    duration: "0.5s",
-    intensity: "1.1x",
-    cssCode: `.scale-3:hover { animation: scale3 0.5s ease-in-out; }
-@keyframes scale3 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.1); } 
+    description: "Distorção com pop",
+    duration: "0.35s",
+    intensity: "1.05x + skew",
+    cssCode: `.skew-pop:hover { 
+  animation: skewPop 0.35s ease-in-out; 
+}
+@keyframes skewPop { 
+  0% { transform: scale(1) skewX(0); } 
+  25% { transform: scale(1.05) skewX(-3deg); } 
+  75% { transform: scale(1.05) skewX(3deg); } 
+  100% { transform: scale(1) skewX(0); } 
 }`,
-    htmlCode: `<button className="scale-3">Hover Me</button>`
+    htmlCode: `<button className="skew-pop">Hover Me</button>`
   },
   {
     id: "scale-4",
-    name: "Scale Elástico",
+    name: "3D Flip Lite",
     category: "scale",
-    description: "Escala com efeito elástico",
+    description: "Flip 3D sutil",
     duration: "0.6s",
-    intensity: "1.12x",
-    cssCode: `.scale-4:hover { animation: scale4 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
-@keyframes scale4 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.12); } 
+    intensity: "rotateX 15deg",
+    cssCode: `.flip-lite:hover { 
+  animation: flipLite 0.6s ease-in-out; 
+  transform-style: preserve-3d;
+}
+@keyframes flipLite { 
+  0% { transform: perspective(400px) rotateX(0); } 
+  50% { transform: perspective(400px) rotateX(15deg) scale(1.05); } 
+  100% { transform: perspective(400px) rotateX(0); } 
 }`,
-    htmlCode: `<button className="scale-4">Hover Me</button>`
+    htmlCode: `<button className="flip-lite">Hover Me</button>`
   },
   {
     id: "scale-5",
-    name: "Scale Grande",
+    name: "Squeeze X",
     category: "scale",
-    description: "Escala mais pronunciada",
-    duration: "0.7s",
-    intensity: "1.15x",
-    cssCode: `.scale-5:hover { animation: scale5 0.7s ease; }
-@keyframes scale5 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.15); } 
+    description: "Compressão horizontal",
+    duration: "0.3s",
+    intensity: "scaleX 0.95",
+    cssCode: `.squeeze-x:hover { 
+  animation: squeezeX 0.3s ease-out; 
+}
+@keyframes squeezeX { 
+  0% { transform: scaleX(1) scaleY(1); } 
+  50% { transform: scaleX(0.95) scaleY(1.05); } 
+  100% { transform: scaleX(1) scaleY(1); } 
 }`,
-    htmlCode: `<button className="scale-5">Hover Me</button>`
+    htmlCode: `<button className="squeeze-x">Hover Me</button>`
   },
   {
     id: "scale-6",
-    name: "Scale Rápido",
+    name: "Jello Shake",
     category: "scale",
-    description: "Escala muito rápida",
-    duration: "0.2s",
-    intensity: "1.03x",
-    cssCode: `.scale-6:hover { animation: scale6 0.2s ease; }
-@keyframes scale6 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.03); } 
+    description: "Efeito gelatina tremendo",
+    duration: "0.7s",
+    intensity: "skew ±10deg",
+    cssCode: `.jello-shake:hover { 
+  animation: jelloShake 0.7s ease-in-out; 
+}
+@keyframes jelloShake { 
+  0%, 100% { transform: scale(1) skewX(0); } 
+  20% { transform: scale(1.05) skewX(-8deg); } 
+  40% { transform: scale(1.05) skewX(6deg); } 
+  60% { transform: scale(1.05) skewX(-4deg); } 
+  80% { transform: scale(1.05) skewX(2deg); } 
 }`,
-    htmlCode: `<button className="scale-6">Hover Me</button>`
+    htmlCode: `<button className="jello-shake">Hover Me</button>`
   },
   {
     id: "scale-7",
-    name: "Scale Dramático",
+    name: "Heartbeat Scale",
     category: "scale",
-    description: "Escala dramática com timing lento",
+    description: "Batimento cardíaco",
     duration: "0.8s",
-    intensity: "1.18x",
-    cssCode: `.scale-7:hover { animation: scale7 0.8s ease-out; }
-@keyframes scale7 { 
+    intensity: "1.15x duplo",
+    cssCode: `.heartbeat-scale:hover { 
+  animation: heartbeatScale 0.8s ease-in-out; 
+}
+@keyframes heartbeatScale { 
   0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.18); } 
+  15% { transform: scale(1.15); } 
+  30% { transform: scale(1); } 
+  45% { transform: scale(1.1); } 
+  60% { transform: scale(1); } 
 }`,
-    htmlCode: `<button className="scale-7">Hover Me</button>`
+    htmlCode: `<button className="heartbeat-scale">Hover Me</button>`
   },
   {
     id: "scale-8",
-    name: "Scale Pop",
+    name: "Rubber Band",
     category: "scale",
-    description: "Efeito pop com overshoot",
-    duration: "0.35s",
-    intensity: "1.2x",
-    cssCode: `.scale-8:hover { animation: scale8 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-@keyframes scale8 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.2); } 
+    description: "Efeito elástico extremo",
+    duration: "0.6s",
+    intensity: "1.25x elastic",
+    cssCode: `.rubber-band:hover { 
+  animation: rubberBand 0.6s ease; 
+}
+@keyframes rubberBand { 
+  0% { transform: scale(1); } 
+  30% { transform: scaleX(1.25) scaleY(0.75); } 
+  40% { transform: scaleX(0.75) scaleY(1.25); } 
+  50% { transform: scaleX(1.15) scaleY(0.85); } 
+  65% { transform: scaleX(0.95) scaleY(1.05); } 
+  100% { transform: scale(1); } 
 }`,
-    htmlCode: `<button className="scale-8">Hover Me</button>`
+    htmlCode: `<button className="rubber-band">Hover Me</button>`
   },
   {
     id: "scale-9",
-    name: "Scale Micro",
+    name: "Swing Scale",
     category: "scale",
-    description: "Escala muito sutil",
-    duration: "0.25s",
-    intensity: "1.02x",
-    cssCode: `.scale-9:hover { animation: scale9 0.25s ease; }
-@keyframes scale9 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.02); } 
+    description: "Balanço com escala",
+    duration: "0.5s",
+    intensity: "rotate ±15deg",
+    cssCode: `.swing-scale:hover { 
+  animation: swingScale 0.5s ease-in-out; 
+  transform-origin: top center;
+}
+@keyframes swingScale { 
+  0% { transform: scale(1) rotate(0); } 
+  20% { transform: scale(1.05) rotate(15deg); } 
+  40% { transform: scale(1.05) rotate(-10deg); } 
+  60% { transform: scale(1.05) rotate(5deg); } 
+  100% { transform: scale(1) rotate(0); } 
 }`,
-    htmlCode: `<button className="scale-9">Hover Me</button>`
+    htmlCode: `<button className="swing-scale">Hover Me</button>`
   },
   {
     id: "scale-10",
-    name: "Scale Smooth",
+    name: "Tada",
     category: "scale",
-    description: "Escala suave e fluida",
-    duration: "0.45s",
-    intensity: "1.07x",
-    cssCode: `.scale-10:hover { animation: scale10 0.45s ease-in-out; }
-@keyframes scale10 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.07); } 
+    description: "Celebração animada",
+    duration: "0.8s",
+    intensity: "1.1x + rotate",
+    cssCode: `.tada-scale:hover { 
+  animation: tadaScale 0.8s ease-in-out; 
+}
+@keyframes tadaScale { 
+  0%, 100% { transform: scale(1) rotate(0); } 
+  10%, 20% { transform: scale(0.9) rotate(-3deg); } 
+  30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); } 
+  40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); } 
 }`,
-    htmlCode: `<button className="scale-10">Hover Me</button>`
+    htmlCode: `<button className="tada-scale">Hover Me</button>`
   },
   {
     id: "scale-11",
-    name: "Scale Spring",
+    name: "Wobble",
     category: "scale",
-    description: "Escala com efeito de mola",
-    duration: "0.5s",
-    intensity: "1.13x",
-    cssCode: `.scale-11:hover { animation: scale11 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
-@keyframes scale11 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.13); } 
+    description: "Oscilação lateral",
+    duration: "0.7s",
+    intensity: "translateX ±25%",
+    cssCode: `.wobble-scale:hover { 
+  animation: wobbleScale 0.7s ease-in-out; 
+}
+@keyframes wobbleScale { 
+  0%, 100% { transform: scale(1) translateX(0); } 
+  15% { transform: scale(1.02) translateX(-20%) rotate(-5deg); } 
+  30% { transform: scale(1.02) translateX(15%) rotate(3deg); } 
+  45% { transform: scale(1.02) translateX(-10%) rotate(-3deg); } 
+  60% { transform: scale(1.02) translateX(5%) rotate(2deg); } 
+  75% { transform: scale(1.01) translateX(-2%) rotate(-1deg); } 
 }`,
-    htmlCode: `<button className="scale-11">Hover Me</button>`
+    htmlCode: `<button className="wobble-scale">Hover Me</button>`
   },
   {
     id: "scale-12",
-    name: "Scale Gentle",
+    name: "Push Down",
     category: "scale",
-    description: "Escala gentil e lenta",
-    duration: "0.65s",
-    intensity: "1.06x",
-    cssCode: `.scale-12:hover { animation: scale12 0.65s ease; }
-@keyframes scale12 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.06); } 
+    description: "Empurrão para baixo",
+    duration: "0.25s",
+    intensity: "0.95x press",
+    cssCode: `.push-down:hover { 
+  animation: pushDown 0.25s ease-out; 
+}
+@keyframes pushDown { 
+  0% { transform: scale(1) translateY(0); } 
+  50% { transform: scale(0.95) translateY(3px); } 
+  100% { transform: scale(1) translateY(0); } 
 }`,
-    htmlCode: `<button className="scale-12">Hover Me</button>`
+    htmlCode: `<button className="push-down">Hover Me</button>`
   },
   {
     id: "scale-13",
-    name: "Scale Bold",
+    name: "Float Up",
     category: "scale",
-    description: "Escala ousada",
-    duration: "0.55s",
-    intensity: "1.22x",
-    cssCode: `.scale-13:hover { animation: scale13 0.55s ease-out; }
-@keyframes scale13 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.22); } 
+    description: "Flutuação suave",
+    duration: "0.4s",
+    intensity: "translateY -8px",
+    cssCode: `.float-up:hover { 
+  animation: floatUp 0.4s ease-out forwards; 
+}
+@keyframes floatUp { 
+  0% { transform: scale(1) translateY(0); box-shadow: 0 2px 5px rgba(0,0,0,0.2); } 
+  100% { transform: scale(1.03) translateY(-8px); box-shadow: 0 15px 25px rgba(0,0,0,0.15); } 
 }`,
-    htmlCode: `<button className="scale-13">Hover Me</button>`
+    htmlCode: `<button className="float-up">Hover Me</button>`
   },
   {
     id: "scale-14",
-    name: "Scale Snap",
+    name: "Pulse Scale",
     category: "scale",
-    description: "Escala com snap rápido",
-    duration: "0.28s",
-    intensity: "1.09x",
-    cssCode: `.scale-14:hover { animation: scale14 0.28s ease-out; }
-@keyframes scale14 { 
+    description: "Pulsação tripla",
+    duration: "0.6s",
+    intensity: "1.08x triple",
+    cssCode: `.pulse-scale:hover { 
+  animation: pulseScale 0.6s ease-in-out; 
+}
+@keyframes pulseScale { 
   0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.09); } 
+  25% { transform: scale(1.08); } 
+  50% { transform: scale(1.02); } 
+  75% { transform: scale(1.06); } 
 }`,
-    htmlCode: `<button className="scale-14">Hover Me</button>`
+    htmlCode: `<button className="pulse-scale">Hover Me</button>`
   },
   {
     id: "scale-15",
-    name: "Scale Wobble",
+    name: "Tilt 3D",
     category: "scale",
-    description: "Escala com leve oscilação",
-    duration: "0.6s",
-    intensity: "1.14x",
-    cssCode: `.scale-15:hover { animation: scale15 0.6s ease-in-out; }
-@keyframes scale15 { 
-  0%, 100% { transform: scale(1); } 
-  25% { transform: scale(1.14); }
-  75% { transform: scale(0.98); }
+    description: "Inclinação 3D realista",
+    duration: "0.4s",
+    intensity: "rotateY 10deg",
+    cssCode: `.tilt-3d:hover { 
+  animation: tilt3D 0.4s ease-out forwards; 
+  transform-style: preserve-3d;
+}
+@keyframes tilt3D { 
+  0% { transform: perspective(500px) rotateY(0) rotateX(0); } 
+  100% { transform: perspective(500px) rotateY(10deg) rotateX(5deg) scale(1.05); } 
 }`,
-    htmlCode: `<button className="scale-15">Hover Me</button>`
+    htmlCode: `<button className="tilt-3d">Hover Me</button>`
   },
   {
     id: "scale-16",
-    name: "Scale Punch",
+    name: "Morphing",
     category: "scale",
-    description: "Escala com punch forte",
-    duration: "0.3s",
-    intensity: "1.25x",
-    cssCode: `.scale-16:hover { animation: scale16 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-@keyframes scale16 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.25); } 
+    description: "Mudança de forma",
+    duration: "0.5s",
+    intensity: "border-radius",
+    cssCode: `.morphing:hover { 
+  animation: morphing 0.5s ease-in-out; 
+}
+@keyframes morphing { 
+  0%, 100% { transform: scale(1); border-radius: 8px; } 
+  50% { transform: scale(1.05); border-radius: 20px; } 
 }`,
-    htmlCode: `<button className="scale-16">Hover Me</button>`
+    htmlCode: `<button className="morphing">Hover Me</button>`
   },
   {
     id: "scale-17",
-    name: "Scale Breath",
+    name: "Shake Horizontal",
     category: "scale",
-    description: "Escala como respiração",
-    duration: "0.75s",
-    intensity: "1.08x",
-    cssCode: `.scale-17:hover { animation: scale17 0.75s ease-in-out; }
-@keyframes scale17 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.08); } 
+    description: "Tremor horizontal",
+    duration: "0.5s",
+    intensity: "±10px shake",
+    cssCode: `.shake-h:hover { 
+  animation: shakeH 0.5s ease-in-out; 
+}
+@keyframes shakeH { 
+  0%, 100% { transform: translateX(0); } 
+  10%, 50%, 90% { transform: translateX(-10px); } 
+  30%, 70% { transform: translateX(10px); } 
 }`,
-    htmlCode: `<button className="scale-17">Hover Me</button>`
+    htmlCode: `<button className="shake-h">Hover Me</button>`
   },
   {
     id: "scale-18",
-    name: "Scale Zoom",
+    name: "Shake Vertical",
     category: "scale",
-    description: "Zoom intenso",
+    description: "Tremor vertical",
     duration: "0.4s",
-    intensity: "1.18x",
-    cssCode: `.scale-18:hover { animation: scale18 0.4s ease-out; }
-@keyframes scale18 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.18); } 
+    intensity: "±8px shake",
+    cssCode: `.shake-v:hover { 
+  animation: shakeV 0.4s ease-in-out; 
+}
+@keyframes shakeV { 
+  0%, 100% { transform: translateY(0); } 
+  20%, 60% { transform: translateY(-8px); } 
+  40%, 80% { transform: translateY(8px); } 
 }`,
-    htmlCode: `<button className="scale-18">Hover Me</button>`
+    htmlCode: `<button className="shake-v">Hover Me</button>`
   },
   {
     id: "scale-19",
-    name: "Scale Burst",
+    name: "Zoom Rotate",
     category: "scale",
-    description: "Explosão de escala",
-    duration: "0.35s",
-    intensity: "1.28x",
-    cssCode: `.scale-19:hover { animation: scale19 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
-@keyframes scale19 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.28); } 
+    description: "Zoom com rotação completa",
+    duration: "0.6s",
+    intensity: "1.15x + 360deg",
+    cssCode: `.zoom-rotate:hover { 
+  animation: zoomRotate 0.6s ease-out; 
+}
+@keyframes zoomRotate { 
+  0% { transform: scale(1) rotate(0deg); } 
+  50% { transform: scale(1.15) rotate(180deg); } 
+  100% { transform: scale(1) rotate(360deg); } 
 }`,
-    htmlCode: `<button className="scale-19">Hover Me</button>`
+    htmlCode: `<button className="zoom-rotate">Hover Me</button>`
   },
   {
     id: "scale-20",
-    name: "Scale Subtle",
+    name: "Expand Contract",
     category: "scale",
-    description: "Escala muito sutil",
-    duration: "0.5s",
-    intensity: "1.04x",
-    cssCode: `.scale-20:hover { animation: scale20 0.5s ease; }
-@keyframes scale20 { 
+    description: "Expansão e contração",
+    duration: "0.45s",
+    intensity: "1.12x wave",
+    cssCode: `.expand-contract:hover { 
+  animation: expandContract 0.45s ease-in-out; 
+}
+@keyframes expandContract { 
   0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.04); } 
+  25% { transform: scale(1.12); } 
+  50% { transform: scale(0.98); } 
+  75% { transform: scale(1.06); } 
 }`,
-    htmlCode: `<button className="scale-20">Hover Me</button>`
+    htmlCode: `<button className="expand-contract">Hover Me</button>`
   },
   {
     id: "scale-21",
-    name: "Scale Double",
+    name: "Slide Right",
     category: "scale",
-    description: "Dupla escala",
-    duration: "0.6s",
-    intensity: "1.1x",
-    cssCode: `.scale-21:hover { animation: scale21 0.6s ease-in-out; }
-@keyframes scale21 { 
-  0%, 100% { transform: scale(1); } 
-  25% { transform: scale(1.1); }
-  50% { transform: scale(1.05); }
-  75% { transform: scale(1.1); }
+    description: "Deslize para direita",
+    duration: "0.3s",
+    intensity: "translateX 10px",
+    cssCode: `.slide-right:hover { 
+  animation: slideRight 0.3s ease-out forwards; 
+}
+@keyframes slideRight { 
+  0% { transform: translateX(0) scale(1); } 
+  100% { transform: translateX(10px) scale(1.02); } 
 }`,
-    htmlCode: `<button className="scale-21">Hover Me</button>`
+    htmlCode: `<button className="slide-right">Hover Me</button>`
   },
   {
     id: "scale-22",
-    name: "Scale Pulse Mix",
+    name: "Bounce In",
     category: "scale",
-    description: "Escala com pulsação",
-    duration: "0.7s",
-    intensity: "1.12x",
-    cssCode: `.scale-22:hover { animation: scale22 0.7s ease-in-out; }
-@keyframes scale22 { 
-  0%, 100% { transform: scale(1); } 
-  30% { transform: scale(1.12); }
-  60% { transform: scale(1.06); }
+    description: "Entrada com bounce",
+    duration: "0.5s",
+    intensity: "elastic bounce",
+    cssCode: `.bounce-in:hover { 
+  animation: bounceIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+}
+@keyframes bounceIn { 
+  0% { transform: scale(1); } 
+  40% { transform: scale(1.2); } 
+  60% { transform: scale(0.95); } 
+  80% { transform: scale(1.08); } 
+  100% { transform: scale(1); } 
 }`,
-    htmlCode: `<button className="scale-22">Hover Me</button>`
+    htmlCode: `<button className="bounce-in">Hover Me</button>`
   },
   {
     id: "scale-23",
-    name: "Scale Jelly",
+    name: "Flash Scale",
     category: "scale",
-    description: "Efeito gelatina",
-    duration: "0.5s",
-    intensity: "1.15x",
-    cssCode: `.scale-23:hover { animation: scale23 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
-@keyframes scale23 { 
-  0%, 100% { transform: scale(1); } 
-  30% { transform: scale(1.15); }
-  60% { transform: scale(0.95); }
+    description: "Flash com escala",
+    duration: "0.6s",
+    intensity: "opacity flash",
+    cssCode: `.flash-scale:hover { 
+  animation: flashScale 0.6s ease-in-out; 
+}
+@keyframes flashScale { 
+  0%, 50%, 100% { opacity: 1; transform: scale(1); } 
+  25%, 75% { opacity: 0.5; transform: scale(1.08); } 
 }`,
-    htmlCode: `<button className="scale-23">Hover Me</button>`
+    htmlCode: `<button className="flash-scale">Hover Me</button>`
   },
   {
     id: "scale-24",
-    name: "Scale Snappy",
+    name: "Spring Jump",
     category: "scale",
-    description: "Escala snappy",
-    duration: "0.25s",
-    intensity: "1.11x",
-    cssCode: `.scale-24:hover { animation: scale24 0.25s ease-out; }
-@keyframes scale24 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.11); } 
+    description: "Pulo de mola",
+    duration: "0.5s",
+    intensity: "spring effect",
+    cssCode: `.spring-jump:hover { 
+  animation: springJump 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); 
+}
+@keyframes springJump { 
+  0% { transform: scale(1) translateY(0); } 
+  30% { transform: scale(0.95) translateY(5px); } 
+  60% { transform: scale(1.1) translateY(-15px); } 
+  100% { transform: scale(1) translateY(0); } 
 }`,
-    htmlCode: `<button className="scale-24">Hover Me</button>`
+    htmlCode: `<button className="spring-jump">Hover Me</button>`
   },
   {
     id: "scale-25",
-    name: "Scale Slow",
+    name: "Flip X",
     category: "scale",
-    description: "Escala lenta e suave",
-    duration: "0.9s",
-    intensity: "1.1x",
-    cssCode: `.scale-25:hover { animation: scale25 0.9s ease-in-out; }
-@keyframes scale25 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.1); } 
+    description: "Flip horizontal",
+    duration: "0.6s",
+    intensity: "rotateX 180deg",
+    cssCode: `.flip-x:hover { 
+  animation: flipX 0.6s ease-in-out; 
+  transform-style: preserve-3d;
+}
+@keyframes flipX { 
+  0% { transform: perspective(400px) rotateX(0); } 
+  50% { transform: perspective(400px) rotateX(90deg) scale(1.05); } 
+  100% { transform: perspective(400px) rotateX(0); } 
 }`,
-    htmlCode: `<button className="scale-25">Hover Me</button>`
+    htmlCode: `<button className="flip-x">Hover Me</button>`
   },
   {
     id: "scale-26",
-    name: "Scale Power",
+    name: "Flip Y",
     category: "scale",
-    description: "Escala poderosa",
-    duration: "0.4s",
-    intensity: "1.2x",
-    cssCode: `.scale-26:hover { animation: scale26 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-@keyframes scale26 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.2); } 
+    description: "Flip vertical",
+    duration: "0.6s",
+    intensity: "rotateY 180deg",
+    cssCode: `.flip-y:hover { 
+  animation: flipY 0.6s ease-in-out; 
+  transform-style: preserve-3d;
+}
+@keyframes flipY { 
+  0% { transform: perspective(400px) rotateY(0); } 
+  50% { transform: perspective(400px) rotateY(90deg) scale(1.05); } 
+  100% { transform: perspective(400px) rotateY(0); } 
 }`,
-    htmlCode: `<button className="scale-26">Hover Me</button>`
+    htmlCode: `<button className="flip-y">Hover Me</button>`
   },
   {
     id: "scale-27",
-    name: "Scale Flick",
+    name: "Rotate In",
     category: "scale",
-    description: "Escala com flick",
-    duration: "0.3s",
-    intensity: "1.16x",
-    cssCode: `.scale-27:hover { animation: scale27 0.3s ease-out; }
-@keyframes scale27 { 
-  0%, 100% { transform: scale(1); } 
-  60% { transform: scale(1.16); } 
+    description: "Rotação de entrada",
+    duration: "0.5s",
+    intensity: "rotate 360deg",
+    cssCode: `.rotate-in:hover { 
+  animation: rotateIn 0.5s ease-out; 
+}
+@keyframes rotateIn { 
+  0% { transform: rotate(0deg) scale(1); opacity: 1; } 
+  50% { transform: rotate(180deg) scale(1.1); } 
+  100% { transform: rotate(360deg) scale(1); opacity: 1; } 
 }`,
-    htmlCode: `<button className="scale-27">Hover Me</button>`
+    htmlCode: `<button className="rotate-in">Hover Me</button>`
   },
   {
     id: "scale-28",
-    name: "Scale Grow",
+    name: "Grow Shadow",
     category: "scale",
-    description: "Crescimento gradual",
-    duration: "0.55s",
-    intensity: "1.13x",
-    cssCode: `.scale-28:hover { animation: scale28 0.55s ease; }
-@keyframes scale28 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.13); } 
+    description: "Crescimento com sombra",
+    duration: "0.35s",
+    intensity: "1.05x + shadow",
+    cssCode: `.grow-shadow:hover { 
+  animation: growShadow 0.35s ease-out forwards; 
+}
+@keyframes growShadow { 
+  0% { transform: scale(1); box-shadow: 0 2px 4px rgba(0,0,0,0.1); } 
+  100% { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); } 
 }`,
-    htmlCode: `<button className="scale-28">Hover Me</button>`
+    htmlCode: `<button className="grow-shadow">Hover Me</button>`
   },
   {
     id: "scale-29",
-    name: "Scale Bounce Back",
+    name: "Wiggle",
     category: "scale",
-    description: "Escala com bounce back",
-    duration: "0.65s",
-    intensity: "1.17x",
-    cssCode: `.scale-29:hover { animation: scale29 0.65s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
-@keyframes scale29 { 
-  0%, 100% { transform: scale(1); } 
-  40% { transform: scale(1.17); }
-  70% { transform: scale(0.97); }
+    description: "Movimento de wiggle",
+    duration: "0.4s",
+    intensity: "rotate ±3deg fast",
+    cssCode: `.wiggle:hover { 
+  animation: wiggle 0.4s ease-in-out; 
+}
+@keyframes wiggle { 
+  0%, 100% { transform: rotate(0deg); } 
+  20% { transform: rotate(3deg); } 
+  40% { transform: rotate(-3deg); } 
+  60% { transform: rotate(3deg); } 
+  80% { transform: rotate(-3deg); } 
 }`,
-    htmlCode: `<button className="scale-29">Hover Me</button>`
+    htmlCode: `<button className="wiggle">Hover Me</button>`
   },
   {
     id: "scale-30",
-    name: "Scale Extreme",
+    name: "Power Surge",
     category: "scale",
-    description: "Escala extrema",
-    duration: "1s",
-    intensity: "1.3x",
-    cssCode: `.scale-30:hover { animation: scale30 1s linear; }
-@keyframes scale30 { 
-  0%, 100% { transform: scale(1); } 
-  50% { transform: scale(1.3); } 
+    description: "Surto de energia extremo",
+    duration: "0.8s",
+    intensity: "1.3x extreme",
+    cssCode: `.power-surge:hover { 
+  animation: powerSurge 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+}
+@keyframes powerSurge { 
+  0% { transform: scale(1); filter: brightness(1); } 
+  25% { transform: scale(1.3); filter: brightness(1.5); } 
+  50% { transform: scale(0.9); filter: brightness(0.8); } 
+  75% { transform: scale(1.15); filter: brightness(1.3); } 
+  100% { transform: scale(1); filter: brightness(1); } 
 }`,
-    htmlCode: `<button className="scale-30">Hover Me</button>`
+    htmlCode: `<button className="power-surge">Hover Me</button>`
   },
 
-  // ========== PULSE ANIMATIONS (30) ==========
+  // ========== PULSE ANIMATIONS (30) - Cada uma única ==========
   {
     id: "pulse-1",
-    name: "Pulse Básico",
+    name: "Neon Glow",
     category: "pulse",
-    description: "Pulsação básica com sombra",
-    duration: "1s",
-    intensity: "1.05x",
-    cssCode: `.pulse-1 { animation: pulse1 1s infinite; }
-@keyframes pulse1 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,255,255,0.7); } 
-  70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0,255,255,0); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,255,255,0); } 
+    description: "Brilho neon pulsante cyan",
+    duration: "1.5s",
+    intensity: "glow 20px",
+    cssCode: `.neon-glow { 
+  animation: neonGlow 1.5s infinite ease-in-out; 
+}
+@keyframes neonGlow { 
+  0%, 100% { box-shadow: 0 0 5px hsl(180, 100%, 50%), 0 0 10px hsl(180, 100%, 50%); } 
+  50% { box-shadow: 0 0 20px hsl(180, 100%, 50%), 0 0 40px hsl(180, 100%, 50%), 0 0 60px hsl(180, 100%, 50%); } 
 }`,
-    htmlCode: `<button className="pulse-1">Clique</button>`
+    htmlCode: `<button className="neon-glow">Clique</button>`
   },
   {
     id: "pulse-2",
-    name: "Pulse Suave",
+    name: "Ring Expand",
     category: "pulse",
-    description: "Pulsação suave e lenta",
-    duration: "1.5s",
-    intensity: "1.08x",
-    cssCode: `.pulse-2 { animation: pulse2 1.5s infinite; }
-@keyframes pulse2 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,0,255,0.5); } 
-  70% { transform: scale(1.08); box-shadow: 0 0 0 15px rgba(255,0,255,0); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,0,255,0); } 
+    description: "Anel que se expande",
+    duration: "1.2s",
+    intensity: "ring 15px",
+    cssCode: `.ring-expand { 
+  animation: ringExpand 1.2s infinite; 
+  position: relative;
+}
+@keyframes ringExpand { 
+  0% { box-shadow: 0 0 0 0 rgba(255, 0, 255, 0.7); } 
+  70% { box-shadow: 0 0 0 15px rgba(255, 0, 255, 0); } 
+  100% { box-shadow: 0 0 0 0 rgba(255, 0, 255, 0); } 
 }`,
-    htmlCode: `<button className="pulse-2">Clique</button>`
+    htmlCode: `<button className="ring-expand">Clique</button>`
   },
   {
     id: "pulse-3",
-    name: "Pulse Grande",
+    name: "Double Ring",
     category: "pulse",
-    description: "Pulsação com sombra grande",
-    duration: "2s",
-    intensity: "1.1x",
-    cssCode: `.pulse-3 { animation: pulse3 2s infinite ease-in-out; }
-@keyframes pulse3 { 
-  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,255,0,0.7); } 
-  50% { transform: scale(1.1); box-shadow: 0 0 0 20px rgba(0,255,0,0); } 
+    description: "Dois anéis pulsantes",
+    duration: "1.8s",
+    intensity: "dual rings",
+    cssCode: `.double-ring { 
+  animation: doubleRing 1.8s infinite; 
+}
+@keyframes doubleRing { 
+  0% { box-shadow: 0 0 0 0 rgba(0, 255, 128, 0.6), 0 0 0 0 rgba(0, 128, 255, 0.4); } 
+  50% { box-shadow: 0 0 0 10px rgba(0, 255, 128, 0), 0 0 0 20px rgba(0, 128, 255, 0.3); } 
+  100% { box-shadow: 0 0 0 0 rgba(0, 255, 128, 0), 0 0 0 0 rgba(0, 128, 255, 0); } 
 }`,
-    htmlCode: `<button className="pulse-3">Clique</button>`
+    htmlCode: `<button className="double-ring">Clique</button>`
   },
   {
     id: "pulse-4",
-    name: "Pulse Neon Cyan",
+    name: "Heartbeat",
     category: "pulse",
-    description: "Pulsação com brilho cyan",
-    duration: "1.2s",
-    intensity: "1.06x",
-    cssCode: `.pulse-4 { animation: pulse4 1.2s infinite; }
-@keyframes pulse4 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 hsl(180, 100%, 50%, 0.7); } 
-  70% { transform: scale(1.06); box-shadow: 0 0 0 12px hsl(180, 100%, 50%, 0); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 hsl(180, 100%, 50%, 0); } 
+    description: "Batimento cardíaco realista",
+    duration: "1.3s",
+    intensity: "1.15x heart",
+    cssCode: `.heartbeat { 
+  animation: heartbeat 1.3s infinite; 
+}
+@keyframes heartbeat { 
+  0%, 100% { transform: scale(1); } 
+  14% { transform: scale(1.15); } 
+  28% { transform: scale(1); } 
+  42% { transform: scale(1.1); } 
+  70% { transform: scale(1); } 
 }`,
-    htmlCode: `<button className="pulse-4">Clique</button>`
+    htmlCode: `<button className="heartbeat">Clique</button>`
   },
   {
     id: "pulse-5",
-    name: "Pulse Neon Magenta",
+    name: "Border Glow",
     category: "pulse",
-    description: "Pulsação com brilho magenta",
-    duration: "1.3s",
-    intensity: "1.07x",
-    cssCode: `.pulse-5 { animation: pulse5 1.3s infinite; }
-@keyframes pulse5 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 hsl(320, 100%, 60%, 0.7); } 
-  70% { transform: scale(1.07); box-shadow: 0 0 0 14px hsl(320, 100%, 60%, 0); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 hsl(320, 100%, 60%, 0); } 
+    description: "Borda brilhante animada",
+    duration: "2s",
+    intensity: "border glow",
+    cssCode: `.border-glow { 
+  animation: borderGlow 2s infinite; 
+}
+@keyframes borderGlow { 
+  0%, 100% { border-color: hsl(320, 100%, 60%); box-shadow: 0 0 5px hsl(320, 100%, 60%); } 
+  50% { border-color: hsl(180, 100%, 50%); box-shadow: 0 0 20px hsl(180, 100%, 50%); } 
 }`,
-    htmlCode: `<button className="pulse-5">Clique</button>`
+    htmlCode: `<button className="border-glow border-2">Clique</button>`
   },
   {
     id: "pulse-6",
-    name: "Pulse Rápido",
+    name: "Rainbow Ring",
     category: "pulse",
-    description: "Pulsação muito rápida",
-    duration: "0.5s",
-    intensity: "1.04x",
-    cssCode: `.pulse-6 { animation: pulse6 0.5s infinite; }
-@keyframes pulse6 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,0,0.6); } 
-  70% { transform: scale(1.04); box-shadow: 0 0 0 8px rgba(255,255,0,0); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,0,0); } 
+    description: "Anel com cores do arco-íris",
+    duration: "3s",
+    intensity: "rainbow cycle",
+    cssCode: `.rainbow-ring { 
+  animation: rainbowRing 3s infinite linear; 
+}
+@keyframes rainbowRing { 
+  0% { box-shadow: 0 0 0 4px hsl(0, 100%, 50%); } 
+  16% { box-shadow: 0 0 0 4px hsl(60, 100%, 50%); } 
+  33% { box-shadow: 0 0 0 4px hsl(120, 100%, 50%); } 
+  50% { box-shadow: 0 0 0 4px hsl(180, 100%, 50%); } 
+  66% { box-shadow: 0 0 0 4px hsl(240, 100%, 50%); } 
+  83% { box-shadow: 0 0 0 4px hsl(300, 100%, 50%); } 
+  100% { box-shadow: 0 0 0 4px hsl(360, 100%, 50%); } 
 }`,
-    htmlCode: `<button className="pulse-6">Clique</button>`
+    htmlCode: `<button className="rainbow-ring">Clique</button>`
   },
   {
     id: "pulse-7",
-    name: "Pulse Lento",
+    name: "Breathing",
     category: "pulse",
-    description: "Pulsação muito lenta",
-    duration: "2.5s",
-    intensity: "1.12x",
-    cssCode: `.pulse-7 { animation: pulse7 2.5s infinite ease-in-out; }
-@keyframes pulse7 { 
-  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,255,255,0.5); } 
-  50% { transform: scale(1.12); box-shadow: 0 0 0 25px rgba(0,255,255,0); } 
+    description: "Respiração suave",
+    duration: "4s",
+    intensity: "1.05x slow",
+    cssCode: `.breathing { 
+  animation: breathing 4s infinite ease-in-out; 
+}
+@keyframes breathing { 
+  0%, 100% { transform: scale(1); opacity: 0.9; } 
+  50% { transform: scale(1.05); opacity: 1; } 
 }`,
-    htmlCode: `<button className="pulse-7">Clique</button>`
+    htmlCode: `<button className="breathing">Clique</button>`
   },
   {
     id: "pulse-8",
-    name: "Pulse Double Ring",
+    name: "Sonar",
     category: "pulse",
-    description: "Pulsação com anel duplo",
-    duration: "1.4s",
-    intensity: "1.05x",
-    cssCode: `.pulse-8 { animation: pulse8 1.4s infinite; }
-@keyframes pulse8 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,0,128,0.6), 0 0 0 0 rgba(128,0,255,0.4); } 
-  70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255,0,128,0), 0 0 0 20px rgba(128,0,255,0); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,0,128,0), 0 0 0 0 rgba(128,0,255,0); } 
+    description: "Efeito sonar radar",
+    duration: "1.5s",
+    intensity: "sonar wave",
+    cssCode: `.sonar { 
+  animation: sonar 1.5s infinite; 
+}
+@keyframes sonar { 
+  0% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7); } 
+  40% { box-shadow: 0 0 0 20px rgba(0, 255, 255, 0.3); } 
+  80%, 100% { box-shadow: 0 0 0 40px rgba(0, 255, 255, 0); } 
 }`,
-    htmlCode: `<button className="pulse-8">Clique</button>`
+    htmlCode: `<button className="sonar">Clique</button>`
   },
   {
     id: "pulse-9",
-    name: "Pulse Glow",
+    name: "Electric Spark",
     category: "pulse",
-    description: "Pulsação com brilho intenso",
-    duration: "1.1s",
-    intensity: "1.06x",
-    cssCode: `.pulse-9 { animation: pulse9 1.1s infinite; }
-@keyframes pulse9 { 
-  0% { transform: scale(1); box-shadow: 0 0 5px rgba(0,255,128,0.8); } 
-  50% { transform: scale(1.06); box-shadow: 0 0 20px rgba(0,255,128,0.6), 0 0 40px rgba(0,255,128,0.3); } 
-  100% { transform: scale(1); box-shadow: 0 0 5px rgba(0,255,128,0.8); } 
+    description: "Faísca elétrica",
+    duration: "0.8s",
+    intensity: "electric flash",
+    cssCode: `.electric-spark { 
+  animation: electricSpark 0.8s infinite; 
+}
+@keyframes electricSpark { 
+  0%, 100% { box-shadow: 0 0 5px rgba(0, 200, 255, 0.5); filter: brightness(1); } 
+  50% { box-shadow: 0 0 20px rgba(0, 200, 255, 1), 0 0 40px rgba(0, 200, 255, 0.5); filter: brightness(1.3); } 
 }`,
-    htmlCode: `<button className="pulse-9">Clique</button>`
+    htmlCode: `<button className="electric-spark">Clique</button>`
   },
   {
     id: "pulse-10",
-    name: "Pulse Heartbeat",
+    name: "Fire Glow",
     category: "pulse",
-    description: "Pulsação estilo batimento cardíaco",
-    duration: "1.5s",
-    intensity: "1.15x",
-    cssCode: `.pulse-10 { animation: pulse10 1.5s infinite; }
-@keyframes pulse10 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,50,50,0.7); } 
-  14% { transform: scale(1.15); box-shadow: 0 0 0 5px rgba(255,50,50,0.5); } 
-  28% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,50,50,0.3); } 
-  42% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(255,50,50,0.2); } 
-  70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(255,50,50,0); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,50,50,0); } 
+    description: "Brilho de fogo",
+    duration: "1.2s",
+    intensity: "fire effect",
+    cssCode: `.fire-glow { 
+  animation: fireGlow 1.2s infinite; 
+}
+@keyframes fireGlow { 
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 100, 0, 0.6), 0 0 20px rgba(255, 50, 0, 0.3); } 
+  50% { box-shadow: 0 0 20px rgba(255, 150, 0, 0.8), 0 0 40px rgba(255, 100, 0, 0.5), 0 0 60px rgba(255, 50, 0, 0.3); } 
 }`,
-    htmlCode: `<button className="pulse-10">Clique</button>`
+    htmlCode: `<button className="fire-glow">Clique</button>`
   },
   {
     id: "pulse-11",
-    name: "Pulse Rainbow",
+    name: "Ice Glow",
     category: "pulse",
-    description: "Pulsação com cores do arco-íris",
+    description: "Brilho gelado",
     duration: "2s",
-    intensity: "1.08x",
-    cssCode: `.pulse-11 { animation: pulse11 2s infinite; }
-@keyframes pulse11 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,0,0,0.6); } 
-  25% { transform: scale(1.04); box-shadow: 0 0 0 5px rgba(255,255,0,0.4); } 
-  50% { transform: scale(1.08); box-shadow: 0 0 0 10px rgba(0,255,0,0.2); } 
-  75% { transform: scale(1.04); box-shadow: 0 0 0 15px rgba(0,0,255,0.1); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,0,255,0); } 
+    intensity: "ice effect",
+    cssCode: `.ice-glow { 
+  animation: iceGlow 2s infinite ease-in-out; 
+}
+@keyframes iceGlow { 
+  0%, 100% { box-shadow: 0 0 10px rgba(150, 220, 255, 0.5); filter: hue-rotate(0deg); } 
+  50% { box-shadow: 0 0 25px rgba(150, 220, 255, 0.8), 0 0 50px rgba(200, 240, 255, 0.4); filter: hue-rotate(20deg); } 
 }`,
-    htmlCode: `<button className="pulse-11">Clique</button>`
+    htmlCode: `<button className="ice-glow">Clique</button>`
   },
   {
     id: "pulse-12",
-    name: "Pulse Soft",
+    name: "Toxic Green",
     category: "pulse",
-    description: "Pulsação muito suave",
-    duration: "1.8s",
-    intensity: "1.03x",
-    cssCode: `.pulse-12 { animation: pulse12 1.8s infinite ease-in-out; }
-@keyframes pulse12 { 
-  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(200,200,200,0.4); } 
-  50% { transform: scale(1.03); box-shadow: 0 0 0 12px rgba(200,200,200,0); } 
+    description: "Verde tóxico radioativo",
+    duration: "1s",
+    intensity: "toxic glow",
+    cssCode: `.toxic-green { 
+  animation: toxicGreen 1s infinite; 
+}
+@keyframes toxicGreen { 
+  0%, 100% { box-shadow: 0 0 5px rgba(0, 255, 0, 0.5); } 
+  50% { box-shadow: 0 0 15px rgba(0, 255, 0, 0.8), 0 0 30px rgba(100, 255, 0, 0.4), 0 0 45px rgba(0, 255, 0, 0.2); } 
 }`,
-    htmlCode: `<button className="pulse-12">Clique</button>`
+    htmlCode: `<button className="toxic-green">Clique</button>`
   },
   {
     id: "pulse-13",
-    name: "Pulse Electric",
+    name: "Golden Shine",
     category: "pulse",
-    description: "Pulsação elétrica",
-    duration: "0.8s",
-    intensity: "1.1x",
-    cssCode: `.pulse-13 { animation: pulse13 0.8s infinite; }
-@keyframes pulse13 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,200,255,0.8); } 
-  50% { transform: scale(1.1); box-shadow: 0 0 15px rgba(0,200,255,0.6), 0 0 0 10px rgba(0,200,255,0.3); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,200,255,0); } 
+    description: "Brilho dourado luxuoso",
+    duration: "1.6s",
+    intensity: "gold shimmer",
+    cssCode: `.golden-shine { 
+  animation: goldenShine 1.6s infinite; 
+}
+@keyframes goldenShine { 
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 200, 50, 0.5); } 
+  50% { box-shadow: 0 0 20px rgba(255, 200, 50, 0.8), 0 0 40px rgba(255, 220, 100, 0.4); } 
 }`,
-    htmlCode: `<button className="pulse-13">Clique</button>`
+    htmlCode: `<button className="golden-shine">Clique</button>`
   },
   {
     id: "pulse-14",
-    name: "Pulse Fire",
+    name: "Purple Aura",
     category: "pulse",
-    description: "Pulsação de fogo",
-    duration: "1s",
-    intensity: "1.08x",
-    cssCode: `.pulse-14 { animation: pulse14 1s infinite; }
-@keyframes pulse14 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,100,0,0.7); } 
-  50% { transform: scale(1.08); box-shadow: 0 0 20px rgba(255,50,0,0.5), 0 0 0 12px rgba(255,200,0,0.3); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,100,0,0); } 
+    description: "Aura roxa mística",
+    duration: "1.8s",
+    intensity: "purple aura",
+    cssCode: `.purple-aura { 
+  animation: purpleAura 1.8s infinite ease-in-out; 
+}
+@keyframes purpleAura { 
+  0%, 100% { box-shadow: 0 0 10px rgba(150, 0, 255, 0.4); } 
+  50% { box-shadow: 0 0 25px rgba(150, 0, 255, 0.7), 0 0 50px rgba(200, 100, 255, 0.3); } 
 }`,
-    htmlCode: `<button className="pulse-14">Clique</button>`
+    htmlCode: `<button className="purple-aura">Clique</button>`
   },
   {
     id: "pulse-15",
-    name: "Pulse Ice",
+    name: "Sunset Pulse",
     category: "pulse",
-    description: "Pulsação de gelo",
-    duration: "1.6s",
-    intensity: "1.05x",
-    cssCode: `.pulse-15 { animation: pulse15 1.6s infinite ease-in-out; }
-@keyframes pulse15 { 
-  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(150,220,255,0.6); } 
-  50% { transform: scale(1.05); box-shadow: 0 0 15px rgba(150,220,255,0.4), 0 0 0 15px rgba(200,240,255,0); } 
+    description: "Pulsação por do sol",
+    duration: "2.2s",
+    intensity: "sunset gradient",
+    cssCode: `.sunset-pulse { 
+  animation: sunsetPulse 2.2s infinite; 
+}
+@keyframes sunsetPulse { 
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 100, 50, 0.5); } 
+  33% { box-shadow: 0 0 20px rgba(255, 50, 100, 0.6); } 
+  66% { box-shadow: 0 0 20px rgba(255, 150, 50, 0.6); } 
 }`,
-    htmlCode: `<button className="pulse-15">Clique</button>`
+    htmlCode: `<button className="sunset-pulse">Clique</button>`
   },
   {
     id: "pulse-16",
-    name: "Pulse Toxic",
+    name: "Ocean Wave",
     category: "pulse",
-    description: "Pulsação tóxica verde",
-    duration: "1.2s",
-    intensity: "1.07x",
-    cssCode: `.pulse-16 { animation: pulse16 1.2s infinite; }
-@keyframes pulse16 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(100,255,0,0.7); } 
-  70% { transform: scale(1.07); box-shadow: 0 0 0 12px rgba(100,255,0,0); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(100,255,0,0); } 
+    description: "Onda oceânica",
+    duration: "2.5s",
+    intensity: "ocean effect",
+    cssCode: `.ocean-wave { 
+  animation: oceanWave 2.5s infinite ease-in-out; 
+}
+@keyframes oceanWave { 
+  0%, 100% { box-shadow: 0 0 10px rgba(0, 100, 200, 0.5); transform: translateY(0); } 
+  50% { box-shadow: 0 0 25px rgba(0, 150, 255, 0.7); transform: translateY(-3px); } 
 }`,
-    htmlCode: `<button className="pulse-16">Clique</button>`
+    htmlCode: `<button className="ocean-wave">Clique</button>`
   },
   {
     id: "pulse-17",
-    name: "Pulse Gold",
+    name: "Danger Alert",
     category: "pulse",
-    description: "Pulsação dourada",
-    duration: "1.4s",
-    intensity: "1.06x",
-    cssCode: `.pulse-17 { animation: pulse17 1.4s infinite; }
-@keyframes pulse17 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,200,50,0.6); } 
-  70% { transform: scale(1.06); box-shadow: 0 0 10px rgba(255,200,50,0.4), 0 0 0 14px rgba(255,200,50,0); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,200,50,0); } 
+    description: "Alerta de perigo rápido",
+    duration: "0.5s",
+    intensity: "danger flash",
+    cssCode: `.danger-alert { 
+  animation: dangerAlert 0.5s infinite; 
+}
+@keyframes dangerAlert { 
+  0%, 100% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); background-color: rgba(255, 0, 0, 0.1); } 
+  50% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.8); background-color: rgba(255, 0, 0, 0.2); } 
 }`,
-    htmlCode: `<button className="pulse-17">Clique</button>`
+    htmlCode: `<button className="danger-alert">Clique</button>`
   },
   {
     id: "pulse-18",
-    name: "Pulse Purple",
+    name: "Success Glow",
     category: "pulse",
-    description: "Pulsação roxa intensa",
-    duration: "1.1s",
-    intensity: "1.09x",
-    cssCode: `.pulse-18 { animation: pulse18 1.1s infinite; }
-@keyframes pulse18 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(150,0,255,0.7); } 
-  70% { transform: scale(1.09); box-shadow: 0 0 0 11px rgba(150,0,255,0); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(150,0,255,0); } 
+    description: "Brilho de sucesso",
+    duration: "1.4s",
+    intensity: "success green",
+    cssCode: `.success-glow { 
+  animation: successGlow 1.4s infinite; 
+}
+@keyframes successGlow { 
+  0%, 100% { box-shadow: 0 0 5px rgba(50, 200, 100, 0.5); } 
+  50% { box-shadow: 0 0 15px rgba(50, 200, 100, 0.8), 0 0 30px rgba(50, 200, 100, 0.4); } 
 }`,
-    htmlCode: `<button className="pulse-18">Clique</button>`
+    htmlCode: `<button className="success-glow">Clique</button>`
   },
   {
     id: "pulse-19",
-    name: "Pulse Sunset",
+    name: "Warning Blink",
     category: "pulse",
-    description: "Pulsação por do sol",
-    duration: "1.7s",
-    intensity: "1.08x",
-    cssCode: `.pulse-19 { animation: pulse19 1.7s infinite ease-in-out; }
-@keyframes pulse19 { 
-  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,100,50,0.5); } 
-  50% { transform: scale(1.08); box-shadow: 0 0 0 18px rgba(255,50,100,0); } 
+    description: "Piscar de aviso",
+    duration: "0.8s",
+    intensity: "warning amber",
+    cssCode: `.warning-blink { 
+  animation: warningBlink 0.8s infinite; 
+}
+@keyframes warningBlink { 
+  0%, 100% { box-shadow: 0 0 5px rgba(255, 180, 0, 0.6); opacity: 1; } 
+  50% { box-shadow: 0 0 20px rgba(255, 180, 0, 0.9); opacity: 0.8; } 
 }`,
-    htmlCode: `<button className="pulse-19">Clique</button>`
+    htmlCode: `<button className="warning-blink">Clique</button>`
   },
   {
     id: "pulse-20",
-    name: "Pulse Ocean",
-    category: "pulse",
-    description: "Pulsação oceânica",
-    duration: "2.2s",
-    intensity: "1.06x",
-    cssCode: `.pulse-20 { animation: pulse20 2.2s infinite ease-in-out; }
-@keyframes pulse20 { 
-  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,100,200,0.5); } 
-  50% { transform: scale(1.06); box-shadow: 0 0 0 20px rgba(0,150,255,0); } 
-}`,
-    htmlCode: `<button className="pulse-20">Clique</button>`
-  },
-  {
-    id: "pulse-21",
-    name: "Pulse Danger",
-    category: "pulse",
-    description: "Pulsação de perigo",
-    duration: "0.6s",
-    intensity: "1.12x",
-    cssCode: `.pulse-21 { animation: pulse21 0.6s infinite; }
-@keyframes pulse21 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,0,0,0.8); } 
-  70% { transform: scale(1.12); box-shadow: 0 0 0 8px rgba(255,0,0,0); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,0,0,0); } 
-}`,
-    htmlCode: `<button className="pulse-21">Clique</button>`
-  },
-  {
-    id: "pulse-22",
-    name: "Pulse Success",
-    category: "pulse",
-    description: "Pulsação de sucesso",
-    duration: "1.3s",
-    intensity: "1.05x",
-    cssCode: `.pulse-22 { animation: pulse22 1.3s infinite; }
-@keyframes pulse22 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(50,200,100,0.7); } 
-  70% { transform: scale(1.05); box-shadow: 0 0 0 13px rgba(50,200,100,0); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(50,200,100,0); } 
-}`,
-    htmlCode: `<button className="pulse-22">Clique</button>`
-  },
-  {
-    id: "pulse-23",
-    name: "Pulse Warning",
-    category: "pulse",
-    description: "Pulsação de aviso",
-    duration: "0.9s",
-    intensity: "1.08x",
-    cssCode: `.pulse-23 { animation: pulse23 0.9s infinite; }
-@keyframes pulse23 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,180,0,0.7); } 
-  70% { transform: scale(1.08); box-shadow: 0 0 0 10px rgba(255,180,0,0); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,180,0,0); } 
-}`,
-    htmlCode: `<button className="pulse-23">Clique</button>`
-  },
-  {
-    id: "pulse-24",
-    name: "Pulse Info",
+    name: "Info Pulse",
     category: "pulse",
     description: "Pulsação informativa",
     duration: "1.5s",
-    intensity: "1.04x",
-    cssCode: `.pulse-24 { animation: pulse24 1.5s infinite; }
-@keyframes pulse24 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,150,255,0.6); } 
-  70% { transform: scale(1.04); box-shadow: 0 0 0 15px rgba(0,150,255,0); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,150,255,0); } 
+    intensity: "info blue",
+    cssCode: `.info-pulse { 
+  animation: infoPulse 1.5s infinite; 
+}
+@keyframes infoPulse { 
+  0%, 100% { box-shadow: 0 0 5px rgba(0, 150, 255, 0.5); } 
+  50% { box-shadow: 0 0 15px rgba(0, 150, 255, 0.8); } 
 }`,
-    htmlCode: `<button className="pulse-24">Clique</button>`
+    htmlCode: `<button className="info-pulse">Clique</button>`
+  },
+  {
+    id: "pulse-21",
+    name: "WhatsApp Green",
+    category: "pulse",
+    description: "Verde WhatsApp autêntico",
+    duration: "1.2s",
+    intensity: "whatsapp effect",
+    cssCode: `.whatsapp-green { 
+  animation: whatsappGreen 1.2s infinite; 
+}
+@keyframes whatsappGreen { 
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); transform: scale(1); } 
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); transform: scale(1.05); } 
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); transform: scale(1); } 
+}`,
+    htmlCode: `<button className="whatsapp-green">Clique</button>`
+  },
+  {
+    id: "pulse-22",
+    name: "Outline Expand",
+    category: "pulse",
+    description: "Contorno que se expande",
+    duration: "1.3s",
+    intensity: "outline grow",
+    cssCode: `.outline-expand { 
+  animation: outlineExpand 1.3s infinite; 
+}
+@keyframes outlineExpand { 
+  0%, 100% { outline: 2px solid transparent; outline-offset: 0px; } 
+  50% { outline: 2px solid hsl(180, 100%, 50%); outline-offset: 6px; } 
+}`,
+    htmlCode: `<button className="outline-expand">Clique</button>`
+  },
+  {
+    id: "pulse-23",
+    name: "Shadow Dance",
+    category: "pulse",
+    description: "Sombra dançante",
+    duration: "1.6s",
+    intensity: "shadow move",
+    cssCode: `.shadow-dance { 
+  animation: shadowDance 1.6s infinite ease-in-out; 
+}
+@keyframes shadowDance { 
+  0%, 100% { box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); } 
+  25% { box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3); } 
+  50% { box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.3); } 
+  75% { box-shadow: 5px -5px 15px rgba(0, 0, 0, 0.3); } 
+}`,
+    htmlCode: `<button className="shadow-dance">Clique</button>`
+  },
+  {
+    id: "pulse-24",
+    name: "Gradient Shift",
+    category: "pulse",
+    description: "Mudança de gradiente",
+    duration: "3s",
+    intensity: "gradient cycle",
+    cssCode: `.gradient-shift { 
+  animation: gradientShift 3s infinite linear; 
+  background: linear-gradient(90deg, hsl(180, 100%, 50%), hsl(320, 100%, 60%), hsl(180, 100%, 50%));
+  background-size: 200% 100%;
+}
+@keyframes gradientShift { 
+  0% { background-position: 0% 50%; } 
+  100% { background-position: 200% 50%; } 
+}`,
+    htmlCode: `<button className="gradient-shift">Clique</button>`
   },
   {
     id: "pulse-25",
-    name: "Pulse WhatsApp",
+    name: "Brightness Pulse",
     category: "pulse",
-    description: "Pulsação verde WhatsApp",
-    duration: "1.2s",
-    intensity: "1.1x",
-    cssCode: `.pulse-25 { animation: pulse25 1.2s infinite; }
-@keyframes pulse25 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 
-  70% { transform: scale(1.1); box-shadow: 0 0 0 12px rgba(37,211,102,0); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0); } 
+    description: "Pulsação de brilho",
+    duration: "1.5s",
+    intensity: "brightness 1.3x",
+    cssCode: `.brightness-pulse { 
+  animation: brightnessPulse 1.5s infinite ease-in-out; 
+}
+@keyframes brightnessPulse { 
+  0%, 100% { filter: brightness(1); } 
+  50% { filter: brightness(1.3); } 
 }`,
-    htmlCode: `<button className="pulse-25">Clique</button>`
+    htmlCode: `<button className="brightness-pulse">Clique</button>`
   },
   {
     id: "pulse-26",
-    name: "Pulse Mega",
+    name: "Saturate Wave",
     category: "pulse",
-    description: "Pulsação mega grande",
+    description: "Onda de saturação",
     duration: "2s",
-    intensity: "1.2x",
-    cssCode: `.pulse-26 { animation: pulse26 2s infinite ease-in-out; }
-@keyframes pulse26 { 
-  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,0,255,0.5); } 
-  50% { transform: scale(1.2); box-shadow: 0 0 0 25px rgba(255,0,255,0); } 
+    intensity: "saturate 1.5x",
+    cssCode: `.saturate-wave { 
+  animation: saturateWave 2s infinite ease-in-out; 
+}
+@keyframes saturateWave { 
+  0%, 100% { filter: saturate(1); } 
+  50% { filter: saturate(1.5); } 
 }`,
-    htmlCode: `<button className="pulse-26">Clique</button>`
+    htmlCode: `<button className="saturate-wave">Clique</button>`
   },
   {
     id: "pulse-27",
-    name: "Pulse Mini",
+    name: "Hue Rotate",
     category: "pulse",
-    description: "Pulsação mini sutil",
-    duration: "0.7s",
-    intensity: "1.02x",
-    cssCode: `.pulse-27 { animation: pulse27 0.7s infinite; }
-@keyframes pulse27 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(100,100,100,0.5); } 
-  70% { transform: scale(1.02); box-shadow: 0 0 0 6px rgba(100,100,100,0); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(100,100,100,0); } 
+    description: "Rotação de matiz",
+    duration: "4s",
+    intensity: "hue 360deg",
+    cssCode: `.hue-rotate-pulse { 
+  animation: hueRotatePulse 4s infinite linear; 
+}
+@keyframes hueRotatePulse { 
+  0% { filter: hue-rotate(0deg); } 
+  100% { filter: hue-rotate(360deg); } 
 }`,
-    htmlCode: `<button className="pulse-27">Clique</button>`
+    htmlCode: `<button className="hue-rotate-pulse">Clique</button>`
   },
   {
     id: "pulse-28",
-    name: "Pulse Neon Mix",
+    name: "Neon Border",
     category: "pulse",
-    description: "Pulsação neon multicolor",
-    duration: "1.6s",
-    intensity: "1.08x",
-    cssCode: `.pulse-28 { animation: pulse28 1.6s infinite; }
-@keyframes pulse28 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,255,255,0.6); } 
-  35% { box-shadow: 0 0 0 8px rgba(255,0,255,0.3); } 
-  70% { transform: scale(1.08); box-shadow: 0 0 0 16px rgba(255,255,0,0); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,255,255,0); } 
+    description: "Borda neon animada",
+    duration: "1.2s",
+    intensity: "neon border",
+    cssCode: `.neon-border { 
+  animation: neonBorder 1.2s infinite; 
+  border: 2px solid transparent;
+}
+@keyframes neonBorder { 
+  0%, 100% { 
+    border-color: hsl(180, 100%, 50%); 
+    box-shadow: 0 0 5px hsl(180, 100%, 50%), inset 0 0 5px hsl(180, 100%, 50%); 
+  } 
+  50% { 
+    border-color: hsl(320, 100%, 60%); 
+    box-shadow: 0 0 15px hsl(320, 100%, 60%), inset 0 0 10px hsl(320, 100%, 60%); 
+  } 
 }`,
-    htmlCode: `<button className="pulse-28">Clique</button>`
+    htmlCode: `<button className="neon-border">Clique</button>`
   },
   {
     id: "pulse-29",
-    name: "Pulse Intense",
+    name: "Ripple Effect",
     category: "pulse",
-    description: "Pulsação intensa",
-    duration: "0.8s",
-    intensity: "1.15x",
-    cssCode: `.pulse-29 { animation: pulse29 0.8s infinite; }
-@keyframes pulse29 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,50,150,0.8); } 
-  50% { transform: scale(1.15); box-shadow: 0 0 20px rgba(255,50,150,0.5), 0 0 0 10px rgba(255,50,150,0.3); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,50,150,0); } 
+    description: "Efeito ondulação",
+    duration: "1s",
+    intensity: "ripple waves",
+    cssCode: `.ripple-effect { 
+  animation: rippleEffect 1s infinite; 
+  position: relative;
+}
+@keyframes rippleEffect { 
+  0% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.4), 0 0 0 0 rgba(0, 255, 255, 0.3), 0 0 0 0 rgba(0, 255, 255, 0.2); } 
+  100% { box-shadow: 0 0 0 10px rgba(0, 255, 255, 0), 0 0 0 20px rgba(0, 255, 255, 0), 0 0 0 30px rgba(0, 255, 255, 0); } 
 }`,
-    htmlCode: `<button className="pulse-29">Clique</button>`
+    htmlCode: `<button className="ripple-effect">Clique</button>`
   },
   {
     id: "pulse-30",
-    name: "Pulse Extreme",
+    name: "Mega Glow",
     category: "pulse",
-    description: "Pulsação extrema máxima",
-    duration: "3s",
-    intensity: "1.5x",
-    cssCode: `.pulse-30 { animation: pulse30 3s infinite linear; }
-@keyframes pulse30 { 
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,255,0,0.4); } 
-  70% { transform: scale(1.5); box-shadow: 0 0 0 30px rgba(0,255,0,0); } 
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,255,0,0); } 
+    description: "Brilho mega extremo",
+    duration: "2s",
+    intensity: "mega effect",
+    cssCode: `.mega-glow { 
+  animation: megaGlow 2s infinite; 
+}
+@keyframes megaGlow { 
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3); 
+    filter: brightness(1);
+  } 
+  50% { 
+    transform: scale(1.08); 
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.5), 0 0 90px rgba(255, 255, 0, 0.3); 
+    filter: brightness(1.2);
+  } 
 }`,
-    htmlCode: `<button className="pulse-30">Clique</button>`
+    htmlCode: `<button className="mega-glow">Clique</button>`
   }
 ];
 
