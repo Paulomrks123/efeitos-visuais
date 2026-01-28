@@ -14,11 +14,19 @@ interface ButtonCardProps {
 const categoryColors = {
   scale: "border-neon-cyan/30 hover:border-neon-cyan/60",
   pulse: "border-neon-magenta/30 hover:border-neon-magenta/60",
+  glow: "border-yellow-500/30 hover:border-yellow-500/60",
+  fill: "border-blue-500/30 hover:border-blue-500/60",
+  "3d": "border-purple-500/30 hover:border-purple-500/60",
+  icon: "border-emerald-500/30 hover:border-emerald-500/60",
 };
 
 const categoryBadgeColors = {
   scale: "bg-neon-cyan/20 text-neon-cyan",
   pulse: "bg-neon-magenta/20 text-neon-magenta",
+  glow: "bg-yellow-500/20 text-yellow-400",
+  fill: "bg-blue-500/20 text-blue-400",
+  "3d": "bg-purple-500/20 text-purple-400",
+  icon: "bg-emerald-500/20 text-emerald-400",
 };
 
 export function ButtonCardWithPlayground({ button, isCompact = false, index }: ButtonCardProps) {

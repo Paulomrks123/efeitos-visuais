@@ -24,6 +24,14 @@ const ButtonCard = ({ button, isCompact = false }: ButtonCardProps) => {
         return "from-neon-cyan to-neon-green";
       case "pulse":
         return "from-neon-magenta to-neon-orange";
+      case "glow":
+        return "from-yellow-400 to-orange-500";
+      case "fill":
+        return "from-blue-500 to-indigo-600";
+      case "3d":
+        return "from-purple-500 to-pink-500";
+      case "icon":
+        return "from-emerald-500 to-teal-500";
       default:
         return "from-primary to-secondary";
     }
