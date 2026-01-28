@@ -163,33 +163,107 @@ export function AnimationPlayground({ isOpen, onClose, item, type }: PlaygroundP
           {/* Preview Area */}
           <div className="space-y-4">
             <div className="relative bg-gradient-to-br from-background to-muted/30 rounded-2xl p-8 flex items-center justify-center min-h-[250px] border border-border overflow-hidden">
-              {/* Background Grid */}
-              <div 
-                className="absolute inset-0 opacity-20"
-                style={{
-                  backgroundImage: `linear-gradient(${color}22 1px, transparent 1px), linear-gradient(90deg, ${color}22 1px, transparent 1px)`,
-                  backgroundSize: "20px 20px",
-                }}
-              />
-              
-              {/* Preview Element - Text Effect or Shape */}
-              {isTextEffect ? (
-                <div className="relative z-10">
-                  <TextEffectPreview 
-                    effect={item as any} 
-                    size="lg" 
-                    text={customText}
+              {/* Special Glassmorphism Preview */}
+              {item.category === "glassmorphism" ? (
+                <>
+                  {/* Animated gradient background */}
+                  <div 
+                    className="absolute inset-0"
+                    style={{
+                      background: `linear-gradient(45deg, ${color}55, #FF00FF55, #00FFFF55, ${color}55)`,
+                      backgroundSize: "400% 400%",
+                      animation: "liveGradientMove 4s ease infinite",
+                    }}
                   />
-                </div>
+                  
+                  {/* Animated geometric shapes behind glass */}
+                  <div className="absolute inset-0 overflow-hidden">
+                    {[...Array(8)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="absolute rounded-full"
+                        style={{
+                          width: 20 + (i * 10),
+                          height: 20 + (i * 10),
+                          background: `radial-gradient(circle, ${i % 2 === 0 ? color : '#FF00FF'}88, transparent)`,
+                          left: `${10 + (i * 12)}%`,
+                          top: `${5 + (i * 8)}%`,
+                          animation: `liveFloat ${2 + i * 0.4}s ease-in-out infinite`,
+                          animationDelay: `${i * 0.2}s`,
+                        }}
+                      />
+                    ))}
+                  </div>
+                  
+                  {/* Glassmorphism card */}
+                  <div
+                    className="relative z-10 backdrop-blur-xl border-2 rounded-2xl p-6 flex flex-col items-center justify-center gap-2"
+                    style={{
+                      background: `linear-gradient(135deg, ${color}25, ${color}10)`,
+                      borderColor: `${color}50`,
+                      boxShadow: `
+                        0 8px 32px ${color}33, 
+                        inset 0 1px 0 ${color}50,
+                        inset 0 0 30px ${color}10
+                      `,
+                      minWidth: 160,
+                      minHeight: 100,
+                      animationPlayState: isPlaying ? "running" : "paused",
+                    }}
+                  >
+                    {/* Light reflection */}
+                    <div 
+                      className="absolute top-0 left-0 right-0 h-1/3 rounded-t-2xl"
+                      style={{
+                        background: `linear-gradient(180deg, ${color}30, transparent)`,
+                        pointerEvents: 'none',
+                      }}
+                    />
+                    <span 
+                      className="text-lg font-bold"
+                      style={{ color }}
+                    >
+                      GLASS
+                    </span>
+                    <span 
+                      className="text-xs opacity-70"
+                      style={{ color }}
+                    >
+                      {item.name}
+                    </span>
+                  </div>
+                </>
               ) : (
-                <div
-                  className={`relative z-10 w-24 h-24 rounded-xl transition-all ${isPlaying ? "animate-pulse" : ""}`}
-                  style={{
-                    ...previewStyle,
-                    background: `linear-gradient(135deg, ${color}, ${color}88)`,
-                    boxShadow: `0 0 30px ${color}66, 0 0 60px ${color}33`,
-                  }}
-                />
+                <>
+                  {/* Background Grid */}
+                  <div 
+                    className="absolute inset-0 opacity-20"
+                    style={{
+                      backgroundImage: `linear-gradient(${color}22 1px, transparent 1px), linear-gradient(90deg, ${color}22 1px, transparent 1px)`,
+                      backgroundSize: "20px 20px",
+                    }}
+                  />
+                  
+                  {/* Preview Element - Text Effect or Shape */}
+                  {isTextEffect ? (
+                    <div className="relative z-10">
+                      <TextEffectPreview 
+                        effect={item as any} 
+                        size="lg" 
+                        text={customText}
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      className={`relative z-10 w-24 h-24 rounded-xl transition-all ${isPlaying ? "animate-pulse" : ""}`}
+                      style={{
+                        ...previewStyle,
+                        background: `linear-gradient(135deg, ${color}, ${color}88)`,
+                        boxShadow: `0 0 30px ${color}66, 0 0 60px ${color}33`,
+                      }}
+                    />
+                  )}
+                </>
               )}
             </div>
 
