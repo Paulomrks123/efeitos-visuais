@@ -9,6 +9,10 @@ const categories = [
   { id: "all", name: "Todos", count: buttonAnimations.length },
   { id: "scale", name: "Scale", count: buttonAnimations.filter(b => b.category === "scale").length },
   { id: "pulse", name: "Pulse", count: buttonAnimations.filter(b => b.category === "pulse").length },
+  { id: "glow", name: "Glow", count: buttonAnimations.filter(b => b.category === "glow").length },
+  { id: "fill", name: "Fill", count: buttonAnimations.filter(b => b.category === "fill").length },
+  { id: "3d", name: "3D", count: buttonAnimations.filter(b => b.category === "3d").length },
+  { id: "icon", name: "Icon", count: buttonAnimations.filter(b => b.category === "icon").length },
 ];
 
 const ButtonCategoryFilter = ({ activeCategory, onCategoryChange }: ButtonCategoryFilterProps) => {
