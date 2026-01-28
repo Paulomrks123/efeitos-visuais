@@ -6,6 +6,22 @@ export interface Effect {
   cssCode: string;
   htmlExample: string;
   previewColor?: string;
+  useCaseExample?: string;
+}
+
+// Exemplos de uso por categoria
+export const effectUseCasesByCategory: Record<string, string> = {
+  glassmorphism: "Ideal para cards flutuantes, modais e overlays em interfaces modernas.",
+  neumorphism: "Perfeito para dashboards, controles de áudio e interfaces minimalistas.",
+  filters: "Excelente para galerias de fotos, edição de imagem e efeitos visuais.",
+  gradients: "Ótimo para backgrounds, botões hero e elementos de destaque.",
+  text: "Use em títulos, chamadas e elementos tipográficos de impacto.",
+  images: "Aplique em galerias, portfolios e transições de imagem.",
+};
+
+// Função para obter exemplo de uso
+export function getEffectUseCase(effect: Effect): string {
+  return effect.useCaseExample || effectUseCasesByCategory[effect.category] || "Use em projetos web para adicionar efeitos visuais elegantes.";
 }
 
 export const effectCategories = [

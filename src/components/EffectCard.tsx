@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Copy, Check } from "lucide-react";
-import { Effect } from "@/data/effects";
+import { Copy, Check, Lightbulb } from "lucide-react";
+import { Effect, getEffectUseCase } from "@/data/effects";
 import { FavoriteButton } from "@/components/features/FavoriteButton";
 
 interface EffectCardProps {
@@ -110,7 +110,16 @@ export function EffectCard({ effect, isCompact = false }: EffectCardProps) {
       </div>
 
       {/* Description */}
-      <p className="text-sm text-muted-foreground mb-4">{effect.description}</p>
+      <p className="text-sm text-muted-foreground mb-2">{effect.description}</p>
+      
+      {/* Use Case Example */}
+      <div className="flex items-start gap-2 p-2.5 mb-4 rounded-lg bg-primary/5 border border-primary/20">
+        <Lightbulb size={14} className="text-primary shrink-0 mt-0.5" />
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          <span className="font-medium text-primary">Uso: </span>
+          {getEffectUseCase(effect)}
+        </p>
+      </div>
 
       {/* Preview */}
       <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg p-6 mb-4 flex items-center justify-center min-h-[120px] border border-border/50 overflow-hidden">

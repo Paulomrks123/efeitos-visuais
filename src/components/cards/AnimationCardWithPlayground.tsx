@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Copy, Check, Play, Pause, Sliders } from "lucide-react";
-import { Animation } from "@/data/animations";
+import { Copy, Check, Play, Pause, Sliders, Lightbulb } from "lucide-react";
+import { Animation, getAnimationUseCase } from "@/data/animations";
 import { FavoriteButton } from "@/components/features/FavoriteButton";
 import { AnimationPlayground } from "@/components/playground/AnimationPlayground";
 import { AnimationLivePreview } from "@/components/LivePreview";
@@ -137,7 +137,16 @@ export function AnimationCardWithPlayground({ animation, isCompact = false, inde
         </div>
 
         {/* Description */}
-        <p className="text-sm text-muted-foreground mb-4">{animation.description}</p>
+        <p className="text-sm text-muted-foreground mb-2">{animation.description}</p>
+        
+        {/* Use Case Example */}
+        <div className="flex items-start gap-2 p-2.5 mb-4 rounded-lg bg-primary/5 border border-primary/20">
+          <Lightbulb size={14} className="text-primary shrink-0 mt-0.5" />
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            <span className="font-medium text-primary">Uso: </span>
+            {getAnimationUseCase(animation)}
+          </p>
+        </div>
 
         {/* Preview */}
         <div 
