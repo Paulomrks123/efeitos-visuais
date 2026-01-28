@@ -4894,4 +4894,921 @@ export const effects: Effect[] = [
   }
 }`,
   },
+
+  // ==================== TEXT ANIMATIONS - FRAMER MOTION INSPIRED (20 efeitos) ====================
+  // T-81 a T-100: Typing, Scramble, Reveal, e efeitos impressionantes
+
+  {
+    id: "T-81",
+    name: "Typing Machine",
+    description: "Efeito de máquina de escrever com cursor pulsante e som visual.",
+    category: "text",
+    previewColor: "#00FF88",
+    useCaseExample: "Perfeito para hero sections, terminais de código e apresentações de texto dramáticas.",
+    htmlExample: `<div class="typing-machine">
+  <span style="--i:1">T</span>
+  <span style="--i:2">Y</span>
+  <span style="--i:3">P</span>
+  <span style="--i:4">I</span>
+  <span style="--i:5">N</span>
+  <span style="--i:6">G</span>
+  <span class="tm-cursor">|</span>
+</div>`,
+    cssCode: `.typing-machine {
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, #0D1117, #161B22);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  border-left: 3px solid #00FF88;
+}
+.typing-machine span {
+  color: #00FF88;
+  text-shadow: 0 0 10px #00FF8855, 0 0 30px #00FF8833;
+  opacity: 0;
+  animation: typingAppear 4s steps(1) infinite;
+  animation-delay: calc(var(--i) * 0.15s);
+}
+.typing-machine .tm-cursor {
+  color: #00FF88;
+  font-weight: 300;
+  margin-left: 2px;
+  animation: tmCursorBlink 0.6s ease-in-out infinite;
+}
+@keyframes typingAppear {
+  0%, 10% { opacity: 0; transform: translateY(5px); }
+  15%, 85% { opacity: 1; transform: translateY(0); }
+  90%, 100% { opacity: 0; transform: translateY(-5px); }
+}
+@keyframes tmCursorBlink {
+  0%, 45% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}`,
+  },
+  {
+    id: "T-82",
+    name: "Text Scramble",
+    description: "Texto embaralha com caracteres aleatórios antes de revelar.",
+    category: "text",
+    previewColor: "#FF3366",
+    useCaseExample: "Ideal para títulos de jogos, interfaces cyberpunk e reveals misteriosos.",
+    htmlExample: `<div class="text-scramble">
+  <span style="--i:1">S</span>
+  <span style="--i:2">C</span>
+  <span style="--i:3">R</span>
+  <span style="--i:4">A</span>
+  <span style="--i:5">M</span>
+  <span style="--i:6">B</span>
+  <span style="--i:7">L</span>
+  <span style="--i:8">E</span>
+</div>`,
+    cssCode: `.text-scramble {
+  font-size: 3rem;
+  font-weight: 900;
+  font-family: 'SF Mono', monospace;
+  display: flex;
+  letter-spacing: 0.1em;
+}
+.text-scramble span {
+  color: #FF3366;
+  text-shadow: 0 0 10px #FF336688, 2px 2px 0 #FF006633;
+  animation: scrambleChar 2s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes scrambleChar {
+  0%, 10% { 
+    opacity: 0.3;
+    transform: translateY(-20px) rotateX(90deg);
+    filter: blur(10px);
+    content: attr(data-char);
+  }
+  20% { 
+    opacity: 0.5;
+    transform: translateY(-10px) rotateX(45deg) skewX(10deg);
+    filter: blur(5px);
+  }
+  40% {
+    opacity: 0.8;
+    transform: translateY(5px) rotateX(-20deg) skewX(-5deg);
+    filter: blur(2px);
+  }
+  60%, 100% { 
+    opacity: 1;
+    transform: translateY(0) rotateX(0) skewX(0);
+    filter: blur(0);
+  }
+}`,
+  },
+  {
+    id: "T-83",
+    name: "Reveal Curtain",
+    description: "Texto revela-se como cortina abrindo horizontalmente.",
+    category: "text",
+    previewColor: "#8B5CF6",
+    useCaseExample: "Excelente para apresentações, landing pages e transições de seção.",
+    htmlExample: `<div class="reveal-curtain">
+  <span style="--i:1">R</span>
+  <span style="--i:2">E</span>
+  <span style="--i:3">V</span>
+  <span style="--i:4">E</span>
+  <span style="--i:5">A</span>
+  <span style="--i:6">L</span>
+</div>`,
+    cssCode: `.reveal-curtain {
+  font-size: 3rem;
+  font-weight: 800;
+  display: flex;
+  overflow: hidden;
+}
+.reveal-curtain span {
+  color: #8B5CF6;
+  text-shadow: 0 0 20px #8B5CF688;
+  clip-path: inset(0 100% 0 0);
+  animation: curtainReveal 1.5s ease-out forwards;
+  animation-delay: calc(var(--i) * 0.08s);
+}
+@keyframes curtainReveal {
+  0% { 
+    clip-path: inset(0 100% 0 0);
+    transform: translateX(-20px);
+  }
+  60% { 
+    clip-path: inset(0 0 0 0);
+    transform: translateX(5px);
+  }
+  100% { 
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+  }
+}`,
+  },
+  {
+    id: "T-84",
+    name: "Glitch Matrix",
+    description: "Texto com glitch intenso estilo Matrix.",
+    category: "text",
+    previewColor: "#00FF00",
+    useCaseExample: "Perfeito para sites de tech, hackers e estética cyberpunk.",
+    htmlExample: `<div class="glitch-matrix">
+  <span style="--i:1">M</span>
+  <span style="--i:2">A</span>
+  <span style="--i:3">T</span>
+  <span style="--i:4">R</span>
+  <span style="--i:5">I</span>
+  <span style="--i:6">X</span>
+</div>`,
+    cssCode: `.glitch-matrix {
+  font-size: 3rem;
+  font-weight: 900;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  background: #000;
+  padding: 1rem 2rem;
+}
+.glitch-matrix span {
+  color: #00FF00;
+  text-shadow: 
+    0 0 5px #00FF00,
+    0 0 10px #00FF00,
+    0 0 20px #00FF00,
+    0 0 40px #00FF00;
+  animation: matrixGlitch 0.3s ease-in-out infinite alternate;
+  animation-delay: calc(var(--i) * 0.05s);
+}
+@keyframes matrixGlitch {
+  0% { 
+    transform: translate(0);
+    opacity: 1;
+    text-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00;
+  }
+  20% { 
+    transform: translate(-3px, 2px);
+    opacity: 0.9;
+    clip-path: inset(20% 0 40% 0);
+  }
+  40% { 
+    transform: translate(3px, -2px);
+    opacity: 0.8;
+    clip-path: inset(60% 0 10% 0);
+  }
+  60% { 
+    transform: translate(-2px, -1px);
+    opacity: 0.95;
+  }
+  100% { 
+    transform: translate(0);
+    opacity: 1;
+    text-shadow: 0 0 5px #00FF00, 0 0 20px #00FF00, 0 0 40px #00FF0066;
+  }
+}`,
+  },
+  {
+    id: "T-85",
+    name: "Wave Flow",
+    description: "Texto flui em ondas suaves e elegantes.",
+    category: "text",
+    previewColor: "#06B6D4",
+    useCaseExample: "Ideal para branding, logos animados e headers dinâmicos.",
+    htmlExample: `<div class="wave-flow">
+  <span style="--i:1">W</span>
+  <span style="--i:2">A</span>
+  <span style="--i:3">V</span>
+  <span style="--i:4">E</span>
+</div>`,
+    cssCode: `.wave-flow {
+  font-size: 3rem;
+  font-weight: 800;
+  display: flex;
+}
+.wave-flow span {
+  background: linear-gradient(135deg, #06B6D4, #3B82F6, #8B5CF6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: waveMotion 2s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.15s);
+}
+@keyframes waveMotion {
+  0%, 100% { 
+    transform: translateY(0) scale(1);
+    filter: brightness(1);
+  }
+  25% { 
+    transform: translateY(-20px) scale(1.1);
+    filter: brightness(1.3);
+  }
+  50% { 
+    transform: translateY(0) scale(1);
+    filter: brightness(1);
+  }
+  75% { 
+    transform: translateY(10px) scale(0.95);
+    filter: brightness(0.9);
+  }
+}`,
+  },
+  {
+    id: "T-86",
+    name: "Neon Flicker",
+    description: "Neon que pisca como luz com defeito.",
+    category: "text",
+    previewColor: "#FF00FF",
+    useCaseExample: "Perfeito para sinais de neon, bares virtuais e estética retrô.",
+    htmlExample: `<div class="neon-flicker">
+  <span style="--i:1">N</span>
+  <span style="--i:2">E</span>
+  <span style="--i:3">O</span>
+  <span style="--i:4">N</span>
+</div>`,
+    cssCode: `.neon-flicker {
+  font-size: 3rem;
+  font-weight: 900;
+  font-family: 'Arial Black', sans-serif;
+  display: flex;
+  background: #0a0a0a;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+}
+.neon-flicker span {
+  color: #fff;
+  text-shadow:
+    0 0 5px #FF00FF,
+    0 0 10px #FF00FF,
+    0 0 20px #FF00FF,
+    0 0 40px #FF00FF,
+    0 0 80px #FF00FF;
+  animation: neonFlickerAnim 3s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.3s);
+}
+@keyframes neonFlickerAnim {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow:
+      0 0 5px #FF00FF,
+      0 0 10px #FF00FF,
+      0 0 20px #FF00FF,
+      0 0 40px #FF00FF;
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+    opacity: 0.5;
+  }
+}`,
+  },
+  {
+    id: "T-87",
+    name: "Split Reveal",
+    description: "Letras dividem-se verticalmente e revelam.",
+    category: "text",
+    previewColor: "#F59E0B",
+    useCaseExample: "Excelente para títulos de impacto e transições criativas.",
+    htmlExample: `<div class="split-reveal">
+  <span style="--i:1">S</span>
+  <span style="--i:2">P</span>
+  <span style="--i:3">L</span>
+  <span style="--i:4">I</span>
+  <span style="--i:5">T</span>
+</div>`,
+    cssCode: `.split-reveal {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+  gap: 0.1em;
+}
+.split-reveal span {
+  color: #F59E0B;
+  text-shadow: 0 0 10px #F59E0B88;
+  position: relative;
+  animation: splitRevealAnim 1.5s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes splitRevealAnim {
+  0% { 
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% { 
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transform: translateY(10%);
+    opacity: 1;
+  }
+  100% { 
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}`,
+  },
+  {
+    id: "T-88",
+    name: "Blur Morph",
+    description: "Texto emerge de um borrão intenso.",
+    category: "text",
+    previewColor: "#EC4899",
+    useCaseExample: "Ideal para reveals dramáticos e efeitos de profundidade.",
+    htmlExample: `<div class="blur-morph">
+  <span style="--i:1">B</span>
+  <span style="--i:2">L</span>
+  <span style="--i:3">U</span>
+  <span style="--i:4">R</span>
+</div>`,
+    cssCode: `.blur-morph {
+  font-size: 3rem;
+  font-weight: 800;
+  display: flex;
+}
+.blur-morph span {
+  color: #EC4899;
+  text-shadow: 0 0 20px #EC489988;
+  animation: blurMorphAnim 2s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.15s);
+}
+@keyframes blurMorphAnim {
+  0% { 
+    filter: blur(20px);
+    opacity: 0;
+    transform: scale(2) translateY(-30px);
+  }
+  40% { 
+    filter: blur(5px);
+    opacity: 0.7;
+    transform: scale(1.1) translateY(5px);
+  }
+  100% { 
+    filter: blur(0);
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}`,
+  },
+  {
+    id: "T-89",
+    name: "Rotate 3D",
+    description: "Letras giram em 3D revelando-se.",
+    category: "text",
+    previewColor: "#10B981",
+    useCaseExample: "Perfeito para animações de entrada e transições 3D.",
+    htmlExample: `<div class="rotate-3d">
+  <span style="--i:1">R</span>
+  <span style="--i:2">O</span>
+  <span style="--i:3">T</span>
+  <span style="--i:4">A</span>
+  <span style="--i:5">T</span>
+  <span style="--i:6">E</span>
+</div>`,
+    cssCode: `.rotate-3d {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+  perspective: 1000px;
+}
+.rotate-3d span {
+  color: #10B981;
+  text-shadow: 0 0 15px #10B98188;
+  transform-style: preserve-3d;
+  animation: rotate3DAnim 2s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes rotate3DAnim {
+  0% { 
+    transform: rotateY(-180deg) rotateX(45deg);
+    opacity: 0;
+  }
+  50% { 
+    transform: rotateY(-20deg) rotateX(-10deg);
+    opacity: 0.8;
+  }
+  100% { 
+    transform: rotateY(0) rotateX(0);
+    opacity: 1;
+  }
+}`,
+  },
+  {
+    id: "T-90",
+    name: "Bounce Stack",
+    description: "Letras empilham-se com efeito bouncy.",
+    category: "text",
+    previewColor: "#6366F1",
+    useCaseExample: "Ótimo para animações divertidas e interfaces gamificadas.",
+    htmlExample: `<div class="bounce-stack">
+  <span style="--i:1">B</span>
+  <span style="--i:2">O</span>
+  <span style="--i:3">U</span>
+  <span style="--i:4">N</span>
+  <span style="--i:5">C</span>
+  <span style="--i:6">E</span>
+</div>`,
+    cssCode: `.bounce-stack {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+}
+.bounce-stack span {
+  color: #6366F1;
+  text-shadow: 0 4px 0 #4338CA, 0 8px 15px #6366F144;
+  animation: bounceStackAnim 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes bounceStackAnim {
+  0% { 
+    transform: translateY(-200%) scale(0.5);
+    opacity: 0;
+  }
+  50% { 
+    transform: translateY(20%) scale(1.1);
+    opacity: 1;
+  }
+  70% { 
+    transform: translateY(-10%) scale(0.95);
+  }
+  100% { 
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}`,
+  },
+  {
+    id: "T-91",
+    name: "Elastic Stretch",
+    description: "Texto estica elasticamente antes de fixar.",
+    category: "text",
+    previewColor: "#EF4444",
+    useCaseExample: "Ideal para chamar atenção em CTAs e alertas.",
+    htmlExample: `<div class="elastic-stretch">
+  <span style="--i:1">E</span>
+  <span style="--i:2">L</span>
+  <span style="--i:3">A</span>
+  <span style="--i:4">S</span>
+  <span style="--i:5">T</span>
+  <span style="--i:6">I</span>
+  <span style="--i:7">C</span>
+</div>`,
+    cssCode: `.elastic-stretch {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+}
+.elastic-stretch span {
+  color: #EF4444;
+  text-shadow: 0 0 10px #EF444466;
+  animation: elasticStretchAnim 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+  animation-delay: calc(var(--i) * 0.08s);
+}
+@keyframes elasticStretchAnim {
+  0% { 
+    transform: scaleY(0) scaleX(2);
+    opacity: 0;
+  }
+  40% { 
+    transform: scaleY(1.5) scaleX(0.7);
+    opacity: 1;
+  }
+  60% { 
+    transform: scaleY(0.8) scaleX(1.2);
+  }
+  80% { 
+    transform: scaleY(1.1) scaleX(0.95);
+  }
+  100% { 
+    transform: scaleY(1) scaleX(1);
+    opacity: 1;
+  }
+}`,
+  },
+  {
+    id: "T-92",
+    name: "Shimmer Gradient",
+    description: "Gradiente brilhante percorre o texto.",
+    category: "text",
+    previewColor: "#FBBF24",
+    useCaseExample: "Perfeito para badges premium, títulos especiais e destaques.",
+    htmlExample: `<div class="shimmer-gradient">SHIMMER</div>`,
+    cssCode: `.shimmer-gradient {
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(
+    90deg,
+    #FBBF24 0%,
+    #FEF3C7 25%,
+    #FBBF24 50%,
+    #F59E0B 75%,
+    #FBBF24 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmerGradientAnim 2s linear infinite;
+}
+@keyframes shimmerGradientAnim {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}`,
+  },
+  {
+    id: "T-93",
+    name: "Pixel Dissolve",
+    description: "Texto aparece pixel por pixel.",
+    category: "text",
+    previewColor: "#14B8A6",
+    useCaseExample: "Excelente para estética retro-gaming e interfaces pixel art.",
+    htmlExample: `<div class="pixel-dissolve">
+  <span style="--i:1">P</span>
+  <span style="--i:2">I</span>
+  <span style="--i:3">X</span>
+  <span style="--i:4">E</span>
+  <span style="--i:5">L</span>
+</div>`,
+    cssCode: `.pixel-dissolve {
+  font-size: 3rem;
+  font-weight: 900;
+  font-family: 'Press Start 2P', monospace;
+  display: flex;
+  image-rendering: pixelated;
+}
+.pixel-dissolve span {
+  color: #14B8A6;
+  text-shadow: 2px 2px 0 #0D9488, 4px 4px 0 #0F766E;
+  animation: pixelDissolveAnim 2s steps(10) infinite;
+  animation-delay: calc(var(--i) * 0.2s);
+}
+@keyframes pixelDissolveAnim {
+  0% { 
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+    opacity: 0;
+  }
+  20% {
+    clip-path: polygon(0 0, 25% 0, 25% 100%, 0 100%);
+    opacity: 0.25;
+  }
+  40% {
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+    opacity: 0.5;
+  }
+  60% {
+    clip-path: polygon(0 0, 75% 0, 75% 100%, 0 100%);
+    opacity: 0.75;
+  }
+  80%, 100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    opacity: 1;
+  }
+}`,
+  },
+  {
+    id: "T-94",
+    name: "Fire Burn",
+    description: "Texto com chamas ardentes animadas.",
+    category: "text",
+    previewColor: "#FF6B00",
+    useCaseExample: "Perfeito para sites de games, ofertas urgentes e impacto visual.",
+    htmlExample: `<div class="fire-burn">
+  <span style="--i:1">F</span>
+  <span style="--i:2">I</span>
+  <span style="--i:3">R</span>
+  <span style="--i:4">E</span>
+</div>`,
+    cssCode: `.fire-burn {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+  background: #000;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+}
+.fire-burn span {
+  background: linear-gradient(0deg, #FF6B00, #FFCC00, #FF3300);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 
+    0 0 10px #FF6B0088,
+    0 -5px 20px #FF6B0066,
+    0 -10px 40px #FF330044;
+  animation: fireBurnAnim 0.8s ease-in-out infinite alternate;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes fireBurnAnim {
+  0% { 
+    transform: translateY(2px) scale(1);
+    filter: brightness(1) hue-rotate(0deg);
+  }
+  50% {
+    transform: translateY(-3px) scale(1.02);
+    filter: brightness(1.2) hue-rotate(-10deg);
+  }
+  100% { 
+    transform: translateY(-5px) scale(1.05);
+    filter: brightness(1.4) hue-rotate(10deg);
+  }
+}`,
+  },
+  {
+    id: "T-95",
+    name: "Ice Freeze",
+    description: "Texto congela com efeito de cristais de gelo.",
+    category: "text",
+    previewColor: "#67E8F9",
+    useCaseExample: "Ideal para promoções de inverno, temas gelados e fantasia.",
+    htmlExample: `<div class="ice-freeze">
+  <span style="--i:1">I</span>
+  <span style="--i:2">C</span>
+  <span style="--i:3">E</span>
+</div>`,
+    cssCode: `.ice-freeze {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+}
+.ice-freeze span {
+  background: linear-gradient(180deg, #E0F7FA, #67E8F9, #22D3EE, #06B6D4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 
+    0 0 10px #67E8F988,
+    0 0 20px #22D3EE66,
+    0 2px 4px #06B6D444;
+  animation: iceFreezeAnim 2s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.2s);
+}
+@keyframes iceFreezeAnim {
+  0% { 
+    transform: scale(1.2);
+    opacity: 0;
+    filter: blur(5px) brightness(2);
+  }
+  50% { 
+    transform: scale(0.95);
+    opacity: 0.8;
+    filter: blur(1px) brightness(1.2);
+  }
+  100% { 
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0) brightness(1) drop-shadow(0 0 5px #67E8F9);
+  }
+}`,
+  },
+  {
+    id: "T-96",
+    name: "Shake Vibrate",
+    description: "Texto vibra intensamente com urgência.",
+    category: "text",
+    previewColor: "#DC2626",
+    useCaseExample: "Ótimo para alertas, erros e mensagens de urgência.",
+    htmlExample: `<div class="shake-vibrate">
+  <span style="--i:1">S</span>
+  <span style="--i:2">H</span>
+  <span style="--i:3">A</span>
+  <span style="--i:4">K</span>
+  <span style="--i:5">E</span>
+</div>`,
+    cssCode: `.shake-vibrate {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+}
+.shake-vibrate span {
+  color: #DC2626;
+  text-shadow: 0 0 10px #DC262666, 2px 2px 0 #7F1D1D;
+  animation: shakeVibrateAnim 0.15s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.02s);
+}
+@keyframes shakeVibrateAnim {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-2px, 1px) rotate(-1deg); }
+  50% { transform: translate(2px, -1px) rotate(1deg); }
+  75% { transform: translate(-1px, -1px) rotate(-0.5deg); }
+}`,
+  },
+  {
+    id: "T-97",
+    name: "Smooth Fade Up",
+    description: "Fade suave de baixo para cima.",
+    category: "text",
+    previewColor: "#A78BFA",
+    useCaseExample: "Perfeito para textos elegantes, apresentações e onboarding.",
+    htmlExample: `<div class="smooth-fade-up">
+  <span style="--i:1">S</span>
+  <span style="--i:2">M</span>
+  <span style="--i:3">O</span>
+  <span style="--i:4">O</span>
+  <span style="--i:5">T</span>
+  <span style="--i:6">H</span>
+</div>`,
+    cssCode: `.smooth-fade-up {
+  font-size: 3rem;
+  font-weight: 700;
+  display: flex;
+}
+.smooth-fade-up span {
+  color: #A78BFA;
+  text-shadow: 0 0 20px #A78BFA44;
+  animation: smoothFadeUpAnim 1.5s ease-out forwards;
+  animation-delay: calc(var(--i) * 0.1s);
+  opacity: 0;
+}
+@keyframes smoothFadeUpAnim {
+  0% { 
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-5px);
+    opacity: 0.9;
+  }
+  100% { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}`,
+  },
+  {
+    id: "T-98",
+    name: "Pop Explosion",
+    description: "Letras explodem surgindo do centro.",
+    category: "text",
+    previewColor: "#F472B6",
+    useCaseExample: "Ideal para celebrações, conquistas e momentos especiais.",
+    htmlExample: `<div class="pop-explosion">
+  <span style="--i:1">P</span>
+  <span style="--i:2">O</span>
+  <span style="--i:3">P</span>
+</div>`,
+    cssCode: `.pop-explosion {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+  gap: 0.1em;
+}
+.pop-explosion span {
+  color: #F472B6;
+  text-shadow: 
+    0 0 10px #F472B6,
+    0 0 20px #F472B688,
+    0 0 40px #F472B644;
+  animation: popExplosionAnim 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  animation-delay: calc(var(--i) * 0.15s);
+}
+@keyframes popExplosionAnim {
+  0% { 
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% { 
+    transform: scale(1.4) rotate(20deg);
+    opacity: 1;
+  }
+  70% { 
+    transform: scale(0.9) rotate(-10deg);
+  }
+  100% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}`,
+  },
+  {
+    id: "T-99",
+    name: "Holographic Text",
+    description: "Texto holográfico com reflexos iridescentes.",
+    category: "text",
+    previewColor: "#E879F9",
+    useCaseExample: "Perfeito para interfaces futuristas, sci-fi e premium.",
+    htmlExample: `<div class="holographic-text">HOLO</div>`,
+    cssCode: `.holographic-text {
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(
+    135deg,
+    #FF0080 0%,
+    #7928CA 25%,
+    #0070F3 50%,
+    #00C9A7 75%,
+    #FF0080 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: holographicAnim 3s ease infinite;
+  filter: drop-shadow(0 0 20px rgba(121, 40, 202, 0.5));
+}
+@keyframes holographicAnim {
+  0%, 100% { 
+    background-position: 0% 50%;
+    filter: drop-shadow(0 0 20px rgba(255, 0, 128, 0.5));
+  }
+  25% { 
+    background-position: 50% 100%;
+    filter: drop-shadow(0 0 20px rgba(121, 40, 202, 0.5));
+  }
+  50% { 
+    background-position: 100% 50%;
+    filter: drop-shadow(0 0 20px rgba(0, 112, 243, 0.5));
+  }
+  75% { 
+    background-position: 50% 0%;
+    filter: drop-shadow(0 0 20px rgba(0, 201, 167, 0.5));
+  }
+}`,
+  },
+  {
+    id: "T-100",
+    name: "Cyber Glitch Pro",
+    description: "Glitch cyberpunk profissional com camadas RGB.",
+    category: "text",
+    previewColor: "#F0ABFC",
+    useCaseExample: "Ideal para títulos de jogos cyberpunk, tech e futurismo.",
+    htmlExample: `<div class="cyber-glitch-pro" data-text="CYBER">CYBER</div>`,
+    cssCode: `.cyber-glitch-pro {
+  font-size: 3rem;
+  font-weight: 900;
+  font-family: 'Orbitron', 'Share Tech Mono', monospace;
+  color: #fff;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  animation: cyberGlitchProAnim 2s infinite;
+}
+.cyber-glitch-pro::before,
+.cyber-glitch-pro::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.cyber-glitch-pro::before {
+  color: #FF0080;
+  animation: cyberGlitchLeft 1s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translateX(-2px);
+}
+.cyber-glitch-pro::after {
+  color: #00FFFF;
+  animation: cyberGlitchRight 0.8s infinite;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  transform: translateX(2px);
+}
+@keyframes cyberGlitchProAnim {
+  0%, 100% { text-shadow: 0 0 10px #fff, 0 0 20px #F0ABFC, 0 0 40px #F0ABFC; }
+  50% { text-shadow: 0 0 5px #fff, 0 0 10px #F0ABFC; }
+}
+@keyframes cyberGlitchLeft {
+  0%, 90%, 100% { transform: translateX(-2px); }
+  95% { transform: translateX(2px) skewX(-5deg); }
+}
+@keyframes cyberGlitchRight {
+  0%, 85%, 100% { transform: translateX(2px); }
+  90% { transform: translateX(-2px) skewX(3deg); }
+}`,
+  },
 ];
