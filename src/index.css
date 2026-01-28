@@ -4,8 +4,8 @@
 .espiral-galactica {
   font-size: 1.875rem;
   font-weight: 700;
-  display: flex;
-  perspective: 500px;
+  display: inline-flex;
+  justify-content: center;
 }
 @media (min-width: 768px) {
   .espiral-galactica {
@@ -13,6 +13,7 @@
   }
 }
 .espiral-galactica span {
+  display: inline-block;
   background: linear-gradient(135deg, #9400D3, #FF00FF, #00FFFF);
   -webkit-background-clip: text;
   background-clip: text;
