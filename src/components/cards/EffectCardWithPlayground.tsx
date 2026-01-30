@@ -3,7 +3,7 @@ import { Copy, Check, Sliders, Lightbulb, Sparkles } from "lucide-react";
 import { Effect, getEffectUseCase } from "@/data/effects";
 import { FavoriteButton } from "@/components/features/FavoriteButton";
 import { AnimationPlayground } from "@/components/playground/AnimationPlayground";
-import { EnhancedEffectPreview } from "@/components/effects/EnhancedEffectPreview";
+import { RealisticEffectPreview } from "@/components/effects/RealisticEffectPreview";
 import { motion } from "framer-motion";
 
 interface EffectCardProps {
@@ -88,9 +88,9 @@ export function EffectCardWithPlayground({ effect, isCompact = false, index }: E
             </div>
           </div>
           
-          {/* Enhanced Preview */}
-          <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 rounded-xl mb-3 flex items-center justify-center min-h-[100px] border border-white/5 overflow-hidden p-2">
-            <EnhancedEffectPreview effect={effect} size="sm" showLabel={false} />
+          {/* Realistic Preview */}
+          <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 rounded-xl mb-3 flex items-center justify-center min-h-[120px] border border-white/5 overflow-hidden p-3">
+            <RealisticEffectPreview effect={effect} size="sm" />
           </div>
           
           {/* Info */}
@@ -172,13 +172,13 @@ export function EffectCardWithPlayground({ effect, isCompact = false, index }: E
           </p>
         </div>
 
-        {/* Enhanced Preview */}
+        {/* Realistic Preview */}
         <div 
-          className="bg-gradient-to-br from-gray-900/90 to-gray-800/90 rounded-xl p-6 mb-4 flex items-center justify-center min-h-[140px] border border-white/5 overflow-hidden cursor-pointer hover:border-secondary/30 transition-all group"
+          className="relative bg-gradient-to-br from-gray-900/90 to-gray-800/90 rounded-xl p-6 mb-4 flex items-center justify-center min-h-[180px] border border-white/5 overflow-hidden cursor-pointer hover:border-secondary/30 transition-all group"
           onClick={() => setShowPlayground(true)}
         >
-          <div className="transform group-hover:scale-105 transition-transform duration-300">
-            <EnhancedEffectPreview effect={effect} size="lg" />
+          <div className="transform group-hover:scale-[1.02] transition-transform duration-300">
+            <RealisticEffectPreview effect={effect} size="lg" />
           </div>
           <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
             <Sparkles size={16} className="text-secondary" />
