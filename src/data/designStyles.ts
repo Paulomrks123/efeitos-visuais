@@ -19,6 +19,8 @@ import styleGlass3D from "@/assets/showcase/style-glass-3d.jpg";
 import styleNatureOrganic from "@/assets/showcase/style-nature-organic.jpg";
 // Vizion Layout style
 import styleVizionLayout from "@/assets/showcase/style-vizion-layout.jpg";
+// Futuristic style
+import styleFuturistic from "@/assets/showcase/style-futuristic.jpg";
 
 import { StyleDefinition } from "@/components/showcase/StyleCard";
 
@@ -1938,6 +1940,175 @@ body {
   font-weight: 700;
   color: var(--neon-green);
   text-shadow: var(--glow-green);
+}`,
+  },
+  {
+    id: "futuristic",
+    name: "Futuristic",
+    subtitle: "Cyber UI • Neon Glow • Modern SaaS",
+    description: "Estética dark futurística com canvas escuro, acentos neon em cyan e magenta. Cards com efeito glass/blur, orbes flutuantes com gradientes, grid pattern overlay e sombras neon. Design moderno para SaaS e dashboards com visual cyber.",
+    objective: "Transmitir inovação, tecnologia de ponta e sofisticação digital — ideal para produtos tech, AI e startups modernas.",
+    colors: ["#0C1220", "#141B2B", "#00D4FF", "#FF3399", "#1E293B"],
+    features: ["Dark Canvas", "Neon Glow", "Glassmorphism", "Cyber Aesthetic"],
+    iconStyle: "Ícones geométricos com glow neon, estilo futurista, preferencialmente outline com bordas brilhantes.",
+    layoutStyle: "Cards glass com blur, orbes flutuantes, grid sheen overlay, hierarquia visual por brilho.",
+    typography: "Space Grotesk para títulos, Inter para corpo. JetBrains Mono para dados e código.",
+    previewImage: styleFuturistic,
+    exampleUrl: "https://surreal-impact-flow.lovable.app/",
+    cssVariables: {
+      "--background": "215 44% 8%",
+      "--foreground": "210 40% 96%",
+      "--primary": "189 100% 50%",
+      "--accent": "330 100% 65%",
+    },
+    sampleCSS: `@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Futuristic dark canvas (default) */
+    --background: 215 44% 8%;
+    --foreground: 210 40% 96%;
+
+    --card: 215 44% 10%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 215 44% 10%;
+    --popover-foreground: 210 40% 96%;
+
+    /* Neon cyan */
+    --primary: 189 100% 50%;
+    --primary-foreground: 215 44% 8%;
+
+    /* Controls + surfaces */
+    --secondary: 214 34% 14%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 214 34% 14%;
+    --muted-foreground: 215 18% 70%;
+
+    /* Magenta accent */
+    --accent: 330 100% 65%;
+    --accent-foreground: 215 44% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 96%;
+
+    --border: 214 26% 18%;
+    --input: 214 26% 18%;
+    --ring: 189 100% 50%;
+
+    --radius: 1.1rem;
+
+    /* Extended tokens */
+    --primary-glow: 189 100% 60%;
+    --accent-glow: 330 100% 70%;
+    --surface: 215 44% 10%;
+    --surface-2: 214 34% 12%;
+
+    --shadow-elev: 0 20px 60px -30px hsl(var(--primary) / 0.35);
+    --shadow-neon: 0 0 0 1px hsl(var(--border)), 0 0 40px -12px hsl(var(--primary) / 0.55);
+
+    --gradient-hero: radial-gradient(900px 450px at var(--mx, 30%) var(--my, 20%), hsl(var(--primary) / 0.25), transparent 55%),
+      radial-gradient(700px 380px at 85% 30%, hsl(var(--accent) / 0.18), transparent 60%),
+      linear-gradient(180deg, hsl(var(--background)), hsl(var(--background)));
+
+    /* Sidebar tokens (keep shadcn compatibility) */
+    --sidebar-background: 215 44% 8%;
+    --sidebar-foreground: 210 20% 84%;
+    --sidebar-primary: 189 100% 50%;
+    --sidebar-primary-foreground: 215 44% 8%;
+    --sidebar-accent: 214 34% 14%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 214 26% 18%;
+    --sidebar-ring: 189 100% 50%;
+  }
+
+  .dark {
+    --background: 215 44% 8%;
+    --foreground: 210 40% 96%;
+    --card: 215 44% 10%;
+    --card-foreground: 210 40% 96%;
+    --popover: 215 44% 10%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 189 100% 50%;
+    --primary-foreground: 215 44% 8%;
+    --secondary: 214 34% 14%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 214 34% 14%;
+    --muted-foreground: 215 18% 70%;
+    --accent: 330 100% 65%;
+    --accent-foreground: 215 44% 8%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 96%;
+    --border: 214 26% 18%;
+    --input: 214 26% 18%;
+    --ring: 189 100% 50%;
+    --sidebar-background: 215 44% 8%;
+    --sidebar-foreground: 210 20% 84%;
+    --sidebar-primary: 189 100% 50%;
+    --sidebar-primary-foreground: 215 44% 8%;
+    --sidebar-accent: 214 34% 14%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 214 26% 18%;
+    --sidebar-ring: 189 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .bg-hero {
+    background: var(--gradient-hero);
+  }
+
+  .glass {
+    background: hsl(var(--surface) / 0.55);
+    border: 1px solid hsl(var(--border) / 0.8);
+    backdrop-filter: blur(14px);
+    box-shadow: var(--shadow-elev);
+  }
+
+  .neon-ring {
+    box-shadow: var(--shadow-neon);
+  }
+
+  .text-gradient {
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .grid-sheen {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.45) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.30) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(55% 45% at 50% 35%, black 20%, transparent 72%);
+  }
 }`,
   },
 ];
