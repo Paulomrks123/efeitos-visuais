@@ -1,12 +1,13 @@
 import { useEffect, useId } from "react";
 import { Effect } from "@/data/effects";
+import { motion } from "framer-motion";
 
 interface ImageEffectCardProps {
   effect: Effect;
   size: "sm" | "md" | "lg";
 }
 
-// Beautiful portfolio-worthy images for image effects
+// Beautiful portfolio-worthy images
 const portfolioImages = [
   "https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=300&h=300&fit=crop", // Lion
   "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=300&h=300&fit=crop", // Tiger
@@ -28,10 +29,6 @@ const portfolioImages = [
   "https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=300&h=300&fit=crop", // Leopard
   "https://images.unsplash.com/photo-1519069060891-f8c50519bf22?w=300&h=300&fit=crop", // Elephant
   "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=300&h=300&fit=crop", // Hedgehog
-  "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=300&h=300&fit=crop", // Turtle
-  "https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=300&h=300&fit=crop", // Whale
-  "https://images.unsplash.com/photo-1598894000329-23c07728de99?w=300&h=300&fit=crop", // Rhino
-  "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=300&h=300&fit=crop", // Dog
 ];
 
 export function ImageEffectCard({ effect, size }: ImageEffectCardProps) {
@@ -58,29 +55,126 @@ export function ImageEffectCard({ effect, size }: ImageEffectCardProps) {
   }, [effect.cssCode, uniqueStyleId]);
 
   const sizeStyles = {
-    sm: { width: 100, height: 100 },
-    md: { width: 130, height: 130 },
-    lg: { width: 160, height: 160 },
+    sm: { size: 100, frame: 3, innerRadius: 12 },
+    md: { size: 130, frame: 4, innerRadius: 16 },
+    lg: { size: 160, frame: 5, innerRadius: 20 },
   };
 
+  const previewColor = effect.previewColor || '#00FFFF';
+
   return (
-    <div className="flex flex-col items-center gap-2">
-      {/* Image with animation effect applied */}
-      <div 
-        className="rounded-xl overflow-hidden shadow-xl border border-white/10"
-        style={sizeStyles[size]}
+    <motion.div 
+      className="flex flex-col items-center gap-3"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
+      {/* Image container with effects */}
+      <motion.div 
+        className="relative group cursor-pointer"
+        whileHover={{ scale: 1.03 }}
       >
-        <img 
-          src={imageUrl}
-          alt={effect.name}
-          className={`w-full h-full object-cover ${effectClassName}`}
+        {/* Animated glow ring */}
+        <motion.div 
+          className="absolute -inset-2 rounded-2xl"
+          style={{
+            background: `linear-gradient(135deg, ${previewColor}40, transparent, ${previewColor}40)`,
+            filter: 'blur(8px)',
+          }}
+          animate={{
+            opacity: [0.3, 0.6, 0.3],
+            rotate: [0, 180, 360],
+          }}
+          transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
         />
-      </div>
+
+        {/* Frame */}
+        <div 
+          className="relative rounded-2xl p-1"
+          style={{
+            background: `linear-gradient(135deg, ${previewColor}60, ${previewColor}20, ${previewColor}60)`,
+          }}
+        >
+          {/* Inner shadow */}
+          <div 
+            className="absolute inset-1 rounded-xl"
+            style={{
+              boxShadow: `inset 0 0 20px rgba(0,0,0,0.3)`,
+            }}
+          />
+
+          {/* Main image */}
+          <div 
+            className="relative overflow-hidden"
+            style={{ 
+              width: sizeStyles[size].size, 
+              height: sizeStyles[size].size,
+              borderRadius: sizeStyles[size].innerRadius,
+            }}
+          >
+            <img 
+              src={imageUrl}
+              alt={effect.name}
+              className={`w-full h-full object-cover ${effectClassName}`}
+            />
+
+            {/* Overlay gradient */}
+            <div 
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+              style={{
+                background: `linear-gradient(to top, ${previewColor}40, transparent)`,
+              }}
+            />
+
+            {/* Play icon overlay */}
+            <motion.div 
+              className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+              whileHover={{ scale: 1.1 }}
+            >
+              <div 
+                className="w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm"
+                style={{
+                  background: `${previewColor}30`,
+                  border: `2px solid ${previewColor}`,
+                }}
+              >
+                <svg className="w-4 h-4 ml-0.5" fill="white" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Corner accents */}
+        {['-top-1 -left-1', '-top-1 -right-1', '-bottom-1 -left-1', '-bottom-1 -right-1'].map((pos, i) => (
+          <motion.div
+            key={i}
+            className={`absolute ${pos} w-2 h-2`}
+            style={{ background: previewColor }}
+            animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
+          />
+        ))}
+      </motion.div>
       
-      {/* Effect name */}
-      <span className="text-[10px] font-medium text-muted-foreground">
-        {effect.name}
-      </span>
-    </div>
+      {/* Effect info */}
+      <motion.div 
+        className="text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+      >
+        <span 
+          className="text-xs font-semibold block"
+          style={{ color: previewColor }}
+        >
+          {effect.name}
+        </span>
+        <span className="text-[9px] text-muted-foreground">
+          Animação de Imagem
+        </span>
+      </motion.div>
+    </motion.div>
   );
 }
