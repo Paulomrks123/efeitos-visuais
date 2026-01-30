@@ -1,5 +1,6 @@
 import { useEffect, useId } from "react";
 import { Effect } from "@/data/effects";
+import { motion } from "framer-motion";
 
 interface FilterCardProps {
   effect: Effect;
@@ -44,29 +45,113 @@ export function FilterCard({ effect, size }: FilterCardProps) {
   }, [effect.cssCode, uniqueStyleId]);
 
   const sizeStyles = {
-    sm: { width: 120, height: 80 },
-    md: { width: 160, height: 100 },
-    lg: { width: 200, height: 130 },
+    sm: { width: 140, height: 100, frameWidth: 4 },
+    md: { width: 180, height: 130, frameWidth: 5 },
+    lg: { width: 220, height: 160, frameWidth: 6 },
   };
 
   return (
-    <div className="flex flex-col items-center gap-2">
-      {/* Image with filter applied */}
-      <div 
-        className="rounded-lg overflow-hidden shadow-lg"
-        style={sizeStyles[size]}
+    <motion.div 
+      className="flex flex-col items-center gap-3"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.4 }}
+    >
+      {/* Image frame with effects */}
+      <motion.div 
+        className="relative group cursor-pointer"
+        whileHover={{ scale: 1.02 }}
       >
-        <img 
-          src={imageUrl}
-          alt={effect.name}
-          className={`w-full h-full object-cover ${effectClassName}`}
+        {/* Decorative frame */}
+        <div 
+          className="absolute -inset-1 rounded-xl bg-gradient-to-br from-white/20 via-white/5 to-white/20"
+          style={{ padding: sizeStyles[size].frameWidth }}
         />
-      </div>
+        
+        {/* Scanlines overlay */}
+        <div 
+          className="absolute inset-0 rounded-lg overflow-hidden pointer-events-none z-10 opacity-30"
+          style={{
+            backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px)',
+          }}
+        />
+
+        {/* Corner decorations */}
+        {['top-0 left-0', 'top-0 right-0', 'bottom-0 left-0', 'bottom-0 right-0'].map((pos, i) => (
+          <motion.div
+            key={i}
+            className={`absolute ${pos} w-3 h-3 border-primary/50 z-20`}
+            style={{
+              borderTopWidth: pos.includes('top') ? 2 : 0,
+              borderBottomWidth: pos.includes('bottom') ? 2 : 0,
+              borderLeftWidth: pos.includes('left') ? 2 : 0,
+              borderRightWidth: pos.includes('right') ? 2 : 0,
+            }}
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
+          />
+        ))}
+
+        {/* Main image container */}
+        <div 
+          className="relative rounded-lg overflow-hidden shadow-2xl"
+          style={{ 
+            width: sizeStyles[size].width, 
+            height: sizeStyles[size].height,
+          }}
+        >
+          <img 
+            src={imageUrl}
+            alt={effect.name}
+            className={`w-full h-full object-cover ${effectClassName}`}
+          />
+          
+          {/* Hover overlay */}
+          <motion.div 
+            className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center"
+          >
+            <motion.span 
+              className="opacity-0 group-hover:opacity-100 text-white text-xs font-medium bg-black/50 px-3 py-1 rounded-full backdrop-blur-sm transition-opacity"
+            >
+              Ver Original
+            </motion.span>
+          </motion.div>
+        </div>
+
+        {/* Reflection effect */}
+        <div 
+          className="absolute -bottom-6 left-1/2 -translate-x-1/2 rounded-lg overflow-hidden opacity-20"
+          style={{ 
+            width: sizeStyles[size].width * 0.9, 
+            height: sizeStyles[size].height * 0.3,
+            transform: 'scaleY(-1) translateX(-50%)',
+            filter: 'blur(2px)',
+            maskImage: 'linear-gradient(to bottom, black, transparent)',
+            WebkitMaskImage: 'linear-gradient(to bottom, black, transparent)',
+          }}
+        >
+          <img 
+            src={imageUrl}
+            alt=""
+            className={`w-full h-full object-cover object-bottom ${effectClassName}`}
+          />
+        </div>
+      </motion.div>
       
-      {/* Filter name label */}
-      <span className="text-[10px] font-medium text-muted-foreground px-2 py-0.5 rounded bg-muted/50">
-        {effect.name}
-      </span>
-    </div>
+      {/* Filter info */}
+      <motion.div 
+        className="text-center space-y-1"
+        initial={{ opacity: 0, y: 5 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+      >
+        <span className="text-xs font-semibold text-foreground block">
+          {effect.name}
+        </span>
+        <span className="text-[9px] text-muted-foreground px-2 py-0.5 rounded bg-muted/50 inline-block">
+          Filtro CSS
+        </span>
+      </motion.div>
+    </motion.div>
   );
 }
