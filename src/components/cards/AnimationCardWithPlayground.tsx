@@ -3,7 +3,7 @@ import { Copy, Check, Play, Pause, Sliders, Lightbulb } from "lucide-react";
 import { Animation, getAnimationUseCase } from "@/data/animations";
 import { FavoriteButton } from "@/components/features/FavoriteButton";
 import { AnimationPlayground } from "@/components/playground/AnimationPlayground";
-import { AnimationLivePreview } from "@/components/LivePreview";
+import { RealisticAnimationPreview } from "@/components/effects/RealisticAnimationPreview";
 
 interface AnimationCardProps {
   animation: Animation;
@@ -75,8 +75,8 @@ export function AnimationCardWithPlayground({ animation, isCompact = false, inde
               </button>
             </div>
           </div>
-          <div className="bg-background/50 rounded-lg p-4 mb-2 flex items-center justify-center min-h-[80px] border border-border/50">
-            <AnimationLivePreview animation={animation} isPlaying={isPlaying} size="md" />
+          <div className="bg-background/50 rounded-lg p-4 mb-2 flex items-center justify-center min-h-[100px] border border-border/50">
+            <RealisticAnimationPreview animation={animation} isPlaying={isPlaying} size="sm" />
           </div>
           <h3 className="text-sm font-medium text-foreground truncate">{animation.name}</h3>
           <button
@@ -148,12 +148,12 @@ export function AnimationCardWithPlayground({ animation, isCompact = false, inde
           </p>
         </div>
 
-        {/* Preview */}
+        {/* Realistic Preview */}
         <div 
-          className="bg-background/50 rounded-lg p-6 mb-4 flex items-center justify-center min-h-[120px] border border-border/50 cursor-pointer hover:border-primary/50 transition-colors"
+          className="bg-background/50 rounded-lg p-6 mb-4 flex items-center justify-center min-h-[140px] border border-border/50 cursor-pointer hover:border-primary/50 transition-colors"
           onClick={() => setShowPlayground(true)}
         >
-          <AnimationLivePreview animation={animation} isPlaying={isPlaying} size="lg" />
+          <RealisticAnimationPreview animation={animation} isPlaying={isPlaying} size="lg" />
         </div>
 
         {/* Code Tabs */}
