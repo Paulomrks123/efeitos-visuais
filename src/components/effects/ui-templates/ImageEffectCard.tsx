@@ -1,4 +1,4 @@
-import { useEffect, useId } from "react";
+import { useEffect, useId, useState } from "react";
 import { Effect } from "@/data/effects";
 import { motion } from "framer-motion";
 
@@ -34,6 +34,8 @@ const portfolioImages = [
 export function ImageEffectCard({ effect, size }: ImageEffectCardProps) {
   const styleId = useId();
   const uniqueStyleId = `image-effect-${effect.id}-${styleId.replace(/:/g, '')}`;
+  const [isHovered, setIsHovered] = useState(false);
+  const [replayKey, setReplayKey] = useState(0);
   
   // Extract class name from CSS code
   const classMatch = effect.cssCode.match(/\.([a-zA-Z0-9_-]+)\s*\{/);
@@ -54,125 +56,272 @@ export function ImageEffectCard({ effect, size }: ImageEffectCardProps) {
     };
   }, [effect.cssCode, uniqueStyleId]);
 
+  // Auto-replay animation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setReplayKey(prev => prev + 1);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   const sizeStyles = {
-    sm: { size: 100, frame: 3, innerRadius: 12 },
-    md: { size: 130, frame: 4, innerRadius: 16 },
-    lg: { size: 160, frame: 5, innerRadius: 20 },
+    sm: { size: 110, containerSize: 150 },
+    md: { size: 140, containerSize: 190 },
+    lg: { size: 170, containerSize: 230 },
   };
 
   const previewColor = effect.previewColor || '#00FFFF';
 
+  // Generate orbital particles
+  const orbitals = Array.from({ length: 8 }, (_, i) => ({
+    id: i,
+    angle: (i * 360) / 8,
+    size: 4 + (i % 3) * 2,
+    orbitRadius: sizeStyles[size].size / 2 + 15,
+    duration: 6 + i * 0.5,
+  }));
+
+  // Generate background particles
+  const bgParticles = Array.from({ length: 15 }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: 1 + Math.random() * 3,
+    duration: 2 + Math.random() * 3,
+  }));
+
   return (
     <motion.div 
-      className="flex flex-col items-center gap-3"
+      className="relative flex flex-col items-center gap-4"
+      style={{ 
+        width: sizeStyles[size].containerSize,
+        minHeight: sizeStyles[size].containerSize + 40,
+      }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Image container with effects */}
-      <motion.div 
-        className="relative group cursor-pointer"
-        whileHover={{ scale: 1.03 }}
-      >
-        {/* Animated glow ring */}
+      {/* Background glow */}
+      <motion.div
+        className="absolute rounded-full"
+        style={{
+          width: sizeStyles[size].size * 1.5,
+          height: sizeStyles[size].size * 1.5,
+          background: `radial-gradient(circle, ${previewColor}20, transparent 70%)`,
+          filter: 'blur(20px)',
+          top: '10%',
+        }}
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Background particles */}
+      {bgParticles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          className="absolute rounded-full"
+          style={{
+            width: particle.size,
+            height: particle.size,
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            background: previewColor,
+          }}
+          animate={{
+            opacity: [0, 0.6, 0],
+            scale: [0.5, 1.5, 0.5],
+            y: [-10, 10, -10],
+          }}
+          transition={{
+            duration: particle.duration,
+            repeat: Infinity,
+            delay: particle.id * 0.2,
+          }}
+        />
+      ))}
+
+      {/* Main image container */}
+      <div className="relative">
+        {/* Animated orbital ring */}
+        <motion.div
+          className="absolute rounded-full pointer-events-none"
+          style={{
+            width: sizeStyles[size].size + 30,
+            height: sizeStyles[size].size + 30,
+            left: -15,
+            top: -15,
+            border: `1px dashed ${previewColor}40`,
+          }}
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        />
+
+        {/* Second orbital ring */}
+        <motion.div
+          className="absolute rounded-full pointer-events-none"
+          style={{
+            width: sizeStyles[size].size + 50,
+            height: sizeStyles[size].size + 50,
+            left: -25,
+            top: -25,
+            border: `1px solid ${previewColor}20`,
+          }}
+          animate={{ rotate: -360 }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        />
+
+        {/* Orbital particles */}
+        {orbitals.map((orbital) => (
+          <motion.div
+            key={orbital.id}
+            className="absolute rounded-full"
+            style={{
+              width: orbital.size,
+              height: orbital.size,
+              background: `radial-gradient(circle, ${previewColor}, ${previewColor}50)`,
+              boxShadow: `0 0 ${orbital.size * 2}px ${previewColor}60`,
+              left: sizeStyles[size].size / 2 - orbital.size / 2,
+              top: sizeStyles[size].size / 2 - orbital.size / 2,
+            }}
+            animate={{
+              x: [
+                Math.cos((orbital.angle * Math.PI) / 180) * orbital.orbitRadius,
+                Math.cos(((orbital.angle + 360) * Math.PI) / 180) * orbital.orbitRadius,
+              ],
+              y: [
+                Math.sin((orbital.angle * Math.PI) / 180) * orbital.orbitRadius,
+                Math.sin(((orbital.angle + 360) * Math.PI) / 180) * orbital.orbitRadius,
+              ],
+            }}
+            transition={{
+              duration: orbital.duration,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        ))}
+
+        {/* Glowing frame */}
         <motion.div 
           className="absolute -inset-2 rounded-2xl"
           style={{
-            background: `linear-gradient(135deg, ${previewColor}40, transparent, ${previewColor}40)`,
-            filter: 'blur(8px)',
+            background: `linear-gradient(135deg, ${previewColor}60, transparent, ${previewColor}60)`,
+            filter: 'blur(4px)',
           }}
           animate={{
-            opacity: [0.3, 0.6, 0.3],
-            rotate: [0, 180, 360],
+            opacity: isHovered ? [0.5, 0.8, 0.5] : [0.2, 0.4, 0.2],
           }}
-          transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 2, repeat: Infinity }}
         />
 
-        {/* Frame */}
-        <div 
-          className="relative rounded-2xl p-1"
+        {/* Main image frame */}
+        <motion.div 
+          className="relative rounded-xl overflow-hidden"
           style={{
-            background: `linear-gradient(135deg, ${previewColor}60, ${previewColor}20, ${previewColor}60)`,
+            width: sizeStyles[size].size,
+            height: sizeStyles[size].size,
+            boxShadow: `0 0 40px ${previewColor}30, inset 0 0 30px rgba(0,0,0,0.3)`,
           }}
+          whileHover={{ scale: 1.02 }}
         >
-          {/* Inner shadow */}
+          {/* Image with effect class - using key to trigger re-animation */}
+          <motion.img 
+            key={replayKey}
+            src={imageUrl}
+            alt={effect.name}
+            className={`w-full h-full object-cover ${effectClassName}`}
+          />
+
+          {/* Scanlines overlay */}
           <div 
-            className="absolute inset-1 rounded-xl"
+            className="absolute inset-0 pointer-events-none opacity-20"
             style={{
-              boxShadow: `inset 0 0 20px rgba(0,0,0,0.3)`,
+              backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.3) 2px, rgba(0,0,0,0.3) 4px)',
             }}
           />
 
-          {/* Main image */}
-          <div 
-            className="relative overflow-hidden"
-            style={{ 
-              width: sizeStyles[size].size, 
-              height: sizeStyles[size].size,
-              borderRadius: sizeStyles[size].innerRadius,
+          {/* Hover overlay with replay button */}
+          <motion.div 
+            className="absolute inset-0 flex items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isHovered ? 1 : 0 }}
+            style={{
+              background: `linear-gradient(to top, ${previewColor}40, transparent)`,
             }}
           >
-            <img 
-              src={imageUrl}
-              alt={effect.name}
-              className={`w-full h-full object-cover ${effectClassName}`}
-            />
-
-            {/* Overlay gradient */}
-            <div 
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+            <motion.button
+              className="w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-md"
               style={{
-                background: `linear-gradient(to top, ${previewColor}40, transparent)`,
+                background: `${previewColor}30`,
+                border: `2px solid ${previewColor}`,
+                boxShadow: `0 0 20px ${previewColor}50`,
               }}
-            />
-
-            {/* Play icon overlay */}
-            <motion.div 
-              className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
               whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setReplayKey(prev => prev + 1)}
             >
-              <div 
-                className="w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm"
-                style={{
-                  background: `${previewColor}30`,
-                  border: `2px solid ${previewColor}`,
-                }}
-              >
-                <svg className="w-4 h-4 ml-0.5" fill="white" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-            </motion.div>
-          </div>
-        </div>
+              <svg className="w-5 h-5" fill="white" viewBox="0 0 24 24">
+                <path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+              </svg>
+            </motion.button>
+          </motion.div>
 
-        {/* Corner accents */}
-        {['-top-1 -left-1', '-top-1 -right-1', '-bottom-1 -left-1', '-bottom-1 -right-1'].map((pos, i) => (
-          <motion.div
-            key={i}
-            className={`absolute ${pos} w-2 h-2`}
-            style={{ background: previewColor }}
-            animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
-          />
-        ))}
-      </motion.div>
+          {/* Corner accents */}
+          {['top-1 left-1', 'top-1 right-1', 'bottom-1 left-1', 'bottom-1 right-1'].map((pos, i) => (
+            <motion.div
+              key={i}
+              className={`absolute ${pos} w-3 h-3`}
+              style={{
+                borderTop: pos.includes('top') ? `2px solid ${previewColor}` : 'none',
+                borderBottom: pos.includes('bottom') ? `2px solid ${previewColor}` : 'none',
+                borderLeft: pos.includes('left') ? `2px solid ${previewColor}` : 'none',
+                borderRight: pos.includes('right') ? `2px solid ${previewColor}` : 'none',
+              }}
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
+            />
+          ))}
+        </motion.div>
+
+        {/* Light reflection */}
+        <motion.div
+          className="absolute top-0 left-0 right-0 h-1/3 rounded-t-xl pointer-events-none"
+          style={{
+            background: `linear-gradient(180deg, ${previewColor}15, transparent)`,
+          }}
+        />
+      </div>
       
-      {/* Effect info */}
+      {/* Effect info card */}
       <motion.div 
-        className="text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        className="relative text-center px-4 py-2 rounded-xl backdrop-blur-sm"
+        style={{
+          background: `linear-gradient(135deg, ${previewColor}10, transparent)`,
+          border: `1px solid ${previewColor}30`,
+        }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
       >
-        <span 
-          className="text-xs font-semibold block"
+        <motion.span 
+          className="text-xs font-bold block"
           style={{ color: previewColor }}
         >
           {effect.name}
-        </span>
-        <span className="text-[9px] text-muted-foreground">
-          Animação de Imagem
+        </motion.span>
+        <span className="text-[9px] text-muted-foreground flex items-center justify-center gap-1">
+          <motion.span
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            🎬
+          </motion.span>
+          Clique para replay
         </span>
       </motion.div>
     </motion.div>
