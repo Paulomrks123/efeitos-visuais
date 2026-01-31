@@ -47,42 +47,6 @@ function HellfireText({ text }: { text: string }) {
   );
 }
 
-// Galaxy Spiral text component
-function GalaxySpiralText({ text }: { text: string }) {
-  return (
-    <span className="inline-flex flex-wrap justify-center" style={{ perspective: '800px' }}>
-      {text.split('').map((char, i) => (
-        <motion.span
-          key={i}
-          style={{
-            background: 'linear-gradient(135deg, #9400D3, #4B0082, #00BFFF, #9400D3)',
-            backgroundSize: '300% 300%',
-            WebkitBackgroundClip: 'text',
-            backgroundClip: 'text',
-            color: 'transparent',
-            display: 'inline-block',
-            textShadow: '0 0 20px rgba(148,0,211,0.5)',
-          }}
-          animate={{
-            rotateZ: [0, 90, 180, 270, 360],
-            rotateY: [0, 180, 360, 180, 0],
-            translateZ: [0, 20, 0, -20, 0],
-            backgroundPosition: ['0% 50%', '50% 50%', '100% 50%', '50% 50%', '0% 50%'],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            delay: i * 0.1,
-            ease: "easeInOut",
-          }}
-        >
-          {char === ' ' ? '\u00A0' : char}
-        </motion.span>
-      ))}
-    </span>
-  );
-}
-
 export function HeroSection({ 
   onLibraryChange, 
   animationsCount, 
@@ -162,21 +126,6 @@ export function HeroSection({
           </p>
         </motion.div>
 
-        {/* Galaxy Spiral Subtitle */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.25 }}
-          className="mb-10"
-        >
-          <p className="text-lg md:text-xl lg:text-2xl font-bold">
-            <GalaxySpiralText text="Biblioteca completa de animações CSS, efeitos visuais e botões prontos para uso" />
-          </p>
-          <p className="text-sm text-muted-foreground mt-2 font-mono opacity-60">
-            ↑ Efeito <code className="text-[#9400D3]">.galaxia-espiral</code> aplicado ao vivo
-          </p>
-        </motion.div>
-
         {/* CTA Cards */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -187,48 +136,16 @@ export function HeroSection({
           {/* Animations Card */}
           <button
             onClick={() => onLibraryChange("animations")}
-            className="group relative p-6 rounded-2xl bg-card/50 border-2 border-[#FF6600]/50 hover:border-[#FF6600] transition-all duration-300 hover:scale-[1.02]"
+            className="group relative p-6 rounded-2xl bg-card/50 border border-primary/20 hover:border-primary/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,255,255,0.15)]"
           >
-            <motion.div 
-              className="absolute inset-0 rounded-2xl pointer-events-none"
-              animate={{
-                boxShadow: [
-                  '0 0 5px #FF6600, inset 0 0 5px rgba(255, 102, 0, 0.3)',
-                  '0 0 20px #FF6600, 0 0 40px #FF9900, inset 0 0 15px rgba(255, 102, 0, 0.5)',
-                  '0 0 5px #FF6600, inset 0 0 5px rgba(255, 102, 0, 0.3)',
-                ],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#FF6600]/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="relative">
-              <div className="w-14 h-14 rounded-xl bg-[#FF6600]/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <Zap className="text-[#FF6600]" size={28} />
+              <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <Zap className="text-primary" size={28} />
               </div>
               <h3 className="text-xl font-bold text-foreground mb-2">Animações</h3>
-              <motion.p 
-                className="text-3xl font-bold mb-2"
-                style={{ color: '#FF6600' }}
-                animate={{
-                  textShadow: [
-                    '0 0 5px #FF6600',
-                    '0 0 15px #FF6600, 0 0 30px #FF9900',
-                    '0 0 5px #FF6600',
-                  ],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                {animationsCount}
-              </motion.p>
-              <p className="text-sm" style={{ color: '#FF6600', opacity: 0.7 }}>CSS puro & Tailwind</p>
+              <p className="text-3xl font-bold text-primary mb-2">{animationsCount}</p>
+              <p className="text-sm text-muted-foreground">CSS puro & Tailwind</p>
             </div>
           </button>
 
