@@ -9,41 +9,32 @@ interface HeroSectionProps {
   buttonsCount: number;
 }
 
-// Rainbow colors palette
-const rainbowColors = [
-  '#FF0000', '#FF7F00', '#FFFF00', '#00FF00', 
-  '#0000FF', '#4B0082', '#9400D3'
-];
-
-// Rainbow dance text component
-function RainbowDanceText({ text }: { text: string }) {
+// Sound waves text component
+function SoundWaveText({ text }: { text: string }) {
   return (
-    <span className="inline-flex flex-wrap justify-center">
-      {text.split('').map((char, i) => {
-        const color = rainbowColors[i % rainbowColors.length];
-        return (
-          <motion.span
-            key={i}
-            style={{
-              color: color,
-              textShadow: `0 0 15px ${color}, 0 0 30px ${color}, 0 0 45px ${color}, 0 0 60px ${color}`,
-              display: 'inline-block',
-            }}
-            animate={{
-              y: [0, -15, 0, -10, 0],
-              rotate: [0, -10, 0, 10, 0],
-            }}
-            transition={{
-              duration: 1,
-              repeat: Infinity,
-              delay: i * 0.1,
-              ease: "easeInOut",
-            }}
-          >
-            {char === ' ' ? '\u00A0' : char}
-          </motion.span>
-        );
-      })}
+    <span className="inline-flex flex-wrap justify-center items-end">
+      {text.split('').map((char, i) => (
+        <motion.span
+          key={i}
+          style={{
+            color: '#FF1493',
+            textShadow: '0 0 10px #FF1493, 0 0 20px #FF69B4, 0 0 40px #FF1493',
+            display: 'inline-block',
+            originY: 1,
+          }}
+          animate={{
+            scaleY: [1, 1.5, 0.7, 1.3, 1],
+          }}
+          transition={{
+            duration: 0.8,
+            repeat: Infinity,
+            delay: i * 0.05,
+            ease: "easeInOut",
+          }}
+        >
+          {char === ' ' ? '\u00A0' : char}
+        </motion.span>
+      ))}
     </span>
   );
 }
@@ -104,23 +95,23 @@ export function HeroSection({
             className="inline-block px-6 md:px-8 py-6 rounded-2xl overflow-hidden max-w-full"
             style={{
               background: 'linear-gradient(135deg, #0D0D0D 0%, #1a0a1a 50%, #0D0D0D 100%)',
-              boxShadow: '0 0 40px rgba(255, 100, 100, 0.2), inset 0 0 60px rgba(255, 255, 255, 0.03)',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
+              boxShadow: '0 0 40px rgba(255, 20, 147, 0.3), inset 0 0 60px rgba(255, 105, 180, 0.05)',
+              border: '1px solid rgba(255, 20, 147, 0.3)',
             }}
           >
             <div className="text-lg md:text-2xl lg:text-3xl font-bold tracking-wider">
-              <RainbowDanceText text="BIBLIOTECA COMPLETA" />
+              <SoundWaveText text="BIBLIOTECA COMPLETA" />
             </div>
             <div className="mt-4 flex flex-wrap justify-center gap-4 text-base md:text-xl font-medium">
-              <span style={{ color: '#FF7F00', textShadow: '0 0 15px #FF7F00, 0 0 30px #FF7F00' }}>animações</span>
-              <span style={{ color: '#FFFF00' }}>•</span>
-              <span style={{ color: '#00FF00', textShadow: '0 0 15px #00FF00, 0 0 30px #00FF00' }}>efeitos</span>
-              <span style={{ color: '#0000FF' }}>•</span>
-              <span style={{ color: '#9400D3', textShadow: '0 0 15px #9400D3, 0 0 30px #9400D3' }}>botões</span>
+              <span style={{ color: '#FF1493', textShadow: '0 0 15px #FF1493' }}>animações</span>
+              <span style={{ color: '#FF69B4' }}>•</span>
+              <span style={{ color: '#FF1493', textShadow: '0 0 15px #FF1493' }}>efeitos</span>
+              <span style={{ color: '#FF69B4' }}>•</span>
+              <span style={{ color: '#FF1493', textShadow: '0 0 15px #FF1493' }}>botões</span>
             </div>
           </div>
           <p className="text-sm text-muted-foreground mt-4 font-mono opacity-60">
-            ↑ Efeito <code className="text-[#FF7F00]">.arco-iris-danca</code> aplicado ao vivo
+            ↑ Efeito <code className="text-[#FF1493]">.ondas-sonoras</code> aplicado ao vivo
           </p>
         </motion.div>
 
