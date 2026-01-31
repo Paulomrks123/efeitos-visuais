@@ -47,6 +47,42 @@ function HellfireText({ text }: { text: string }) {
   );
 }
 
+// Galaxy Spiral text component
+function GalaxySpiralText({ text }: { text: string }) {
+  return (
+    <span className="inline-flex flex-wrap justify-center" style={{ perspective: '800px' }}>
+      {text.split('').map((char, i) => (
+        <motion.span
+          key={i}
+          style={{
+            background: 'linear-gradient(135deg, #9400D3, #4B0082, #00BFFF, #9400D3)',
+            backgroundSize: '300% 300%',
+            WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
+            color: 'transparent',
+            display: 'inline-block',
+            textShadow: '0 0 20px rgba(148,0,211,0.5)',
+          }}
+          animate={{
+            rotateZ: [0, 90, 180, 270, 360],
+            rotateY: [0, 180, 360, 180, 0],
+            translateZ: [0, 20, 0, -20, 0],
+            backgroundPosition: ['0% 50%', '50% 50%', '100% 50%', '50% 50%', '0% 50%'],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            delay: i * 0.1,
+            ease: "easeInOut",
+          }}
+        >
+          {char === ' ' ? '\u00A0' : char}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
+
 export function HeroSection({ 
   onLibraryChange, 
   animationsCount, 
@@ -123,6 +159,21 @@ export function HeroSection({
           </div>
           <p className="text-sm text-muted-foreground mt-4 font-mono opacity-60">
             ↑ Efeito <code className="text-[#FF4500]">.hellfire-text</code> aplicado ao vivo
+          </p>
+        </motion.div>
+
+        {/* Galaxy Spiral Subtitle */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="mb-10"
+        >
+          <p className="text-lg md:text-xl lg:text-2xl font-bold">
+            <GalaxySpiralText text="Biblioteca completa de animações CSS, efeitos visuais e botões prontos para uso" />
+          </p>
+          <p className="text-sm text-muted-foreground mt-2 font-mono opacity-60">
+            ↑ Efeito <code className="text-[#9400D3]">.galaxia-espiral</code> aplicado ao vivo
           </p>
         </motion.div>
 
