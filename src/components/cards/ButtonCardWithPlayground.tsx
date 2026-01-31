@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Copy, Check, Sliders, Play, Pause, Lightbulb } from "lucide-react";
+import { Copy, Check, Sliders, Play, Pause, Lightbulb, RefreshCw } from "lucide-react";
 import { ButtonAnimation, getButtonUseCase } from "@/data/buttons";
 import { FavoriteButton } from "@/components/features/FavoriteButton";
 import { AnimationPlayground } from "@/components/playground/AnimationPlayground";
-import { ButtonLivePreview } from "@/components/LivePreview";
+import { RealisticButtonCard } from "@/components/effects/ui-templates/RealisticButtonCard";
 
 interface ButtonCardProps {
   button: ButtonAnimation;
@@ -48,9 +48,11 @@ export function ButtonCardWithPlayground({ button, isCompact = false, index }: B
   };
 
   const previewColor = button.previewColor || "#00FFFF";
+  const [replayKey, setReplayKey] = useState(0);
 
-  const renderPreview = (size: "sm" | "md" | "lg" = "md") => {
-    return <ButtonLivePreview button={button} isPlaying={isPlaying} size={size} />;
+  const handleReplay = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setReplayKey(prev => prev + 1);
   };
 
   // Adapter for playground
@@ -91,8 +93,8 @@ export function ButtonCardWithPlayground({ button, isCompact = false, index }: B
               </button>
             </div>
           </div>
-          <div className="bg-background/50 rounded-lg p-4 mb-2 flex items-center justify-center min-h-[80px] border border-border/50">
-            {renderPreview("sm")}
+          <div key={replayKey} className="bg-gradient-to-br from-background/80 to-muted/30 rounded-lg mb-2 flex items-center justify-center min-h-[100px] border border-border/50 overflow-hidden">
+            <RealisticButtonCard button={button} isPlaying={isPlaying} />
           </div>
           <h3 className="text-sm font-medium text-foreground truncate">{button.name}</h3>
           <button
@@ -166,10 +168,11 @@ export function ButtonCardWithPlayground({ button, isCompact = false, index }: B
 
         {/* Preview */}
         <div 
-          className="bg-background/50 rounded-lg p-6 mb-4 flex items-center justify-center min-h-[120px] border border-border/50 cursor-pointer hover:border-neon-cyan/50 transition-colors"
+          key={replayKey}
+          className="bg-gradient-to-br from-background/80 to-muted/30 rounded-lg mb-4 flex items-center justify-center min-h-[140px] border border-border/50 cursor-pointer hover:border-neon-cyan/50 transition-colors overflow-hidden"
           onClick={() => setShowPlayground(true)}
         >
-          {renderPreview("md")}
+          <RealisticButtonCard button={button} isPlaying={isPlaying} />
         </div>
 
         {/* Code Tabs */}

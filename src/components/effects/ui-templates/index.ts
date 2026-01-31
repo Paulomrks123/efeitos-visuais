@@ -4,3 +4,4 @@ export { GradientCard } from './GradientCard';
 export { FilterCard } from './FilterCard';
 export { TextEffectCard } from './TextEffectCard';
 export { ImageEffectCard } from './ImageEffectCard';
+export { RealisticButtonCard } from './RealisticButtonCard';

@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, forwardRef } from "react";
 import {
   Dialog,
   DialogContent,
@@ -54,7 +54,7 @@ const presetColors = [
   "#00CED1", "#FF7F50", "#9370DB", "#3CB371", "#FF69B4",
 ];
 
-export function AnimationPlayground({ isOpen, onClose, item, type }: PlaygroundProps) {
+export const AnimationPlayground = forwardRef<HTMLDivElement, PlaygroundProps>(function AnimationPlayground({ isOpen, onClose, item, type }, ref) {
   const [duration, setDuration] = useState(1);
   const [delay, setDelay] = useState(0);
   const [easing, setEasing] = useState("ease-in-out");
@@ -447,4 +447,6 @@ export function AnimationPlayground({ isOpen, onClose, item, type }: PlaygroundP
       </DialogContent>
     </Dialog>
   );
-}
+});
+
+AnimationPlayground.displayName = "AnimationPlayground";
