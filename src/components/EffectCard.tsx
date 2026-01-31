@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Copy, Check, Lightbulb } from "lucide-react";
+import { Copy, Check, Lightbulb, ChevronDown } from "lucide-react";
 import { Effect, getEffectUseCase } from "@/data/effects";
 import { FavoriteButton } from "@/components/features/FavoriteButton";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface EffectCardProps {
   effect: Effect;
@@ -26,6 +27,7 @@ export function EffectCard({ effect, isCompact = false }: EffectCardProps) {
   const [copiedCSS, setCopiedCSS] = useState(false);
   const [copiedHTML, setCopiedHTML] = useState(false);
   const [activeTab, setActiveTab] = useState<"css" | "html">("css");
+  const [showCode, setShowCode] = useState(false);
 
   const copyToClipboard = async (text: string, type: "css" | "html") => {
     await navigator.clipboard.writeText(text);
@@ -126,52 +128,81 @@ export function EffectCard({ effect, isCompact = false }: EffectCardProps) {
         {renderPreview()}
       </div>
 
-      {/* Code Tabs */}
+      {/* Code Toggle Section */}
       <div className="space-y-3">
         <div className="flex gap-2">
           <button
-            onClick={() => setActiveTab("css")}
-            className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
-              activeTab === "css" 
-                ? "bg-primary text-primary-foreground" 
-                : "bg-muted text-muted-foreground hover:text-foreground"
-            }`}
+            onClick={() => copyToClipboard(effect.cssCode, "css")}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md bg-primary/10 hover:bg-primary/20 text-primary transition-colors"
           >
-            CSS
+            {copiedCSS ? <Check size={12} className="text-neon-green" /> : <Copy size={12} />}
+            {copiedCSS ? "Copiado!" : "Copiar CSS"}
           </button>
           <button
-            onClick={() => setActiveTab("html")}
-            className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
-              activeTab === "html" 
-                ? "bg-primary text-primary-foreground" 
-                : "bg-muted text-muted-foreground hover:text-foreground"
-            }`}
+            onClick={() => setShowCode(!showCode)}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground transition-colors"
           >
-            React/HTML
+            {showCode ? "Ocultar Código" : "Ver Código"}
+            <ChevronDown size={12} className={`transition-transform duration-200 ${showCode ? "rotate-180" : ""}`} />
           </button>
         </div>
 
-        <div className="relative">
-          <pre className="bg-background/80 rounded-lg p-4 text-xs overflow-x-auto border border-border/50 max-h-48 font-mono">
-            <code className="text-muted-foreground">
-              {activeTab === "css" ? effect.cssCode : effect.htmlExample}
-            </code>
-          </pre>
-          <button
-            onClick={() => copyToClipboard(
-              activeTab === "css" ? effect.cssCode : effect.htmlExample,
-              activeTab
-            )}
-            className="absolute top-2 right-2 p-2 rounded-md bg-muted hover:bg-muted/80 transition-colors"
-            title="Copiar código"
-          >
-            {(activeTab === "css" ? copiedCSS : copiedHTML) ? (
-              <Check size={14} className="text-neon-green" />
-            ) : (
-              <Copy size={14} />
-            )}
-          </button>
-        </div>
+        <AnimatePresence>
+          {showCode && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <div className="flex gap-2 mb-2">
+                <button
+                  onClick={() => setActiveTab("css")}
+                  className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+                    activeTab === "css" 
+                      ? "bg-primary text-primary-foreground" 
+                      : "bg-muted text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  CSS
+                </button>
+                <button
+                  onClick={() => setActiveTab("html")}
+                  className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+                    activeTab === "html" 
+                      ? "bg-primary text-primary-foreground" 
+                      : "bg-muted text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  React/HTML
+                </button>
+              </div>
+
+              <div className="relative">
+                <pre className="bg-background/80 rounded-lg p-4 text-xs overflow-x-auto border border-border/50 max-h-48 font-mono">
+                  <code className="text-muted-foreground">
+                    {activeTab === "css" ? effect.cssCode : effect.htmlExample}
+                  </code>
+                </pre>
+                <button
+                  onClick={() => copyToClipboard(
+                    activeTab === "css" ? effect.cssCode : effect.htmlExample,
+                    activeTab
+                  )}
+                  className="absolute top-2 right-2 p-2 rounded-md bg-muted hover:bg-muted/80 transition-colors"
+                  title="Copiar código"
+                >
+                  {(activeTab === "css" ? copiedCSS : copiedHTML) ? (
+                    <Check size={14} className="text-neon-green" />
+                  ) : (
+                    <Copy size={14} />
+                  )}
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
