@@ -100,15 +100,18 @@ export function HeroSection({
           className="max-w-4xl mx-auto mb-12"
         >
           <div 
-            className="inline-block px-6 md:px-10 py-8 rounded-2xl max-w-full"
+            className="inline-block px-8 md:px-12 py-10 rounded-2xl"
             style={{
               background: 'linear-gradient(135deg, #0D0D0D 0%, #1a0a05 50%, #0D0D0D 100%)',
               boxShadow: '0 0 40px rgba(255, 69, 0, 0.3), inset 0 0 60px rgba(255, 140, 0, 0.05)',
               border: '1px solid rgba(255, 69, 0, 0.3)',
             }}
           >
-            <div className="text-xl md:text-2xl lg:text-[2.5rem] font-bold tracking-wider pb-2">
-              <HellfireText text="BIBLIOTECA COMPLETA" />
+            <div className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-wider pb-4">
+              <HellfireText text="BIBLIOTECA" />
+            </div>
+            <div className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-wider pb-2">
+              <HellfireText text="COMPLETA" />
             </div>
             <div className="mt-4 flex flex-wrap justify-center gap-4 text-base md:text-xl font-medium">
               <span style={{ color: '#FF8C00', textShadow: '0 0 15px #FF8C00' }}>animações</span>
