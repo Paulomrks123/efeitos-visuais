@@ -187,16 +187,37 @@ export function HeroSection({
           {/* Buttons Card */}
           <button
             onClick={() => onLibraryChange("buttons")}
-            className="group relative p-6 rounded-2xl bg-card/50 border border-neon-green/20 hover:border-neon-green/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,255,136,0.15)]"
+            className="group relative p-6 rounded-2xl bg-card/50 border border-[#00FFCC]/30 hover:border-[#00FFCC]/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,255,204,0.25)]"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-neon-green/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#00FFCC]/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="relative">
-              <div className="w-14 h-14 rounded-xl bg-neon-green/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <ArrowRight className="text-neon-green" size={28} />
+              <div className="w-14 h-14 rounded-xl bg-[#00FFCC]/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <ArrowRight className="text-[#00FFCC]" size={28} />
               </div>
               <h3 className="text-xl font-bold text-foreground mb-2">Botões</h3>
-              <p className="text-3xl font-bold text-neon-green mb-2">{buttonsCount}</p>
-              <p className="text-sm text-muted-foreground">Scale & Pulse CTAs</p>
+              <motion.p 
+                className="text-3xl font-bold mb-2"
+                style={{ color: '#00FFCC' }}
+                animate={{
+                  opacity: [1, 0.3, 0.8, 0.5, 1],
+                  scale: [1, 0.98, 1.02, 0.99, 1],
+                  filter: [
+                    'drop-shadow(0 0 5px #00FFCC)',
+                    'drop-shadow(0 0 2px #00FFCC)',
+                    'drop-shadow(0 0 15px #00FFCC)',
+                    'drop-shadow(0 0 5px #00FFCC)',
+                    'drop-shadow(0 0 5px #00FFCC)',
+                  ],
+                }}
+                transition={{
+                  duration: 0.8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                {buttonsCount}
+              </motion.p>
+              <p className="text-sm" style={{ color: '#00FFCC', opacity: 0.7 }}>Scale & Pulse CTAs</p>
             </div>
           </button>
         </motion.div>
