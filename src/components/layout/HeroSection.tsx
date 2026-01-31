@@ -152,16 +152,35 @@ export function HeroSection({
           {/* Effects Card */}
           <button
             onClick={() => onLibraryChange("effects")}
-            className="group relative p-6 rounded-2xl bg-card/50 border border-secondary/20 hover:border-secondary/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]"
+            className="group relative p-6 rounded-2xl bg-card/50 border border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,215,0,0.25)]"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#FFD700]/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="relative">
-              <div className="w-14 h-14 rounded-xl bg-secondary/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <Layers className="text-secondary" size={28} />
+              <div className="w-14 h-14 rounded-xl bg-[#FFD700]/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <Layers className="text-[#FFD700]" size={28} />
               </div>
               <h3 className="text-xl font-bold text-foreground mb-2">Efeitos Visuais</h3>
-              <p className="text-3xl font-bold text-secondary mb-2">{effectsCount}</p>
-              <p className="text-sm text-muted-foreground">Glass, Neomorphism +</p>
+              <motion.p 
+                className="text-3xl font-bold mb-2"
+                style={{ color: '#FFD700' }}
+                animate={{
+                  textShadow: [
+                    '0 0 5px #FFD700, 0 0 10px #FFD700',
+                    '0 0 15px #FFD700, 0 0 30px #FFA500',
+                    '0 0 10px #FFD700, 0 0 20px #FFD700',
+                    '0 0 5px #FFD700, 0 0 10px #FFD700',
+                  ],
+                  y: [0, -5, 5, 0],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                {effectsCount}
+              </motion.p>
+              <p className="text-sm" style={{ color: '#FFD700', opacity: 0.7 }}>Glass, Neomorphism +</p>
             </div>
           </button>
 
