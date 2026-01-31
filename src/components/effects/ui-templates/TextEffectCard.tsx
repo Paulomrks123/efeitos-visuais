@@ -1,6 +1,6 @@
-import { useEffect, useId, useMemo, useState, useRef } from "react";
+import { useEffect, useId } from "react";
 import { Effect } from "@/data/effects";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { LiveBadge, CSSPropertyIndicator, AnimationTimeline } from "../shared";
 
 interface TextEffectCardProps {
@@ -11,31 +11,14 @@ interface TextEffectCardProps {
 export function TextEffectCard({ effect, size }: TextEffectCardProps) {
   const styleId = useId();
   const uniqueStyleId = `text-effect-${effect.id}-${styleId.replace(/:/g, '')}`;
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
   
   // Extract class name from CSS code
   const classMatch = effect.cssCode.match(/\.([a-zA-Z0-9_-]+)\s*\{/);
   const effectClassName = classMatch ? classMatch[1] : '';
 
-  // Rotating words for dynamic effect
-  const words = ["Transforme", "Inove", "Crie", "Descubra", "Explore", "Imagine"];
-  
-  const subwords = useMemo(() => ({
-    "Transforme": "suas ideias",
-    "Inove": "o futuro",
-    "Crie": "experiências",
-    "Descubra": "possibilidades",
-    "Explore": "novos mundos",
-    "Imagine": "sem limites",
-  }), []);
-
-  // Rotate words
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentWordIndex((prev) => (prev + 1) % words.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  // Fixed greeting text for all effects
+  const greetingText = "Olá, Mundo!";
+  const subtitleText = "Explore infinitas possibilidades";
 
   useEffect(() => {
     const styleElement = document.createElement('style');
@@ -49,7 +32,6 @@ export function TextEffectCard({ effect, size }: TextEffectCardProps) {
   }, [effect.cssCode, uniqueStyleId]);
 
   const previewColor = effect.previewColor || '#00FFFF';
-  const currentWord = words[currentWordIndex];
 
   const textSizes = {
     sm: { main: 'text-xl', sub: 'text-xs', label: 'text-[8px]' },
@@ -166,45 +148,37 @@ export function TextEffectCard({ effect, size }: TextEffectCardProps) {
 
       {/* Main content */}
       <div className="relative z-10">
-        {/* Animated word with effect */}
-        <AnimatePresence mode="wait">
-          <motion.h1 
-            key={currentWord}
-            className={`${textSizes[size].main} font-black ${effectClassName}`}
-            initial={{ y: 30, opacity: 0, rotateX: -90 }}
-            animate={{ y: 0, opacity: 1, rotateX: 0 }}
-            exit={{ y: -30, opacity: 0, rotateX: 90 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            style={{ textShadow: `0 0 30px ${previewColor}50` }}
-          >
-            {currentWord.split('').map((letter, i) => (
-              <motion.span
-                key={i}
-                className="inline-block"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.05 }}
-              >
-                {letter}
-              </motion.span>
-            ))}
-          </motion.h1>
-        </AnimatePresence>
+        {/* Fixed greeting with effect */}
+        <motion.h1 
+          className={`${textSizes[size].main} font-black ${effectClassName}`}
+          initial={{ y: 30, opacity: 0, rotateX: -90 }}
+          animate={{ y: 0, opacity: 1, rotateX: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          style={{ textShadow: `0 0 30px ${previewColor}50` }}
+        >
+          {greetingText.split('').map((letter, i) => (
+            <motion.span
+              key={i}
+              className="inline-block"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.05 }}
+            >
+              {letter === ' ' ? '\u00A0' : letter}
+            </motion.span>
+          ))}
+        </motion.h1>
 
         {/* Subheadline */}
-        <AnimatePresence mode="wait">
-          <motion.p 
-            key={currentWord}
-            className={`${textSizes[size].sub} mt-1`}
-            style={{ color: `${previewColor}90` }}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3, delay: 0.2 }}
-          >
-            {subwords[currentWord as keyof typeof subwords]}
-          </motion.p>
-        </AnimatePresence>
+        <motion.p 
+          className={`${textSizes[size].sub} mt-1`}
+          style={{ color: `${previewColor}90` }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: 0.4 }}
+        >
+          {subtitleText}
+        </motion.p>
 
         {/* Typing cursor */}
         <motion.span
