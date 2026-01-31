@@ -1,6 +1,7 @@
-import { useEffect, useId } from "react";
+import { useEffect, useId, useState } from "react";
 import { Effect } from "@/data/effects";
 import { motion } from "framer-motion";
+import { LiveBadge, CSSPropertyIndicator } from "../shared";
 
 interface FilterCardProps {
   effect: Effect;
@@ -24,6 +25,8 @@ const filterImages = [
 export function FilterCard({ effect, size }: FilterCardProps) {
   const styleId = useId();
   const uniqueStyleId = `filter-${effect.id}-${styleId.replace(/:/g, '')}`;
+  const [showOriginal, setShowOriginal] = useState(false);
+  const previewColor = effect.previewColor || "#00FFFF";
   
   // Extract class name from CSS code
   const classMatch = effect.cssCode.match(/\.([a-zA-Z0-9_-]+)\s*\{/);
@@ -57,13 +60,21 @@ export function FilterCard({ effect, size }: FilterCardProps) {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.4 }}
     >
+      {/* Top bar with Live badge and CSS properties */}
+      <div className="flex items-center justify-between w-full px-1">
+        <LiveBadge color={previewColor} size="sm" />
+        <CSSPropertyIndicator cssCode={effect.cssCode} color={previewColor} maxProperties={2} />
+      </div>
+      
       {/* Image frame with effects */}
       <motion.div 
         className="relative group cursor-pointer"
         whileHover={{ scale: 1.02 }}
+        onMouseEnter={() => setShowOriginal(true)}
+        onMouseLeave={() => setShowOriginal(false)}
       >
         {/* Decorative frame */}
-        <div 
+        <div
           className="absolute -inset-1 rounded-xl bg-gradient-to-br from-white/20 via-white/5 to-white/20"
           style={{ padding: sizeStyles[size].frameWidth }}
         />
@@ -100,21 +111,44 @@ export function FilterCard({ effect, size }: FilterCardProps) {
             height: sizeStyles[size].height,
           }}
         >
+          {/* Original image (shown on hover) */}
+          <motion.img 
+            src={imageUrl}
+            alt="Original"
+            className="w-full h-full object-cover absolute inset-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showOriginal ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+          />
+          
+          {/* Filtered image */}
           <img 
             src={imageUrl}
             alt={effect.name}
             className={`w-full h-full object-cover ${effectClassName}`}
+            style={{ opacity: showOriginal ? 0 : 1, transition: 'opacity 0.3s' }}
           />
           
-          {/* Hover overlay */}
+          {/* Comparison indicator */}
           <motion.div 
-            className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center"
+            className="absolute inset-0 flex items-center justify-center pointer-events-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showOriginal ? 1 : 0 }}
           >
-            <motion.span 
-              className="opacity-0 group-hover:opacity-100 text-white text-xs font-medium bg-black/50 px-3 py-1 rounded-full backdrop-blur-sm transition-opacity"
-            >
-              Ver Original
-            </motion.span>
+            <span className="text-white text-xs font-bold bg-black/60 px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/20">
+              ORIGINAL
+            </span>
+          </motion.div>
+          
+          {/* Hover hint */}
+          <motion.div 
+            className="absolute bottom-2 left-1/2 -translate-x-1/2 pointer-events-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showOriginal ? 0 : 1 }}
+          >
+            <span className="text-white/70 text-[9px] bg-black/40 px-2 py-0.5 rounded-full backdrop-blur-sm">
+              Hover para ver original
+            </span>
           </motion.div>
         </div>
 

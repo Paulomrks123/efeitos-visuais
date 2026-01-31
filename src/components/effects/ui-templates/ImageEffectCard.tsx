@@ -1,6 +1,7 @@
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useState, useRef } from "react";
 import { Effect } from "@/data/effects";
 import { motion } from "framer-motion";
+import { LiveBadge, CSSPropertyIndicator, AnimationTimeline } from "../shared";
 
 interface ImageEffectCardProps {
   effect: Effect;
@@ -36,6 +37,8 @@ export function ImageEffectCard({ effect, size }: ImageEffectCardProps) {
   const uniqueStyleId = `image-effect-${effect.id}-${styleId.replace(/:/g, '')}`;
   const [isHovered, setIsHovered] = useState(false);
   const [replayKey, setReplayKey] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
   
   // Extract class name from CSS code
   const classMatch = effect.cssCode.match(/\.([a-zA-Z0-9_-]+)\s*\{/);
@@ -44,6 +47,7 @@ export function ImageEffectCard({ effect, size }: ImageEffectCardProps) {
   // Get consistent image based on effect ID
   const imageIndex = parseInt(effect.id.replace(/\D/g, '')) % portfolioImages.length;
   const imageUrl = portfolioImages[imageIndex];
+  const previewColor = effect.previewColor || '#00FFFF';
 
   useEffect(() => {
     const styleElement = document.createElement('style');
@@ -56,46 +60,56 @@ export function ImageEffectCard({ effect, size }: ImageEffectCardProps) {
     };
   }, [effect.cssCode, uniqueStyleId]);
 
-  // Auto-replay animation
+  // Intersection Observer for performance
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Auto-replay animation (paused when not visible)
+  useEffect(() => {
+    if (!isVisible) return;
     const interval = setInterval(() => {
       setReplayKey(prev => prev + 1);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isVisible]);
 
   const sizeStyles = {
-    sm: { size: 110, containerSize: 150 },
-    md: { size: 140, containerSize: 190 },
-    lg: { size: 170, containerSize: 230 },
+    sm: { size: 110, containerSize: 160 },
+    md: { size: 140, containerSize: 200 },
+    lg: { size: 170, containerSize: 250 },
   };
 
-  const previewColor = effect.previewColor || '#00FFFF';
-
-  // Generate orbital particles
-  const orbitals = Array.from({ length: 8 }, (_, i) => ({
+  // Generate orbital particles (reduced when not visible)
+  const orbitals = isVisible ? Array.from({ length: 6 }, (_, i) => ({
     id: i,
-    angle: (i * 360) / 8,
+    angle: (i * 360) / 6,
     size: 4 + (i % 3) * 2,
     orbitRadius: sizeStyles[size].size / 2 + 15,
     duration: 6 + i * 0.5,
-  }));
+  })) : [];
 
-  // Generate background particles
-  const bgParticles = Array.from({ length: 15 }, (_, i) => ({
+  // Generate background particles (reduced when not visible)
+  const bgParticles = isVisible ? Array.from({ length: 8 }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
     size: 1 + Math.random() * 3,
     duration: 2 + Math.random() * 3,
-  }));
+  })) : [];
 
   return (
     <motion.div 
-      className="relative flex flex-col items-center gap-4"
+      ref={containerRef}
+      className="relative flex flex-col items-center gap-3"
       style={{ 
         width: sizeStyles[size].containerSize,
-        minHeight: sizeStyles[size].containerSize + 40,
+        minHeight: sizeStyles[size].containerSize + 60,
       }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -103,6 +117,11 @@ export function ImageEffectCard({ effect, size }: ImageEffectCardProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      {/* Top bar with Live badge and CSS properties */}
+      <div className="flex items-center justify-between w-full px-1 z-20">
+        <LiveBadge color={previewColor} size="sm" />
+        <CSSPropertyIndicator cssCode={effect.cssCode} color={previewColor} maxProperties={2} />
+      </div>
       {/* Background glow */}
       <motion.div
         className="absolute rounded-full"
@@ -297,9 +316,9 @@ export function ImageEffectCard({ effect, size }: ImageEffectCardProps) {
         />
       </div>
       
-      {/* Effect info card */}
+      {/* Effect info with timeline */}
       <motion.div 
-        className="relative text-center px-4 py-2 rounded-xl backdrop-blur-sm"
+        className="relative text-center px-3 py-2 rounded-xl backdrop-blur-sm w-full"
         style={{
           background: `linear-gradient(135deg, ${previewColor}10, transparent)`,
           border: `1px solid ${previewColor}30`,
@@ -309,20 +328,19 @@ export function ImageEffectCard({ effect, size }: ImageEffectCardProps) {
         transition={{ delay: 0.3 }}
       >
         <motion.span 
-          className="text-xs font-bold block"
+          className="text-xs font-bold block mb-2"
           style={{ color: previewColor }}
         >
           {effect.name}
         </motion.span>
-        <span className="text-[9px] text-muted-foreground flex items-center justify-center gap-1">
-          <motion.span
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
-            🎬
-          </motion.span>
-          Clique para replay
-        </span>
+        
+        {/* Animation timeline */}
+        <AnimationTimeline 
+          duration={5} 
+          color={previewColor} 
+          isPlaying={isVisible}
+          showLabel={false}
+        />
       </motion.div>
     </motion.div>
   );

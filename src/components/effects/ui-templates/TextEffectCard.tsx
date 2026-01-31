@@ -1,6 +1,7 @@
-import { useEffect, useId, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useState, useRef } from "react";
 import { Effect } from "@/data/effects";
 import { motion, AnimatePresence } from "framer-motion";
+import { LiveBadge, CSSPropertyIndicator, AnimationTimeline } from "../shared";
 
 interface TextEffectCardProps {
   effect: Effect;
@@ -73,17 +74,24 @@ export function TextEffectCard({ effect, size }: TextEffectCardProps) {
   }));
 
   return (
-    <motion.div 
-      className="relative flex flex-col items-center justify-center text-center overflow-hidden rounded-2xl"
-      style={{
-        ...containerSizes[size],
-        background: `linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3))`,
-        border: `1px solid ${previewColor}20`,
-      }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.4 }}
-    >
+    <div className="flex flex-col gap-2">
+      {/* Top bar with indicators */}
+      <div className="flex items-center justify-between px-1">
+        <LiveBadge color={previewColor} size="sm" />
+        <CSSPropertyIndicator cssCode={effect.cssCode} color={previewColor} maxProperties={2} />
+      </div>
+      
+      <motion.div 
+        className="relative flex flex-col items-center justify-center text-center overflow-hidden rounded-2xl"
+        style={{
+          ...containerSizes[size],
+          background: `linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3))`,
+          border: `1px solid ${previewColor}20`,
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4 }}
+      >
       {/* Animated background grid */}
       <motion.div 
         className="absolute inset-0 opacity-20"
@@ -247,6 +255,12 @@ export function TextEffectCard({ effect, size }: TextEffectCardProps) {
           transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
         />
       ))}
-    </motion.div>
+      </motion.div>
+      
+      {/* Animation timeline */}
+      <div className="px-1">
+        <AnimationTimeline duration={3} color={previewColor} showLabel={false} />
+      </div>
+    </div>
   );
 }
