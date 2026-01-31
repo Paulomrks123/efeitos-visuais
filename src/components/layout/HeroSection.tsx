@@ -85,9 +85,9 @@ export function HeroSection({
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-6"
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+          <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
             <span className="text-foreground">Copie.</span>
-            <span className="text-neon-green mx-3 drop-shadow-[0_0_20px_rgba(0,255,136,0.5)]">Cole.</span>
+            <span className="text-neon-green mx-1 sm:mx-3 drop-shadow-[0_0_20px_rgba(0,255,136,0.5)]">Cole.</span>
             <span className="text-foreground">Publique.</span>
           </h1>
         </motion.div>
