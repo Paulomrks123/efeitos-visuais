@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ButtonAnimation } from "@/data/buttons";
+import { LiveBadge, CSSPropertyIndicator, AnimationTimeline } from "../shared";
 
 interface RealisticButtonCardProps {
   button: ButtonAnimation;
@@ -9,17 +10,28 @@ interface RealisticButtonCardProps {
 
 export function RealisticButtonCard({ button, isPlaying = true }: RealisticButtonCardProps) {
   const [replayKey, setReplayKey] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
   const previewColor = button.previewColor || "#00FFFF";
 
-  // Auto-replay animation every 4 seconds
+  // Intersection Observer for performance
   useEffect(() => {
-    if (!isPlaying) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Auto-replay animation every 4 seconds (paused when not visible)
+  useEffect(() => {
+    if (!isPlaying || !isVisible) return;
     const interval = setInterval(() => {
       setReplayKey(prev => prev + 1);
     }, 4000);
     return () => clearInterval(interval);
-  }, [isPlaying]);
-
+  }, [isPlaying, isVisible]);
   // Extract keyframes from CSS code and inject
   const getInlineKeyframes = () => {
     const keyframesMatch = button.cssCode.match(/@keyframes\s+(\w+)\s*\{([^}]+\{[^}]+\})+\s*\}/g);
@@ -383,7 +395,14 @@ export function RealisticButtonCard({ button, isPlaying = true }: RealisticButto
   };
 
   return (
-    <div className="relative w-full h-full min-h-[120px] overflow-hidden rounded-xl">
+    <div ref={containerRef} className="flex flex-col gap-2 w-full">
+      {/* Top bar with Live badge and CSS properties */}
+      <div className="flex items-center justify-between px-2">
+        <LiveBadge color={previewColor} size="sm" />
+        <CSSPropertyIndicator cssCode={button.cssCode} color={previewColor} maxProperties={2} />
+      </div>
+      
+      <div className="relative w-full h-full min-h-[120px] overflow-hidden rounded-xl">
       {/* Inject keyframes */}
       <style>{getInlineKeyframes()}</style>
 
@@ -498,6 +517,17 @@ export function RealisticButtonCard({ button, isPlaying = true }: RealisticButto
       >
         {button.category.toUpperCase()}
       </motion.div>
+      </div>
+      
+      {/* Animation timeline */}
+      <div className="px-2">
+        <AnimationTimeline 
+          duration={4} 
+          color={previewColor} 
+          isPlaying={isPlaying && isVisible}
+          showLabel={false}
+        />
+      </div>
     </div>
   );
 }

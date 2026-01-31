@@ -1,6 +1,7 @@
 import { useEffect, useId, useState } from "react";
 import { Effect } from "@/data/effects";
 import { motion } from "framer-motion";
+import { LiveBadge, CSSPropertyIndicator } from "../shared";
 
 interface NeumorphismCardProps {
   effect: Effect;
@@ -21,6 +22,8 @@ export function NeumorphismCard({ effect, size }: NeumorphismCardProps) {
   // Detect if it's a dark theme based on the color
   const isDark = previewColor.startsWith('#') && 
     parseInt(previewColor.slice(1, 3), 16) < 100;
+  
+  const accentColor = isDark ? '#00D4FF' : '#6366F1';
 
   useEffect(() => {
     const styleElement = document.createElement('style');
@@ -51,22 +54,27 @@ export function NeumorphismCard({ effect, size }: NeumorphismCardProps) {
     lg: { name: 'text-base', handle: 'text-sm' },
   };
 
-  const accentColor = isDark ? '#00D4FF' : '#6366F1';
-
   return (
-    <motion.div 
-      className={effectClassName}
-      style={{ 
-        ...sizeStyles[size],
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '12px',
-      }}
-      initial={{ scale: 0.95, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 0.3 }}
-    >
+    <div className="flex flex-col gap-2">
+      {/* Top bar with indicators */}
+      <div className="flex items-center justify-between px-1">
+        <LiveBadge color={accentColor} size="sm" />
+        <CSSPropertyIndicator cssCode={effect.cssCode} color={accentColor} maxProperties={2} />
+      </div>
+      
+      <motion.div 
+        className={effectClassName}
+        style={{ 
+          ...sizeStyles[size],
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '12px',
+        }}
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      >
       {/* Avatar with animated ring */}
       <div className="relative">
         <motion.div 
@@ -171,7 +179,8 @@ export function NeumorphismCard({ effect, size }: NeumorphismCardProps) {
             }}
           />
         </div>
-      </div>
-    </motion.div>
+        </div>
+      </motion.div>
+    </div>
   );
 }

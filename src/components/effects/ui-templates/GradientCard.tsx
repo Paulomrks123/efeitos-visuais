@@ -1,6 +1,7 @@
 import { useEffect, useId } from "react";
 import { Effect } from "@/data/effects";
 import { motion } from "framer-motion";
+import { LiveBadge, CSSPropertyIndicator, AnimationTimeline } from "../shared";
 
 interface GradientCardProps {
   effect: Effect;
@@ -10,6 +11,7 @@ interface GradientCardProps {
 export function GradientCard({ effect, size }: GradientCardProps) {
   const styleId = useId();
   const uniqueStyleId = `gradient-${effect.id}-${styleId.replace(/:/g, '')}`;
+  const previewColor = effect.previewColor || "#FF6B6B";
   
   // Extract class name from CSS code
   const classMatch = effect.cssCode.match(/\.([a-zA-Z0-9_-]+)\s*\{/);
@@ -39,17 +41,24 @@ export function GradientCard({ effect, size }: GradientCardProps) {
   };
 
   return (
-    <motion.div 
-      className={`${effectClassName} relative overflow-hidden flex flex-col items-center justify-center text-center`}
-      style={{ 
-        padding: sizeStyles[size].padding,
-        width: sizeStyles[size].width,
-        minHeight: sizeStyles[size].minHeight,
-      }}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-    >
+    <div className="flex flex-col gap-2">
+      {/* Top bar with Live badge and CSS properties */}
+      <div className="flex items-center justify-between px-1">
+        <LiveBadge color={previewColor} size="sm" />
+        <CSSPropertyIndicator cssCode={effect.cssCode} color={previewColor} maxProperties={2} />
+      </div>
+      
+      <motion.div 
+        className={`${effectClassName} relative overflow-hidden flex flex-col items-center justify-center text-center`}
+        style={{ 
+          padding: sizeStyles[size].padding,
+          width: sizeStyles[size].width,
+          minHeight: sizeStyles[size].minHeight,
+        }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
       {/* Animated shine effect */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
@@ -146,8 +155,14 @@ export function GradientCard({ effect, size }: GradientCardProps) {
         />
       </motion.button>
 
-      {/* Bottom decoration */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-    </motion.div>
+        {/* Bottom decoration */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+      </motion.div>
+      
+      {/* Animation Timeline */}
+      <div className="px-1">
+        <AnimationTimeline duration={3} color={previewColor} showLabel={false} />
+      </div>
+    </div>
   );
 }

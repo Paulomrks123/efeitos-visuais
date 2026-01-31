@@ -1,6 +1,7 @@
 import { useEffect, useId } from "react";
 import { Effect } from "@/data/effects";
 import { motion } from "framer-motion";
+import { LiveBadge, CSSPropertyIndicator } from "../shared";
 
 interface GlassmorphismCardProps {
   effect: Effect;
@@ -52,10 +53,19 @@ export function GlassmorphismCard({ effect, size }: GlassmorphismCardProps) {
     <div 
       className="relative overflow-hidden rounded-2xl"
       style={{ 
-        minHeight: sizeStyles[size].containerHeight,
+        minHeight: sizeStyles[size].containerHeight + 40,
         minWidth: parseInt(sizeStyles[size].cardWidth) + 40,
       }}
     >
+      {/* Live Badge */}
+      <div className="absolute top-2 left-2 z-20">
+        <LiveBadge color={previewColor} size="sm" />
+      </div>
+      
+      {/* CSS Properties Indicator */}
+      <div className="absolute top-2 right-2 z-20 max-w-[120px]">
+        <CSSPropertyIndicator cssCode={effect.cssCode} color={previewColor} maxProperties={2} />
+      </div>
       {/* Animated gradient background */}
       <motion.div 
         className="absolute inset-0"
