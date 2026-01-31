@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Copy, Check, Play, Pause } from "lucide-react";
+import { Copy, Check, Play, Pause, ChevronDown } from "lucide-react";
 import { ButtonAnimation } from "@/data/buttons";
 import { FavoriteButton } from "@/components/features/FavoriteButton";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface ButtonCardProps {
   button: ButtonAnimation;
@@ -11,6 +12,7 @@ interface ButtonCardProps {
 const ButtonCard = ({ button, isCompact = false }: ButtonCardProps) => {
   const [copied, setCopied] = useState<"css" | "html" | null>(null);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [showCode, setShowCode] = useState(false);
 
   const copyToClipboard = async (text: string, type: "css" | "html") => {
     await navigator.clipboard.writeText(text);
@@ -143,59 +145,88 @@ const ButtonCard = ({ button, isCompact = false }: ButtonCardProps) => {
         </span>
       </div>
 
-      {/* Code Sections */}
+      {/* Code Toggle Section */}
       <div className="space-y-3">
-        {/* CSS Code */}
-        <div>
-          <div className="flex items-center justify-between mb-1">
-            <span className="text-xs font-mono text-muted-foreground">CSS</span>
-            <button
-              onClick={() => copyToClipboard(button.cssCode, "css")}
-              className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
-            >
-              {copied === "css" ? (
-                <>
-                  <Check className="w-3 h-3" />
-                  <span>Copiado!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-3 h-3" />
-                  <span>Copiar</span>
-                </>
-              )}
-            </button>
-          </div>
-          <pre className="text-xs bg-muted/30 p-3 rounded-lg overflow-x-auto font-mono text-muted-foreground max-h-32 overflow-y-auto">
-            {button.cssCode}
-          </pre>
+        <div className="flex gap-2">
+          <button
+            onClick={() => copyToClipboard(button.cssCode, "css")}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md bg-primary/10 hover:bg-primary/20 text-primary transition-colors"
+          >
+            {copied === "css" ? <Check size={12} className="text-neon-green" /> : <Copy size={12} />}
+            {copied === "css" ? "Copiado!" : "Copiar CSS"}
+          </button>
+          <button
+            onClick={() => setShowCode(!showCode)}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            {showCode ? "Ocultar Código" : "Ver Código"}
+            <ChevronDown size={12} className={`transition-transform duration-200 ${showCode ? "rotate-180" : ""}`} />
+          </button>
         </div>
 
-        {/* HTML Code */}
-        <div>
-          <div className="flex items-center justify-between mb-1">
-            <span className="text-xs font-mono text-muted-foreground">HTML/JSX</span>
-            <button
-              onClick={() => copyToClipboard(button.htmlCode, "html")}
-              className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
+        <AnimatePresence>
+          {showCode && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden space-y-3"
             >
-              {copied === "html" ? (
-                <>
-                  <Check className="w-3 h-3" />
-                  <span>Copiado!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-3 h-3" />
-                  <span>Copiar</span>
-                </>
-              )}
-            </button>
-          </div>
-          <pre className="text-xs bg-muted/30 p-3 rounded-lg overflow-x-auto font-mono text-muted-foreground">
-            {button.htmlCode}
-          </pre>
-        </div>
+              {/* CSS Code */}
+              <div>
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-xs font-mono text-muted-foreground">CSS</span>
+                  <button
+                    onClick={() => copyToClipboard(button.cssCode, "css")}
+                    className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {copied === "css" ? (
+                      <>
+                        <Check className="w-3 h-3" />
+                        <span>Copiado!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3 h-3" />
+                        <span>Copiar</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+                <pre className="text-xs bg-muted/30 p-3 rounded-lg overflow-x-auto font-mono text-muted-foreground max-h-32 overflow-y-auto">
+                  {button.cssCode}
+                </pre>
+              </div>
+
+              {/* HTML Code */}
+              <div>
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-xs font-mono text-muted-foreground">HTML/JSX</span>
+                  <button
+                    onClick={() => copyToClipboard(button.htmlCode, "html")}
+                    className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {copied === "html" ? (
+                      <>
+                        <Check className="w-3 h-3" />
+                        <span>Copiado!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3 h-3" />
+                        <span>Copiar</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+                <pre className="text-xs bg-muted/30 p-3 rounded-lg overflow-x-auto font-mono text-muted-foreground">
+                  {button.htmlCode}
+                </pre>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Copy, Check, Play, Pause, Expand, Lightbulb } from "lucide-react";
+import { Copy, Check, Play, Pause, Expand, Lightbulb, ChevronDown } from "lucide-react";
 import { FavoriteButton } from "@/components/features/FavoriteButton";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Dialog,
   DialogContent,
@@ -33,12 +34,20 @@ export function CompactCard({
 }: CompactCardProps) {
   const [isPlaying, setIsPlaying] = useState(true);
   const [copied, setCopied] = useState(false);
+  const [copiedHTML, setCopiedHTML] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [showCode, setShowCode] = useState(false);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(cssCode);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleCopyHTML = async () => {
+    await navigator.clipboard.writeText(htmlCode);
+    setCopiedHTML(true);
+    setTimeout(() => setCopiedHTML(false), 2000);
   };
 
   return (
@@ -133,28 +142,68 @@ export function CompactCard({
               </button>
             </div>
 
-            {/* Code */}
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">CSS</span>
+            {/* Code Toggle Section */}
+            <div className="space-y-3">
+              <div className="flex gap-2">
                 <button
                   onClick={handleCopy}
-                  className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
+                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md bg-primary/10 hover:bg-primary/20 text-primary transition-colors"
                 >
-                  {copied ? <Check size={14} className="text-neon-green" /> : <Copy size={14} />}
-                  {copied ? "Copiado!" : "Copiar"}
+                  {copied ? <Check size={12} className="text-neon-green" /> : <Copy size={12} />}
+                  {copied ? "Copiado!" : "Copiar CSS"}
+                </button>
+                <button
+                  onClick={() => setShowCode(!showCode)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {showCode ? "Ocultar Código" : "Ver Código"}
+                  <ChevronDown size={12} className={`transition-transform duration-200 ${showCode ? "rotate-180" : ""}`} />
                 </button>
               </div>
-              <pre className="text-xs bg-muted/50 p-4 rounded-lg overflow-x-auto font-mono max-h-48">
-                <code className="text-muted-foreground">{cssCode}</code>
-              </pre>
-            </div>
 
-            <div className="space-y-2">
-              <span className="text-sm font-medium">HTML/JSX</span>
-              <pre className="text-xs bg-muted/50 p-4 rounded-lg overflow-x-auto font-mono max-h-32">
-                <code className="text-muted-foreground">{htmlCode}</code>
-              </pre>
+              <AnimatePresence>
+                {showCode && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden space-y-3"
+                  >
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium">CSS</span>
+                        <button
+                          onClick={handleCopy}
+                          className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
+                        >
+                          {copied ? <Check size={14} className="text-neon-green" /> : <Copy size={14} />}
+                          {copied ? "Copiado!" : "Copiar"}
+                        </button>
+                      </div>
+                      <pre className="text-xs bg-muted/50 p-4 rounded-lg overflow-x-auto font-mono max-h-48">
+                        <code className="text-muted-foreground">{cssCode}</code>
+                      </pre>
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium">HTML/JSX</span>
+                        <button
+                          onClick={handleCopyHTML}
+                          className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
+                        >
+                          {copiedHTML ? <Check size={14} className="text-neon-green" /> : <Copy size={14} />}
+                          {copiedHTML ? "Copiado!" : "Copiar"}
+                        </button>
+                      </div>
+                      <pre className="text-xs bg-muted/50 p-4 rounded-lg overflow-x-auto font-mono max-h-32">
+                        <code className="text-muted-foreground">{htmlCode}</code>
+                      </pre>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
         </DialogContent>
