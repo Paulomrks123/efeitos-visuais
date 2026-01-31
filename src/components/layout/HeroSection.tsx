@@ -9,26 +9,34 @@ interface HeroSectionProps {
   buttonsCount: number;
 }
 
-// Sound waves text component
-function SoundWaveText({ text }: { text: string }) {
+// Hellfire text component
+function HellfireText({ text }: { text: string }) {
   return (
     <span className="inline-flex flex-wrap justify-center items-end">
       {text.split('').map((char, i) => (
         <motion.span
           key={i}
           style={{
-            color: '#FF1493',
-            textShadow: '0 0 10px #FF1493, 0 0 20px #FF69B4, 0 0 40px #FF1493',
+            background: 'linear-gradient(180deg, #FFFF00, #FF8C00, #FF4500, #8B0000)',
+            WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
+            color: 'transparent',
             display: 'inline-block',
-            originY: 1,
+            filter: 'drop-shadow(0 -5px 20px rgba(255, 69, 0, 0.8))',
           }}
           animate={{
-            scaleY: [1, 1.5, 0.7, 1.3, 1],
+            y: [0, -3, 0],
+            scale: [1, 1.05, 1],
+            filter: [
+              'drop-shadow(0 -5px 20px rgba(255, 69, 0, 0.8)) brightness(1)',
+              'drop-shadow(0 -8px 25px rgba(255, 69, 0, 1)) brightness(1.3)',
+              'drop-shadow(0 -5px 20px rgba(255, 69, 0, 0.8)) brightness(1)',
+            ],
           }}
           transition={{
-            duration: 0.8,
+            duration: 0.5,
             repeat: Infinity,
-            delay: i * 0.05,
+            delay: i * 0.08,
             ease: "easeInOut",
           }}
         >
@@ -94,24 +102,24 @@ export function HeroSection({
           <div 
             className="inline-block px-6 md:px-8 py-6 rounded-2xl overflow-hidden max-w-full"
             style={{
-              background: 'linear-gradient(135deg, #0D0D0D 0%, #1a0a1a 50%, #0D0D0D 100%)',
-              boxShadow: '0 0 40px rgba(255, 20, 147, 0.3), inset 0 0 60px rgba(255, 105, 180, 0.05)',
-              border: '1px solid rgba(255, 20, 147, 0.3)',
+              background: 'linear-gradient(135deg, #0D0D0D 0%, #1a0a05 50%, #0D0D0D 100%)',
+              boxShadow: '0 0 40px rgba(255, 69, 0, 0.3), inset 0 0 60px rgba(255, 140, 0, 0.05)',
+              border: '1px solid rgba(255, 69, 0, 0.3)',
             }}
           >
             <div className="text-lg md:text-2xl lg:text-3xl font-bold tracking-wider">
-              <SoundWaveText text="BIBLIOTECA COMPLETA" />
+              <HellfireText text="BIBLIOTECA COMPLETA" />
             </div>
             <div className="mt-4 flex flex-wrap justify-center gap-4 text-base md:text-xl font-medium">
-              <span style={{ color: '#FF1493', textShadow: '0 0 15px #FF1493' }}>animações</span>
-              <span style={{ color: '#FF69B4' }}>•</span>
-              <span style={{ color: '#FF1493', textShadow: '0 0 15px #FF1493' }}>efeitos</span>
-              <span style={{ color: '#FF69B4' }}>•</span>
-              <span style={{ color: '#FF1493', textShadow: '0 0 15px #FF1493' }}>botões</span>
+              <span style={{ color: '#FF8C00', textShadow: '0 0 15px #FF8C00' }}>animações</span>
+              <span style={{ color: '#FF4500' }}>•</span>
+              <span style={{ color: '#FFFF00', textShadow: '0 0 15px #FFFF00' }}>efeitos</span>
+              <span style={{ color: '#FF4500' }}>•</span>
+              <span style={{ color: '#FF8C00', textShadow: '0 0 15px #FF8C00' }}>botões</span>
             </div>
           </div>
           <p className="text-sm text-muted-foreground mt-4 font-mono opacity-60">
-            ↑ Efeito <code className="text-[#FF1493]">.ondas-sonoras</code> aplicado ao vivo
+            ↑ Efeito <code className="text-[#FF4500]">.hellfire-text</code> aplicado ao vivo
           </p>
         </motion.div>
 
