@@ -136,16 +136,48 @@ export function HeroSection({
           {/* Animations Card */}
           <button
             onClick={() => onLibraryChange("animations")}
-            className="group relative p-6 rounded-2xl bg-card/50 border border-primary/20 hover:border-primary/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,255,255,0.15)]"
+            className="group relative p-6 rounded-2xl bg-card/50 border-2 border-[#FF6600]/50 hover:border-[#FF6600] transition-all duration-300 hover:scale-[1.02]"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+            <motion.div 
+              className="absolute inset-0 rounded-2xl pointer-events-none"
+              animate={{
+                boxShadow: [
+                  '0 0 5px #FF6600, inset 0 0 5px rgba(255, 102, 0, 0.3)',
+                  '0 0 20px #FF6600, 0 0 40px #FF9900, inset 0 0 15px rgba(255, 102, 0, 0.5)',
+                  '0 0 5px #FF6600, inset 0 0 5px rgba(255, 102, 0, 0.3)',
+                ],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#FF6600]/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="relative">
-              <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <Zap className="text-primary" size={28} />
+              <div className="w-14 h-14 rounded-xl bg-[#FF6600]/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <Zap className="text-[#FF6600]" size={28} />
               </div>
               <h3 className="text-xl font-bold text-foreground mb-2">Animações</h3>
-              <p className="text-3xl font-bold text-primary mb-2">{animationsCount}</p>
-              <p className="text-sm text-muted-foreground">CSS puro & Tailwind</p>
+              <motion.p 
+                className="text-3xl font-bold mb-2"
+                style={{ color: '#FF6600' }}
+                animate={{
+                  textShadow: [
+                    '0 0 5px #FF6600',
+                    '0 0 15px #FF6600, 0 0 30px #FF9900',
+                    '0 0 5px #FF6600',
+                  ],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                {animationsCount}
+              </motion.p>
+              <p className="text-sm" style={{ color: '#FF6600', opacity: 0.7 }}>CSS puro & Tailwind</p>
             </div>
           </button>
 
