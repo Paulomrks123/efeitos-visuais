@@ -54,18 +54,32 @@ export function HeroSection({
           </h1>
         </motion.div>
 
-        {/* Sub Headline */}
-        <motion.p
+        {/* Sub Headline with Neon Night Effect */}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12"
+          className="max-w-4xl mx-auto mb-12"
         >
-          Biblioteca completa de{" "}
-          <span className="text-primary font-semibold">animações CSS</span>,{" "}
-          <span className="text-secondary font-semibold">efeitos visuais</span> e{" "}
-          <span className="text-neon-green font-semibold">botões</span> prontos para uso
-        </motion.p>
+          <div 
+            className="inline-block px-8 py-6 rounded-2xl text-xl md:text-2xl font-medium"
+            style={{
+              background: 'linear-gradient(135deg, #0D0D0D 0%, #1A1A2E 25%, #16213E 50%, #0F3460 75%, #E94560 100%)',
+              color: '#00FFFF',
+              textShadow: '0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 40px #00FFFF',
+              boxShadow: '0 0 30px rgba(233, 69, 96, 0.3), 0 0 60px rgba(0, 255, 255, 0.1)',
+              border: '1px solid rgba(0, 255, 255, 0.2)',
+            }}
+          >
+            Biblioteca completa de{" "}
+            <span className="font-bold" style={{ color: '#FF6B6B', textShadow: '0 0 15px #FF6B6B' }}>animações CSS</span>,{" "}
+            <span className="font-bold" style={{ color: '#E94560', textShadow: '0 0 15px #E94560' }}>efeitos visuais</span> e{" "}
+            <span className="font-bold" style={{ color: '#00FF88', textShadow: '0 0 15px #00FF88' }}>botões</span> prontos para uso
+          </div>
+          <p className="text-sm text-muted-foreground mt-4 font-mono opacity-60">
+            ↑ Efeito <code className="text-neon-cyan">.neon-night</code> aplicado ao vivo
+          </p>
+        </motion.div>
 
         {/* CTA Cards */}
         <motion.div
