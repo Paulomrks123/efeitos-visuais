@@ -18,7 +18,7 @@ const rainbowColors = [
 // Rainbow dance text component
 function RainbowDanceText({ text }: { text: string }) {
   return (
-    <span className="inline-flex">
+    <span className="inline-flex flex-wrap justify-center">
       {text.split('').map((char, i) => {
         const color = rainbowColors[i % rainbowColors.length];
         return (
@@ -26,7 +26,7 @@ function RainbowDanceText({ text }: { text: string }) {
             key={i}
             style={{
               color: color,
-              textShadow: `0 0 10px ${color}, 0 0 20px ${color}`,
+              textShadow: `0 0 15px ${color}, 0 0 30px ${color}, 0 0 45px ${color}, 0 0 60px ${color}`,
               display: 'inline-block',
             }}
             animate={{
@@ -101,22 +101,22 @@ export function HeroSection({
           className="max-w-4xl mx-auto mb-12"
         >
           <div 
-            className="inline-block px-8 py-6 rounded-2xl overflow-hidden"
+            className="inline-block px-6 md:px-8 py-6 rounded-2xl overflow-hidden max-w-full"
             style={{
               background: 'linear-gradient(135deg, #0D0D0D 0%, #1a0a1a 50%, #0D0D0D 100%)',
               boxShadow: '0 0 40px rgba(255, 100, 100, 0.2), inset 0 0 60px rgba(255, 255, 255, 0.03)',
               border: '1px solid rgba(255, 255, 255, 0.15)',
             }}
           >
-            <div className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wider">
+            <div className="text-lg md:text-2xl lg:text-3xl font-bold tracking-wider">
               <RainbowDanceText text="BIBLIOTECA COMPLETA" />
             </div>
-            <div className="mt-4 flex flex-wrap justify-center gap-4 text-lg md:text-xl font-medium">
-              <span style={{ color: '#FF7F00', textShadow: '0 0 10px #FF7F00' }}>animações</span>
+            <div className="mt-4 flex flex-wrap justify-center gap-4 text-base md:text-xl font-medium">
+              <span style={{ color: '#FF7F00', textShadow: '0 0 15px #FF7F00, 0 0 30px #FF7F00' }}>animações</span>
               <span style={{ color: '#FFFF00' }}>•</span>
-              <span style={{ color: '#00FF00', textShadow: '0 0 10px #00FF00' }}>efeitos</span>
+              <span style={{ color: '#00FF00', textShadow: '0 0 15px #00FF00, 0 0 30px #00FF00' }}>efeitos</span>
               <span style={{ color: '#0000FF' }}>•</span>
-              <span style={{ color: '#9400D3', textShadow: '0 0 10px #9400D3' }}>botões</span>
+              <span style={{ color: '#9400D3', textShadow: '0 0 15px #9400D3, 0 0 30px #9400D3' }}>botões</span>
             </div>
           </div>
           <p className="text-sm text-muted-foreground mt-4 font-mono opacity-60">
