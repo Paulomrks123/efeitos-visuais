@@ -18,22 +18,23 @@ export default function Showcase() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
               <Link 
                 to="/" 
-                className="p-2 rounded-lg hover:bg-muted/50 transition-colors"
+                className="p-1.5 sm:p-2 rounded-lg hover:bg-muted/50 transition-colors"
               >
-                <ArrowLeft size={20} />
+                <ArrowLeft size={18} className="sm:w-5 sm:h-5" />
               </Link>
               <div>
-                <h1 className="text-xl font-bold flex items-center gap-2">
-                  <Palette className="text-primary" size={24} />
-                  Showcase de Estilos
+                <h1 className="text-base sm:text-xl font-bold flex items-center gap-1.5 sm:gap-2">
+                  <Palette className="text-primary w-5 h-5 sm:w-6 sm:h-6" />
+                  <span className="hidden xs:inline">Showcase de Estilos</span>
+                  <span className="xs:hidden">Estilos</span>
                 </h1>
-                <p className="text-sm text-muted-foreground">
-                  23 estilos de design para diferentes contextos
+                <p className="text-xs sm:text-sm text-muted-foreground">
+                  23 estilos de design
                 </p>
               </div>
             </div>
@@ -41,61 +42,61 @@ export default function Showcase() {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-3 sm:px-4 py-6 sm:py-8">
         {/* Intro */}
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            <Sparkles size={16} />
+        <div className="max-w-3xl mx-auto text-center mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+            <Sparkles size={14} className="sm:w-4 sm:h-4" />
             Guia de Design Visual
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 px-2">
             Escolha o Estilo Ideal para seu Projeto
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-sm sm:text-lg px-2">
             Cada estilo foi cuidadosamente desenhado para transmitir uma mensagem específica. 
-            Clique em qualquer card para ver detalhes completos, paleta de cores e CSS de exemplo.
+            Clique em qualquer card para ver detalhes completos.
           </p>
         </div>
 
         {/* Quick Info */}
-        <div className="grid md:grid-cols-3 gap-4 mb-10 max-w-4xl mx-auto">
-          <div className="p-4 rounded-xl bg-muted/30 border border-border/50">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
-                <Palette size={16} className="text-primary" />
+        <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-6 sm:mb-10 max-w-4xl mx-auto">
+          <div className="p-2 sm:p-4 rounded-lg sm:rounded-xl bg-muted/30 border border-border/50">
+            <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 mb-1 sm:mb-2">
+              <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-primary/20 flex items-center justify-center">
+                <Palette size={12} className="sm:w-4 sm:h-4 text-primary" />
               </div>
-              <span className="font-medium">23 Estilos</span>
+              <span className="font-medium text-xs sm:text-base">23 Estilos</span>
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-[10px] sm:text-sm text-muted-foreground text-center sm:text-left hidden sm:block">
               De Premium Minimalista a Tech Focus Flow
             </p>
           </div>
-          <div className="p-4 rounded-xl bg-muted/30 border border-border/50">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-8 h-8 rounded-lg bg-secondary/20 flex items-center justify-center">
-                <Download size={16} className="text-secondary" />
+          <div className="p-2 sm:p-4 rounded-lg sm:rounded-xl bg-muted/30 border border-border/50">
+            <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 mb-1 sm:mb-2">
+              <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-secondary/20 flex items-center justify-center">
+                <Download size={12} className="sm:w-4 sm:h-4 text-secondary" />
               </div>
-              <span className="font-medium">CSS Pronto</span>
+              <span className="font-medium text-xs sm:text-base">CSS Pronto</span>
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-[10px] sm:text-sm text-muted-foreground text-center sm:text-left hidden sm:block">
               Copie as variáveis e estilos para seu projeto
             </p>
           </div>
-          <div className="p-4 rounded-xl bg-muted/30 border border-border/50">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-8 h-8 rounded-lg bg-neon-cyan/20 flex items-center justify-center">
-                <Info size={16} className="text-neon-cyan" />
+          <div className="p-2 sm:p-4 rounded-lg sm:rounded-xl bg-muted/30 border border-border/50">
+            <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 mb-1 sm:mb-2">
+              <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-neon-cyan/20 flex items-center justify-center">
+                <Info size={12} className="sm:w-4 sm:h-4 text-neon-cyan" />
               </div>
-              <span className="font-medium">Guia Completo</span>
+              <span className="font-medium text-xs sm:text-base">Guia</span>
             </div>
-            <p className="text-sm text-muted-foreground">
-              Tipografia, ícones, layout e objetivo de cada estilo
+            <p className="text-[10px] sm:text-sm text-muted-foreground text-center sm:text-left hidden sm:block">
+              Tipografia, ícones, layout e objetivo
             </p>
           </div>
         </div>
 
         {/* Filter */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
+        <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 mb-6 sm:mb-8 px-2">
           {[
             { id: "all", label: "Todos" },
             { id: "premium", label: "Premium" },
@@ -116,14 +117,14 @@ export default function Showcase() {
             { id: "nature", label: "Nature" },
             { id: "vizion", label: "Vizion" },
             { id: "futuristic", label: "Futuristic" },
-            { id: "silent", label: "Silent Tech" },
-            { id: "focus", label: "Focus Flow" },
-            { id: "intelligence", label: "Minimal Intelligence" },
+            { id: "silent", label: "Silent" },
+            { id: "focus", label: "Focus" },
+            { id: "intelligence", label: "Minimal" },
           ].map((f) => (
             <button
               key={f.id}
               onClick={() => setFilter(f.id)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+              className={`px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-medium transition-colors ${
                 filter === f.id
                   ? "bg-primary text-primary-foreground"
                   : "bg-muted/50 text-muted-foreground hover:bg-muted"
@@ -135,20 +136,20 @@ export default function Showcase() {
         </div>
 
         {/* Styles Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {filteredStyles.map((style, index) => (
             <StyleCard key={style.id} style={style} index={index} />
           ))}
         </div>
 
         {/* Golden Rule */}
-        <div className="mt-16 max-w-2xl mx-auto text-center p-8 rounded-2xl bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/20">
-          <div className="text-4xl mb-4">💎</div>
-          <h3 className="text-xl font-bold mb-2 text-amber-400">Regra de Ouro</h3>
-          <p className="text-muted-foreground italic text-lg">
+        <div className="mt-10 sm:mt-16 max-w-2xl mx-auto text-center p-4 sm:p-8 rounded-xl sm:rounded-2xl bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/20">
+          <div className="text-3xl sm:text-4xl mb-2 sm:mb-4">💎</div>
+          <h3 className="text-lg sm:text-xl font-bold mb-2 text-amber-400">Regra de Ouro</h3>
+          <p className="text-muted-foreground italic text-sm sm:text-lg">
             "Layout muda com frequência. Ícone bom dura anos."
           </p>
-          <p className="text-sm text-muted-foreground mt-4">
+          <p className="text-xs sm:text-sm text-muted-foreground mt-2 sm:mt-4">
             Se o icon set estiver sólido, você pode trocar cores, tipografia e layout sem perder identidade.
           </p>
         </div>
