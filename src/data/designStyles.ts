@@ -21,6 +21,10 @@ import styleNatureOrganic from "@/assets/showcase/style-nature-organic.jpg";
 import styleVizionLayout from "@/assets/showcase/style-vizion-layout.jpg";
 // Futuristic style
 import styleFuturistic from "@/assets/showcase/style-futuristic.jpg";
+// New tech study styles
+import styleSilentTech from "@/assets/showcase/style-silent-tech.jpg";
+import styleTechFocusFlow from "@/assets/showcase/style-tech-focus-flow.jpg";
+import styleMinimalTechIntelligence from "@/assets/showcase/style-minimal-tech-intelligence.jpg";
 
 import { StyleDefinition } from "@/components/showcase/StyleCard";
 
@@ -2109,6 +2113,460 @@ All colors MUST be HSL.
     background-size: 56px 56px;
     mask-image: radial-gradient(55% 45% at 50% 35%, black 20%, transparent 72%);
   }
+}`,
+  },
+  // ===== NEW TECH STUDY STYLES =====
+  {
+    id: "silent-tech",
+    name: "Tecnologia Silenciosa",
+    subtitle: "Estudos • Focus • Tech Avançado",
+    description: "Estética de tecnologia silenciosa, racional e de alta precisão para usuários tecnicamente sofisticados. Paleta neutra de alto controle com uma única cor de acento digital aplicada de forma funcional.",
+    objective: "Transmitir: 'este sistema respeita minha inteligência e meu foco' — ideal para apps de estudos e produtividade avançada.",
+    colors: ["#FAFAFA", "#F5F5F4", "#E7E5E4", "#78716C", "#3B82F6"],
+    features: ["Minimalista", "Neutro", "Racional", "Precisão"],
+    iconStyle: "Ícones lineares ultra-finos, monocromáticos, sem preenchimento. Consistência absoluta no traço.",
+    layoutStyle: "Interface densa em significado com amplo respiro visual. Uma única ação dominante por tela.",
+    typography: "Contemporânea de leitura contínua. Inter, SF Pro, System UI. Excelente rendering em longas sessões.",
+    previewImage: styleSilentTech,
+    cssVariables: {
+      "--background": "0 0% 98%",
+      "--foreground": "20 6% 25%",
+      "--primary": "217 91% 60%",
+      "--muted": "20 6% 90%",
+    },
+    sampleCSS: `:root {
+  /* Paleta Tecnologia Silenciosa */
+  --background: #FAFAFA;
+  --surface: #FFFFFF;
+  --surface-elevated: #F5F5F4;
+  --text-primary: #292524;
+  --text-secondary: #78716C;
+  --text-muted: #A8A29E;
+  --accent: #3B82F6;
+  --accent-subtle: rgba(59, 130, 246, 0.08);
+  --border: #E7E5E4;
+  --border-subtle: #F5F5F4;
+  
+  /* Sombras Precisas */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-focus: 0 0 0 2px var(--accent-subtle);
+}
+
+/* Card Silencioso */
+.card-silent {
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease;
+}
+
+.card-silent:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Botão Funcional */
+.button-functional {
+  background: var(--text-primary);
+  color: var(--background);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  transition: opacity 0.15s ease;
+}
+
+.button-functional:hover {
+  opacity: 0.9;
+}
+
+/* Acento Digital */
+.accent-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* Input Preciso */
+.input-precise {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--text-primary);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input-precise:focus {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-focus);
+  outline: none;
+}
+
+/* Grid Preciso */
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+/* Tipografia Hierárquica */
+.heading-primary {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.text-body {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Divisor Sutil */
+.divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 24px 0;
+}`,
+  },
+  {
+    id: "tech-focus-flow",
+    name: "Tech Focus Flow",
+    subtitle: "Dark Mode • Fluxo • Imersão",
+    description: "App de estudos para usuários de alta proficiência técnica, projetado para induzir estado de fluxo prolongado. Paleta escura profissional com contrastes matematicamente equilibrados.",
+    objective: "Comunicar: 'entre, produza, avance — sem fricção' — perfeito para sessões longas de estudo e trabalho focado.",
+    colors: ["#0F172A", "#1E293B", "#334155", "#94A3B8", "#6366F1"],
+    features: ["Dark Mode", "Foco", "Imersão", "Profissional"],
+    iconStyle: "Ícones geométricos, semi-fill, tons de cinza com destaque único na ação principal.",
+    layoutStyle: "Interface extremamente enxuta, sem cards inflados ou widgets redundantes. Continuidade temporal e progresso mensurável.",
+    typography: "Funcional e precisa. Inter, SF Pro Mono para dados. Pesos otimizados para escaneamento rápido.",
+    previewImage: styleTechFocusFlow,
+    cssVariables: {
+      "--background": "222 47% 11%",
+      "--foreground": "210 40% 96%",
+      "--primary": "239 84% 67%",
+      "--muted": "215 20% 25%",
+    },
+    sampleCSS: `:root {
+  /* Paleta Tech Focus Flow */
+  --background: #0F172A;
+  --surface: #1E293B;
+  --surface-elevated: #334155;
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --accent: #6366F1;
+  --accent-glow: rgba(99, 102, 241, 0.15);
+  --success: #22C55E;
+  --border: #334155;
+  --border-subtle: rgba(148, 163, 184, 0.1);
+  
+  /* Sombras Profundas */
+  --shadow-depth: 0 4px 24px rgba(0,0,0,0.4);
+  --shadow-glow: 0 0 20px var(--accent-glow);
+}
+
+/* Card de Fluxo */
+.card-flow {
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 20px;
+  transition: border-color 0.2s ease;
+}
+
+.card-flow:hover {
+  border-color: var(--accent);
+}
+
+/* Barra de Progresso */
+.progress-bar {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #818CF8);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* Botão de Ação Primária */
+.button-action {
+  background: var(--accent);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: var(--shadow-glow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.button-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 30px var(--accent-glow);
+}
+
+/* Métricas de Tempo */
+.time-display {
+  font-family: 'SF Mono', 'JetBrains Mono', monospace;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.time-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+/* Indicador de Status */
+.status-active {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--success);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Sidebar Minimalista */
+.sidebar-minimal {
+  width: 64px;
+  background: var(--background);
+  border-right: 1px solid var(--border-subtle);
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: var(--text-muted);
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.nav-icon:hover,
+.nav-icon.active {
+  color: var(--text-primary);
+  background: var(--surface);
+}`,
+  },
+  {
+    id: "minimal-tech-intelligence",
+    name: "Minimal Tech Intelligence",
+    subtitle: "Modular • Previsível • Inteligente",
+    description: "Linguagem visual minimalista, previsível e intelectualmente honesta para mentes técnicas e analíticas. Layout modular que facilita aprendizado rápido da interface.",
+    objective: "A sensação final: 'isso amplifica minha capacidade de raciocínio' — construído por engenheiros, para engenheiros.",
+    colors: ["#FFFFFF", "#F8FAFC", "#E2E8F0", "#64748B", "#0EA5E9"],
+    features: ["Modular", "Lógico", "Previsível", "Inteligente"],
+    iconStyle: "Ícones funcionais sem ornamentação, estilo outline consistente. Sem metáforas visuais óbvias.",
+    layoutStyle: "Layout modular, lógico e repetível. Grid consistente, hierarquia clara, zero surpresas visuais.",
+    typography: "Sistema UI nativo. -apple-system, Inter. Hierarquia através de peso, não tamanho.",
+    previewImage: styleMinimalTechIntelligence,
+    cssVariables: {
+      "--background": "0 0% 100%",
+      "--foreground": "215 20% 30%",
+      "--primary": "199 89% 48%",
+      "--muted": "210 40% 96%",
+    },
+    sampleCSS: `:root {
+  /* Paleta Minimal Tech Intelligence */
+  --background: #FFFFFF;
+  --surface: #F8FAFC;
+  --surface-alt: #F1F5F9;
+  --text-primary: #1E293B;
+  --text-secondary: #64748B;
+  --text-muted: #94A3B8;
+  --accent: #0EA5E9;
+  --accent-light: rgba(14, 165, 233, 0.1);
+  --success: #10B981;
+  --warning: #F59E0B;
+  --border: #E2E8F0;
+  --border-focus: var(--accent);
+  
+  /* Espaçamento Modular (8px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+}
+
+/* Card Modular */
+.card-modular {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: var(--space-5);
+}
+
+/* Seção de Conteúdo */
+.content-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+/* Lista de Items */
+.item-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.item-row:last-child {
+  border-bottom: none;
+}
+
+.item-label {
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.item-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* Botão Inteligente */
+.button-smart {
+  background: var(--accent);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 13px;
+  transition: background 0.15s ease;
+}
+
+.button-smart:hover {
+  background: #0284C7;
+}
+
+.button-secondary {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 13px;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.button-secondary:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+}
+
+/* Badge de Status */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.status-success {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+
+.status-warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+}
+
+/* Grid Previsível */
+.grid-predictable {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+/* Métrica Modular */
+.metric-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: var(--space-4);
+  text-align: center;
+}
+
+.metric-value {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.metric-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: var(--space-2);
 }`,
   },
 ];
