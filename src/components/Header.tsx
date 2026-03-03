@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { Palette } from "lucide-react";
+import { Palette, ExternalLink } from "lucide-react";
 interface HeaderProps {
   activeLibrary: "animations" | "effects" | "buttons";
 }
@@ -117,6 +117,16 @@ export function Header({ activeLibrary }: HeaderProps) {
           <Palette size={18} className="text-primary" />
           <span className="font-medium">Ver Showcase de 23 Estilos de Design</span>
         </Link>
+
+        <a 
+          href="https://estilauts.lovable.app/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 mt-3 px-5 py-2.5 rounded-xl bg-gradient-to-r from-neon-cyan/20 to-neon-green/20 border border-neon-cyan/30 hover:border-neon-cyan/60 text-foreground transition-all hover:scale-105"
+        >
+          <ExternalLink size={18} className="text-neon-cyan" />
+          <span className="font-medium">Irmão 1</span>
+        </a>
       </div>
     </header>
   );
