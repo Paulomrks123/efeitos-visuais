@@ -5811,4 +5811,110 @@ export const effects: Effect[] = [
   90% { transform: translateX(-2px) skewX(3deg); }
 }`,
   },
+
+  // ==================== UI ULTRA - CARD EFFECTS (4 efeitos) ====================
+  {
+    id: "G-21",
+    name: "Card Glow Hover",
+    description: "Card com brilho intenso ao hover, shadow colorida que expande progressivamente.",
+    category: "glassmorphism",
+    previewColor: "#6366f1",
+    useCaseExample: "Use em cards de destaque, pricing e features.",
+    htmlExample: `<div class="ui-card-glow">
+  <h3>Card Glow</h3>
+  <p>Hover para brilhar</p>
+</div>`,
+    cssCode: `.ui-card-glow {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  padding: 32px;
+  border-radius: 24px;
+  transition: all 0.4s cubic-bezier(.16,.8,.24,1);
+}
+.ui-card-glow:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(255,255,255,0.2);
+  box-shadow: 0 20px 80px rgba(99,102,241,0.3);
+}`,
+  },
+  {
+    id: "G-22",
+    name: "Card 3D Tilt",
+    description: "Card com efeito 3D tilt ao hover, simula perspectiva e profundidade real.",
+    category: "glassmorphism",
+    previewColor: "#a855f7",
+    useCaseExample: "Use em showcases de produto e cards interativos.",
+    htmlExample: `<div class="ui-card-tilt">
+  <h3>3D Tilt</h3>
+  <p>Perspectiva ao hover</p>
+</div>`,
+    cssCode: `.ui-card-tilt {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  padding: 32px;
+  border-radius: 24px;
+  transition: transform 0.4s cubic-bezier(.16,.8,.24,1);
+}
+.ui-card-tilt:hover {
+  transform: rotateX(6deg) rotateY(6deg);
+}`,
+  },
+  {
+    id: "G-23",
+    name: "Card Border Animated",
+    description: "Card com borda gradiente animada, efeito de contorno premium e sofisticado.",
+    category: "glassmorphism",
+    previewColor: "#6366f1",
+    useCaseExample: "Use em cards de destaque, CTAs e áreas premium.",
+    htmlExample: `<div class="ui-card-border-animated">
+  <h3>Animated Border</h3>
+  <p>Borda gradiente</p>
+</div>`,
+    cssCode: `.ui-card-border-animated {
+  position: relative;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  padding: 32px;
+  border-radius: 24px;
+  transition: all 0.4s ease;
+}
+.ui-card-border-animated::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(90deg, #6366f1, #a855f7, #0ea5e9);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}`,
+  },
+  {
+    id: "G-24",
+    name: "Card Lift Hover",
+    description: "Card com elevação suave ao hover, transição de borda e sombra combinadas.",
+    category: "glassmorphism",
+    previewColor: "#0ea5e9",
+    useCaseExample: "Use em grids de conteúdo, blog posts e listas.",
+    htmlExample: `<div class="ui-card-lift">
+  <h3>Lift Card</h3>
+  <p>Hover para elevar</p>
+</div>`,
+    cssCode: `.ui-card-lift {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  padding: 32px;
+  border-radius: 24px;
+  transition: all 0.4s cubic-bezier(.16,.8,.24,1);
+}
+.ui-card-lift:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(255,255,255,0.2);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}`,
+  },
 ];
