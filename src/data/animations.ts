@@ -16,6 +16,7 @@ export const animationUseCasesByCategory: Record<string, string> = {
   modern: "Perfeito para landing pages, portfólios e apps empresariais modernos.",
   stylish: "Excelente para sites de moda, joalherias e marcas de luxo.",
   vibrant: "Ótimo para apps infantis, sites de entretenimento e redes sociais.",
+  ui: "Ideal para sistemas de design, bibliotecas de componentes e interfaces profissionais.",
 };
 
 // Função para obter exemplo de uso
