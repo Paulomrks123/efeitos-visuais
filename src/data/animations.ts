@@ -2735,4 +2735,380 @@ export const animations: Animation[] = [
   display: inline-block;
 }`,
   },
+
+  // ==================== UI ULTRA - TEXT ANIMATIONS (10 animações) ====================
+  {
+    id: "UI-01",
+    name: "Fade Up Reveal",
+    description: "Elemento sobe suavemente com fade, ideal para scroll reveal e entrada de conteúdo.",
+    category: "ui",
+    previewColor: "#6366f1",
+    useCaseExample: "Use em seções de landing page para revelar conteúdo ao rolar.",
+    animationClass: "animate-ui-fade-up",
+    htmlExample: `<div class="animate-ui-fade-up">Conteúdo revelado</div>`,
+    cssCode: `.animate-ui-fade-up {
+  animation: uiFadeUp 0.8s cubic-bezier(.16,.8,.24,1) forwards;
+}
+@keyframes uiFadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}`,
+  },
+  {
+    id: "UI-02",
+    name: "Scale In",
+    description: "Entrada com escala suave de 90% para 100%, transmite elegância e precisão.",
+    category: "ui",
+    previewColor: "#a855f7",
+    useCaseExample: "Ideal para modais, cards e elementos que aparecem com foco.",
+    animationClass: "animate-ui-scale-in",
+    htmlExample: `<div class="animate-ui-scale-in">Elemento escalado</div>`,
+    cssCode: `.animate-ui-scale-in {
+  animation: uiScaleIn 0.7s cubic-bezier(.16,.8,.24,1) forwards;
+}
+@keyframes uiScaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}`,
+  },
+  {
+    id: "UI-03",
+    name: "Blur In",
+    description: "Elemento entra desfocado e ganha nitidez, efeito cinematográfico premium.",
+    category: "ui",
+    previewColor: "#0ea5e9",
+    useCaseExample: "Perfeito para hero sections e transições dramáticas.",
+    animationClass: "animate-ui-blur-in",
+    htmlExample: `<div class="animate-ui-blur-in">Texto nítido</div>`,
+    cssCode: `.animate-ui-blur-in {
+  animation: uiBlurIn 1s ease forwards;
+}
+@keyframes uiBlurIn {
+  from { opacity: 0; filter: blur(12px); }
+  to { opacity: 1; filter: blur(0); }
+}`,
+  },
+  {
+    id: "UI-04",
+    name: "Slide Left",
+    description: "Desliza suavemente da esquerda com fade, ótimo para listas e navegação.",
+    category: "ui",
+    previewColor: "#6366f1",
+    useCaseExample: "Use em sidebars, menus e listas que entram lateralmente.",
+    animationClass: "animate-ui-slide-left",
+    htmlExample: `<div class="animate-ui-slide-left">Slide da esquerda</div>`,
+    cssCode: `.animate-ui-slide-left {
+  animation: uiSlideLeft 0.8s cubic-bezier(.16,.8,.24,1) forwards;
+}
+@keyframes uiSlideLeft {
+  from { opacity: 0; transform: translateX(-60px); }
+  to { opacity: 1; transform: translateX(0); }
+}`,
+  },
+  {
+    id: "UI-05",
+    name: "Slide Right",
+    description: "Desliza suavemente da direita com fade, espelhamento perfeito do slide left.",
+    category: "ui",
+    previewColor: "#a855f7",
+    useCaseExample: "Use em painéis laterais e elementos que entram da direita.",
+    animationClass: "animate-ui-slide-right",
+    htmlExample: `<div class="animate-ui-slide-right">Slide da direita</div>`,
+    cssCode: `.animate-ui-slide-right {
+  animation: uiSlideRight 0.8s cubic-bezier(.16,.8,.24,1) forwards;
+}
+@keyframes uiSlideRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: translateX(0); }
+}`,
+  },
+  {
+    id: "UI-06",
+    name: "Rotate In",
+    description: "Rotação sutil de entrada com fade, adiciona dinamismo elegante.",
+    category: "ui",
+    previewColor: "#0ea5e9",
+    useCaseExample: "Use em ícones, badges e elementos decorativos.",
+    animationClass: "animate-ui-rotate-in",
+    htmlExample: `<div class="animate-ui-rotate-in">⚡ Elemento</div>`,
+    cssCode: `.animate-ui-rotate-in {
+  animation: uiRotateIn 0.8s cubic-bezier(.16,.8,.24,1) forwards;
+}
+@keyframes uiRotateIn {
+  from { opacity: 0; transform: rotate(-8deg); }
+  to { opacity: 1; transform: rotate(0); }
+}`,
+  },
+  {
+    id: "UI-07",
+    name: "Gradient Text",
+    description: "Texto com gradiente animado que flui continuamente, efeito premium de alto impacto.",
+    category: "ui",
+    previewColor: "#a5b4fc",
+    useCaseExample: "Use em títulos hero, logotipos e chamadas de destaque.",
+    animationClass: "animate-ui-gradient-text",
+    htmlExample: `<h1 class="animate-ui-gradient-text">Texto Gradiente</h1>`,
+    cssCode: `.animate-ui-gradient-text {
+  background: linear-gradient(90deg, #fff, #a5b4fc, #6366f1, #a5b4fc, #fff);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: uiGradientFlow 4s linear infinite;
+  font-weight: 700;
+}
+@keyframes uiGradientFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}`,
+  },
+  {
+    id: "UI-08",
+    name: "Typewriter",
+    description: "Efeito máquina de escrever com cursor piscante, simula digitação em tempo real.",
+    category: "ui",
+    previewColor: "#f5f5f7",
+    useCaseExample: "Perfeito para hero sections, terminais e interfaces tech.",
+    animationClass: "animate-ui-typewriter",
+    htmlExample: `<p class="animate-ui-typewriter">Digitando em tempo real...</p>`,
+    cssCode: `.animate-ui-typewriter {
+  overflow: hidden;
+  border-right: 2px solid #fff;
+  white-space: nowrap;
+  animation: uiTyping 4s steps(30, end), uiBlinkCursor 0.7s infinite;
+  width: fit-content;
+}
+@keyframes uiTyping {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes uiBlinkCursor {
+  50% { border-color: transparent; }
+}`,
+  },
+  {
+    id: "UI-09",
+    name: "Neon Glow Text",
+    description: "Texto com brilho neon pulsante, estilo cyberpunk e futurista.",
+    category: "ui",
+    previewColor: "#6366f1",
+    useCaseExample: "Use em interfaces de games, dashboards tech e sites futuristas.",
+    animationClass: "animate-ui-neon-text",
+    htmlExample: `<h2 class="animate-ui-neon-text">NEON GLOW</h2>`,
+    cssCode: `.animate-ui-neon-text {
+  color: #fff;
+  animation: uiNeonPulse 2s ease-in-out infinite alternate;
+}
+@keyframes uiNeonPulse {
+  from { text-shadow: 0 0 10px #6366f1, 0 0 20px #6366f1, 0 0 40px #6366f1; }
+  to { text-shadow: 0 0 5px #6366f1, 0 0 10px #6366f1, 0 0 20px #6366f1; }
+}`,
+  },
+  {
+    id: "UI-10",
+    name: "Mask Reveal",
+    description: "Texto revelado com máscara gradiente deslizante, efeito de revelação premium.",
+    category: "ui",
+    previewColor: "#a855f7",
+    useCaseExample: "Use em títulos de impacto e transições narrativas.",
+    animationClass: "animate-ui-mask-reveal",
+    htmlExample: `<h2 class="animate-ui-mask-reveal">Texto Revelado</h2>`,
+    cssCode: `.animate-ui-mask-reveal {
+  background: linear-gradient(90deg, #fff 50%, transparent 50%);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: uiMaskReveal 1.5s ease forwards;
+}
+@keyframes uiMaskReveal {
+  from { background-position: 100% 0; }
+  to { background-position: 0% 0; }
+}`,
+  },
+
+  // ==================== UI ULTRA - MOTION EFFECTS (10 animações) ====================
+  {
+    id: "UI-11",
+    name: "Floating",
+    description: "Flutuação suave e contínua, simula leveza e profundidade no layout.",
+    category: "ui",
+    previewColor: "#6366f1",
+    useCaseExample: "Use em ícones, badges e elementos decorativos flutuantes.",
+    animationClass: "animate-ui-floating",
+    htmlExample: `<div class="animate-ui-floating">🚀 Flutuando</div>`,
+    cssCode: `.animate-ui-floating {
+  animation: uiFloating 4s ease-in-out infinite;
+}
+@keyframes uiFloating {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}`,
+  },
+  {
+    id: "UI-12",
+    name: "Pulse Glow",
+    description: "Pulsação com brilho expandido, chama atenção para ações importantes.",
+    category: "ui",
+    previewColor: "#6366f1",
+    useCaseExample: "Use em botões de ação, notificações e indicadores ativos.",
+    animationClass: "animate-ui-pulse-glow",
+    htmlExample: `<div class="animate-ui-pulse-glow">● Ativo</div>`,
+    cssCode: `.animate-ui-pulse-glow {
+  animation: uiPulseGlow 2s infinite;
+}
+@keyframes uiPulseGlow {
+  0%, 100% { box-shadow: 0 0 0 rgba(99,102,241,0); }
+  50% { box-shadow: 0 0 40px rgba(99,102,241,0.5); }
+}`,
+  },
+  {
+    id: "UI-13",
+    name: "Spin Smooth",
+    description: "Rotação contínua e suave, perfeita para loaders e indicadores de processo.",
+    category: "ui",
+    previewColor: "#0ea5e9",
+    useCaseExample: "Use em ícones de carregamento e elementos giratórios.",
+    animationClass: "animate-ui-spin",
+    htmlExample: `<div class="animate-ui-spin">⚙️</div>`,
+    cssCode: `.animate-ui-spin {
+  animation: uiSpin 4s linear infinite;
+  display: inline-block;
+}
+@keyframes uiSpin {
+  to { transform: rotate(360deg); }
+}`,
+  },
+  {
+    id: "UI-14",
+    name: "Shimmer Loading",
+    description: "Efeito shimmer de carregamento, substitui skeletons com elegância.",
+    category: "ui",
+    previewColor: "#374151",
+    useCaseExample: "Use como placeholder de conteúdo durante carregamento.",
+    animationClass: "animate-ui-shimmer",
+    htmlExample: `<div class="animate-ui-shimmer" style="height:60px;border-radius:12px;"></div>`,
+    cssCode: `.animate-ui-shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,.05) 25%, rgba(255,255,255,.2) 50%, rgba(255,255,255,.05) 75%);
+  background-size: 200% 100%;
+  animation: uiShimmer 2s infinite;
+}
+@keyframes uiShimmer {
+  to { background-position: -200% 0; }
+}`,
+  },
+  {
+    id: "UI-15",
+    name: "Aurora Background",
+    description: "Gradiente aurora borealis animada em background, efeito imersivo premium.",
+    category: "ui",
+    previewColor: "#6366f1",
+    useCaseExample: "Use como fundo de hero section ou tela de login.",
+    animationClass: "animate-ui-aurora",
+    htmlExample: `<div class="animate-ui-aurora" style="height:200px;border-radius:24px;position:relative;overflow:hidden;">
+  <p style="position:relative;z-index:1;padding:32px;color:#fff;">Aurora Background</p>
+</div>`,
+    cssCode: `.animate-ui-aurora {
+  position: relative;
+  overflow: hidden;
+}
+.animate-ui-aurora::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background:
+    radial-gradient(circle at 20% 30%, #6366f1 0%, transparent 40%),
+    radial-gradient(circle at 80% 60%, #a855f7 0%, transparent 40%),
+    radial-gradient(circle at 50% 80%, #0ea5e9 0%, transparent 40%);
+  filter: blur(120px);
+  animation: uiAurora 20s linear infinite alternate;
+  z-index: 0;
+}
+@keyframes uiAurora {
+  from { transform: translateY(-10%) rotate(0deg); }
+  to { transform: translateY(10%) rotate(25deg); }
+}`,
+  },
+  {
+    id: "UI-16",
+    name: "Hover Blur",
+    description: "Desfoque ao hover, cria profundidade e hierarquia visual interativa.",
+    category: "ui",
+    previewColor: "#a855f7",
+    useCaseExample: "Use em grids de cards para focar atenção no item ativo.",
+    animationClass: "animate-ui-blur-hover",
+    htmlExample: `<div class="animate-ui-blur-hover">Passe o mouse</div>`,
+    cssCode: `.animate-ui-blur-hover {
+  transition: filter 0.3s ease;
+}
+.animate-ui-blur-hover:hover {
+  filter: blur(4px);
+}`,
+  },
+  {
+    id: "UI-17",
+    name: "Hover Scale",
+    description: "Escala sutil ao hover com transição suave, feedback visual refinado.",
+    category: "ui",
+    previewColor: "#0ea5e9",
+    useCaseExample: "Use em cards, thumbnails e elementos clicáveis.",
+    animationClass: "animate-ui-scale-hover",
+    htmlExample: `<div class="animate-ui-scale-hover">Escale</div>`,
+    cssCode: `.animate-ui-scale-hover {
+  transition: transform 0.3s cubic-bezier(.16,.8,.24,1);
+}
+.animate-ui-scale-hover:hover {
+  transform: scale(1.08);
+}`,
+  },
+  {
+    id: "UI-18",
+    name: "Shadow Depth",
+    description: "Sombra dramática ao hover, simula elevação e profundidade Z-axis.",
+    category: "ui",
+    previewColor: "#374151",
+    useCaseExample: "Use em cards e botões para criar sensação de elevação.",
+    animationClass: "animate-ui-shadow-hover",
+    htmlExample: `<div class="animate-ui-shadow-hover" style="padding:24px;background:rgba(255,255,255,.05);border-radius:16px;">Elevado</div>`,
+    cssCode: `.animate-ui-shadow-hover {
+  transition: box-shadow 0.4s ease, transform 0.3s ease;
+}
+.animate-ui-shadow-hover:hover {
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+  transform: translateY(-4px);
+}`,
+  },
+  {
+    id: "UI-19",
+    name: "Rotate Hover",
+    description: "Rotação sutil ao hover, adiciona dinamismo leve sem exagero.",
+    category: "ui",
+    previewColor: "#6366f1",
+    useCaseExample: "Use em ícones e elementos decorativos interativos.",
+    animationClass: "animate-ui-rotate-hover",
+    htmlExample: `<div class="animate-ui-rotate-hover" style="display:inline-block;font-size:2rem;">⭐</div>`,
+    cssCode: `.animate-ui-rotate-hover {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+.animate-ui-rotate-hover:hover {
+  transform: rotate(3deg);
+}`,
+  },
+  {
+    id: "UI-20",
+    name: "Grayscale Hover",
+    description: "Dessatura ao hover, útil para grids de imagens e galerias interativas.",
+    category: "ui",
+    previewColor: "#9ca3af",
+    useCaseExample: "Use em galerias de fotos e grids de logos de parceiros.",
+    animationClass: "animate-ui-grayscale-hover",
+    htmlExample: `<div class="animate-ui-grayscale-hover" style="font-size:2rem;">🎨 → 🖤</div>`,
+    cssCode: `.animate-ui-grayscale-hover {
+  transition: filter 0.4s ease;
+}
+.animate-ui-grayscale-hover:hover {
+  filter: grayscale(1);
+}`,
+  },
 ];

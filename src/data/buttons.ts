@@ -3794,4 +3794,186 @@ export const buttonAnimations: ButtonAnimation[] = [
   <span class="icon">🚀</span> Launch
 </button>`
   },
+
+  // ==================== UI ULTRA - BUTTON STYLES (6 botões) ====================
+  {
+    id: "B-UI-01",
+    name: "Glass Button",
+    description: "Botão com efeito glassmorphism premium, backdrop blur e borda sutil.",
+    category: "glow",
+    cssCode: `.ui-btn-glass {
+  display: inline-block;
+  padding: 14px 36px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  color: #fff;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.12);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(.16,.8,.24,1);
+}
+.ui-btn-glass:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(255,255,255,0.1);
+}`,
+    htmlCode: `<button class="ui-btn-glass">Glass Button</button>`,
+    duration: "0.3s",
+    intensity: "medium",
+    previewColor: "#6366f1",
+    useCaseExample: "Botões em overlays, modais e interfaces com fundo escuro.",
+  },
+  {
+    id: "B-UI-02",
+    name: "Neon Border Button",
+    description: "Botão com borda neon brilhante e shadow glow, estilo cyberpunk.",
+    category: "glow",
+    cssCode: `.ui-btn-neon {
+  display: inline-block;
+  padding: 14px 36px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font-weight: 600;
+  border: 1px solid #6366f1;
+  cursor: pointer;
+  box-shadow: 0 0 20px #6366f1;
+  transition: all 0.3s ease;
+}
+.ui-btn-neon:hover {
+  box-shadow: 0 0 40px #6366f1, 0 0 80px rgba(99,102,241,0.3);
+  transform: translateY(-2px);
+}`,
+    htmlCode: `<button class="ui-btn-neon">Neon Button</button>`,
+    duration: "0.3s",
+    intensity: "high",
+    previewColor: "#6366f1",
+    useCaseExample: "CTAs em sites futuristas, games e interfaces tech.",
+  },
+  {
+    id: "B-UI-03",
+    name: "Gradient Flow Button",
+    description: "Botão com gradiente fluido e transição suave, visual premium moderno.",
+    category: "fill",
+    cssCode: `.ui-btn-gradient {
+  display: inline-block;
+  padding: 14px 36px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(.16,.8,.24,1);
+  box-shadow: 0 10px 30px rgba(99,102,241,0.3);
+}
+.ui-btn-gradient:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(99,102,241,0.5);
+}`,
+    htmlCode: `<button class="ui-btn-gradient">Gradient Button</button>`,
+    duration: "0.3s",
+    intensity: "medium",
+    previewColor: "#6366f1",
+    useCaseExample: "CTAs principais, botões hero e ações de destaque.",
+  },
+  {
+    id: "B-UI-04",
+    name: "Expand Fill Button",
+    description: "Botão com preenchimento expandido ao hover via pseudo-elemento ::before.",
+    category: "fill",
+    cssCode: `.ui-btn-expand {
+  display: inline-block;
+  padding: 14px 36px;
+  border-radius: 999px;
+  background: #6366f1;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.ui-btn-expand::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(.16,.8,.24,1);
+  border-radius: 999px;
+}
+.ui-btn-expand:hover::before {
+  transform: scaleX(1);
+}
+.ui-btn-expand span {
+  position: relative;
+  z-index: 1;
+}
+.ui-btn-expand:hover span {
+  color: #6366f1;
+}`,
+    htmlCode: `<button class="ui-btn-expand"><span>Expand Fill</span></button>`,
+    duration: "0.4s",
+    intensity: "high",
+    previewColor: "#6366f1",
+    useCaseExample: "Botões com feedback visual forte em landing pages.",
+  },
+  {
+    id: "B-UI-05",
+    name: "Outline Minimal Button",
+    description: "Botão outline minimalista com transição de preenchimento ao hover.",
+    category: "scale",
+    cssCode: `.ui-btn-outline {
+  display: inline-block;
+  padding: 14px 36px;
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(.16,.8,.24,1);
+}
+.ui-btn-outline:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.4);
+  transform: translateY(-2px);
+}`,
+    htmlCode: `<button class="ui-btn-outline">Outline Button</button>`,
+    duration: "0.3s",
+    intensity: "low",
+    previewColor: "#f5f5f7",
+    useCaseExample: "Botões secundários, links de navegação e ações complementares.",
+  },
+  {
+    id: "B-UI-06",
+    name: "Lift Shadow Button",
+    description: "Botão com elevação dramática e sombra profunda ao hover, sensação tridimensional.",
+    category: "3d",
+    cssCode: `.ui-btn-lift {
+  display: inline-block;
+  padding: 14px 36px;
+  border-radius: 999px;
+  background: #6366f1;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(.16,.8,.24,1);
+  box-shadow: 0 10px 30px rgba(99,102,241,0.3);
+}
+.ui-btn-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 80px rgba(99,102,241,0.5);
+}`,
+    htmlCode: `<button class="ui-btn-lift">Lift Button</button>`,
+    duration: "0.3s",
+    intensity: "high",
+    previewColor: "#6366f1",
+    useCaseExample: "Botões de destaque com efeito 3D em interfaces modernas.",
+  },
 ];
