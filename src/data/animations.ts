@@ -2,7 +2,7 @@ export interface Animation {
   id: string;
   name: string;
   description: string;
-  category: "futuristic" | "modern" | "stylish" | "vibrant";
+  category: "futuristic" | "modern" | "stylish" | "vibrant" | "ui";
   cssCode: string;
   htmlExample: string;
   animationClass: string;
@@ -30,6 +30,7 @@ export const categories = [
   { id: "modern", name: "Moderno" },
   { id: "stylish", name: "Estiloso" },
   { id: "vibrant", name: "Colorido Vibrante" },
+  { id: "ui", name: "UI Ultra" },
 ];
 
 export const animations: Animation[] = [
