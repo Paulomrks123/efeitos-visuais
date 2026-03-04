@@ -3111,4 +3111,475 @@ export const animations: Animation[] = [
   filter: grayscale(1);
 }`,
   },
+
+  // ==================== MICROINTERACTIONS (10) ====================
+  {
+    id: "UI-21",
+    name: "Magnetic Button",
+    description: "Botão com leve atração magnética ao cursor, ideal para CTAs premium.",
+    category: "ui",
+    previewColor: "#6366f1",
+    useCaseExample: "Use em botões de CTA principais e ações de destaque.",
+    animationClass: "animate-ui-magnetic-btn",
+    htmlExample: `<button class="animate-ui-magnetic-btn">Hover Me</button>`,
+    cssCode: `.animate-ui-magnetic-btn {
+  padding: 12px 24px;
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+.animate-ui-magnetic-btn:hover {
+  transform: scale(1.08);
+}`,
+  },
+  {
+    id: "UI-22",
+    name: "Ripple Click",
+    description: "Efeito ripple material ao clicar, feedback visual instantâneo.",
+    category: "ui",
+    previewColor: "#8b5cf6",
+    useCaseExample: "Use em botões, cards clicáveis e elementos interativos.",
+    animationClass: "animate-ui-ripple-btn",
+    htmlExample: `<button class="animate-ui-ripple-btn">Click</button>`,
+    cssCode: `.animate-ui-ripple-btn {
+  position: relative;
+  overflow: hidden;
+  padding: 12px 24px;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.animate-ui-ripple-btn .ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: uiRipple 600ms linear;
+  background: rgba(255,255,255,.6);
+}
+@keyframes uiRipple {
+  to { transform: scale(4); opacity: 0; }
+}`,
+  },
+  {
+    id: "UI-23",
+    name: "Elastic Press",
+    description: "Compressão elástica ao clicar, sensação tátil digital.",
+    category: "ui",
+    previewColor: "#a855f7",
+    useCaseExample: "Use em botões e elementos com feedback de pressão.",
+    animationClass: "animate-ui-elastic-press",
+    htmlExample: `<button class="animate-ui-elastic-press">Press Me</button>`,
+    cssCode: `.animate-ui-elastic-press {
+  padding: 12px 24px;
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  transition: transform 0.1s ease;
+  cursor: pointer;
+}
+.animate-ui-elastic-press:active {
+  transform: scale(0.85);
+}`,
+  },
+  {
+    id: "UI-24",
+    name: "Animated Toggle Switch",
+    description: "Switch animado moderno com transição suave.",
+    category: "ui",
+    previewColor: "#2196F3",
+    useCaseExample: "Use em configurações, preferências e modos on/off.",
+    animationClass: "animate-ui-toggle-switch",
+    htmlExample: `<label class="animate-ui-toggle-switch"><input type="checkbox"><span class="slider"></span></label>`,
+    cssCode: `.animate-ui-toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.animate-ui-toggle-switch input { display: none; }
+.animate-ui-toggle-switch .slider {
+  position: absolute;
+  cursor: pointer;
+  background: #ccc;
+  border-radius: 34px;
+  inset: 0;
+  transition: 0.4s;
+}
+.animate-ui-toggle-switch .slider:before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+.animate-ui-toggle-switch input:checked + .slider { background: #2196F3; }
+.animate-ui-toggle-switch input:checked + .slider:before { transform: translateX(26px); }`,
+  },
+  {
+    id: "UI-25",
+    name: "Floating Label Input",
+    description: "Label flutua ao focar no input, UX elegante para formulários.",
+    category: "ui",
+    previewColor: "#0ea5e9",
+    useCaseExample: "Use em formulários de login, cadastro e contato.",
+    animationClass: "animate-ui-floating-label",
+    htmlExample: `<div class="animate-ui-floating-label"><input required /><label>Nome</label></div>`,
+    cssCode: `.animate-ui-floating-label {
+  position: relative;
+  margin-top: 20px;
+}
+.animate-ui-floating-label input {
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  background: transparent;
+  color: #fff;
+  width: 100%;
+}
+.animate-ui-floating-label label {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  transition: 0.3s;
+  color: #888;
+  pointer-events: none;
+}
+.animate-ui-floating-label input:focus + label,
+.animate-ui-floating-label input:valid + label {
+  top: -10px;
+  font-size: 12px;
+  color: #6366f1;
+}`,
+  },
+  {
+    id: "UI-26",
+    name: "Icon Bounce Hover",
+    description: "Ícone faz bounce no hover, perfeito para menus e navegação.",
+    category: "ui",
+    previewColor: "#f59e0b",
+    useCaseExample: "Use em ícones de navegação, menus e social links.",
+    animationClass: "animate-ui-icon-bounce",
+    htmlExample: `<div class="animate-ui-icon-bounce">★</div>`,
+    cssCode: `.animate-ui-icon-bounce {
+  font-size: 40px;
+  display: inline-block;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.animate-ui-icon-bounce:hover {
+  animation: uiIconBounce 0.5s;
+}
+@keyframes uiIconBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}`,
+  },
+  {
+    id: "UI-27",
+    name: "Shake on Error",
+    description: "Campo treme ao erro, feedback visual de validação.",
+    category: "ui",
+    previewColor: "#ef4444",
+    useCaseExample: "Use em inputs com validação e formulários.",
+    animationClass: "animate-ui-shake-error",
+    htmlExample: `<input class="animate-ui-shake-error" placeholder="Campo com erro" />`,
+    cssCode: `.animate-ui-shake-error.shake {
+  animation: uiShake 0.4s;
+}
+@keyframes uiShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}`,
+  },
+  {
+    id: "UI-28",
+    name: "Loading Dots",
+    description: "Dots animados para estados de carregamento.",
+    category: "ui",
+    previewColor: "#10b981",
+    useCaseExample: "Use em indicadores de loading e estados de espera.",
+    animationClass: "animate-ui-loading-dots",
+    htmlExample: `<div class="animate-ui-loading-dots"><span></span><span></span><span></span></div>`,
+    cssCode: `.animate-ui-loading-dots span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin: 3px;
+  background: #fff;
+  border-radius: 50%;
+  animation: uiDot 1.4s infinite ease-in-out both;
+}
+.animate-ui-loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.animate-ui-loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes uiDot {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}`,
+  },
+  {
+    id: "UI-29",
+    name: "Expand Card Click",
+    description: "Card expande ao clicar, interação de revelação de conteúdo.",
+    category: "ui",
+    previewColor: "#14b8a6",
+    useCaseExample: "Use em FAQs, detalhes de produto e cards expansíveis.",
+    animationClass: "animate-ui-expand-card",
+    htmlExample: `<div class="animate-ui-expand-card">Click to expand</div>`,
+    cssCode: `.animate-ui-expand-card {
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  max-height: 60px;
+}
+.animate-ui-expand-card.active {
+  max-height: 200px;
+  background: rgba(255,255,255,0.08);
+}`,
+  },
+  {
+    id: "UI-30",
+    name: "Underline Reveal",
+    description: "Linha animada sob texto no hover, navegação elegante.",
+    category: "ui",
+    previewColor: "#f97316",
+    useCaseExample: "Use em links de navegação, menus e breadcrumbs.",
+    animationClass: "animate-ui-underline-reveal",
+    htmlExample: `<a class="animate-ui-underline-reveal">Hover Link</a>`,
+    cssCode: `.animate-ui-underline-reveal {
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+.animate-ui-underline-reveal::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: #6366f1;
+  transition: width 0.3s ease;
+}
+.animate-ui-underline-reveal:hover::after {
+  width: 100%;
+}`,
+  },
+
+  // ==================== BACKGROUND EFFECTS (4) ====================
+  {
+    id: "UI-31",
+    name: "Animated Gradient BG",
+    description: "Gradiente fluido animado, perfeito para hero sections.",
+    category: "ui",
+    previewColor: "#ff00cc",
+    useCaseExample: "Use em hero sections, banners e backgrounds de destaque.",
+    animationClass: "animate-ui-gradient-bg",
+    htmlExample: `<div class="animate-ui-gradient-bg" style="height:120px;border-radius:12px;"></div>`,
+    cssCode: `.animate-ui-gradient-bg {
+  background: linear-gradient(270deg, #ff00cc, #3333ff, #6366f1);
+  background-size: 400% 400%;
+  animation: uiGradientMove 8s ease infinite;
+}
+@keyframes uiGradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}`,
+  },
+  {
+    id: "UI-32",
+    name: "Neon Pulse Background",
+    description: "Glow neon pulsante, atmosfera cyberpunk.",
+    category: "ui",
+    previewColor: "#00ffff",
+    useCaseExample: "Use em seções dark, dashboards tech e temas cyberpunk.",
+    animationClass: "animate-ui-neon-pulse-bg",
+    htmlExample: `<div class="animate-ui-neon-pulse-bg" style="height:120px;border-radius:12px;"></div>`,
+    cssCode: `.animate-ui-neon-pulse-bg {
+  background: #111;
+  box-shadow: 0 0 40px #0ff inset;
+  animation: uiNeonPulse 2s infinite;
+}
+@keyframes uiNeonPulse {
+  0%, 100% { box-shadow: 0 0 20px #0ff inset; }
+  50% { box-shadow: 0 0 60px #0ff inset; }
+}`,
+  },
+  {
+    id: "UI-33",
+    name: "Floating Blobs",
+    description: "Blobs orgânicos flutuantes, fundo artístico moderno.",
+    category: "ui",
+    previewColor: "#a855f7",
+    useCaseExample: "Use em backgrounds de seções, hero e áreas decorativas.",
+    animationClass: "animate-ui-floating-blob",
+    htmlExample: `<div class="animate-ui-floating-blob" style="width:80px;height:80px;"></div>`,
+    cssCode: `.animate-ui-floating-blob {
+  background: radial-gradient(circle, #ff00cc, #3333ff);
+  border-radius: 50%;
+  animation: uiFloatBlob 6s infinite alternate ease-in-out;
+}
+@keyframes uiFloatBlob {
+  from { transform: translateY(0) scale(1); }
+  to { transform: translateY(-30px) scale(1.1); }
+}`,
+  },
+  {
+    id: "UI-34",
+    name: "Particle Field",
+    description: "Campo de partículas animadas, efeito deep space.",
+    category: "ui",
+    previewColor: "#e2e8f0",
+    useCaseExample: "Use em hero sections, intros e backgrounds imersivos.",
+    animationClass: "animate-ui-particle-field",
+    htmlExample: `<div class="animate-ui-particle-field"><span></span><span></span><span></span><span></span><span></span></div>`,
+    cssCode: `.animate-ui-particle-field {
+  position: relative;
+  height: 120px;
+  background: #0a0a0a;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.animate-ui-particle-field span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  animation: uiParticle 4s infinite linear;
+}
+.animate-ui-particle-field span:nth-child(1) { left: 10%; animation-delay: 0s; }
+.animate-ui-particle-field span:nth-child(2) { left: 30%; animation-delay: 0.8s; }
+.animate-ui-particle-field span:nth-child(3) { left: 50%; animation-delay: 1.6s; }
+.animate-ui-particle-field span:nth-child(4) { left: 70%; animation-delay: 2.4s; }
+.animate-ui-particle-field span:nth-child(5) { left: 90%; animation-delay: 3.2s; }
+@keyframes uiParticle {
+  0% { top: 100%; opacity: 0; }
+  20% { opacity: 1; }
+  100% { top: -10%; opacity: 0; }
+}`,
+  },
+
+  // ==================== SCROLL & HOVER (5) ====================
+  {
+    id: "UI-35",
+    name: "Fade In Up Scroll",
+    description: "Fade + slide ao entrar na viewport, animação de scroll clássica.",
+    category: "ui",
+    previewColor: "#3b82f6",
+    useCaseExample: "Use em seções de conteúdo, cards e elementos que entram na tela.",
+    animationClass: "animate-ui-fade-in-up-scroll",
+    htmlExample: `<div class="animate-ui-fade-in-up-scroll">Scroll reveal content</div>`,
+    cssCode: `.animate-ui-fade-in-up-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+.animate-ui-fade-in-up-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}`,
+  },
+  {
+    id: "UI-36",
+    name: "Zoom In Scroll",
+    description: "Zoom suave ao entrar na viewport.",
+    category: "ui",
+    previewColor: "#8b5cf6",
+    useCaseExample: "Use em imagens, cards e elementos de destaque ao scroll.",
+    animationClass: "animate-ui-zoom-in-scroll",
+    htmlExample: `<div class="animate-ui-zoom-in-scroll">Zoom on scroll</div>`,
+    cssCode: `.animate-ui-zoom-in-scroll {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.6s ease;
+}
+.animate-ui-zoom-in-scroll.visible {
+  opacity: 1;
+  transform: scale(1);
+}`,
+  },
+  {
+    id: "UI-37",
+    name: "Image Zoom Hover",
+    description: "Zoom suave na imagem ao hover, galeria interativa.",
+    category: "ui",
+    previewColor: "#ec4899",
+    useCaseExample: "Use em galerias de fotos, thumbnails e cards de produto.",
+    animationClass: "animate-ui-image-zoom",
+    htmlExample: `<div class="animate-ui-image-zoom" style="font-size:3rem;">🖼️</div>`,
+    cssCode: `.animate-ui-image-zoom {
+  transition: transform 0.4s ease;
+  cursor: pointer;
+  display: inline-block;
+}
+.animate-ui-image-zoom:hover {
+  transform: scale(1.1);
+}`,
+  },
+  {
+    id: "UI-38",
+    name: "Shine Sweep",
+    description: "Efeito brilho passando sobre o elemento no hover.",
+    category: "ui",
+    previewColor: "#f59e0b",
+    useCaseExample: "Use em cards premium, CTAs e elementos de destaque.",
+    animationClass: "animate-ui-shine-sweep",
+    htmlExample: `<div class="animate-ui-shine-sweep" style="padding:20px;background:rgba(255,255,255,0.05);border-radius:12px;">Hover for shine</div>`,
+    cssCode: `.animate-ui-shine-sweep {
+  position: relative;
+  overflow: hidden;
+}
+.animate-ui-shine-sweep::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-25deg);
+  transition: none;
+}
+.animate-ui-shine-sweep:hover::before {
+  animation: uiShineSweep 1s forwards;
+}
+@keyframes uiShineSweep {
+  100% { left: 125%; }
+}`,
+  },
+  {
+    id: "UI-39",
+    name: "Card Lift Hover",
+    description: "Elevação com sombra profunda no hover, depth premium.",
+    category: "ui",
+    previewColor: "#64748b",
+    useCaseExample: "Use em cards de produto, pricing tables e grids de conteúdo.",
+    animationClass: "animate-ui-card-lift",
+    htmlExample: `<div class="animate-ui-card-lift" style="padding:20px;background:rgba(255,255,255,0.05);border-radius:12px;">Hover to lift</div>`,
+    cssCode: `.animate-ui-card-lift {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.animate-ui-card-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}`,
+  },
 ];
