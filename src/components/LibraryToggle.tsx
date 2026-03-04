@@ -7,12 +7,12 @@ interface LibraryToggleProps {
 
 export function LibraryToggle({ activeLibrary, onToggle }: LibraryToggleProps) {
   return (
-    <div className="flex justify-center mb-8">
-      <div className="inline-flex flex-wrap justify-center bg-card/80 backdrop-blur-xl border border-border rounded-2xl p-1.5 gap-1">
+    <div className="flex justify-center mb-8 px-2">
+      <div className="inline-flex flex-wrap justify-center bg-card/80 backdrop-blur-xl border border-border rounded-2xl p-1 sm:p-1.5 gap-1 w-full max-w-lg sm:max-w-none sm:w-auto">
         <button
           onClick={() => onToggle("animations")}
           className={`
-            flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm
+            flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3 rounded-xl font-medium text-xs sm:text-sm flex-1 sm:flex-initial min-w-0
             transition-all duration-300
             ${activeLibrary === "animations" 
               ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25" 
@@ -20,8 +20,8 @@ export function LibraryToggle({ activeLibrary, onToggle }: LibraryToggleProps) {
             }
           `}
         >
-          <Sparkles size={18} />
-          <span>Animações</span>
+          <Sparkles size={16} />
+          <span className="truncate">Animações</span>
           <span className={`px-2 py-0.5 rounded-full text-xs ${
             activeLibrary === "animations" 
               ? "bg-primary-foreground/20" 
@@ -34,7 +34,7 @@ export function LibraryToggle({ activeLibrary, onToggle }: LibraryToggleProps) {
         <button
           onClick={() => onToggle("effects")}
           className={`
-            flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm
+            flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3 rounded-xl font-medium text-xs sm:text-sm flex-1 sm:flex-initial min-w-0
             transition-all duration-300
             ${activeLibrary === "effects" 
               ? "bg-secondary text-secondary-foreground shadow-lg shadow-secondary/25" 
@@ -42,8 +42,8 @@ export function LibraryToggle({ activeLibrary, onToggle }: LibraryToggleProps) {
             }
           `}
         >
-          <Layers size={18} />
-          <span>Efeitos Visuais</span>
+          <Layers size={16} />
+          <span className="truncate">Efeitos</span>
           <span className={`px-2 py-0.5 rounded-full text-xs ${
             activeLibrary === "effects" 
               ? "bg-secondary-foreground/20" 
@@ -56,7 +56,7 @@ export function LibraryToggle({ activeLibrary, onToggle }: LibraryToggleProps) {
         <button
           onClick={() => onToggle("buttons")}
           className={`
-            flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm
+            flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3 rounded-xl font-medium text-xs sm:text-sm flex-1 sm:flex-initial min-w-0
             transition-all duration-300
             ${activeLibrary === "buttons" 
               ? "bg-gradient-to-r from-neon-cyan to-neon-green text-background shadow-lg shadow-neon-cyan/25" 
@@ -64,8 +64,8 @@ export function LibraryToggle({ activeLibrary, onToggle }: LibraryToggleProps) {
             }
           `}
         >
-          <MousePointerClick size={18} />
-          <span>Botões</span>
+          <MousePointerClick size={16} />
+          <span className="truncate">Botões</span>
           <span className={`px-2 py-0.5 rounded-full text-xs ${
             activeLibrary === "buttons" 
               ? "bg-background/20" 

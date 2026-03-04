@@ -56,15 +56,15 @@ export function HeroSection({
   const totalItems = animationsCount + effectsCount + buttonsCount;
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[70vh] md:min-h-[90vh] flex items-center justify-center overflow-hidden px-4">
       {/* Animated Grid Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,136,0.03)_0%,transparent_65%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,136,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,136,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,136,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,136,0.02)_1px,transparent_1px)] bg-[size:40px_40px] md:bg-[size:60px_60px]" />
       
-      {/* Floating Orbs */}
-      <div className="absolute top-20 left-[10%] w-72 h-72 bg-primary/10 rounded-full blur-[100px] animate-pulse" />
-      <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-secondary/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: "1s" }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-green/5 rounded-full blur-[150px]" />
+      {/* Floating Orbs - smaller on mobile */}
+      <div className="absolute top-20 left-[5%] w-40 h-40 md:w-72 md:h-72 bg-primary/10 rounded-full blur-[80px] md:blur-[100px] animate-pulse" />
+      <div className="absolute bottom-20 right-[5%] w-48 h-48 md:w-96 md:h-96 bg-secondary/10 rounded-full blur-[100px] md:blur-[120px] animate-pulse" style={{ animationDelay: "1s" }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-neon-green/5 rounded-full blur-[100px] md:blur-[150px]" />
 
       <div className="relative z-10 container mx-auto px-4 text-center">
         {/* Badge */}
@@ -85,7 +85,7 @@ export function HeroSection({
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-6"
         >
-          <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+          <h1 className="text-xl xs:text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight">
             <span className="text-foreground">Copie.</span>
             <span className="text-neon-green mx-1 sm:mx-3 drop-shadow-[0_0_20px_rgba(0,255,136,0.5)]">Cole.</span>
             <span className="text-foreground">Publique.</span>
@@ -100,20 +100,20 @@ export function HeroSection({
           className="max-w-4xl mx-auto mb-12"
         >
           <div 
-            className="inline-block px-8 md:px-12 py-10 rounded-2xl"
+            className="inline-block px-4 py-6 sm:px-8 md:px-12 sm:py-10 rounded-2xl w-full max-w-2xl"
             style={{
               background: 'linear-gradient(135deg, #0D0D0D 0%, #1a0a05 50%, #0D0D0D 100%)',
               boxShadow: '0 0 40px rgba(255, 69, 0, 0.3), inset 0 0 60px rgba(255, 140, 0, 0.05)',
               border: '1px solid rgba(255, 69, 0, 0.3)',
             }}
           >
-            <div className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-wider pb-4">
+            <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold tracking-wider pb-4">
               <HellfireText text="BIBLIOTECA" />
             </div>
-            <div className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-wider pb-2">
+            <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold tracking-wider pb-2">
               <HellfireText text="COMPLETA" />
             </div>
-            <div className="mt-4 flex flex-wrap justify-center gap-4 text-base md:text-xl font-medium">
+            <div className="mt-4 flex flex-wrap justify-center gap-2 sm:gap-4 text-sm sm:text-base md:text-xl font-medium">
               <span style={{ color: '#FF8C00', textShadow: '0 0 15px #FF8C00' }}>animações</span>
               <span style={{ color: '#FF4500' }}>•</span>
               <span style={{ color: '#FFFF00', textShadow: '0 0 15px #FFFF00' }}>efeitos</span>
@@ -131,37 +131,37 @@ export function HeroSection({
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-12"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto mb-8 sm:mb-12"
         >
           {/* Animations Card */}
           <button
             onClick={() => onLibraryChange("animations")}
-            className="group relative p-6 rounded-2xl bg-card/50 border border-primary/20 hover:border-primary/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,255,255,0.15)]"
+            className="group relative p-4 sm:p-6 rounded-2xl bg-card/50 border border-primary/20 hover:border-primary/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,255,255,0.15)]"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="relative">
-              <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <Zap className="text-primary" size={28} />
+              <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl bg-primary/20 flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+                <Zap className="text-primary" size={22} />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Animações</h3>
-              <p className="text-3xl font-bold text-primary mb-2">{animationsCount}</p>
-              <p className="text-sm text-muted-foreground">CSS puro & Tailwind</p>
+              <h3 className="text-base sm:text-xl font-bold text-foreground mb-1 sm:mb-2">Animações</h3>
+              <p className="text-2xl sm:text-3xl font-bold text-primary mb-1 sm:mb-2">{animationsCount}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">CSS puro & Tailwind</p>
             </div>
           </button>
 
           {/* Effects Card */}
           <button
             onClick={() => onLibraryChange("effects")}
-            className="group relative p-6 rounded-2xl bg-card/50 border border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,215,0,0.25)]"
+            className="group relative p-4 sm:p-6 rounded-2xl bg-card/50 border border-[#FFD700]/30 hover:border-[#FFD700]/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,215,0,0.25)]"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#FFD700]/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="relative">
-              <div className="w-14 h-14 rounded-xl bg-[#FFD700]/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <Layers className="text-[#FFD700]" size={28} />
+              <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl bg-[#FFD700]/20 flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+                <Layers className="text-[#FFD700]" size={22} />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Efeitos Visuais</h3>
+              <h3 className="text-base sm:text-xl font-bold text-foreground mb-1 sm:mb-2">Efeitos Visuais</h3>
               <motion.p 
-                className="text-3xl font-bold mb-2"
+                className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2"
                 style={{ color: '#FFD700' }}
                 animate={{
                   textShadow: [
@@ -187,16 +187,16 @@ export function HeroSection({
           {/* Buttons Card */}
           <button
             onClick={() => onLibraryChange("buttons")}
-            className="group relative p-6 rounded-2xl bg-card/50 border border-[#00FFCC]/30 hover:border-[#00FFCC]/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,255,204,0.25)]"
+            className="group relative p-4 sm:p-6 rounded-2xl bg-card/50 border border-[#00FFCC]/30 hover:border-[#00FFCC]/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,255,204,0.25)]"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#00FFCC]/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="relative">
-              <div className="w-14 h-14 rounded-xl bg-[#00FFCC]/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <ArrowRight className="text-[#00FFCC]" size={28} />
+              <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl bg-[#00FFCC]/20 flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+                <ArrowRight className="text-[#00FFCC]" size={22} />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Botões</h3>
+              <h3 className="text-base sm:text-xl font-bold text-foreground mb-1 sm:mb-2">Botões</h3>
               <motion.p 
-                className="text-3xl font-bold mb-2"
+                className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2"
                 style={{ color: '#00FFCC' }}
                 animate={{
                   opacity: [1, 0.3, 0.8, 0.5, 1],
@@ -230,11 +230,11 @@ export function HeroSection({
         >
           <Link
             to="/showcase"
-            className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-primary/20 to-secondary/20 border border-white/10 hover:border-white/20 text-foreground font-medium transition-all hover:scale-105 hover:shadow-lg"
+            className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-primary/20 to-secondary/20 border border-white/10 hover:border-white/20 text-foreground text-sm sm:text-base font-medium transition-all hover:scale-105 hover:shadow-lg"
           >
-            <Sparkles size={18} className="text-primary" />
-            <span>Ver Showcase de 18 Estilos de Design</span>
-            <ArrowRight size={18} className="text-secondary" />
+            <Sparkles size={16} className="text-primary" />
+            <span>Ver Showcase de Estilos</span>
+            <ArrowRight size={16} className="text-secondary" />
           </Link>
         </motion.div>
 
