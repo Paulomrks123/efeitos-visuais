@@ -145,7 +145,7 @@ export function LibrarySection({
         </div>
 
         {/* Grid */}
-        <div className={`grid ${gridCols} gap-6`}>
+        <div className={`grid ${gridCols} gap-3 sm:gap-6`}>
           {activeLibrary === "animations" &&
             filteredAnimations.map((animation, index) => (
               <AnimationCardWithPlayground

@@ -55,7 +55,7 @@ export function Toolbar({
         />
 
         {/* Controls Row */}
-        <div className="flex flex-wrap items-center justify-center gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
           {/* Slideshow Mode */}
           <Button
             variant="outline"

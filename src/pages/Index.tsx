@@ -136,7 +136,7 @@ const Index = () => {
 
       {/* Library Content */}
       <div ref={librarySectionRef}>
-        <div className="container mx-auto px-4 pb-8">
+        <div className="container mx-auto px-2 sm:px-4 pb-8">
           <LibraryToggle
             activeLibrary={activeLibrary}
             onToggle={setActiveLibrary}
@@ -186,7 +186,7 @@ const Index = () => {
       {/* Floating Scroll to Top Button */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 p-4 rounded-full bg-primary text-primary-foreground shadow-lg transition-all duration-300 z-50 hover:scale-110 ${
+        className={`fixed bottom-6 right-4 sm:bottom-8 sm:right-8 p-3 sm:p-4 rounded-full bg-primary text-primary-foreground shadow-lg transition-all duration-300 z-50 hover:scale-110 ${
           showScrollTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
         }`}
         style={{

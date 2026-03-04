@@ -230,11 +230,11 @@ export function HeroSection({
         >
           <Link
             to="/showcase"
-            className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-primary/20 to-secondary/20 border border-white/10 hover:border-white/20 text-foreground font-medium transition-all hover:scale-105 hover:shadow-lg"
+            className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-primary/20 to-secondary/20 border border-white/10 hover:border-white/20 text-foreground text-sm sm:text-base font-medium transition-all hover:scale-105 hover:shadow-lg"
           >
-            <Sparkles size={18} className="text-primary" />
-            <span>Ver Showcase de 18 Estilos de Design</span>
-            <ArrowRight size={18} className="text-secondary" />
+            <Sparkles size={16} className="text-primary" />
+            <span>Ver Showcase de Estilos</span>
+            <ArrowRight size={16} className="text-secondary" />
           </Link>
         </motion.div>
 
