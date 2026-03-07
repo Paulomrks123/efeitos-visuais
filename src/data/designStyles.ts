@@ -25,6 +25,8 @@ import styleFuturistic from "@/assets/showcase/style-futuristic.jpg";
 import styleSilentTech from "@/assets/showcase/style-silent-tech.jpg";
 import styleTechFocusFlow from "@/assets/showcase/style-tech-focus-flow.jpg";
 import styleMinimalTechIntelligence from "@/assets/showcase/style-minimal-tech-intelligence.jpg";
+// Loris Portfolio style
+import styleLorisPortfolio from "@/assets/showcase/style-loris-portfolio.jpg";
 
 import { StyleDefinition } from "@/components/showcase/StyleCard";
 
