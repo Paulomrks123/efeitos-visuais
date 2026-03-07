@@ -25,6 +25,8 @@ import styleFuturistic from "@/assets/showcase/style-futuristic.jpg";
 import styleSilentTech from "@/assets/showcase/style-silent-tech.jpg";
 import styleTechFocusFlow from "@/assets/showcase/style-tech-focus-flow.jpg";
 import styleMinimalTechIntelligence from "@/assets/showcase/style-minimal-tech-intelligence.jpg";
+// Loris Portfolio style
+import styleLorisPortfolio from "@/assets/showcase/style-loris-portfolio.jpg";
 
 import { StyleDefinition } from "@/components/showcase/StyleCard";
 
@@ -2567,6 +2569,174 @@ All colors MUST be HSL.
   font-size: 12px;
   color: var(--text-muted);
   margin-top: var(--space-2);
+}`,
+  },
+  {
+    id: "loris-portfolio",
+    name: "Dark Portfolio Minimal",
+    subtitle: "Portfólio Criativo • Agência • Design Gráfico",
+    description: "Estética ultra-minimalista com fundo preto puro, tipografia branca limpa e elementos 3D flutuantes. Inspirado em portfólios de designers premium como lorisbukvic.graphics. Layout centrado com hero impactante e grid de projetos.",
+    objective: "Criar uma presença digital sofisticada e memorável para criativos, designers e agências — foco total no trabalho visual.",
+    colors: ["#000000", "#0A0A0A", "#FFFFFF", "#6B7280", "#1F2937"],
+    features: ["Ultra-Minimal", "Fundo Preto", "Tipografia Clean", "3D Elements", "Portfolio Grid"],
+    iconStyle: "Ícones finos e minimalistas em branco sobre preto. Estilo geométrico e abstrato.",
+    layoutStyle: "Hero centralizado com tipografia grande, grid assimétrico de projetos, navegação ultra-simples com logo + contato.",
+    typography: "System fonts (-apple-system, BlinkMacSystemFont, Segoe UI). Peso 800 para títulos, 400 para corpo.",
+    previewImage: styleLorisPortfolio,
+    exampleUrl: "https://www.lorisbukvic.graphics/",
+    cssVariables: {
+      "--background": "0 0% 0%",
+      "--foreground": "0 0% 100%",
+      "--primary": "0 0% 100%",
+      "--muted": "0 0% 6%",
+    },
+    sampleCSS: `:root {
+  /* Paleta de cores — Dark Portfolio Minimal */
+  --cor-fundo: #000000;
+  --cor-superficie: #0a0a0a;
+  --cor-texto: #ffffff;
+  --cor-texto-secundario: #6b7280;
+  --cor-borda: #1f2937;
+  --cor-accent: #ffffff;
+
+  /* Tipografia */
+  --fonte-principal: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --fonte-mono: 'Courier New', monospace;
+
+  /* Espaçamentos */
+  --espacamento-base: 16px;
+  --raio-borda: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--fonte-principal);
+  color: var(--cor-texto);
+  background: var(--cor-fundo);
+  line-height: 1.6;
+}
+
+/* Header — navegação ultra-simples */
+.header {
+  border-bottom: 1px solid var(--cor-borda);
+  padding: var(--espacamento-base) calc(var(--espacamento-base) * 2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--cor-texto);
+}
+
+.header-nav {
+  display: flex;
+  gap: calc(var(--espacamento-base) * 1.5);
+}
+
+.header-nav a {
+  color: var(--cor-texto-secundario);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+}
+
+.header-nav a:hover {
+  color: var(--cor-texto);
+}
+
+/* Hero Section — impacto visual */
+.hero {
+  padding: calc(var(--espacamento-base) * 5) calc(var(--espacamento-base) * 2);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: var(--espacamento-base);
+  color: var(--cor-texto);
+}
+
+.hero p {
+  font-size: 1.125rem;
+  color: var(--cor-texto-secundario);
+  margin-bottom: calc(var(--espacamento-base) * 2);
+}
+
+.hero-btn {
+  background: var(--cor-texto);
+  color: var(--cor-fundo);
+  border: none;
+  padding: 12px 32px;
+  border-radius: var(--raio-borda);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.hero-btn:hover {
+  opacity: 0.85;
+}
+
+/* Grid de projetos */
+.projects-grid {
+  padding: calc(var(--espacamento-base) * 3) calc(var(--espacamento-base) * 2);
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: calc(var(--espacamento-base) * 1.5);
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+}
+
+.project-card {
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  padding: calc(var(--espacamento-base) * 1.5);
+  transition: border-color 0.3s ease;
+}
+
+.project-card:hover {
+  border-color: var(--cor-texto-secundario);
+}
+
+.project-card h3 {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.project-card p {
+  font-size: 0.875rem;
+  color: var(--cor-texto-secundario);
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--cor-borda);
+  padding: calc(var(--espacamento-base) * 2);
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--cor-texto-secundario);
 }`,
   },
 ];
