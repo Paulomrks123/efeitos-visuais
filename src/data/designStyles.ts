@@ -27,6 +27,8 @@ import styleTechFocusFlow from "@/assets/showcase/style-tech-focus-flow.jpg";
 import styleMinimalTechIntelligence from "@/assets/showcase/style-minimal-tech-intelligence.jpg";
 // Loris Portfolio style
 import styleLorisPortfolio from "@/assets/showcase/style-loris-portfolio.jpg";
+// Slush Fintech style
+import styleSlushFintech from "@/assets/showcase/style-slush-fintech.jpg";
 
 import { StyleDefinition } from "@/components/showcase/StyleCard";
 
