@@ -3976,4 +3976,68 @@ export const buttonAnimations: ButtonAnimation[] = [
     previewColor: "#6366f1",
     useCaseExample: "Botões de destaque com efeito 3D em interfaces modernas.",
   },
+  {
+    id: "btn-metallic-3d",
+    name: "3D Metallic Shine",
+    category: "3d",
+    description: "Botão metálico 3D com gradiente roxo, sombra profunda e efeito shimmer ao hover.",
+    cssCode: `.btn-metallic-3d {
+  background: linear-gradient(180deg, #bda4f5 0%, #8b5cf6 40%, #7c3aed 100%);
+  color: #fff;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 4px 0px 0px #5b21b6,
+    0 10px 30px -5px rgba(124, 58, 237, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.1s ease;
+}
+.btn-metallic-3d:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 0px 0px #5b21b6,
+    0 15px 40px -5px rgba(124, 58, 237, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  filter: brightness(1.1);
+}
+.btn-metallic-3d:active {
+  transform: translateY(2px);
+  box-shadow:
+    0 0px 0px 0px #5b21b6,
+    inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.btn-metallic-3d::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+  transform: rotate(30deg);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.btn-metallic-3d:hover::after {
+  opacity: 1;
+  animation: shimmer 0.8s forwards;
+}
+@keyframes shimmer {
+  from { transform: translateX(-100%) rotate(30deg); }
+  to { transform: translateX(100%) rotate(30deg); }
+}`,
+    htmlCode: `<button class="btn-metallic-3d">Metallic 3D</button>`,
+    duration: "0.8s",
+    intensity: "high",
+    previewColor: "#8b5cf6",
+    useCaseExample: "CTAs premium com efeito metálico 3D e brilho shimmer.",
+  },
 ];
