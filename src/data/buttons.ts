@@ -48,17 +48,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.3s",
     intensity: "1.08x",
     previewColor: "#3EB489",
-    cssCode: `.mint-pop { 
-  background: #3EB489; color: white; 
+    cssCode: `.mint-pop {
+  background: rgba(62,180,137,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #3EB489;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: mintPop 0.3s ease-out;
 }
-.mint-pop:hover { 
-  animation: mintPop 0.3s ease-out; 
+.mint-pop:hover {
+  background: rgba(62,180,137,0.25);
+  border-color: rgba(62,180,137,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(62,180,137,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes mintPop { 
-  0% { transform: scale(1); } 
-  50% { transform: scale(1.08); box-shadow: 0 0 20px rgba(62,180,137,0.5); } 
-  100% { transform: scale(1.05); } 
-}`,
+  0% { transform: scale(1); }`,
     htmlCode: `<button class="mint-pop">Mint Pop</button>`
   },
   {
@@ -69,17 +77,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.4s",
     intensity: "1.1x",
     previewColor: "#FF6F61",
-    cssCode: `.coral-bounce { 
-  background: #FF6F61; color: white; 
+    cssCode: `.coral-bounce {
+  background: rgba(255,111,97,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #FF6F61;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: coralBounce 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.coral-bounce:hover { 
-  animation: coralBounce 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+.coral-bounce:hover {
+  background: rgba(255,111,97,0.25);
+  border-color: rgba(255,111,97,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(255,111,97,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes coralBounce { 
-  0% { transform: scale(1) translateY(0); } 
-  50% { transform: scale(1.1) translateY(-8px); } 
-  100% { transform: scale(1.05) translateY(0); } 
-}`,
+  0% { transform: scale(1) translateY(0); }`,
     htmlCode: `<button class="coral-bounce">Coral Bounce</button>`
   },
   {
@@ -90,16 +106,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.35s",
     intensity: "1.05x + shadow",
     previewColor: "#1E3A5F",
-    cssCode: `.navy-lift { 
-  background: #1E3A5F; color: white; 
+    cssCode: `.navy-lift {
+  background: rgba(30,58,95,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #1E3A5F;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: navyLift 0.35s ease-out forwards;
 }
-.navy-lift:hover { 
-  animation: navyLift 0.35s ease-out forwards; 
+.navy-lift:hover {
+  background: rgba(30,58,95,0.25);
+  border-color: rgba(30,58,95,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(30,58,95,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes navyLift { 
-  0% { transform: scale(1) translateY(0); box-shadow: 0 2px 5px rgba(30,58,95,0.3); } 
-  100% { transform: scale(1.05) translateY(-5px); box-shadow: 0 15px 30px rgba(30,58,95,0.4); } 
-}`,
+  0% { transform: scale(1) translateY(0); box-shadow: 0 2px 5px rgba(30,58,95,0.3); }`,
     htmlCode: `<button class="navy-lift">Navy Lift</button>`
   },
   {
@@ -110,17 +135,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.3s",
     intensity: "scaleX 1.1",
     previewColor: "#9575CD",
-    cssCode: `.lavender-squeeze { 
-  background: #9575CD; color: white; 
+    cssCode: `.lavender-squeeze {
+  background: rgba(149,117,205,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #9575CD;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: lavenderSqueeze 0.3s ease-out;
 }
-.lavender-squeeze:hover { 
-  animation: lavenderSqueeze 0.3s ease-out; 
+.lavender-squeeze:hover {
+  background: rgba(149,117,205,0.25);
+  border-color: rgba(149,117,205,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(149,117,205,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes lavenderSqueeze { 
-  0% { transform: scaleX(1) scaleY(1); } 
-  50% { transform: scaleX(1.1) scaleY(0.95); } 
-  100% { transform: scaleX(1.02) scaleY(1); } 
-}`,
+  0% { transform: scaleX(1) scaleY(1); }`,
     htmlCode: `<button class="lavender-squeeze">Lavender Squeeze</button>`
   },
   {
@@ -131,18 +164,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.5s",
     intensity: "skew ±5deg",
     previewColor: "#FFAB91",
-    cssCode: `.peach-jelly { 
-  background: #FFAB91; color: #3E2723; 
+    cssCode: `.peach-jelly {
+  background: rgba(255,171,145,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #3E2723;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: peachJelly 0.5s ease-in-out;
 }
-.peach-jelly:hover { 
-  animation: peachJelly 0.5s ease-in-out; 
+.peach-jelly:hover {
+  background: rgba(255,171,145,0.25);
+  border-color: rgba(255,171,145,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(255,171,145,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes peachJelly { 
-  0%, 100% { transform: scale(1) skewX(0); } 
-  25% { transform: scale(1.05) skewX(-5deg); } 
-  50% { transform: scale(1.05) skewX(5deg); } 
-  75% { transform: scale(1.05) skewX(-3deg); } 
-}`,
+  0%, 100% { transform: scale(1) skewX(0); }`,
     htmlCode: `<button class="peach-jelly">Peach Jelly</button>`
   },
   {
@@ -153,17 +193,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.6s",
     intensity: "rotateX 15deg",
     previewColor: "#009688",
-    cssCode: `.teal-3d-flip { 
-  background: #009688; color: white; transform-style: preserve-3d;
+    cssCode: `.teal-3d-flip {
+  background: rgba(0,150,136,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #009688;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: teal3DFlip 0.6s ease-in-out;
 }
-.teal-3d-flip:hover { 
-  animation: teal3DFlip 0.6s ease-in-out; 
+.teal-3d-flip:hover {
+  background: rgba(0,150,136,0.25);
+  border-color: rgba(0,150,136,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(0,150,136,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes teal3DFlip { 
-  0% { transform: perspective(400px) rotateX(0) scale(1); } 
-  50% { transform: perspective(400px) rotateX(15deg) scale(1.05); } 
-  100% { transform: perspective(400px) rotateX(0) scale(1.02); } 
-}`,
+  0% { transform: perspective(400px) rotateX(0) scale(1); }`,
     htmlCode: `<button class="teal-3d-flip">Teal 3D Flip</button>`
   },
   {
@@ -174,19 +222,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.8s",
     intensity: "1.15x duplo",
     previewColor: "#FFD700",
-    cssCode: `.gold-heartbeat { 
-  background: #FFD700; color: #333; 
+    cssCode: `.gold-heartbeat {
+  background: rgba(255,215,0,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #333;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: goldHeartbeat 0.8s ease-in-out;
 }
-.gold-heartbeat:hover { 
-  animation: goldHeartbeat 0.8s ease-in-out; 
+.gold-heartbeat:hover {
+  background: rgba(255,215,0,0.25);
+  border-color: rgba(255,215,0,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(255,215,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes goldHeartbeat { 
-  0%, 100% { transform: scale(1); } 
-  15% { transform: scale(1.15); box-shadow: 0 0 25px rgba(255,215,0,0.6); } 
-  30% { transform: scale(1); } 
-  45% { transform: scale(1.1); } 
-  60% { transform: scale(1); } 
-}`,
+  0%, 100% { transform: scale(1); }`,
     htmlCode: `<button class="gold-heartbeat">Gold Heartbeat</button>`
   },
   {
@@ -197,20 +251,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.6s",
     intensity: "elastic 1.2x",
     previewColor: "#8E4585",
-    cssCode: `.berry-rubber { 
-  background: #8E4585; color: white; 
+    cssCode: `.berry-rubber {
+  background: rgba(142,69,133,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8E4585;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: berryRubber 0.6s ease;
 }
-.berry-rubber:hover { 
-  animation: berryRubber 0.6s ease; 
+.berry-rubber:hover {
+  background: rgba(142,69,133,0.25);
+  border-color: rgba(142,69,133,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(142,69,133,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes berryRubber { 
-  0% { transform: scale(1); } 
-  30% { transform: scaleX(1.2) scaleY(0.8); } 
-  40% { transform: scaleX(0.85) scaleY(1.15); } 
-  50% { transform: scaleX(1.1) scaleY(0.9); } 
-  65% { transform: scaleX(0.98) scaleY(1.02); } 
-  100% { transform: scale(1.02); } 
-}`,
+  0% { transform: scale(1); }`,
     htmlCode: `<button class="berry-rubber">Berry Rubber</button>`
   },
   {
@@ -221,19 +280,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.5s",
     intensity: "rotate ±10deg",
     previewColor: "#607D8B",
-    cssCode: `.slate-swing { 
-  background: #607D8B; color: white; transform-origin: top center;
+    cssCode: `.slate-swing {
+  background: rgba(96,125,139,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #607D8B;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: slateSwing 0.5s ease-in-out;
 }
-.slate-swing:hover { 
-  animation: slateSwing 0.5s ease-in-out; 
+.slate-swing:hover {
+  background: rgba(96,125,139,0.25);
+  border-color: rgba(96,125,139,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(96,125,139,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes slateSwing { 
-  0%, 100% { transform: rotate(0deg); } 
-  20% { transform: rotate(10deg); } 
-  40% { transform: rotate(-8deg); } 
-  60% { transform: rotate(5deg); } 
-  80% { transform: rotate(-3deg); } 
-}`,
+  0%, 100% { transform: rotate(0deg); }`,
     htmlCode: `<button class="slate-swing">Slate Swing</button>`
   },
   {
@@ -244,18 +309,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.8s",
     intensity: "1.1x + rotate",
     previewColor: "#0077BE",
-    cssCode: `.ocean-tada { 
-  background: #0077BE; color: white; 
+    cssCode: `.ocean-tada {
+  background: rgba(0,119,190,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #0077BE;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: oceanTada 0.8s ease-in-out;
 }
-.ocean-tada:hover { 
-  animation: oceanTada 0.8s ease-in-out; 
+.ocean-tada:hover {
+  background: rgba(0,119,190,0.25);
+  border-color: rgba(0,119,190,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(0,119,190,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes oceanTada { 
-  0%, 100% { transform: scale(1) rotate(0); } 
-  10%, 20% { transform: scale(0.95) rotate(-3deg); } 
-  30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); } 
-  40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); } 
-}`,
+  0%, 100% { transform: scale(1) rotate(0); }`,
     htmlCode: `<button class="ocean-tada">Ocean Tada</button>`
   },
   {
@@ -266,20 +338,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.7s",
     intensity: "translateX ±15px",
     previewColor: "#FF7043",
-    cssCode: `.sunset-wobble { 
-  background: linear-gradient(135deg, #FF7043, #FFCA28); color: white; 
+    cssCode: `.sunset-wobble {
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: sunsetWobble 0.7s ease-in-out;
 }
-.sunset-wobble:hover { 
-  animation: sunsetWobble 0.7s ease-in-out; 
+.sunset-wobble:hover {
+  background: rgba(139,92,246,0.25);
+  border-color: rgba(139,92,246,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(139,92,246,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes sunsetWobble { 
-  0%, 100% { transform: translateX(0) rotate(0); } 
-  15% { transform: translateX(-15px) rotate(-5deg); } 
-  30% { transform: translateX(12px) rotate(3deg); } 
-  45% { transform: translateX(-8px) rotate(-3deg); } 
-  60% { transform: translateX(5px) rotate(2deg); } 
-  75% { transform: translateX(-3px) rotate(-1deg); } 
-}`,
+  0%, 100% { transform: translateX(0) rotate(0); }`,
     htmlCode: `<button class="sunset-wobble">Sunset Wobble</button>`
   },
   {
@@ -290,17 +367,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.2s",
     intensity: "0.95x press",
     previewColor: "#2E7D32",
-    cssCode: `.emerald-press { 
-  background: #2E7D32; color: white; 
+    cssCode: `.emerald-press {
+  background: rgba(46,125,50,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #2E7D32;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: emeraldPress 0.2s ease-out;
 }
-.emerald-press:hover { 
-  animation: emeraldPress 0.2s ease-out; 
+.emerald-press:hover {
+  background: rgba(46,125,50,0.25);
+  border-color: rgba(46,125,50,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(46,125,50,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes emeraldPress { 
-  0% { transform: scale(1) translateY(0); } 
-  50% { transform: scale(0.95) translateY(2px); box-shadow: 0 2px 5px rgba(46,125,50,0.5); } 
-  100% { transform: scale(1) translateY(0); } 
-}`,
+  0% { transform: scale(1) translateY(0); }`,
     htmlCode: `<button class="emerald-press">Emerald Press</button>`
   },
   {
@@ -311,16 +396,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.4s",
     intensity: "translateY -10px",
     previewColor: "#E91E63",
-    cssCode: `.rose-float { 
-  background: #E91E63; color: white; 
+    cssCode: `.rose-float {
+  background: rgba(233,30,99,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #E91E63;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: roseFloat 0.4s ease-out forwards;
 }
-.rose-float:hover { 
-  animation: roseFloat 0.4s ease-out forwards; 
+.rose-float:hover {
+  background: rgba(233,30,99,0.25);
+  border-color: rgba(233,30,99,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(233,30,99,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes roseFloat { 
-  0% { transform: translateY(0) scale(1); box-shadow: 0 4px 10px rgba(233,30,99,0.3); } 
-  100% { transform: translateY(-10px) scale(1.03); box-shadow: 0 20px 40px rgba(233,30,99,0.4); } 
-}`,
+  0% { transform: translateY(0) scale(1); box-shadow: 0 4px 10px rgba(233,30,99,0.3); }`,
     htmlCode: `<button class="rose-float">Rose Float</button>`
   },
   {
@@ -331,19 +425,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.6s",
     intensity: "1.08x triple",
     previewColor: "#FF8F00",
-    cssCode: `.amber-triple { 
-  background: #FF8F00; color: white; 
+    cssCode: `.amber-triple {
+  background: rgba(255,143,0,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #FF8F00;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: amberTriple 0.6s ease-in-out;
 }
-.amber-triple:hover { 
-  animation: amberTriple 0.6s ease-in-out; 
+.amber-triple:hover {
+  background: rgba(255,143,0,0.25);
+  border-color: rgba(255,143,0,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(255,143,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes amberTriple { 
-  0%, 100% { transform: scale(1); } 
-  20% { transform: scale(1.08); box-shadow: 0 0 15px rgba(255,143,0,0.5); } 
-  40% { transform: scale(1.02); } 
-  60% { transform: scale(1.06); } 
-  80% { transform: scale(1.02); } 
-}`,
+  0%, 100% { transform: scale(1); }`,
     htmlCode: `<button class="amber-triple">Amber Triple</button>`
   },
   {
@@ -354,16 +454,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.4s",
     intensity: "rotateY 12deg",
     previewColor: "#3F51B5",
-    cssCode: `.indigo-tilt { 
-  background: #3F51B5; color: white; transform-style: preserve-3d;
+    cssCode: `.indigo-tilt {
+  background: rgba(63,81,181,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #3F51B5;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: indigoTilt 0.4s ease-out forwards;
 }
-.indigo-tilt:hover { 
-  animation: indigoTilt 0.4s ease-out forwards; 
+.indigo-tilt:hover {
+  background: rgba(63,81,181,0.25);
+  border-color: rgba(63,81,181,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(63,81,181,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes indigoTilt { 
-  0% { transform: perspective(500px) rotateY(0) rotateX(0); } 
-  100% { transform: perspective(500px) rotateY(12deg) rotateX(5deg) scale(1.05); } 
-}`,
+  0% { transform: perspective(500px) rotateY(0) rotateX(0); }`,
     htmlCode: `<button class="indigo-tilt">Indigo Tilt</button>`
   },
   {
@@ -374,17 +483,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.5s",
     intensity: "border-radius change",
     previewColor: "#00BCD4",
-    cssCode: `.cyan-morph { 
-  background: #00BCD4; color: white; border-radius: 8px;
+    cssCode: `.cyan-morph {
+  background: rgba(0,188,212,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #00BCD4;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: cyanMorph 0.5s ease-in-out forwards;
 }
-.cyan-morph:hover { 
-  animation: cyanMorph 0.5s ease-in-out forwards; 
+.cyan-morph:hover {
+  background: rgba(0,188,212,0.25);
+  border-color: rgba(0,188,212,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(0,188,212,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes cyanMorph { 
-  0% { transform: scale(1); border-radius: 8px; } 
-  50% { transform: scale(1.05); border-radius: 25px; } 
-  100% { transform: scale(1.02); border-radius: 15px; } 
-}`,
+  0% { transform: scale(1); border-radius: 8px; }`,
     htmlCode: `<button class="cyan-morph">Cyan Morph</button>`
   },
   {
@@ -395,17 +512,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.5s",
     intensity: "±8px shake",
     previewColor: "#DC143C",
-    cssCode: `.crimson-shake { 
-  background: #DC143C; color: white; 
+    cssCode: `.crimson-shake {
+  background: rgba(220,20,60,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #DC143C;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: crimsonShake 0.5s ease-in-out;
 }
-.crimson-shake:hover { 
-  animation: crimsonShake 0.5s ease-in-out; 
+.crimson-shake:hover {
+  background: rgba(220,20,60,0.25);
+  border-color: rgba(220,20,60,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(220,20,60,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes crimsonShake { 
-  0%, 100% { transform: translateX(0); } 
-  10%, 50%, 90% { transform: translateX(-8px); } 
-  30%, 70% { transform: translateX(8px); } 
-}`,
+  0%, 100% { transform: translateX(0); }`,
     htmlCode: `<button class="crimson-shake">Crimson Shake</button>`
   },
   {
@@ -416,17 +541,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.4s",
     intensity: "±6px vertical",
     previewColor: "#808000",
-    cssCode: `.olive-vertical { 
-  background: #808000; color: white; 
+    cssCode: `.olive-vertical {
+  background: rgba(128,128,0,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #808000;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: oliveVertical 0.4s ease-in-out;
 }
-.olive-vertical:hover { 
-  animation: oliveVertical 0.4s ease-in-out; 
+.olive-vertical:hover {
+  background: rgba(128,128,0,0.25);
+  border-color: rgba(128,128,0,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(128,128,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes oliveVertical { 
-  0%, 100% { transform: translateY(0); } 
-  20%, 60% { transform: translateY(-6px); } 
-  40%, 80% { transform: translateY(6px); } 
-}`,
+  0%, 100% { transform: translateY(0); }`,
     htmlCode: `<button class="olive-vertical">Olive Vertical</button>`
   },
   {
@@ -437,17 +570,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.6s",
     intensity: "1.15x + 180deg",
     previewColor: "#9C27B0",
-    cssCode: `.purple-zoom { 
-  background: #9C27B0; color: white; 
+    cssCode: `.purple-zoom {
+  background: rgba(156,39,176,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #9C27B0;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: purpleZoom 0.6s ease-out;
 }
-.purple-zoom:hover { 
-  animation: purpleZoom 0.6s ease-out; 
+.purple-zoom:hover {
+  background: rgba(156,39,176,0.25);
+  border-color: rgba(156,39,176,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(156,39,176,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes purpleZoom { 
-  0% { transform: scale(1) rotate(0deg); } 
-  50% { transform: scale(1.15) rotate(180deg); box-shadow: 0 0 30px rgba(156,39,176,0.6); } 
-  100% { transform: scale(1.05) rotate(360deg); } 
-}`,
+  0% { transform: scale(1) rotate(0deg); }`,
     htmlCode: `<button class="purple-zoom">Purple Zoom</button>`
   },
   {
@@ -458,18 +599,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.45s",
     intensity: "1.12x wave",
     previewColor: "#CDDC39",
-    cssCode: `.lime-expand { 
-  background: #CDDC39; color: #333; 
+    cssCode: `.lime-expand {
+  background: rgba(205,220,57,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #333;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: limeExpand 0.45s ease-in-out;
 }
-.lime-expand:hover { 
-  animation: limeExpand 0.45s ease-in-out; 
+.lime-expand:hover {
+  background: rgba(205,220,57,0.25);
+  border-color: rgba(205,220,57,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(205,220,57,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes limeExpand { 
-  0%, 100% { transform: scale(1); } 
-  25% { transform: scale(1.12); box-shadow: 0 0 20px rgba(205,220,57,0.5); } 
-  50% { transform: scale(0.98); } 
-  75% { transform: scale(1.06); } 
-}`,
+  0%, 100% { transform: scale(1); }`,
     htmlCode: `<button class="lime-expand">Lime Expand</button>`
   },
   {
@@ -480,16 +628,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.3s",
     intensity: "translateX 12px",
     previewColor: "#795548",
-    cssCode: `.brown-slide { 
-  background: #795548; color: white; 
+    cssCode: `.brown-slide {
+  background: rgba(121,85,72,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #795548;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: brownSlide 0.3s ease-out forwards;
 }
-.brown-slide:hover { 
-  animation: brownSlide 0.3s ease-out forwards; 
+.brown-slide:hover {
+  background: rgba(121,85,72,0.25);
+  border-color: rgba(121,85,72,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(121,85,72,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes brownSlide { 
-  0% { transform: translateX(0) scale(1); } 
-  100% { transform: translateX(12px) scale(1.02); } 
-}`,
+  0% { transform: translateX(0) scale(1); }`,
     htmlCode: `<button class="brown-slide">Brown Slide</button>`
   },
   {
@@ -500,19 +657,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.5s",
     intensity: "elastic 1.2x",
     previewColor: "#FF4081",
-    cssCode: `.pink-bounce-in { 
-  background: #FF4081; color: white; 
+    cssCode: `.pink-bounce-in {
+  background: rgba(255,64,129,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #FF4081;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: pinkBounceIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.pink-bounce-in:hover { 
-  animation: pinkBounceIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+.pink-bounce-in:hover {
+  background: rgba(255,64,129,0.25);
+  border-color: rgba(255,64,129,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(255,64,129,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes pinkBounceIn { 
-  0% { transform: scale(1); } 
-  40% { transform: scale(1.2); } 
-  60% { transform: scale(0.95); } 
-  80% { transform: scale(1.08); } 
-  100% { transform: scale(1.02); } 
-}`,
+  0% { transform: scale(1); }`,
     htmlCode: `<button class="pink-bounce-in">Pink Bounce In</button>`
   },
   {
@@ -523,16 +686,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.6s",
     intensity: "opacity flash",
     previewColor: "#9E9E9E",
-    cssCode: `.gray-flash { 
-  background: #9E9E9E; color: white; 
+    cssCode: `.gray-flash {
+  background: rgba(158,158,158,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #9E9E9E;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: grayFlash 0.6s ease-in-out;
 }
-.gray-flash:hover { 
-  animation: grayFlash 0.6s ease-in-out; 
+.gray-flash:hover {
+  background: rgba(158,158,158,0.25);
+  border-color: rgba(158,158,158,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(158,158,158,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes grayFlash { 
-  0%, 50%, 100% { opacity: 1; transform: scale(1); } 
-  25%, 75% { opacity: 0.5; transform: scale(1.08); background: #616161; } 
-}`,
+  0%, 50%, 100% { opacity: 1; transform: scale(1); }`,
     htmlCode: `<button class="gray-flash">Gray Flash</button>`
   },
   {
@@ -543,18 +715,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.5s",
     intensity: "spring jump",
     previewColor: "#F44336",
-    cssCode: `.red-spring { 
-  background: #F44336; color: white; 
+    cssCode: `.red-spring {
+  background: rgba(244,67,54,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #F44336;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: redSpring 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.red-spring:hover { 
-  animation: redSpring 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); 
+.red-spring:hover {
+  background: rgba(244,67,54,0.25);
+  border-color: rgba(244,67,54,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(244,67,54,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes redSpring { 
-  0% { transform: scale(1) translateY(0); } 
-  30% { transform: scale(0.95) translateY(5px); } 
-  60% { transform: scale(1.1) translateY(-15px); box-shadow: 0 15px 30px rgba(244,67,54,0.4); } 
-  100% { transform: scale(1.02) translateY(0); } 
-}`,
+  0% { transform: scale(1) translateY(0); }`,
     htmlCode: `<button class="red-spring">Red Spring</button>`
   },
   {
@@ -565,17 +744,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.6s",
     intensity: "rotateX 90deg",
     previewColor: "#2196F3",
-    cssCode: `.blue-flip-x { 
-  background: #2196F3; color: white; transform-style: preserve-3d;
+    cssCode: `.blue-flip-x {
+  background: rgba(33,150,243,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #2196F3;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: blueFlipX 0.6s ease-in-out;
 }
-.blue-flip-x:hover { 
-  animation: blueFlipX 0.6s ease-in-out; 
+.blue-flip-x:hover {
+  background: rgba(33,150,243,0.25);
+  border-color: rgba(33,150,243,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(33,150,243,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes blueFlipX { 
-  0% { transform: perspective(400px) rotateX(0); } 
-  50% { transform: perspective(400px) rotateX(90deg) scale(1.05); } 
-  100% { transform: perspective(400px) rotateX(0) scale(1.02); } 
-}`,
+  0% { transform: perspective(400px) rotateX(0); }`,
     htmlCode: `<button class="blue-flip-x">Blue Flip X</button>`
   },
   {
@@ -586,17 +773,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.6s",
     intensity: "rotateY 90deg",
     previewColor: "#4CAF50",
-    cssCode: `.green-flip-y { 
-  background: #4CAF50; color: white; transform-style: preserve-3d;
+    cssCode: `.green-flip-y {
+  background: rgba(76,175,80,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #4CAF50;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: greenFlipY 0.6s ease-in-out;
 }
-.green-flip-y:hover { 
-  animation: greenFlipY 0.6s ease-in-out; 
+.green-flip-y:hover {
+  background: rgba(76,175,80,0.25);
+  border-color: rgba(76,175,80,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(76,175,80,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes greenFlipY { 
-  0% { transform: perspective(400px) rotateY(0); } 
-  50% { transform: perspective(400px) rotateY(90deg) scale(1.05); } 
-  100% { transform: perspective(400px) rotateY(0) scale(1.02); } 
-}`,
+  0% { transform: perspective(400px) rotateY(0); }`,
     htmlCode: `<button class="green-flip-y">Green Flip Y</button>`
   },
   {
@@ -607,17 +802,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.5s",
     intensity: "rotate 360deg",
     previewColor: "#FF9800",
-    cssCode: `.orange-rotate { 
-  background: #FF9800; color: white; 
+    cssCode: `.orange-rotate {
+  background: rgba(255,152,0,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #FF9800;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: orangeRotate 0.5s ease-out;
 }
-.orange-rotate:hover { 
-  animation: orangeRotate 0.5s ease-out; 
+.orange-rotate:hover {
+  background: rgba(255,152,0,0.25);
+  border-color: rgba(255,152,0,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(255,152,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes orangeRotate { 
-  0% { transform: rotate(0deg) scale(1); } 
-  50% { transform: rotate(180deg) scale(1.1); } 
-  100% { transform: rotate(360deg) scale(1.02); } 
-}`,
+  0% { transform: rotate(0deg) scale(1); }`,
     htmlCode: `<button class="orange-rotate">Orange Rotate</button>`
   },
   {
@@ -628,16 +831,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.35s",
     intensity: "1.05x + shadow",
     previewColor: "#7C4DFF",
-    cssCode: `.violet-shadow { 
-  background: #7C4DFF; color: white; 
+    cssCode: `.violet-shadow {
+  background: rgba(124,77,255,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #7C4DFF;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: violetShadow 0.35s ease-out forwards;
 }
-.violet-shadow:hover { 
-  animation: violetShadow 0.35s ease-out forwards; 
+.violet-shadow:hover {
+  background: rgba(124,77,255,0.25);
+  border-color: rgba(124,77,255,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(124,77,255,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes violetShadow { 
-  0% { transform: scale(1); box-shadow: 0 4px 10px rgba(124,77,255,0.3); } 
-  100% { transform: scale(1.05); box-shadow: 0 15px 35px rgba(124,77,255,0.5); } 
-}`,
+  0% { transform: scale(1); box-shadow: 0 4px 10px rgba(124,77,255,0.3); }`,
     htmlCode: `<button class="violet-shadow">Violet Shadow</button>`
   },
   {
@@ -648,16 +860,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.4s",
     intensity: "glow expand",
     previewColor: "#E040FB",
-    cssCode: `.magenta-glow { 
-  background: #E040FB; color: white; 
+    cssCode: `.magenta-glow {
+  background: rgba(224,64,251,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #E040FB;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: magentaGlow 0.4s ease-out forwards;
 }
-.magenta-glow:hover { 
-  animation: magentaGlow 0.4s ease-out forwards; 
+.magenta-glow:hover {
+  background: rgba(224,64,251,0.25);
+  border-color: rgba(224,64,251,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(224,64,251,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes magentaGlow { 
-  0% { transform: scale(1); box-shadow: 0 0 0 rgba(224,64,251,0); } 
-  100% { transform: scale(1.05); box-shadow: 0 0 30px rgba(224,64,251,0.7), 0 0 60px rgba(224,64,251,0.4); } 
-}`,
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(224,64,251,0); }`,
     htmlCode: `<button class="magenta-glow">Magenta Glow</button>`
   },
   {
@@ -668,16 +889,25 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.5s",
     intensity: "gradient + scale",
     previewColor: "#FF6B6B",
-    cssCode: `.gradient-shift { 
-  background: linear-gradient(135deg, #FF6B6B, #4ECDC4); color: white; background-size: 200% 200%;
+    cssCode: `.gradient-shift {
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: gradientShift 0.5s ease-out forwards;
 }
-.gradient-shift:hover { 
-  animation: gradientShift 0.5s ease-out forwards; 
+.gradient-shift:hover {
+  background: rgba(139,92,246,0.25);
+  border-color: rgba(139,92,246,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(139,92,246,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes gradientShift { 
-  0% { background-position: 0% 0%; transform: scale(1); } 
-  100% { background-position: 100% 100%; transform: scale(1.05); } 
-}`,
+  0% { background-position: 0% 0%; transform: scale(1); }`,
     htmlCode: `<button class="gradient-shift">Gradient Shift</button>`
   },
 
@@ -690,14 +920,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "1.5s",
     intensity: "1.05x + glow",
     previewColor: "#00FFFF",
-    cssCode: `.neon-cyan-pulse { 
-  background: #00FFFF; color: #111; 
-  animation: neonCyanPulse 1.5s ease-in-out infinite; 
+    cssCode: `.neon-cyan-pulse {
+  background: rgba(0,255,255,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #111;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: neonCyanPulse 1.5s ease-in-out infinite;
 }
 @keyframes neonCyanPulse { 
-  0%, 100% { transform: scale(1); box-shadow: 0 0 10px #00FFFF; } 
-  50% { transform: scale(1.05); box-shadow: 0 0 30px #00FFFF, 0 0 60px #00FFFF; } 
-}`,
+  0%, 100% { transform: scale(1); box-shadow: 0 0 10px #00FFFF; }`,
     htmlCode: `<button class="neon-cyan-pulse">Neon Cyan</button>`
   },
   {
@@ -708,14 +943,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "1.2s",
     intensity: "1.08x + glow",
     previewColor: "#FF00FF",
-    cssCode: `.neon-magenta-pulse { 
-  background: #FF00FF; color: white; 
-  animation: neonMagentaPulse 1.2s ease-in-out infinite; 
+    cssCode: `.neon-magenta-pulse {
+  background: rgba(255,0,255,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #FF00FF;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: neonMagentaPulse 1.2s ease-in-out infinite;
 }
 @keyframes neonMagentaPulse { 
-  0%, 100% { transform: scale(1); box-shadow: 0 0 10px #FF00FF; } 
-  50% { transform: scale(1.08); box-shadow: 0 0 40px #FF00FF, 0 0 80px rgba(255,0,255,0.5); } 
-}`,
+  0%, 100% { transform: scale(1); box-shadow: 0 0 10px #FF00FF; }`,
     htmlCode: `<button class="neon-magenta-pulse">Neon Magenta</button>`
   },
   {
@@ -726,15 +966,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "2s",
     intensity: "ring expand",
     previewColor: "#00FF00",
-    cssCode: `.green-ring-pulse { 
-  background: #00FF00; color: #111; position: relative;
-  animation: greenRingPulse 2s ease-out infinite; 
+    cssCode: `.green-ring-pulse {
+  background: rgba(0,255,0,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #111;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: greenRingPulse 2s ease-out infinite;
 }
 @keyframes greenRingPulse { 
-  0% { box-shadow: 0 0 0 0 rgba(0,255,0,0.7); } 
-  70% { box-shadow: 0 0 0 20px rgba(0,255,0,0); } 
-  100% { box-shadow: 0 0 0 0 rgba(0,255,0,0); } 
-}`,
+  0% { box-shadow: 0 0 0 0 rgba(0,255,0,0.7); }`,
     htmlCode: `<button class="green-ring-pulse">Green Ring</button>`
   },
   {
@@ -745,14 +989,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.8s",
     intensity: "1.1x flash",
     previewColor: "#FF0000",
-    cssCode: `.red-alert-pulse { 
-  background: #FF0000; color: white; 
-  animation: redAlertPulse 0.8s ease-in-out infinite; 
+    cssCode: `.red-alert-pulse {
+  background: rgba(255,0,0,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #FF0000;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: redAlertPulse 0.8s ease-in-out infinite;
 }
 @keyframes redAlertPulse { 
-  0%, 100% { transform: scale(1); opacity: 1; background: #FF0000; } 
-  50% { transform: scale(1.1); opacity: 0.8; background: #CC0000; box-shadow: 0 0 30px #FF0000; } 
-}`,
+  0%, 100% { transform: scale(1); opacity: 1; background: #FF0000; }`,
     htmlCode: `<button class="red-alert-pulse">Red Alert</button>`
   },
   {
@@ -763,14 +1012,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "2s",
     intensity: "1.03x + glow",
     previewColor: "#FFD700",
-    cssCode: `.gold-glow-pulse { 
-  background: linear-gradient(135deg, #FFD700, #FFA500); color: #333; 
-  animation: goldGlowPulse 2s ease-in-out infinite; 
+    cssCode: `.gold-glow-pulse {
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #333;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: goldGlowPulse 2s ease-in-out infinite;
 }
 @keyframes goldGlowPulse { 
-  0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(255,215,0,0.5); } 
-  50% { transform: scale(1.03); box-shadow: 0 0 30px rgba(255,215,0,0.8), 0 0 50px rgba(255,165,0,0.4); } 
-}`,
+  0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(255,215,0,0.5); }`,
     htmlCode: `<button class="gold-glow-pulse">Gold Glow</button>`
   },
   {
@@ -781,14 +1035,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "1.5s",
     intensity: "1.05x + shadow",
     previewColor: "#25D366",
-    cssCode: `.whatsapp-green { 
-  background: #25D366; color: white; 
-  animation: whatsappGreen 1.5s ease-in-out infinite; 
+    cssCode: `.whatsapp-green {
+  background: rgba(37,211,102,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #25D366;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: whatsappGreen 1.5s ease-in-out infinite;
 }
 @keyframes whatsappGreen { 
-  0%, 100% { transform: scale(1); box-shadow: 0 5px 15px rgba(37,211,102,0.4); } 
-  50% { transform: scale(1.05); box-shadow: 0 10px 30px rgba(37,211,102,0.6); } 
-}`,
+  0%, 100% { transform: scale(1); box-shadow: 0 5px 15px rgba(37,211,102,0.4); }`,
     htmlCode: `<button class="whatsapp-green">📱 WhatsApp</button>`
   },
   {
@@ -799,16 +1058,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "1.8s",
     intensity: "sonar ring",
     previewColor: "#9C27B0",
-    cssCode: `.purple-sonar { 
-  background: #9C27B0; color: white; 
-  animation: purpleSonar 1.8s ease-out infinite; 
+    cssCode: `.purple-sonar {
+  background: rgba(156,39,176,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #9C27B0;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: purpleSonar 1.8s ease-out infinite;
 }
 @keyframes purpleSonar { 
-  0% { box-shadow: 0 0 0 0 rgba(156,39,176,0.7); transform: scale(1); } 
-  50% { transform: scale(1.02); } 
-  70% { box-shadow: 0 0 0 25px rgba(156,39,176,0); } 
-  100% { box-shadow: 0 0 0 0 rgba(156,39,176,0); transform: scale(1); } 
-}`,
+  0% { box-shadow: 0 0 0 0 rgba(156,39,176,0.7); transform: scale(1); }`,
     htmlCode: `<button class="purple-sonar">Purple Sonar</button>`
   },
   {
@@ -819,17 +1081,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "1.2s",
     intensity: "heartbeat 1.15x",
     previewColor: "#2196F3",
-    cssCode: `.blue-heartbeat { 
-  background: #2196F3; color: white; 
-  animation: blueHeartbeat 1.2s ease-in-out infinite; 
+    cssCode: `.blue-heartbeat {
+  background: rgba(33,150,243,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #2196F3;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: blueHeartbeat 1.2s ease-in-out infinite;
 }
 @keyframes blueHeartbeat { 
-  0%, 100% { transform: scale(1); } 
-  14% { transform: scale(1.15); } 
-  28% { transform: scale(1); } 
-  42% { transform: scale(1.1); } 
-  70% { transform: scale(1); } 
-}`,
+  0%, 100% { transform: scale(1); }`,
     htmlCode: `<button class="blue-heartbeat">Blue Heartbeat</button>`
   },
   {
@@ -840,14 +1104,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "3s",
     intensity: "1.02x breathe",
     previewColor: "#FF9800",
-    cssCode: `.orange-breathe { 
-  background: #FF9800; color: white; 
-  animation: orangeBreathe 3s ease-in-out infinite; 
+    cssCode: `.orange-breathe {
+  background: rgba(255,152,0,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #FF9800;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: orangeBreathe 3s ease-in-out infinite;
 }
 @keyframes orangeBreathe { 
-  0%, 100% { transform: scale(1); opacity: 0.9; } 
-  50% { transform: scale(1.02); opacity: 1; box-shadow: 0 0 20px rgba(255,152,0,0.4); } 
-}`,
+  0%, 100% { transform: scale(1); opacity: 0.9; }`,
     htmlCode: `<button class="orange-breathe">Orange Breathe</button>`
   },
   {
@@ -858,16 +1127,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "2s",
     intensity: "wave 1.05x",
     previewColor: "#009688",
-    cssCode: `.teal-wave { 
-  background: #009688; color: white; 
-  animation: tealWave 2s ease-in-out infinite; 
+    cssCode: `.teal-wave {
+  background: rgba(0,150,136,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #009688;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: tealWave 2s ease-in-out infinite;
 }
 @keyframes tealWave { 
-  0%, 100% { transform: scale(1) translateY(0); } 
-  25% { transform: scale(1.02) translateY(-3px); } 
-  50% { transform: scale(1.05) translateY(0); box-shadow: 0 10px 25px rgba(0,150,136,0.4); } 
-  75% { transform: scale(1.02) translateY(3px); } 
-}`,
+  0%, 100% { transform: scale(1) translateY(0); }`,
     htmlCode: `<button class="teal-wave">Teal Wave</button>`
   },
   {
@@ -878,17 +1150,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "1s",
     intensity: "double 1.1x",
     previewColor: "#E91E63",
-    cssCode: `.pink-double { 
-  background: #E91E63; color: white; 
-  animation: pinkDouble 1s ease-in-out infinite; 
+    cssCode: `.pink-double {
+  background: rgba(233,30,99,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #E91E63;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: pinkDouble 1s ease-in-out infinite;
 }
 @keyframes pinkDouble { 
-  0%, 100% { transform: scale(1); } 
-  20% { transform: scale(1.1); } 
-  40% { transform: scale(1); } 
-  60% { transform: scale(1.08); } 
-  80% { transform: scale(1); } 
-}`,
+  0%, 100% { transform: scale(1); }`,
     htmlCode: `<button class="pink-double">Pink Double</button>`
   },
   {
@@ -899,14 +1173,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "2.5s",
     intensity: "1.03x + deep glow",
     previewColor: "#3F51B5",
-    cssCode: `.indigo-glow { 
-  background: #3F51B5; color: white; 
-  animation: indigoGlow 2.5s ease-in-out infinite; 
+    cssCode: `.indigo-glow {
+  background: rgba(63,81,181,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #3F51B5;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: indigoGlow 2.5s ease-in-out infinite;
 }
 @keyframes indigoGlow { 
-  0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(63,81,181,0.3); } 
-  50% { transform: scale(1.03); box-shadow: 0 0 40px rgba(63,81,181,0.6), 0 0 80px rgba(63,81,181,0.3); } 
-}`,
+  0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(63,81,181,0.3); }`,
     htmlCode: `<button class="indigo-glow">Indigo Glow</button>`
   },
   {
@@ -917,14 +1196,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "1.5s",
     intensity: "bounce 1.08x",
     previewColor: "#CDDC39",
-    cssCode: `.lime-bounce { 
-  background: #CDDC39; color: #333; 
-  animation: limeBounce 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; 
+    cssCode: `.lime-bounce {
+  background: rgba(205,220,57,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #333;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: limeBounce 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
 }
 @keyframes limeBounce { 
-  0%, 100% { transform: scale(1) translateY(0); } 
-  50% { transform: scale(1.08) translateY(-8px); box-shadow: 0 15px 25px rgba(205,220,57,0.4); } 
-}`,
+  0%, 100% { transform: scale(1) translateY(0); }`,
     htmlCode: `<button class="lime-bounce">Lime Bounce</button>`
   },
   {
@@ -935,14 +1219,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "3s",
     intensity: "warm 1.02x",
     previewColor: "#795548",
-    cssCode: `.brown-warm { 
-  background: #795548; color: white; 
-  animation: brownWarm 3s ease-in-out infinite; 
+    cssCode: `.brown-warm {
+  background: rgba(121,85,72,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #795548;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: brownWarm 3s ease-in-out infinite;
 }
 @keyframes brownWarm { 
-  0%, 100% { transform: scale(1); background: #795548; } 
-  50% { transform: scale(1.02); background: #8D6E63; box-shadow: 0 0 25px rgba(121,85,72,0.4); } 
-}`,
+  0%, 100% { transform: scale(1); background: #795548; }`,
     htmlCode: `<button class="brown-warm">Brown Warm</button>`
   },
   {
@@ -953,16 +1242,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "0.8s",
     intensity: "electric 1.1x",
     previewColor: "#00BCD4",
-    cssCode: `.cyan-electric { 
-  background: #00BCD4; color: white; 
-  animation: cyanElectric 0.8s ease-in-out infinite; 
+    cssCode: `.cyan-electric {
+  background: rgba(0,188,212,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #00BCD4;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: cyanElectric 0.8s ease-in-out infinite;
 }
 @keyframes cyanElectric { 
-  0%, 100% { transform: scale(1); box-shadow: 0 0 5px #00BCD4; } 
-  25% { transform: scale(1.05); box-shadow: 0 0 15px #00BCD4, 0 0 30px rgba(0,188,212,0.5); } 
-  50% { transform: scale(1.1); box-shadow: 0 0 25px #00BCD4, 0 0 50px rgba(0,188,212,0.7); } 
-  75% { transform: scale(1.05); } 
-}`,
+  0%, 100% { transform: scale(1); box-shadow: 0 0 5px #00BCD4; }`,
     htmlCode: `<button class="cyan-electric">Cyan Electric</button>`
   },
   {
@@ -973,14 +1265,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "2.5s",
     intensity: "nebula 1.05x",
     previewColor: "#673AB7",
-    cssCode: `.deep-purple-nebula { 
-  background: linear-gradient(135deg, #673AB7, #9C27B0); color: white; 
-  animation: deepPurpleNebula 2.5s ease-in-out infinite; 
+    cssCode: `.deep-purple-nebula {
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: deepPurpleNebula 2.5s ease-in-out infinite;
 }
 @keyframes deepPurpleNebula { 
-  0%, 100% { transform: scale(1); filter: brightness(1); } 
-  50% { transform: scale(1.05); filter: brightness(1.2); box-shadow: 0 0 40px rgba(103,58,183,0.6); } 
-}`,
+  0%, 100% { transform: scale(1); filter: brightness(1); }`,
     htmlCode: `<button class="deep-purple-nebula">Purple Nebula</button>`
   },
   {
@@ -991,16 +1288,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "1s",
     intensity: "fire 1.08x",
     previewColor: "#FFC107",
-    cssCode: `.amber-fire { 
-  background: linear-gradient(180deg, #FFC107, #FF9800); color: #333; 
-  animation: amberFire 1s ease-in-out infinite; 
+    cssCode: `.amber-fire {
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #333;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: amberFire 1s ease-in-out infinite;
 }
 @keyframes amberFire { 
-  0%, 100% { transform: scale(1) translateY(0); box-shadow: 0 0 10px rgba(255,193,7,0.5); } 
-  25% { transform: scale(1.03) translateY(-2px); } 
-  50% { transform: scale(1.08) translateY(-4px); box-shadow: 0 10px 30px rgba(255,152,0,0.6); } 
-  75% { transform: scale(1.03) translateY(-2px); } 
-}`,
+  0%, 100% { transform: scale(1) translateY(0); box-shadow: 0 0 10px rgba(255,193,7,0.5); }`,
     htmlCode: `<button class="amber-fire">Amber Fire</button>`
   },
   {
@@ -1011,14 +1311,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "2.5s",
     intensity: "soft 1.03x",
     previewColor: "#FF7043",
-    cssCode: `.coral-soft { 
-  background: #FF7043; color: white; 
-  animation: coralSoft 2.5s ease-in-out infinite; 
+    cssCode: `.coral-soft {
+  background: rgba(255,112,67,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #FF7043;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: coralSoft 2.5s ease-in-out infinite;
 }
 @keyframes coralSoft { 
-  0%, 100% { transform: scale(1); opacity: 0.95; } 
-  50% { transform: scale(1.03); opacity: 1; box-shadow: 0 0 20px rgba(255,112,67,0.4); } 
-}`,
+  0%, 100% { transform: scale(1); opacity: 0.95; }`,
     htmlCode: `<button class="coral-soft">Coral Soft</button>`
   },
   {
@@ -1029,14 +1334,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "2s",
     intensity: "metallic 1.02x",
     previewColor: "#9E9E9E",
-    cssCode: `.silver-metallic { 
-  background: linear-gradient(135deg, #9E9E9E, #E0E0E0, #9E9E9E); color: #333; 
-  animation: silverMetallic 2s ease-in-out infinite; 
+    cssCode: `.silver-metallic {
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #333;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: silverMetallic 2s ease-in-out infinite;
 }
 @keyframes silverMetallic { 
-  0%, 100% { transform: scale(1); background-position: 0% 50%; } 
-  50% { transform: scale(1.02); background-position: 100% 50%; box-shadow: 0 5px 20px rgba(158,158,158,0.5); } 
-}`,
+  0%, 100% { transform: scale(1); background-position: 0% 50%; }`,
     htmlCode: `<button class="silver-metallic">Silver Metallic</button>`
   },
   {
@@ -1047,14 +1357,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "1.8s",
     intensity: "shine 1.05x",
     previewColor: "#2E7D32",
-    cssCode: `.emerald-shine { 
-  background: #2E7D32; color: white; 
-  animation: emeraldShine 1.8s ease-in-out infinite; 
+    cssCode: `.emerald-shine {
+  background: rgba(46,125,50,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #2E7D32;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: emeraldShine 1.8s ease-in-out infinite;
 }
 @keyframes emeraldShine { 
-  0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(46,125,50,0.3); } 
-  50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(46,125,50,0.6), 0 0 60px rgba(76,175,80,0.3); } 
-}`,
+  0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(46,125,50,0.3); }`,
     htmlCode: `<button class="emerald-shine">Emerald Shine</button>`
   },
   {
@@ -1065,14 +1380,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "1.5s",
     intensity: "glow 1.06x",
     previewColor: "#D32F2F",
-    cssCode: `.ruby-glow { 
-  background: #D32F2F; color: white; 
-  animation: rubyGlow 1.5s ease-in-out infinite; 
+    cssCode: `.ruby-glow {
+  background: rgba(211,47,47,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #D32F2F;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: rubyGlow 1.5s ease-in-out infinite;
 }
 @keyframes rubyGlow { 
-  0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(211,47,47,0.4); } 
-  50% { transform: scale(1.06); box-shadow: 0 0 40px rgba(211,47,47,0.7), 0 0 80px rgba(244,67,54,0.4); } 
-}`,
+  0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(211,47,47,0.4); }`,
     htmlCode: `<button class="ruby-glow">Ruby Glow</button>`
   },
   {
@@ -1083,14 +1403,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "2s",
     intensity: "deep 1.04x",
     previewColor: "#1565C0",
-    cssCode: `.sapphire-deep { 
-  background: linear-gradient(135deg, #1565C0, #1976D2); color: white; 
-  animation: sapphireDeep 2s ease-in-out infinite; 
+    cssCode: `.sapphire-deep {
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: sapphireDeep 2s ease-in-out infinite;
 }
 @keyframes sapphireDeep { 
-  0%, 100% { transform: scale(1); box-shadow: 0 5px 15px rgba(21,101,192,0.3); } 
-  50% { transform: scale(1.04); box-shadow: 0 10px 35px rgba(21,101,192,0.5), 0 0 50px rgba(25,118,210,0.3); } 
-}`,
+  0%, 100% { transform: scale(1); box-shadow: 0 5px 15px rgba(21,101,192,0.3); }`,
     htmlCode: `<button class="sapphire-deep">Sapphire Deep</button>`
   },
   {
@@ -1101,14 +1426,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "2.5s",
     intensity: "gradient shift",
     previewColor: "#FF6B6B",
-    cssCode: `.sunset-gradient-pulse { 
-  background: linear-gradient(135deg, #FF6B6B, #FFE66D); color: white; background-size: 200% 200%;
-  animation: sunsetGradientPulse 2.5s ease-in-out infinite; 
+    cssCode: `.sunset-gradient-pulse {
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: sunsetGradientPulse 2.5s ease-in-out infinite;
 }
 @keyframes sunsetGradientPulse { 
-  0%, 100% { background-position: 0% 50%; transform: scale(1); } 
-  50% { background-position: 100% 50%; transform: scale(1.03); box-shadow: 0 10px 30px rgba(255,107,107,0.4); } 
-}`,
+  0%, 100% { background-position: 0% 50%; transform: scale(1); }`,
     htmlCode: `<button class="sunset-gradient-pulse">Sunset Gradient</button>`
   },
   {
@@ -1119,14 +1449,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "3s",
     intensity: "aurora 1.05x",
     previewColor: "#00E676",
-    cssCode: `.aurora-pulse { 
-  background: linear-gradient(135deg, #00E676, #00BCD4, #7C4DFF); color: white; background-size: 300% 300%;
-  animation: auroraPulse 3s ease-in-out infinite; 
+    cssCode: `.aurora-pulse {
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: auroraPulse 3s ease-in-out infinite;
 }
 @keyframes auroraPulse { 
-  0%, 100% { background-position: 0% 50%; transform: scale(1); } 
-  50% { background-position: 100% 50%; transform: scale(1.05); box-shadow: 0 0 40px rgba(0,230,118,0.4); } 
-}`,
+  0%, 100% { background-position: 0% 50%; transform: scale(1); }`,
     htmlCode: `<button class="aurora-pulse">Aurora Pulse</button>`
   },
   {
@@ -1137,16 +1472,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "2s",
     intensity: "rainbow hue",
     previewColor: "#FF0080",
-    cssCode: `.neon-rainbow { 
-  background: linear-gradient(90deg, #FF0080, #FF8C00, #FFD700, #00FF00, #00BFFF, #8A2BE2); 
-  background-size: 300% 100%; color: white;
-  animation: neonRainbow 2s linear infinite; 
+    cssCode: `.neon-rainbow {
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: neonRainbow 2s linear infinite;
 }
 @keyframes neonRainbow { 
-  0% { background-position: 0% 50%; transform: scale(1); } 
-  50% { transform: scale(1.03); box-shadow: 0 0 30px rgba(255,0,128,0.5); } 
-  100% { background-position: 100% 50%; transform: scale(1); } 
-}`,
+  0% { background-position: 0% 50%; transform: scale(1); }`,
     htmlCode: `<button class="neon-rainbow">Neon Rainbow</button>`
   },
   {
@@ -1157,14 +1495,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "1.2s",
     intensity: "digital 1.08x",
     previewColor: "#00FF00",
-    cssCode: `.matrix-green { 
-  background: #111; color: #00FF00; border: 2px solid #00FF00;
-  animation: matrixGreen 1.2s ease-in-out infinite; 
+    cssCode: `.matrix-green {
+  background: rgba(17,17,17,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #00FF00;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: matrixGreen 1.2s ease-in-out infinite;
 }
 @keyframes matrixGreen { 
-  0%, 100% { transform: scale(1); box-shadow: 0 0 10px #00FF00, inset 0 0 10px rgba(0,255,0,0.1); } 
-  50% { transform: scale(1.08); box-shadow: 0 0 30px #00FF00, 0 0 60px rgba(0,255,0,0.5), inset 0 0 20px rgba(0,255,0,0.2); } 
-}`,
+  0%, 100% { transform: scale(1); box-shadow: 0 0 10px #00FF00, inset 0 0 10px rgba(0,255,0,0.1); }`,
     htmlCode: `<button class="matrix-green">Matrix Green</button>`
   },
   {
@@ -1175,14 +1518,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "1.5s",
     intensity: "lava 1.06x",
     previewColor: "#FF5722",
-    cssCode: `.lava-orange { 
-  background: linear-gradient(180deg, #FF5722, #E64A19); color: white;
-  animation: lavaOrange 1.5s ease-in-out infinite; 
+    cssCode: `.lava-orange {
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: lavaOrange 1.5s ease-in-out infinite;
 }
 @keyframes lavaOrange { 
-  0%, 100% { transform: scale(1); box-shadow: 0 5px 15px rgba(255,87,34,0.4); } 
-  50% { transform: scale(1.06); box-shadow: 0 10px 30px rgba(255,87,34,0.6), 0 0 50px rgba(230,74,25,0.3); } 
-}`,
+  0%, 100% { transform: scale(1); box-shadow: 0 5px 15px rgba(255,87,34,0.4); }`,
     htmlCode: `<button class="lava-orange">Lava Orange</button>`
   },
   {
@@ -1193,14 +1541,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "2.5s",
     intensity: "ice 1.03x",
     previewColor: "#81D4FA",
-    cssCode: `.ice-blue { 
-  background: linear-gradient(135deg, #81D4FA, #4FC3F7); color: #01579B;
-  animation: iceBlue 2.5s ease-in-out infinite; 
+    cssCode: `.ice-blue {
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #01579B;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: iceBlue 2.5s ease-in-out infinite;
 }
 @keyframes iceBlue { 
-  0%, 100% { transform: scale(1); box-shadow: 0 5px 15px rgba(129,212,250,0.3); } 
-  50% { transform: scale(1.03); box-shadow: 0 10px 30px rgba(79,195,247,0.5), 0 0 40px rgba(129,212,250,0.3); } 
-}`,
+  0%, 100% { transform: scale(1); box-shadow: 0 5px 15px rgba(129,212,250,0.3); }`,
     htmlCode: `<button class="ice-blue">Ice Blue</button>`
   },
   {
@@ -1211,14 +1564,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "1s",
     intensity: "toxic 1.1x",
     previewColor: "#AA00FF",
-    cssCode: `.toxic-purple { 
-  background: #AA00FF; color: white;
-  animation: toxicPurple 1s ease-in-out infinite; 
+    cssCode: `.toxic-purple {
+  background: rgba(170,0,255,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #AA00FF;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: toxicPurple 1s ease-in-out infinite;
 }
 @keyframes toxicPurple { 
-  0%, 100% { transform: scale(1); box-shadow: 0 0 10px #AA00FF; } 
-  50% { transform: scale(1.1); box-shadow: 0 0 40px #AA00FF, 0 0 80px rgba(170,0,255,0.5); } 
-}`,
+  0%, 100% { transform: scale(1); box-shadow: 0 0 10px #AA00FF; }`,
     htmlCode: `<button class="toxic-purple">Toxic Purple</button>`
   },
   {
@@ -1229,16 +1587,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     duration: "2s",
     intensity: "ultimate combo",
     previewColor: "#FF1744",
-    cssCode: `.cta-ultimate { 
-  background: linear-gradient(135deg, #FF1744, #F50057); color: white; font-weight: bold;
-  animation: ctaUltimate 2s ease-in-out infinite; 
+    cssCode: `.cta-ultimate {
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: ctaUltimate 2s ease-in-out infinite;
 }
 @keyframes ctaUltimate { 
-  0%, 100% { transform: scale(1); box-shadow: 0 5px 20px rgba(255,23,68,0.4); } 
-  25% { transform: scale(1.02) translateY(-2px); } 
-  50% { transform: scale(1.08) translateY(-5px); box-shadow: 0 15px 40px rgba(255,23,68,0.6), 0 0 60px rgba(245,0,87,0.4); } 
-  75% { transform: scale(1.02) translateY(-2px); } 
-}`,
+  0%, 100% { transform: scale(1); box-shadow: 0 5px 20px rgba(255,23,68,0.4); }`,
     htmlCode: `<button class="cta-ultimate">🔥 COMPRE AGORA</button>`
   },
 
@@ -1252,7 +1613,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "blur glow",
     previewColor: "#00FFFF",
     cssCode: `.neon-hover-glow {
-  background: linear-gradient(45deg, #00FFFF, #00CED1);
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #000;
   position: relative;
   z-index: 1;
@@ -1289,7 +1653,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "rainbow border",
     previewColor: "#FF00FF",
     cssCode: `.rainbow-border-glow {
-  background: #1a1a2e;
+  background: rgba(26,26,46,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   border: 3px solid transparent;
   background-clip: padding-box;
@@ -1320,14 +1687,18 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "pulse shadow",
     previewColor: "#00BFFF",
     cssCode: `.pulse-glow-blue {
-  background: #00BFFF;
-  color: white;
+  background: rgba(0,191,255,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #00BFFF;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
   animation: pulseGlowBlue 2s ease-in-out infinite;
 }
 @keyframes pulseGlowBlue {
-  0%, 100% { box-shadow: 0 0 5px #00BFFF, 0 0 10px #00BFFF; }
-  50% { box-shadow: 0 0 20px #00BFFF, 0 0 40px #00BFFF, 0 0 60px #00BFFF; }
-}`,
+  0%, 100% { box-shadow: 0 0 5px #00BFFF, 0 0 10px #00BFFF; }`,
     htmlCode: `<button class="pulse-glow-blue">Pulse Glow</button>`
   },
   {
@@ -1339,7 +1710,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "electric spark",
     previewColor: "#9400D3",
     cssCode: `.electric-purple {
-  background: linear-gradient(135deg, #9400D3, #4B0082);
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   position: relative;
   overflow: hidden;
@@ -1372,19 +1746,24 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "flicker",
     previewColor: "#39FF14",
     cssCode: `.neon-green-flicker {
-  background: transparent;
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #39FF14;
-  border: 2px solid #39FF14;
-  text-shadow: 0 0 10px #39FF14;
-  box-shadow: 0 0 10px #39FF14, inset 0 0 10px rgba(57,255,20,0.1);
-}
-.neon-green-flicker:hover {
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
   animation: neonFlicker 0.5s ease-in-out infinite;
 }
+.neon-green-flicker:hover {
+  background: rgba(139,92,246,0.25);
+  border-color: rgba(139,92,246,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(139,92,246,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
+}
 @keyframes neonFlicker {
-  0%, 100% { opacity: 1; text-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14; }
-  50% { opacity: 0.8; text-shadow: 0 0 5px #39FF14; }
-}`,
+  0%, 100% { opacity: 1; text-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14; }`,
     htmlCode: `<button class="neon-green-flicker">Neon Flicker</button>`
   },
   {
@@ -1396,14 +1775,18 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "fire shadow",
     previewColor: "#FF4500",
     cssCode: `.fire-glow {
-  background: linear-gradient(135deg, #FF4500, #FF8C00, #FFD700);
-  color: white;
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
   animation: fireGlow 1.5s ease-in-out infinite;
 }
 @keyframes fireGlow {
-  0%, 100% { box-shadow: 0 0 10px #FF4500, 0 0 20px #FF8C00; }
-  50% { box-shadow: 0 0 30px #FF4500, 0 0 60px #FF8C00, 0 0 90px #FFD700; }
-}`,
+  0%, 100% { box-shadow: 0 0 10px #FF4500, 0 0 20px #FF8C00; }`,
     htmlCode: `<button class="fire-glow">Fire Glow</button>`
   },
   {
@@ -1415,14 +1798,18 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "ice pulse",
     previewColor: "#87CEEB",
     cssCode: `.ice-blue-glow {
-  background: linear-gradient(135deg, #87CEEB, #00CED1);
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #001a33;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
   animation: iceBlueGlow 2s ease-in-out infinite;
 }
 @keyframes iceBlueGlow {
-  0%, 100% { box-shadow: 0 0 10px rgba(135,206,235,0.5); }
-  50% { box-shadow: 0 0 30px rgba(135,206,235,0.8), 0 0 50px rgba(0,206,209,0.5); }
-}`,
+  0%, 100% { box-shadow: 0 0 10px rgba(135,206,235,0.5); }`,
     htmlCode: `<button class="ice-blue-glow">Ice Glow</button>`
   },
   {
@@ -1434,20 +1821,21 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "plasma wave",
     previewColor: "#FF1493",
     cssCode: `.plasma-pink {
-  background: #FF1493;
-  color: white;
+  background: rgba(255,20,147,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #FF1493;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
   animation: plasmaPink 1.8s ease-in-out infinite;
 }
 @keyframes plasmaPink {
   0%, 100% { 
     box-shadow: 0 0 15px #FF1493; 
     transform: scale(1);
-  }
-  50% { 
-    box-shadow: 0 0 40px #FF1493, 0 0 80px rgba(255,20,147,0.5); 
-    transform: scale(1.02);
-  }
-}`,
+  }`,
     htmlCode: `<button class="plasma-pink">Plasma Pink</button>`
   },
   {
@@ -1459,16 +1847,18 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "shimmer gold",
     previewColor: "#FFD700",
     cssCode: `.gold-shimmer {
-  background: linear-gradient(135deg, #FFD700, #FFA500, #FFD700);
-  background-size: 200% 100%;
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #1a1a1a;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
   animation: goldShimmer 2s linear infinite;
 }
 @keyframes goldShimmer {
-  0% { background-position: 200% 50%; box-shadow: 0 0 10px rgba(255,215,0,0.3); }
-  50% { box-shadow: 0 0 30px rgba(255,215,0,0.6); }
-  100% { background-position: 0% 50%; box-shadow: 0 0 10px rgba(255,215,0,0.3); }
-}`,
+  0% { background-position: 200% 50%; box-shadow: 0 0 10px rgba(255,215,0,0.3); }`,
     htmlCode: `<button class="gold-shimmer">Gold Shimmer</button>`
   },
   {
@@ -1480,16 +1870,18 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "cyber pulse",
     previewColor: "#00FFFF",
     cssCode: `.cyber-cyan {
-  background: transparent;
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #00FFFF;
-  border: 2px solid #00FFFF;
-  box-shadow: 0 0 10px #00FFFF, inset 0 0 10px rgba(0,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
   animation: cyberCyan 1s ease-in-out infinite;
 }
 @keyframes cyberCyan {
-  0%, 100% { box-shadow: 0 0 10px #00FFFF, inset 0 0 10px rgba(0,255,255,0.1); }
-  50% { box-shadow: 0 0 30px #00FFFF, 0 0 50px rgba(0,255,255,0.5), inset 0 0 20px rgba(0,255,255,0.2); }
-}`,
+  0%, 100% { box-shadow: 0 0 10px #00FFFF, inset 0 0 10px rgba(0,255,255,0.1); }`,
     htmlCode: `<button class="cyber-cyan">Cyber Cyan</button>`
   },
   {
@@ -1501,15 +1893,18 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "lava flow",
     previewColor: "#FF6347",
     cssCode: `.lava-glow {
-  background: linear-gradient(135deg, #FF6347, #FF4500, #DC143C);
-  color: white;
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
   animation: lavaGlow 2.5s ease-in-out infinite;
 }
 @keyframes lavaGlow {
-  0%, 100% { box-shadow: 0 5px 15px rgba(255,99,71,0.4); }
-  33% { box-shadow: 0 5px 30px rgba(255,69,0,0.6), 0 0 50px rgba(220,20,60,0.3); }
-  66% { box-shadow: 0 5px 20px rgba(255,99,71,0.5); }
-}`,
+  0%, 100% { box-shadow: 0 5px 15px rgba(255,99,71,0.4); }`,
     htmlCode: `<button class="lava-glow">Lava Glow</button>`
   },
   {
@@ -1521,16 +1916,18 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "aurora shift",
     previewColor: "#00FF7F",
     cssCode: `.aurora-borealis {
-  background: linear-gradient(135deg, #00FF7F, #00CED1, #9400D3, #FF1493);
-  background-size: 400% 400%;
-  color: white;
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
   animation: auroraBorealis 4s ease infinite;
 }
 @keyframes auroraBorealis {
-  0% { background-position: 0% 50%; box-shadow: 0 0 20px rgba(0,255,127,0.5); }
-  50% { background-position: 100% 50%; box-shadow: 0 0 20px rgba(148,0,211,0.5); }
-  100% { background-position: 0% 50%; box-shadow: 0 0 20px rgba(0,255,127,0.5); }
-}`,
+  0% { background-position: 0% 50%; box-shadow: 0 0 20px rgba(0,255,127,0.5); }`,
     htmlCode: `<button class="aurora-borealis">Aurora</button>`
   },
   {
@@ -1542,16 +1939,18 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "sunset pulse",
     previewColor: "#FF6B6B",
     cssCode: `.sunset-gradient-glow {
-  background: linear-gradient(135deg, #FF6B6B, #FFE66D, #4ECDC4);
-  background-size: 200% 200%;
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #1a1a1a;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
   animation: sunsetGradientGlow 3s ease infinite;
 }
 @keyframes sunsetGradientGlow {
-  0% { background-position: 0% 50%; box-shadow: 0 0 15px rgba(255,107,107,0.4); }
-  50% { background-position: 100% 50%; box-shadow: 0 0 25px rgba(78,205,196,0.4); }
-  100% { background-position: 0% 50%; box-shadow: 0 0 15px rgba(255,107,107,0.4); }
-}`,
+  0% { background-position: 0% 50%; box-shadow: 0 0 15px rgba(255,107,107,0.4); }`,
     htmlCode: `<button class="sunset-gradient-glow">Sunset Glow</button>`
   },
   {
@@ -1563,14 +1962,18 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "toxic pulse",
     previewColor: "#7FFF00",
     cssCode: `.toxic-green {
-  background: #7FFF00;
+  background: rgba(127,255,0,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #1a1a1a;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
   animation: toxicGreen 1.2s ease-in-out infinite;
 }
 @keyframes toxicGreen {
-  0%, 100% { box-shadow: 0 0 10px #7FFF00, 0 0 20px rgba(127,255,0,0.3); }
-  50% { box-shadow: 0 0 30px #7FFF00, 0 0 60px rgba(127,255,0,0.5), 0 0 90px rgba(127,255,0,0.2); }
-}`,
+  0%, 100% { box-shadow: 0 0 10px #7FFF00, 0 0 20px rgba(127,255,0,0.3); }`,
     htmlCode: `<button class="toxic-green">Toxic Green</button>`
   },
   {
@@ -1582,7 +1985,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "space glow",
     previewColor: "#191970",
     cssCode: `.deep-space {
-  background: linear-gradient(135deg, #191970, #000080, #4B0082);
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   position: relative;
   overflow: hidden;
@@ -1615,7 +2021,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "left slide",
     previewColor: "#3498DB",
     cssCode: `.slide-fill-left {
-  background: transparent;
+  background: rgba(52,152,219,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #3498DB;
   border: 2px solid #3498DB;
   position: relative;
@@ -1649,7 +2058,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "right slide",
     previewColor: "#E74C3C",
     cssCode: `.slide-fill-right {
-  background: transparent;
+  background: rgba(231,76,60,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #E74C3C;
   border: 2px solid #E74C3C;
   position: relative;
@@ -1683,7 +2095,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "up slide",
     previewColor: "#2ECC71",
     cssCode: `.slide-fill-up {
-  background: transparent;
+  background: rgba(46,204,113,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #2ECC71;
   border: 2px solid #2ECC71;
   position: relative;
@@ -1717,7 +2132,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "down slide",
     previewColor: "#9B59B6",
     cssCode: `.slide-fill-down {
-  background: transparent;
+  background: rgba(155,89,182,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #9B59B6;
   border: 2px solid #9B59B6;
   position: relative;
@@ -1751,7 +2169,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "center expand",
     previewColor: "#F39C12",
     cssCode: `.center-expand {
-  background: transparent;
+  background: rgba(243,156,18,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #F39C12;
   border: 2px solid #F39C12;
   position: relative;
@@ -1787,7 +2208,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "diagonal sweep",
     previewColor: "#1ABC9C",
     cssCode: `.diagonal-fill {
-  background: transparent;
+  background: rgba(26,188,156,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #1ABC9C;
   border: 2px solid #1ABC9C;
   position: relative;
@@ -1822,7 +2246,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "double slide",
     previewColor: "#E91E63",
     cssCode: `.double-fill {
-  background: transparent;
+  background: rgba(233,30,99,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #E91E63;
   border: 2px solid #E91E63;
   position: relative;
@@ -1855,7 +2282,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "corner expand",
     previewColor: "#673AB7",
     cssCode: `.corner-fill {
-  background: transparent;
+  background: rgba(103,58,183,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #673AB7;
   border: 2px solid #673AB7;
   position: relative;
@@ -1890,7 +2320,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "shutter vertical",
     previewColor: "#00BCD4",
     cssCode: `.shutter-open {
-  background: transparent;
+  background: rgba(0,188,212,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #00BCD4;
   border: 2px solid #00BCD4;
   position: relative;
@@ -1923,7 +2356,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "striped",
     previewColor: "#FF5722",
     cssCode: `.stripe-fill {
-  background: transparent;
+  background: rgba(255,87,34,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #FF5722;
   border: 2px solid #FF5722;
   position: relative;
@@ -1953,7 +2389,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "liquid wave",
     previewColor: "#2196F3",
     cssCode: `.liquid-fill {
-  background: transparent;
+  background: rgba(33,150,243,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #2196F3;
   border: 2px solid #2196F3;
   position: relative;
@@ -1986,7 +2425,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "gradient sweep",
     previewColor: "#FF6B6B",
     cssCode: `.gradient-sweep {
-  background: transparent;
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #FF6B6B;
   border: 2px solid #FF6B6B;
   position: relative;
@@ -2016,7 +2458,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "zoom in",
     previewColor: "#4CAF50",
     cssCode: `.zoom-fill {
-  background: transparent;
+  background: rgba(76,175,80,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #4CAF50;
   border: 2px solid #4CAF50;
   position: relative;
@@ -2047,7 +2492,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "spotlight",
     previewColor: "#795548",
     cssCode: `.spotlight-fill {
-  background: #795548;
+  background: rgba(121,85,72,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   position: relative;
   overflow: hidden;
@@ -2075,7 +2523,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "cross fill",
     previewColor: "#607D8B",
     cssCode: `.x-fill {
-  background: transparent;
+  background: rgba(96,125,139,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #607D8B;
   border: 2px solid #607D8B;
   position: relative;
@@ -2108,16 +2559,18 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "press depth",
     previewColor: "#4A90D9",
     cssCode: `.btn-3d-press {
-  background: linear-gradient(180deg, #5BA3EC 0%, #4A90D9 100%);
-  color: white;
-  border: none;
-  box-shadow: 0 6px 0 #2E5B8A, 0 8px 10px rgba(0,0,0,0.3);
-  transition: all 0.15s ease;
-  transform: translateY(0);
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .btn-3d-press:active {
-  box-shadow: 0 2px 0 #2E5B8A, 0 3px 5px rgba(0,0,0,0.2);
-  transform: translateY(4px);
+  transform: translateY(1px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2), inset 0 2px 4px rgba(0,0,0,0.1);
 }`,
     htmlCode: `<button class="btn-3d-press">3D Press</button>`
   },
@@ -2130,13 +2583,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "180deg flip",
     previewColor: "#E74C3C",
     cssCode: `.flip-card-btn {
-  background: #E74C3C;
-  color: white;
-  transform-style: preserve-3d;
-  transition: transform 0.6s;
+  background: rgba(231,76,60,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #E74C3C;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .flip-card-btn:hover {
-  transform: rotateY(180deg);
+  background: rgba(231,76,60,0.25);
+  border-color: rgba(231,76,60,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(231,76,60,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }`,
     htmlCode: `<button class="flip-card-btn">Flip Card</button>`
   },
@@ -2149,14 +2609,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "10deg tilt",
     previewColor: "#27AE60",
     cssCode: `.tilt-hover {
-  background: #27AE60;
-  color: white;
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease;
+  background: rgba(39,174,96,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #27AE60;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .tilt-hover:hover {
-  transform: perspective(500px) rotateX(10deg) rotateY(-10deg) scale(1.05);
-  box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
+  background: rgba(39,174,96,0.25);
+  border-color: rgba(39,174,96,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(39,174,96,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }`,
     htmlCode: `<button class="tilt-hover">Tilt Hover</button>`
   },
@@ -2169,14 +2635,18 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "push shadow",
     previewColor: "#8E44AD",
     cssCode: `.push-down {
-  background: #8E44AD;
-  color: white;
-  box-shadow: 0 8px 0 #5B2C6F, 0 12px 20px rgba(0,0,0,0.2);
-  transition: all 0.2s ease;
+  background: rgba(142,68,173,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8E44AD;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .push-down:active {
-  box-shadow: 0 2px 0 #5B2C6F, 0 4px 8px rgba(0,0,0,0.2);
-  transform: translateY(6px);
+  transform: translateY(1px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2), inset 0 2px 4px rgba(0,0,0,0.1);
 }`,
     htmlCode: `<button class="push-down">Push Down</button>`
   },
@@ -2189,13 +2659,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "20deg rotateX",
     previewColor: "#16A085",
     cssCode: `.rotate-x {
-  background: #16A085;
-  color: white;
-  transform-style: preserve-3d;
-  transition: transform 0.5s ease;
+  background: rgba(22,160,133,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #16A085;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .rotate-x:hover {
-  transform: perspective(400px) rotateX(20deg);
+  background: rgba(22,160,133,0.25);
+  border-color: rgba(22,160,133,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(22,160,133,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }`,
     htmlCode: `<button class="rotate-x">Rotate X</button>`
   },
@@ -2208,13 +2685,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "20deg rotateY",
     previewColor: "#D35400",
     cssCode: `.rotate-y {
-  background: #D35400;
-  color: white;
-  transform-style: preserve-3d;
-  transition: transform 0.5s ease;
+  background: rgba(211,84,0,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #D35400;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .rotate-y:hover {
-  transform: perspective(400px) rotateY(20deg);
+  background: rgba(211,84,0,0.25);
+  border-color: rgba(211,84,0,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(211,84,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }`,
     htmlCode: `<button class="rotate-y">Rotate Y</button>`
   },
@@ -2227,29 +2711,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "multi-layer",
     previewColor: "#2C3E50",
     cssCode: `.layered-shadow {
-  background: #2C3E50;
-  color: white;
-  box-shadow: 
-    1px 1px 0 #1a252f,
-    2px 2px 0 #1a252f,
-    3px 3px 0 #1a252f,
-    4px 4px 0 #1a252f,
-    5px 5px 0 #1a252f,
-    6px 6px 15px rgba(0,0,0,0.3);
+  background: rgba(44,62,80,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #2C3E50;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
   transition: all 0.3s ease;
 }
 .layered-shadow:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 
-    1px 1px 0 #1a252f,
-    2px 2px 0 #1a252f,
-    3px 3px 0 #1a252f,
-    4px 4px 0 #1a252f,
-    5px 5px 0 #1a252f,
-    6px 6px 0 #1a252f,
-    7px 7px 0 #1a252f,
-    8px 8px 0 #1a252f,
-    9px 9px 20px rgba(0,0,0,0.4);
+  background: rgba(44,62,80,0.25);
+  border-color: rgba(44,62,80,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(44,62,80,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }`,
     htmlCode: `<button class="layered-shadow">Layered 3D</button>`
   },
@@ -2262,13 +2737,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "cube spin",
     previewColor: "#9B59B6",
     cssCode: `.cube-rotate {
-  background: #9B59B6;
-  color: white;
-  transform-style: preserve-3d;
-  transition: transform 0.6s ease;
+  background: rgba(155,89,182,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #9B59B6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .cube-rotate:hover {
-  transform: perspective(500px) rotateX(360deg) rotateY(180deg);
+  background: rgba(155,89,182,0.25);
+  border-color: rgba(155,89,182,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(155,89,182,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }`,
     htmlCode: `<button class="cube-rotate">Cube Rotate</button>`
   },
@@ -2281,14 +2763,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "float shadow",
     previewColor: "#3498DB",
     cssCode: `.float-up-3d {
-  background: #3498DB;
-  color: white;
-  box-shadow: 0 4px 15px rgba(52,152,219,0.3);
-  transition: all 0.4s ease;
+  background: rgba(52,152,219,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #3498DB;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .float-up-3d:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(52,152,219,0.4);
+  background: rgba(52,152,219,0.25);
+  border-color: rgba(52,152,219,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(52,152,219,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }`,
     htmlCode: `<button class="float-up-3d">Float Up</button>`
   },
@@ -2301,13 +2789,18 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "squeeze transform",
     previewColor: "#E91E63",
     cssCode: `.squeeze-3d {
-  background: #E91E63;
-  color: white;
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease;
+  background: rgba(233,30,99,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #E91E63;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .squeeze-3d:active {
-  transform: perspective(300px) rotateX(5deg) scaleY(0.95) scaleX(1.05);
+  transform: translateY(1px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2), inset 0 2px 4px rgba(0,0,0,0.1);
 }`,
     htmlCode: `<button class="squeeze-3d">Squeeze 3D</button>`
   },
@@ -2320,14 +2813,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "depth slide",
     previewColor: "#00BCD4",
     cssCode: `.slide-depth {
-  background: #00BCD4;
-  color: white;
-  transform-style: preserve-3d;
-  transition: all 0.4s ease;
+  background: rgba(0,188,212,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #00BCD4;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .slide-depth:hover {
-  transform: perspective(500px) translateZ(20px) translateX(10px);
-  box-shadow: -10px 10px 30px rgba(0,0,0,0.2);
+  background: rgba(0,188,212,0.25);
+  border-color: rgba(0,188,212,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(0,188,212,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }`,
     htmlCode: `<button class="slide-depth">Slide Depth</button>`
   },
@@ -2340,14 +2839,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "fold",
     previewColor: "#FF9800",
     cssCode: `.fold-open {
-  background: #FF9800;
-  color: white;
-  transform-style: preserve-3d;
-  transform-origin: left center;
-  transition: transform 0.5s ease;
+  background: rgba(255,152,0,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #FF9800;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .fold-open:hover {
-  transform: perspective(400px) rotateY(-15deg);
+  background: rgba(255,152,0,0.25);
+  border-color: rgba(255,152,0,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(255,152,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }`,
     htmlCode: `<button class="fold-open">Fold Open</button>`
   },
@@ -2360,14 +2865,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "pop forward",
     previewColor: "#673AB7",
     cssCode: `.pop-out-3d {
-  background: #673AB7;
-  color: white;
-  transform-style: preserve-3d;
+  background: rgba(103,58,183,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #673AB7;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
   transition: all 0.3s ease;
 }
 .pop-out-3d:hover {
-  transform: perspective(400px) translateZ(50px) scale(1.1);
-  box-shadow: 0 25px 50px rgba(103,58,183,0.4);
+  background: rgba(103,58,183,0.25);
+  border-color: rgba(103,58,183,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(103,58,183,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }`,
     htmlCode: `<button class="pop-out-3d">Pop Out</button>`
   },
@@ -2380,14 +2891,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "door swing",
     previewColor: "#795548",
     cssCode: `.swing-door {
-  background: #795548;
-  color: white;
-  transform-style: preserve-3d;
-  transform-origin: right center;
-  transition: transform 0.5s ease;
+  background: rgba(121,85,72,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #795548;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .swing-door:hover {
-  transform: perspective(500px) rotateY(30deg);
+  background: rgba(121,85,72,0.25);
+  border-color: rgba(121,85,72,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(121,85,72,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }`,
     htmlCode: `<button class="swing-door">Swing Door</button>`
   },
@@ -2400,20 +2917,18 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "emboss",
     previewColor: "#607D8B",
     cssCode: `.emboss-press {
-  background: linear-gradient(145deg, #6d8a99, #5a737f);
-  color: white;
-  box-shadow: 
-    5px 5px 10px rgba(0,0,0,0.2),
-    -5px -5px 10px rgba(255,255,255,0.1),
-    inset 0 0 0 transparent;
-  transition: all 0.2s ease;
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .emboss-press:active {
-  box-shadow: 
-    2px 2px 5px rgba(0,0,0,0.2),
-    -2px -2px 5px rgba(255,255,255,0.05),
-    inset 3px 3px 10px rgba(0,0,0,0.2);
-  transform: translateY(2px);
+  transform: translateY(1px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2), inset 0 2px 4px rgba(0,0,0,0.1);
 }`,
     htmlCode: `<button class="emboss-press">Emboss</button>`
   },
@@ -2428,7 +2943,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "arrow slide",
     previewColor: "#3498DB",
     cssCode: `.arrow-slide {
-  background: #3498DB;
+  background: rgba(52,152,219,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   display: inline-flex;
   align-items: center;
@@ -2454,7 +2972,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "bounce icon",
     previewColor: "#E74C3C",
     cssCode: `.icon-bounce {
-  background: #E74C3C;
+  background: rgba(231,76,60,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   display: inline-flex;
   align-items: center;
@@ -2483,7 +3004,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "360deg spin",
     previewColor: "#27AE60",
     cssCode: `.icon-spin {
-  background: #27AE60;
+  background: rgba(39,174,96,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   display: inline-flex;
   align-items: center;
@@ -2508,7 +3032,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "scale 1.3x",
     previewColor: "#9B59B6",
     cssCode: `.icon-scale {
-  background: #9B59B6;
+  background: rgba(155,89,182,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   display: inline-flex;
   align-items: center;
@@ -2533,7 +3060,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "shake x",
     previewColor: "#F39C12",
     cssCode: `.icon-shake {
-  background: #F39C12;
+  background: rgba(243,156,18,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   display: inline-flex;
   align-items: center;
@@ -2560,7 +3090,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "pulse infinite",
     previewColor: "#E91E63",
     cssCode: `.icon-pulse {
-  background: #E91E63;
+  background: rgba(233,30,99,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   display: inline-flex;
   align-items: center;
@@ -2586,7 +3119,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "flip Y",
     previewColor: "#00BCD4",
     cssCode: `.icon-flip {
-  background: #00BCD4;
+  background: rgba(0,188,212,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   display: inline-flex;
   align-items: center;
@@ -2611,7 +3147,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "slide reveal",
     previewColor: "#673AB7",
     cssCode: `.icon-slide-in {
-  background: #673AB7;
+  background: rgba(103,58,183,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   display: inline-flex;
   align-items: center;
@@ -2640,7 +3179,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "swing rotate",
     previewColor: "#FF5722",
     cssCode: `.icon-swing {
-  background: #FF5722;
+  background: rgba(255,87,34,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   display: inline-flex;
   align-items: center;
@@ -2671,7 +3213,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "float infinite",
     previewColor: "#2196F3",
     cssCode: `.icon-float {
-  background: #2196F3;
+  background: rgba(33,150,243,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   display: inline-flex;
   align-items: center;
@@ -2697,7 +3242,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "jelly wobble",
     previewColor: "#4CAF50",
     cssCode: `.icon-jelly {
-  background: #4CAF50;
+  background: rgba(76,175,80,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   display: inline-flex;
   align-items: center;
@@ -2728,7 +3276,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "sparkle glow",
     previewColor: "#FFD700",
     cssCode: `.icon-sparkle {
-  background: #FFD700;
+  background: rgba(255,215,0,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #1a1a1a;
   display: inline-flex;
   align-items: center;
@@ -2754,7 +3305,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "launch up",
     previewColor: "#1565C0",
     cssCode: `.icon-rocket {
-  background: #1565C0;
+  background: rgba(21,101,192,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   display: inline-flex;
   align-items: center;
@@ -2779,7 +3333,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "wave rotate",
     previewColor: "#FF9800",
     cssCode: `.icon-wave {
-  background: #FF9800;
+  background: rgba(255,152,0,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   display: inline-flex;
   align-items: center;
@@ -2812,7 +3369,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "heartbeat",
     previewColor: "#E91E63",
     cssCode: `.icon-heartbeat {
-  background: #E91E63;
+  background: rgba(233,30,99,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   display: inline-flex;
   align-items: center;
@@ -2845,7 +3405,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "extreme glow",
     previewColor: "#00FFFF",
     cssCode: `.neon-pulse-core {
-  background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+  background: rgba(10,10,10,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #00FFFF;
   border: 2px solid #00FFFF;
   position: relative;
@@ -2880,26 +3443,24 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "lightning flash",
     previewColor: "#FFFF00",
     cssCode: `.electric-storm {
-  background: #1a1a2e;
+  background: rgba(26,26,46,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #FFFF00;
-  border: 2px solid transparent;
-  position: relative;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  animation: electricStorm 0.3s ease-out;
 }
 .electric-storm:hover {
-  animation: electricStorm 0.3s ease-out;
-  border-color: #FFFF00;
-  box-shadow: 
-    0 0 10px #FFFF00,
-    0 0 40px #FFFF00,
-    0 0 80px rgba(255,255,0,0.5),
-    inset 0 0 20px rgba(255,255,0,0.2);
+  background: rgba(26,26,46,0.25);
+  border-color: rgba(26,26,46,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(26,26,46,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 @keyframes electricStorm {
-  0%, 100% { filter: brightness(1); }
-  25% { filter: brightness(3); }
-  50% { filter: brightness(0.8); }
-  75% { filter: brightness(2.5); }
-}`,
+  0%, 100% { filter: brightness(1); }`,
     htmlCode: `<button class="electric-storm">⚡ Storm</button>`
   },
   {
@@ -2911,17 +3472,18 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "flowing plasma",
     previewColor: "#FF00FF",
     cssCode: `.plasma-wave {
-  background: linear-gradient(90deg, #FF00FF, #00FFFF, #FF00FF);
-  background-size: 200% 100%;
-  color: white;
-  border: none;
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
   animation: plasmaFlow 3s ease-in-out infinite;
-  box-shadow: 0 0 30px rgba(255,0,255,0.5);
 }
 @keyframes plasmaFlow {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}`,
+  0%, 100% { background-position: 0% 50%; }`,
     htmlCode: `<button class="plasma-wave">Plasma</button>`
   },
   {
@@ -2933,19 +3495,18 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "aurora shift",
     previewColor: "#00FF88",
     cssCode: `.aurora-borealis {
-  background: linear-gradient(135deg, #00FF88, #00BFFF, #FF00FF, #00FF88);
-  background-size: 400% 400%;
-  color: white;
-  text-shadow: 0 0 10px rgba(0,0,0,0.5);
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
   animation: auroraShift 4s ease-in-out infinite;
-  box-shadow: 0 0 40px rgba(0,255,136,0.4);
 }
 @keyframes auroraShift {
-  0%, 100% { background-position: 0% 50%; }
-  25% { background-position: 100% 0%; }
-  50% { background-position: 100% 100%; }
-  75% { background-position: 0% 100%; }
-}`,
+  0%, 100% { background-position: 0% 50%; }`,
     htmlCode: `<button class="aurora-borealis">Aurora</button>`
   },
   {
@@ -2957,9 +3518,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "holo shine",
     previewColor: "#C0C0C0",
     cssCode: `.holographic-shine {
-  background: linear-gradient(135deg, 
-    #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff
-  );
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   background-size: 300% 300%;
   color: white;
   text-shadow: 0 1px 2px rgba(0,0,0,0.5);
@@ -2994,18 +3556,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "glass blur",
     previewColor: "#FFFFFF",
     cssCode: `.glass-morph {
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.2);
-  color: white;
-  transition: all 0.4s ease;
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .glass-morph:hover {
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(20px);
-  border-color: rgba(255,255,255,0.4);
-  box-shadow: 0 8px 32px rgba(255,255,255,0.1);
-  transform: translateY(-3px);
+  background: rgba(139,92,246,0.25);
+  border-color: rgba(139,92,246,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(139,92,246,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }`,
     htmlCode: `<button class="glass-morph">Glass</button>`
   },
@@ -3018,10 +3582,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "crystal refract",
     previewColor: "#E0F7FA",
     cssCode: `.frosted-crystal {
-  background: linear-gradient(135deg, 
-    rgba(224,247,250,0.3), 
-    rgba(255,255,255,0.1)
-  );
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   backdrop-filter: blur(15px) saturate(180%);
   border: 1px solid rgba(255,255,255,0.3);
   color: #0097A7;
@@ -3053,21 +3617,18 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "mercury flow",
     previewColor: "#B0BEC5",
     cssCode: `.liquid-metal {
-  background: linear-gradient(135deg, 
-    #2c3e50, #bdc3c7, #2c3e50, #95a5a6
-  );
-  background-size: 400% 400%;
-  color: white;
-  border: none;
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
   animation: liquidMetal 2s ease infinite;
-  box-shadow: 
-    inset 0 2px 10px rgba(255,255,255,0.3),
-    0 5px 15px rgba(0,0,0,0.3);
 }
 @keyframes liquidMetal {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}`,
+  0%, 100% { background-position: 0% 50%; }`,
     htmlCode: `<button class="liquid-metal">Mercury</button>`
   },
   {
@@ -3079,7 +3640,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "magnetic force",
     previewColor: "#3F51B5",
     cssCode: `.magnetic-pull {
-  background: #3F51B5;
+  background: rgba(63,81,181,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   position: relative;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -3113,14 +3677,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "sweep diagonal",
     previewColor: "#9C27B0",
     cssCode: `.gradient-sweep {
-  background: linear-gradient(135deg, #9C27B0 50%, #E91E63 50%);
-  background-size: 300% 100%;
-  background-position: 100% 0;
-  color: white;
-  transition: background-position 0.6s ease;
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .gradient-sweep:hover {
-  background-position: 0% 0;
+  background: rgba(139,92,246,0.25);
+  border-color: rgba(139,92,246,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(139,92,246,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }`,
     htmlCode: `<button class="gradient-sweep">Sweep</button>`
   },
@@ -3135,19 +3705,24 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "full flip",
     previewColor: "#FF5722",
     cssCode: `.cube-flip {
-  background: #FF5722;
-  color: white;
-  transform-style: preserve-3d;
-  perspective: 500px;
-}
-.cube-flip:hover {
+  background: rgba(255,87,34,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #FF5722;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
   animation: cubeFlip 0.6s ease-out;
 }
+.cube-flip:hover {
+  background: rgba(255,87,34,0.25);
+  border-color: rgba(255,87,34,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(255,87,34,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
+}
 @keyframes cubeFlip {
-  0% { transform: rotateX(0) rotateY(0); }
-  50% { transform: rotateX(180deg) rotateY(90deg); }
-  100% { transform: rotateX(360deg) rotateY(0); }
-}`,
+  0% { transform: rotateX(0) rotateY(0); }`,
     htmlCode: `<button class="cube-flip">Cube</button>`
   },
   {
@@ -3159,25 +3734,24 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "deep push",
     previewColor: "#4CAF50",
     cssCode: `.depth-push {
-  background: #4CAF50;
-  color: white;
-  box-shadow: 
-    0 6px 0 #2E7D32,
-    0 8px 15px rgba(0,0,0,0.3);
-  transform: translateY(0);
-  transition: all 0.15s ease;
+  background: rgba(76,175,80,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #4CAF50;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .depth-push:hover {
-  transform: translateY(3px);
-  box-shadow: 
-    0 3px 0 #2E7D32,
-    0 4px 8px rgba(0,0,0,0.3);
+  background: rgba(76,175,80,0.25);
+  border-color: rgba(76,175,80,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(76,175,80,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 .depth-push:active {
-  transform: translateY(6px);
-  box-shadow: 
-    0 0 0 #2E7D32,
-    0 1px 3px rgba(0,0,0,0.3);
+  transform: translateY(1px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2), inset 0 2px 4px rgba(0,0,0,0.1);
 }`,
     htmlCode: `<button class="depth-push">Push Me</button>`
   },
@@ -3190,16 +3764,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "float shadow",
     previewColor: "#2196F3",
     cssCode: `.floating-card {
-  background: #2196F3;
-  color: white;
-  box-shadow: 0 4px 15px rgba(33,150,243,0.3);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: rgba(33,150,243,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #2196F3;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .floating-card:hover {
-  transform: translateY(-8px) rotateX(5deg);
-  box-shadow: 
-    0 20px 40px rgba(33,150,243,0.4),
-    0 0 0 1px rgba(255,255,255,0.1);
+  background: rgba(33,150,243,0.25);
+  border-color: rgba(33,150,243,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(33,150,243,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }`,
     htmlCode: `<button class="floating-card">Float</button>`
   },
@@ -3212,16 +3790,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "tilt 15deg",
     previewColor: "#673AB7",
     cssCode: `.perspective-tilt {
-  background: linear-gradient(135deg, #673AB7, #9C27B0);
-  color: white;
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease;
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #8b5cf6;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .perspective-tilt:hover {
-  transform: perspective(500px) rotateX(-10deg) rotateY(10deg) scale(1.05);
-  box-shadow: 
-    -5px 5px 20px rgba(103,58,183,0.4),
-    5px -5px 20px rgba(156,39,176,0.4);
+  background: rgba(139,92,246,0.25);
+  border-color: rgba(139,92,246,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(139,92,246,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }`,
     htmlCode: `<button class="perspective-tilt">Tilt</button>`
   },
@@ -3234,24 +3816,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "text extrude",
     previewColor: "#795548",
     cssCode: `.extruded-text {
-  background: #795548;
-  color: white;
-  text-shadow: 
-    1px 1px 0 #5D4037,
-    2px 2px 0 #4E342E,
-    3px 3px 0 #3E2723,
-    4px 4px 10px rgba(0,0,0,0.4);
-  transition: all 0.4s ease;
+  background: rgba(121,85,72,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #795548;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .extruded-text:hover {
-  transform: translate(-2px, -2px);
-  text-shadow: 
-    1px 1px 0 #5D4037,
-    2px 2px 0 #4E342E,
-    3px 3px 0 #3E2723,
-    4px 4px 0 #3E2723,
-    5px 5px 0 #3E2723,
-    6px 6px 15px rgba(0,0,0,0.5);
+  background: rgba(121,85,72,0.25);
+  border-color: rgba(121,85,72,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(121,85,72,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }`,
     htmlCode: `<button class="extruded-text">Extrude</button>`
   },
@@ -3266,7 +3844,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "burst particles",
     previewColor: "#E91E63",
     cssCode: `.particle-burst {
-  background: #E91E63;
+  background: rgba(233,30,99,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   position: relative;
   overflow: visible;
@@ -3306,7 +3887,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "triple ripple",
     previewColor: "#00BCD4",
     cssCode: `.ripple-echo {
-  background: #00BCD4;
+  background: rgba(0,188,212,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   position: relative;
   overflow: visible;
@@ -3341,26 +3925,21 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "heart glow",
     previewColor: "#F44336",
     cssCode: `.heartbeat-glow {
-  background: #F44336;
-  color: white;
+  background: rgba(244,67,54,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #F44336;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
   animation: heartbeatGlow 1.5s ease-in-out infinite;
 }
 @keyframes heartbeatGlow {
   0%, 100% { 
     transform: scale(1); 
     box-shadow: 0 0 0 0 rgba(244,67,54,0.7);
-  }
-  14% { 
-    transform: scale(1.1); 
-    box-shadow: 0 0 30px 10px rgba(244,67,54,0.5);
-  }
-  28% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244,67,54,0.4); }
-  42% { 
-    transform: scale(1.1); 
-    box-shadow: 0 0 30px 10px rgba(244,67,54,0.5);
-  }
-  70% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244,67,54,0); }
-}`,
+  }`,
     htmlCode: `<button class="heartbeat-glow">❤️ Beat</button>`
   },
   {
@@ -3372,7 +3951,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "sonar detect",
     previewColor: "#4CAF50",
     cssCode: `.sonar-ping {
-  background: #4CAF50;
+  background: rgba(76,175,80,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   position: relative;
 }
@@ -3401,23 +3983,22 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "core energy",
     previewColor: "#FFEB3B",
     cssCode: `.energy-core {
-  background: radial-gradient(circle, #FFEB3B 0%, #FF9800 100%);
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #333;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
   animation: energyCore 2s ease-in-out infinite;
-  box-shadow: 0 0 20px rgba(255,235,59,0.5);
 }
 @keyframes energyCore {
   0%, 100% { 
     transform: scale(1);
     box-shadow: 0 0 20px rgba(255,235,59,0.5);
     filter: brightness(1);
-  }
-  50% { 
-    transform: scale(1.05);
-    box-shadow: 0 0 40px rgba(255,235,59,0.8), 0 0 60px rgba(255,152,0,0.4);
-    filter: brightness(1.2);
-  }
-}`,
+  }`,
     htmlCode: `<button class="energy-core">⚡ Energy</button>`
   },
 
@@ -3431,7 +4012,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "glitch shift",
     previewColor: "#FF0080",
     cssCode: `.cyber-glitch {
-  background: #1a1a2e;
+  background: rgba(26,26,46,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #FF0080;
   border: 2px solid #FF0080;
   position: relative;
@@ -3487,7 +4071,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "matrix flow",
     previewColor: "#00FF00",
     cssCode: `.matrix-rain {
-  background: #0a0a0a;
+  background: rgba(10,10,10,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #00FF00;
   border: 1px solid #00FF00;
   font-family: monospace;
@@ -3519,27 +4106,18 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "neon flicker",
     previewColor: "#FF1493",
     cssCode: `.neon-sign {
-  background: transparent;
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #FF1493;
-  border: 3px solid #FF1493;
-  text-shadow: 
-    0 0 10px #FF1493,
-    0 0 20px #FF1493,
-    0 0 40px #FF1493;
-  box-shadow: 
-    0 0 10px #FF1493,
-    inset 0 0 10px rgba(255,20,147,0.3);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
   animation: neonSign 2s ease-in-out infinite;
 }
 @keyframes neonSign {
-  0%, 100% { opacity: 1; filter: brightness(1); }
-  8% { opacity: 0.8; filter: brightness(0.8); }
-  10% { opacity: 1; filter: brightness(1.2); }
-  20% { opacity: 0.9; }
-  50% { opacity: 1; filter: brightness(1); }
-  52% { opacity: 0.7; filter: brightness(0.7); }
-  54% { opacity: 1; filter: brightness(1.1); }
-}`,
+  0%, 100% { opacity: 1; filter: brightness(1); }`,
     htmlCode: `<button class="neon-sign">OPEN</button>`
   },
   {
@@ -3551,7 +4129,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "scan line",
     previewColor: "#00BFFF",
     cssCode: `.laser-scan {
-  background: #1a1a2e;
+  background: rgba(26,26,46,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #00BFFF;
   border: 1px solid #00BFFF;
   position: relative;
@@ -3586,26 +4167,24 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "pixel press",
     previewColor: "#FF6B6B",
     cssCode: `.retro-arcade {
-  background: #FF6B6B;
-  color: white;
-  border: 4px solid #C0392B;
-  border-radius: 0;
-  box-shadow: 
-    4px 4px 0 #C0392B,
-    8px 8px 0 #922B21;
-  font-family: 'Press Start 2P', monospace;
-  text-transform: uppercase;
-  transition: all 0.1s ease;
+  background: rgba(255,107,107,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #FF6B6B;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .retro-arcade:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 
-    2px 2px 0 #C0392B,
-    4px 4px 0 #922B21;
+  background: rgba(255,107,107,0.25);
+  border-color: rgba(255,107,107,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(255,107,107,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }
 .retro-arcade:active {
-  transform: translate(4px, 4px);
-  box-shadow: none;
+  transform: translateY(1px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2), inset 0 2px 4px rgba(0,0,0,0.1);
 }`,
     htmlCode: `<button class="retro-arcade">PLAY</button>`
   },
@@ -3620,7 +4199,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "diamond shine",
     previewColor: "#E0E0E0",
     cssCode: `.diamond-sparkle {
-  background: linear-gradient(135deg, #E0E0E0, #FAFAFA, #BDBDBD);
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #333;
   display: inline-flex;
   align-items: center;
@@ -3667,7 +4249,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "fire trail",
     previewColor: "#FF5722",
     cssCode: `.fire-trail {
-  background: linear-gradient(135deg, #FF5722, #FF9800);
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   display: inline-flex;
   align-items: center;
@@ -3701,7 +4286,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "electric flash",
     previewColor: "#FFC107",
     cssCode: `.lightning-bolt {
-  background: #1a1a2e;
+  background: rgba(26,26,46,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #FFC107;
   border: 2px solid #FFC107;
   display: inline-flex;
@@ -3737,7 +4325,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "magic sparkle",
     previewColor: "#9C27B0",
     cssCode: `.magic-wand {
-  background: linear-gradient(135deg, #9C27B0, #E91E63);
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   display: inline-flex;
   align-items: center;
@@ -3773,7 +4364,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     intensity: "launch thrust",
     previewColor: "#3F51B5",
     cssCode: `.rocket-launch {
-  background: linear-gradient(135deg, #3F51B5, #2196F3);
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   display: inline-flex;
   align-items: center;
@@ -3802,21 +4396,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     description: "Botão com efeito glassmorphism premium, backdrop blur e borda sutil.",
     category: "glow",
     cssCode: `.ui-btn-glass {
-  display: inline-block;
-  padding: 14px 36px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(20px);
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #fff;
-  font-weight: 600;
-  border: 1px solid rgba(255,255,255,0.12);
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(.16,.8,.24,1);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .ui-btn-glass:hover {
-  background: rgba(255,255,255,0.15);
+  background: rgba(139,92,246,0.25);
+  border-color: rgba(139,92,246,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(139,92,246,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
   transform: translateY(-2px);
-  box-shadow: 0 10px 40px rgba(255,255,255,0.1);
 }`,
     htmlCode: `<button class="ui-btn-glass">Glass Button</button>`,
     duration: "0.3s",
@@ -3830,19 +4423,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     description: "Botão com borda neon brilhante e shadow glow, estilo cyberpunk.",
     category: "glow",
     cssCode: `.ui-btn-neon {
-  display: inline-block;
-  padding: 14px 36px;
-  border-radius: 999px;
-  background: #111;
+  background: rgba(17,17,17,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #fff;
-  font-weight: 600;
-  border: 1px solid #6366f1;
-  cursor: pointer;
-  box-shadow: 0 0 20px #6366f1;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
   transition: all 0.3s ease;
 }
 .ui-btn-neon:hover {
-  box-shadow: 0 0 40px #6366f1, 0 0 80px rgba(99,102,241,0.3);
+  background: rgba(17,17,17,0.25);
+  border-color: rgba(17,17,17,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(17,17,17,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
   transform: translateY(-2px);
 }`,
     htmlCode: `<button class="ui-btn-neon">Neon Button</button>`,
@@ -3857,20 +4450,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     description: "Botão com gradiente fluido e transição suave, visual premium moderno.",
     category: "fill",
     cssCode: `.ui-btn-gradient {
-  display: inline-block;
-  padding: 14px 36px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #6366f1, #a855f7);
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #fff;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(.16,.8,.24,1);
-  box-shadow: 0 10px 30px rgba(99,102,241,0.3);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .ui-btn-gradient:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(99,102,241,0.5);
+  background: rgba(139,92,246,0.25);
+  border-color: rgba(139,92,246,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(139,92,246,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }`,
     htmlCode: `<button class="ui-btn-gradient">Gradient Button</button>`,
     duration: "0.3s",
@@ -3887,7 +4480,10 @@ export const buttonAnimations: ButtonAnimation[] = [
   display: inline-block;
   padding: 14px 36px;
   border-radius: 999px;
-  background: #6366f1;
+  background: rgba(99,102,241,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #fff;
   font-weight: 600;
   border: none;
@@ -3928,19 +4524,19 @@ export const buttonAnimations: ButtonAnimation[] = [
     description: "Botão outline minimalista com transição de preenchimento ao hover.",
     category: "scale",
     cssCode: `.ui-btn-outline {
-  display: inline-block;
-  padding: 14px 36px;
-  border-radius: 999px;
-  background: transparent;
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #fff;
-  font-weight: 600;
-  border: 1px solid rgba(255,255,255,0.2);
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(.16,.8,.24,1);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .ui-btn-outline:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: rgba(255,255,255,0.4);
+  background: rgba(139,92,246,0.25);
+  border-color: rgba(139,92,246,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(139,92,246,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
   transform: translateY(-2px);
 }`,
     htmlCode: `<button class="ui-btn-outline">Outline Button</button>`,
@@ -3955,20 +4551,20 @@ export const buttonAnimations: ButtonAnimation[] = [
     description: "Botão com elevação dramática e sombra profunda ao hover, sensação tridimensional.",
     category: "3d",
     cssCode: `.ui-btn-lift {
-  display: inline-block;
-  padding: 14px 36px;
-  border-radius: 999px;
-  background: #6366f1;
+  background: rgba(99,102,241,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #fff;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(.16,.8,.24,1);
-  box-shadow: 0 10px 30px rgba(99,102,241,0.3);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 .ui-btn-lift:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 30px 80px rgba(99,102,241,0.5);
+  background: rgba(99,102,241,0.25);
+  border-color: rgba(99,102,241,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(99,102,241,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-2px);
 }`,
     htmlCode: `<button class="ui-btn-lift">Lift Button</button>`,
     duration: "0.3s",
@@ -3982,7 +4578,10 @@ export const buttonAnimations: ButtonAnimation[] = [
     category: "3d",
     description: "Botão metálico 3D com gradiente roxo, sombra profunda e efeito shimmer ao hover.",
     cssCode: `.btn-metallic-3d {
-  background: linear-gradient(180deg, #bda4f5 0%, #8b5cf6 40%, #7c3aed 100%);
+  background: rgba(139,92,246,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: #fff;
   padding: 12px 32px;
   border: none;
