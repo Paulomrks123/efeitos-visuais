@@ -415,6 +415,3 @@ function StylePreviewMini({ style }: { style: StyleDefinition }) {
 
   return null;
 }
-
-  return null;
-}
