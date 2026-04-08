@@ -120,6 +120,11 @@ export default function Showcase() {
             { id: "silent", label: "Silent" },
             { id: "focus", label: "Focus" },
             { id: "intelligence", label: "Minimal" },
+            { id: "saas", label: "SaaS" },
+            { id: "editorial", label: "Editorial" },
+            { id: "dashboard", label: "Dashboard" },
+            { id: "classic", label: "Clássico" },
+            { id: "organic", label: "Orgânico" },
           ].map((f) => (
             <button
               key={f.id}
