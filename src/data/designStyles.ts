@@ -2605,9 +2605,6 @@ All colors MUST be HSL.
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
-    id: "loris-portfolio-placeholder-remove",
-  },
-  {
     id: "loris-portfolio",
     name: "Dark Portfolio Minimal",
     subtitle: "Portfólio Criativo • Agência • Design Gráfico",
