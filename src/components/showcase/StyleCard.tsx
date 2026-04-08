@@ -94,26 +94,14 @@ export function StyleCard({ style, index }: StyleCardProps) {
           </div>
 
           {/* Example Button */}
-          {style.exampleUrl ? (
-            <a
-              href={style.exampleUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="absolute bottom-3 right-3 px-3 py-1.5 text-xs font-medium rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all shadow-lg flex items-center gap-1.5 hover:scale-105"
-            >
-              <ExternalLink size={12} />
-              Ver Exemplo
-            </a>
-          ) : (
-            <div
-              className="absolute bottom-3 right-3 px-3 py-1.5 text-xs font-medium rounded-lg bg-muted/80 text-muted-foreground border border-border/50 flex items-center gap-1.5 cursor-default"
-              title="Exemplo em breve"
-            >
-              <ExternalLink size={12} />
-              Em breve
-            </div>
-          )}
+          <Link
+            to={`/showcase/example/${style.id}`}
+            onClick={(e) => e.stopPropagation()}
+            className="absolute bottom-3 right-3 px-3 py-1.5 text-xs font-medium rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all shadow-lg flex items-center gap-1.5 hover:scale-105"
+          >
+            <Eye size={12} />
+            Ver Exemplo
+          </Link>
 
           {/* Hover Overlay */}
           <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
