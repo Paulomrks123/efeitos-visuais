@@ -29,6 +29,15 @@ import styleMinimalTechIntelligence from "@/assets/showcase/style-minimal-tech-i
 import styleLorisPortfolio from "@/assets/showcase/style-loris-portfolio.jpg";
 // Slush Fintech style
 import styleSlushFintech from "@/assets/showcase/style-slush-fintech.jpg";
+// 8 Premium styles
+import styleSaasAnthropic from "@/assets/showcase/style-saas-anthropic.jpg";
+import styleBlogEditorial from "@/assets/showcase/style-blog-editorial.jpg";
+import styleDashboardAnalytics from "@/assets/showcase/style-dashboard-analytics.jpg";
+import styleMinimalistPremium from "@/assets/showcase/style-minimalist-premium.jpg";
+import styleVibrantPremium from "@/assets/showcase/style-vibrant-premium.jpg";
+import styleFuturisticPremium from "@/assets/showcase/style-futuristic-premium.jpg";
+import styleClassicPremium from "@/assets/showcase/style-classic-premium.jpg";
+import styleOrganicPremium from "@/assets/showcase/style-organic-premium.jpg";
 
 import { StyleDefinition } from "@/components/showcase/StyleCard";
 
@@ -2848,5 +2857,285 @@ body {
   border-color: var(--cor-primaria);
   box-shadow: var(--glow);
 }`,
+  },
+  // ===== 8 NEW PREMIUM STYLES =====
+  {
+    id: "saas-anthropic",
+    name: "SaaS Premium Anthropic",
+    subtitle: "Landing Page • SaaS • AI Product",
+    description: "Layout premium para landing page SaaS inspirada na Anthropic: tipografia expressiva, paleta sofisticada escura, animações sutis e microinterações elegantes. Visual moderno sem ser genérico.",
+    objective: "Transmitir inovação, confiança e sofisticação tecnológica — ideal para produtos SaaS e AI.",
+    colors: ["#0D0D0D", "#1A1A2E", "#F5F0EB", "#D4A574", "#8B7355"],
+    features: ["Tipografia Expressiva", "Paleta Sofisticada", "Microinterações", "Anti-Genérico"],
+    iconStyle: "Ícones custom com traço médio, monocromáticos com acento warm. Sem ilustrações cartoon.",
+    layoutStyle: "Hero assimétrico com grid fluido. Seções com breathing room generoso. Cards com profundidade sutil.",
+    typography: "Sora ou Plus Jakarta Sans para títulos. Inter para corpo. Contraste forte de peso.",
+    previewImage: styleSaasAnthropic,
+    cssVariables: {
+      "--background": "240 20% 6%",
+      "--foreground": "30 20% 95%",
+      "--primary": "30 40% 65%",
+      "--muted": "240 10% 15%",
+    },
+    sampleCSS: `:root {
+  --bg: #0D0D0D;
+  --surface: #1A1A2E;
+  --text: #F5F0EB;
+  --text-muted: #8B8B8B;
+  --accent: #D4A574;
+  --accent-hover: #E8C49A;
+  --border: rgba(255,255,255,0.06);
+  --glow: 0 0 40px rgba(212,165,116,0.15);
+}
+
+.hero { padding: 120px 0; text-align: left; }
+.hero h1 { font-size: 4rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: all 0.4s cubic-bezier(.4,0,.2,1); }
+.card:hover { border-color: var(--accent); box-shadow: var(--glow); transform: translateY(-2px); }
+.btn { background: var(--accent); color: var(--bg); padding: 14px 32px; border-radius: 12px; font-weight: 600; transition: all 0.3s ease; }
+.btn:hover { background: var(--accent-hover); transform: translateY(-1px); }`,
+  },
+  {
+    id: "blog-editorial",
+    name: "Blog Editorial Premium",
+    subtitle: "Editorial • Blog • Magazine",
+    description: "Layout premium para blog editorial com serifas refinadas, background customizado, microinterações suaves. Ambiente sofisticado e editorial que convida à leitura profunda.",
+    objective: "Criar uma experiência de leitura imersiva e sofisticada — ideal para blogs editoriais e revistas digitais.",
+    colors: ["#FDFAF6", "#F5EDE3", "#2C2320", "#8B6F5E", "#C4956A"],
+    features: ["Serifas Refinadas", "Editorial Layout", "Warm Tones", "Leitura Imersiva"],
+    iconStyle: "Ícones minimalistas com traço fino, tons terrosos. Ilustrações editoriais opcionais.",
+    layoutStyle: "Layout de revista com colunas. Imagens grandes com overlap. Tipografia como elemento visual.",
+    typography: "Playfair Display ou Fraunces para títulos. Lora ou Source Serif para corpo. Ritmo vertical perfeito.",
+    previewImage: styleBlogEditorial,
+    cssVariables: {
+      "--background": "30 30% 97%",
+      "--foreground": "20 20% 15%",
+      "--primary": "25 40% 60%",
+      "--muted": "30 20% 92%",
+    },
+    sampleCSS: `:root {
+  --bg: #FDFAF6;
+  --surface: #F5EDE3;
+  --text: #2C2320;
+  --text-muted: #8B6F5E;
+  --accent: #C4956A;
+  --border: #E8DDD0;
+}
+
+.article { max-width: 720px; margin: 0 auto; line-height: 1.8; }
+.article h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 700; letter-spacing: -0.02em; }
+.article p { font-family: 'Source Serif Pro', serif; font-size: 1.125rem; color: var(--text-muted); }
+.card { background: var(--surface); border-radius: 12px; overflow: hidden; transition: transform 0.3s ease; }
+.card:hover { transform: translateY(-4px); }
+.tag { background: var(--accent); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }`,
+  },
+  {
+    id: "dashboard-analytics",
+    name: "Dashboard Analytics Premium",
+    subtitle: "Dashboard • Analytics • Data",
+    description: "Layout premium para dashboard de análise com paleta escura, efeitos de blur, microinterações premium. Visual sofisticado e responsivo para interfaces de dados complexas.",
+    objective: "Apresentar dados complexos de forma clara e elegante — ideal para dashboards e plataformas de analytics.",
+    colors: ["#0A0A1A", "#12122B", "#7C3AED", "#06B6D4", "#1E1E3F"],
+    features: ["Dark Theme", "Glassmorphism", "Data-Driven", "Blur Effects"],
+    iconStyle: "Ícones lineares com glow sutil. Cores de acento para estados ativos. Phosphor Icons ou similar.",
+    layoutStyle: "Grid dashboard com sidebar. Cards com glassmorphism. Gráficos com gradientes suaves.",
+    typography: "Inter ou DM Sans para interface. JetBrains Mono para dados numéricos. Pesos variados.",
+    previewImage: styleDashboardAnalytics,
+    cssVariables: {
+      "--background": "240 40% 7%",
+      "--foreground": "210 40% 96%",
+      "--primary": "263 70% 58%",
+      "--muted": "240 30% 15%",
+    },
+    sampleCSS: `:root {
+  --bg: #0A0A1A;
+  --surface: rgba(18,18,43,0.8);
+  --text: #E2E8F0;
+  --text-muted: #64748B;
+  --primary: #7C3AED;
+  --secondary: #06B6D4;
+  --border: rgba(255,255,255,0.06);
+  --glass: backdrop-filter: blur(16px);
+}
+
+.dashboard { display: grid; grid-template-columns: 260px 1fr; gap: 24px; }
+.card { background: var(--surface); backdrop-filter: blur(16px); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+.card:hover { border-color: var(--primary); box-shadow: 0 0 30px rgba(124,58,237,0.15); }
+.metric { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 700; }
+.chart-container { background: var(--surface); border-radius: 12px; padding: 20px; }`,
+  },
+  {
+    id: "minimalist-premium",
+    name: "Minimalista Premium",
+    subtitle: "Minimal • Clean • Sofisticado",
+    description: "Interface profissional baseada no estilo minimalista com tipografia refinada, paleta neutra, microinterações suaves e animações elegantes. Menos é mais, com propósito.",
+    objective: "Transmitir sofisticação através da simplicidade — ideal para portfólios, agências e produtos premium.",
+    colors: ["#FFFFFF", "#FAFAFA", "#111111", "#888888", "#E5E5E5"],
+    features: ["Ultra Clean", "White Space", "Micro-Animations", "Tipografia Forte"],
+    iconStyle: "Ícones de traço ultrafino (1px). Monocromáticos. Apenas o essencial.",
+    layoutStyle: "Grid minimalista com espaçamento exagerado. Cada elemento respira. Assimetria intencional.",
+    typography: "Outfit ou Satoshi para títulos. Inter para corpo. Tracking amplo em labels.",
+    previewImage: styleMinimalistPremium,
+    cssVariables: {
+      "--background": "0 0% 100%",
+      "--foreground": "0 0% 7%",
+      "--primary": "0 0% 7%",
+      "--muted": "0 0% 96%",
+    },
+    sampleCSS: `:root {
+  --bg: #FFFFFF;
+  --surface: #FAFAFA;
+  --text: #111111;
+  --text-muted: #888888;
+  --border: #E5E5E5;
+  --accent: #111111;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 64px; }
+h1 { font-size: 4.5rem; font-weight: 300; letter-spacing: -0.04em; line-height: 1; }
+.card { border: 1px solid var(--border); border-radius: 8px; padding: 40px; transition: all 0.5s cubic-bezier(.4,0,.2,1); }
+.card:hover { border-color: var(--accent); }
+.btn { background: transparent; border: 1px solid var(--accent); padding: 12px 32px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.75rem; transition: all 0.3s ease; }
+.btn:hover { background: var(--accent); color: white; }`,
+  },
+  {
+    id: "vibrant-premium",
+    name: "Vibrante Premium",
+    subtitle: "Colorful • Dynamic • Bold",
+    description: "Interface profissional com cores vibrantes, tipografia bold, microinterações dinâmicas e transições chamativas. Energia e personalidade sem perder consistência e responsividade.",
+    objective: "Capturar atenção e transmitir energia — ideal para startups, apps criativos e marcas jovens.",
+    colors: ["#FF006E", "#8338EC", "#FFBE0B", "#FB5607", "#3A86FF"],
+    features: ["Gradientes Vivos", "Bold Typography", "Transições Dinâmicas", "High Energy"],
+    iconStyle: "Ícones filled com cores vibrantes. Duo-tone ou multi-color. Emojis como complemento.",
+    layoutStyle: "Layout dinâmico com elementos overlapping. Cards com gradientes. Seções com formas orgânicas.",
+    typography: "Clash Display ou Cabinet Grotesk para títulos. Nunito para corpo. Pesos extremos.",
+    previewImage: styleVibrantPremium,
+    cssVariables: {
+      "--background": "280 60% 4%",
+      "--foreground": "0 0% 100%",
+      "--primary": "340 100% 50%",
+      "--muted": "280 30% 12%",
+    },
+    sampleCSS: `:root {
+  --bg: #0F0118;
+  --surface: linear-gradient(135deg, rgba(131,56,236,0.1), rgba(255,0,110,0.1));
+  --text: #FFFFFF;
+  --text-muted: #B8A9C9;
+  --gradient-1: linear-gradient(135deg, #FF006E, #8338EC);
+  --gradient-2: linear-gradient(135deg, #FB5607, #FFBE0B);
+}
+
+h1 { font-size: 5rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; color: transparent; }
+.card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 32px; transition: all 0.3s ease; }
+.card:hover { transform: scale(1.02) rotate(-0.5deg); border-color: #FF006E; }
+.btn { background: var(--gradient-1); padding: 16px 40px; border-radius: 50px; font-weight: 700; color: white; box-shadow: 0 8px 30px rgba(255,0,110,0.3); }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255,0,110,0.5); }`,
+  },
+  {
+    id: "futuristic-premium",
+    name: "Futurista Premium",
+    subtitle: "Sci-Fi • Metallic • High-Tech",
+    description: "Interface profissional com elementos futuristas, gradientes metálicos, animações fluídas e paleta ciano/prata. Alta performance garantida em todos os dispositivos.",
+    objective: "Evocar tecnologia de ponta e inovação — ideal para tech companies, crypto e produtos futuristas.",
+    colors: ["#030712", "#111827", "#06B6D4", "#94A3B8", "#1E293B"],
+    features: ["Metallic Gradients", "Glow Effects", "Sci-Fi UI", "Fluid Animations"],
+    iconStyle: "Ícones com glow ciano. Estilo HUD/sci-fi. Linhas finas com brilho.",
+    layoutStyle: "Layout com grid técnico. Borders com glow. Cards com reflexo metálico. HUD elements.",
+    typography: "Exo 2 ou Orbitron para títulos. IBM Plex Sans para corpo. Monospace para dados.",
+    previewImage: styleFuturisticPremium,
+    cssVariables: {
+      "--background": "222 47% 3%",
+      "--foreground": "210 40% 96%",
+      "--primary": "189 94% 43%",
+      "--muted": "217 33% 12%",
+    },
+    sampleCSS: `:root {
+  --bg: #030712;
+  --surface: #111827;
+  --text: #E2E8F0;
+  --text-muted: #64748B;
+  --cyan: #06B6D4;
+  --silver: #94A3B8;
+  --border: rgba(6,182,212,0.15);
+  --glow: 0 0 40px rgba(6,182,212,0.2);
+}
+
+.container { border: 1px solid var(--border); border-radius: 16px; background: var(--surface); }
+h1 { font-family: 'Orbitron', sans-serif; color: var(--cyan); text-shadow: 0 0 20px rgba(6,182,212,0.5); }
+.card { background: linear-gradient(135deg, rgba(6,182,212,0.05), transparent); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+.card:hover { border-color: var(--cyan); box-shadow: var(--glow); }
+.btn { background: linear-gradient(135deg, var(--cyan), #0891B2); color: var(--bg); padding: 12px 28px; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 20px rgba(6,182,212,0.3); }`,
+  },
+  {
+    id: "classic-premium",
+    name: "Clássico Premium",
+    subtitle: "Elegant • Timeless • Luxury",
+    description: "Interface profissional com estilo clássico, tipografia serifada, paleta escura navy/dourado, microinterações discretas e ritmo mais lento nas animações. Elegância atemporal.",
+    objective: "Transmitir tradição, confiança e luxo — ideal para marcas premium, escritórios de advocacia e finanças.",
+    colors: ["#0C1524", "#1A2744", "#D4AF37", "#F5F0E8", "#2C3E5A"],
+    features: ["Serif Typography", "Gold Accents", "Slow Animations", "Timeless"],
+    iconStyle: "Ícones clássicos com traço médio. Dourado como cor de destaque. Ornamentos sutis.",
+    layoutStyle: "Layout simétrico e balanceado. Margens generosas. Hierarquia rígida. Divisores decorativos.",
+    typography: "Cormorant Garamond ou Libre Baskerville para títulos. Crimson Text para corpo. Elegante.",
+    previewImage: styleClassicPremium,
+    cssVariables: {
+      "--background": "218 45% 9%",
+      "--foreground": "36 30% 94%",
+      "--primary": "43 76% 52%",
+      "--muted": "218 30% 18%",
+    },
+    sampleCSS: `:root {
+  --bg: #0C1524;
+  --surface: #1A2744;
+  --text: #F5F0E8;
+  --text-muted: #8B9DC3;
+  --gold: #D4AF37;
+  --gold-light: #E8D48B;
+  --border: rgba(212,175,55,0.15);
+}
+
+h1 { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 600; color: var(--gold); letter-spacing: 0.02em; }
+.divider { height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 48px 0; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 32px; transition: all 0.5s ease; }
+.card:hover { border-color: var(--gold); }
+.btn { background: transparent; border: 2px solid var(--gold); color: var(--gold); padding: 14px 36px; font-family: 'Cormorant Garamond', serif; font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.4s ease; }
+.btn:hover { background: var(--gold); color: var(--bg); }`,
+  },
+  {
+    id: "organic-premium",
+    name: "Orgânico Premium",
+    subtitle: "Nature • Earthy • Warm",
+    description: "Interface profissional com texturas naturais, paleta suave com tons terrosos (sage, terracotta, areia), e microinterações inspiradas em movimento orgânico e fluido.",
+    objective: "Conectar com a natureza e transmitir calma e autenticidade — ideal para wellness, sustentabilidade e lifestyle.",
+    colors: ["#F7F3ED", "#E8DFD3", "#5C7C5E", "#C4704B", "#8B7355"],
+    features: ["Earthy Tones", "Organic Shapes", "Natural Textures", "Fluid Motion"],
+    iconStyle: "Ícones orgânicos com cantos suaves. Tons terrosos. Ilustrações botânicas como complemento.",
+    layoutStyle: "Layout com formas orgânicas (blob shapes). Cantos extra arredondados. Sobreposições suaves.",
+    typography: "DM Serif Display para títulos. Nunito Sans para corpo. Warm e acolhedor.",
+    previewImage: styleOrganicPremium,
+    cssVariables: {
+      "--background": "33 25% 95%",
+      "--foreground": "25 20% 20%",
+      "--primary": "130 20% 42%",
+      "--muted": "30 20% 88%",
+    },
+    sampleCSS: `:root {
+  --bg: #F7F3ED;
+  --surface: #FFFFFF;
+  --text: #3D3228;
+  --text-muted: #8B7355;
+  --sage: #5C7C5E;
+  --terracotta: #C4704B;
+  --sand: #E8DFD3;
+  --border: #DDD5C8;
+}
+
+.container { max-width: 1100px; margin: 0 auto; }
+h1 { font-family: 'DM Serif Display', serif; font-size: 3.5rem; color: var(--text); letter-spacing: -0.01em; }
+.card { background: var(--surface); border-radius: 24px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); transition: all 0.4s ease; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+.btn { background: var(--sage); color: white; padding: 14px 32px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; }
+.btn:hover { background: var(--terracotta); transform: translateY(-1px); }
+.blob { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }`,
   },
 ];
