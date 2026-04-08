@@ -1,9 +1,11 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Copy, Check, ExternalLink, Palette, Layout, Type, Sparkles, Image } from "lucide-react";
+import { Copy, Check, ExternalLink, Palette, Layout, Type, Sparkles, Image, Eye } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { toast } from "@/hooks/use-toast";
+import { StyleExampleFrame } from "@/components/showcase/StyleExampleFrame";
 
 export interface StyleDefinition {
   id: string;
