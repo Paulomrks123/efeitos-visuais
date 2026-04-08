@@ -10,6 +10,7 @@ import { PWALifecycle } from "@/components/pwa/PWALifecycle";
 import Index from "./pages/Index";
 import Install from "./pages/Install";
 import Showcase from "./pages/Showcase";
+import StyleExample from "./pages/StyleExample";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
