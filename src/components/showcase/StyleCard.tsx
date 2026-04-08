@@ -417,6 +417,25 @@ function StylePreviewMini({ style }: { style: StyleDefinition }) {
   return null;
 }
 
+// Animated wrapper for staggered children
+const fadeSlideUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
+  }),
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: (i: number) => ({
+    opacity: 1,
+    scale: 1,
+    transition: { delay: i * 0.08, duration: 0.4, ease: "easeOut" },
+  }),
+};
+
 // Universal styled preview - same layout, different style per card
 function StylePreviewFull({ style }: { style: StyleDefinition }) {
   const c = style.colors;
@@ -437,16 +456,25 @@ function StylePreviewFull({ style }: { style: StyleDefinition }) {
   const cardBg = isLight ? `${surface}` : `${surface}cc`;
 
   return (
-    <div 
+    <motion.div 
       className="rounded-xl overflow-hidden"
       style={{ background: bg, fontFamily: font, color: text, border: `1px solid ${borderColor}` }}
+      initial="hidden"
+      animate="visible"
     >
       {/* Nav */}
-      <div style={{ borderBottom: `1px solid ${borderColor}`, padding: "12px 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <motion.div 
+        variants={fadeSlideUp} custom={0}
+        style={{ borderBottom: `1px solid ${borderColor}`, padding: "12px 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}
+      >
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <div style={{ width: 28, height: 28, borderRadius: 8, background: accent, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <motion.div 
+            style={{ width: 28, height: 28, borderRadius: 8, background: accent, display: "flex", alignItems: "center", justifyContent: "center" }}
+            whileHover={{ scale: 1.15, rotate: 5 }}
+            transition={{ type: "spring", stiffness: 400 }}
+          >
             <span style={{ color: "#fff", fontSize: 14, fontWeight: 700 }}>P</span>
-          </div>
+          </motion.div>
           <span style={{ fontWeight: 700, fontSize: 14 }}>ProjetoX</span>
         </div>
         <div style={{ display: "flex", gap: "16px", fontSize: 11, color: muted }}>
@@ -454,31 +482,48 @@ function StylePreviewFull({ style }: { style: StyleDefinition }) {
           <span>Recursos</span>
           <span>Preços</span>
         </div>
-        <div style={{ padding: "5px 14px", borderRadius: 8, background: accent, color: "#fff", fontSize: 11, fontWeight: 600, cursor: "pointer" }}>
+        <motion.div 
+          style={{ padding: "5px 14px", borderRadius: 8, background: accent, color: "#fff", fontSize: 11, fontWeight: 600, cursor: "pointer" }}
+          whileHover={{ scale: 1.05, boxShadow: `0 4px 20px ${accent}55` }}
+          whileTap={{ scale: 0.97 }}
+        >
           Começar
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Hero */}
-      <div style={{ padding: "32px 20px", textAlign: "center" as const }}>
-        <div style={{ display: "inline-block", padding: "4px 12px", borderRadius: 20, background: `${accent}22`, color: accent, fontSize: 10, fontWeight: 600, marginBottom: 12 }}>
+      <motion.div variants={fadeSlideUp} custom={1} style={{ padding: "32px 20px", textAlign: "center" as const }}>
+        <motion.div 
+          variants={scaleIn} custom={2}
+          style={{ display: "inline-block", padding: "4px 12px", borderRadius: 20, background: `${accent}22`, color: accent, fontSize: 10, fontWeight: 600, marginBottom: 12 }}
+        >
           ✨ Novo Release v2.0
-        </div>
-        <h2 style={{ fontSize: 22, fontWeight: 800, lineHeight: 1.2, marginBottom: 8, letterSpacing: "-0.02em" }}>
+        </motion.div>
+        <motion.h2 
+          variants={fadeSlideUp} custom={3}
+          style={{ fontSize: 22, fontWeight: 800, lineHeight: 1.2, marginBottom: 8, letterSpacing: "-0.02em" }}
+        >
           Transforme suas ideias<br />em realidade
-        </h2>
-        <p style={{ fontSize: 12, color: muted, maxWidth: 320, margin: "0 auto 16px" }}>
+        </motion.h2>
+        <motion.p variants={fadeSlideUp} custom={4} style={{ fontSize: 12, color: muted, maxWidth: 320, margin: "0 auto 16px" }}>
           Plataforma completa para criar, gerenciar e escalar seus projetos com eficiência.
-        </p>
-        <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
-          <div style={{ padding: "8px 20px", borderRadius: 8, background: accent, color: "#fff", fontSize: 12, fontWeight: 600 }}>
+        </motion.p>
+        <motion.div variants={fadeSlideUp} custom={5} style={{ display: "flex", gap: 8, justifyContent: "center" }}>
+          <motion.div 
+            style={{ padding: "8px 20px", borderRadius: 8, background: accent, color: "#fff", fontSize: 12, fontWeight: 600 }}
+            whileHover={{ scale: 1.05, boxShadow: `0 6px 24px ${accent}44` }}
+            whileTap={{ scale: 0.96 }}
+          >
             Começar Grátis
-          </div>
-          <div style={{ padding: "8px 20px", borderRadius: 8, border: `1px solid ${borderColor}`, fontSize: 12, fontWeight: 500, color: muted }}>
+          </motion.div>
+          <motion.div 
+            style={{ padding: "8px 20px", borderRadius: 8, border: `1px solid ${borderColor}`, fontSize: 12, fontWeight: 500, color: muted }}
+            whileHover={{ scale: 1.05, borderColor: accent }}
+          >
             Ver Demo
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
 
       {/* Stats */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, padding: "0 20px 20px" }}>
@@ -487,16 +532,28 @@ function StylePreviewFull({ style }: { style: StyleDefinition }) {
           { label: "Projetos", value: "48K", icon: "📁" },
           { label: "Uptime", value: "99.9%", icon: "⚡" },
         ].map((stat, i) => (
-          <div key={i} style={{ padding: 12, borderRadius: 10, background: cardBg, border: `1px solid ${borderColor}`, textAlign: "center" as const }}>
-            <div style={{ fontSize: 16, marginBottom: 4 }}>{stat.icon}</div>
+          <motion.div 
+            key={i} 
+            variants={scaleIn} custom={6 + i}
+            whileHover={{ y: -4, boxShadow: `0 8px 24px ${accent}22` }}
+            style={{ padding: 12, borderRadius: 10, background: cardBg, border: `1px solid ${borderColor}`, textAlign: "center" as const, cursor: "default" }}
+          >
+            <motion.div 
+              style={{ fontSize: 16, marginBottom: 4 }}
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.6 + i * 0.1, type: "spring", stiffness: 500 }}
+            >
+              {stat.icon}
+            </motion.div>
             <div style={{ fontSize: 16, fontWeight: 700, color: accent }}>{stat.value}</div>
             <div style={{ fontSize: 9, color: muted }}>{stat.label}</div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
       {/* Features */}
-      <div style={{ padding: "16px 20px 20px" }}>
+      <motion.div variants={fadeSlideUp} custom={9} style={{ padding: "16px 20px 20px" }}>
         <h3 style={{ fontSize: 14, fontWeight: 700, marginBottom: 12, textAlign: "center" as const }}>Recursos Principais</h3>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
           {[
@@ -505,36 +562,65 @@ function StylePreviewFull({ style }: { style: StyleDefinition }) {
             { title: "Integrações", desc: "100+ conectores", emoji: "🔗" },
             { title: "Segurança", desc: "Criptografia E2E", emoji: "🔒" },
           ].map((f, i) => (
-            <div key={i} style={{ padding: 12, borderRadius: 10, background: cardBg, border: `1px solid ${borderColor}` }}>
-              <div style={{ fontSize: 18, marginBottom: 6 }}>{f.emoji}</div>
+            <motion.div 
+              key={i} 
+              variants={scaleIn} custom={10 + i}
+              whileHover={{ y: -3, boxShadow: `0 6px 20px ${accent}18` }}
+              style={{ padding: 12, borderRadius: 10, background: cardBg, border: `1px solid ${borderColor}`, cursor: "default" }}
+            >
+              <motion.div 
+                style={{ fontSize: 18, marginBottom: 6 }}
+                whileHover={{ scale: 1.3, rotate: 10 }}
+                transition={{ type: "spring", stiffness: 400 }}
+              >
+                {f.emoji}
+              </motion.div>
               <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 2 }}>{f.title}</div>
               <div style={{ fontSize: 10, color: muted }}>{f.desc}</div>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Testimonial */}
-      <div style={{ margin: "0 20px 20px", padding: 16, borderRadius: 12, background: `${accent}11`, border: `1px solid ${accent}22` }}>
+      <motion.div 
+        variants={fadeSlideUp} custom={14}
+        whileHover={{ scale: 1.01 }}
+        style={{ margin: "0 20px 20px", padding: 16, borderRadius: 12, background: `${accent}11`, border: `1px solid ${accent}22` }}
+      >
         <p style={{ fontSize: 11, fontStyle: "italic", color: muted, marginBottom: 8 }}>
           "Esta plataforma mudou completamente a forma como gerenciamos nossos projetos. Recomendo!"
         </p>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <div style={{ width: 24, height: 24, borderRadius: "50%", background: accent, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 10, fontWeight: 700 }}>A</div>
+          <motion.div 
+            style={{ width: 24, height: 24, borderRadius: "50%", background: accent, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 10, fontWeight: 700 }}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 1.2, type: "spring", stiffness: 500 }}
+          >
+            A
+          </motion.div>
           <div>
             <div style={{ fontSize: 10, fontWeight: 600 }}>Ana Silva</div>
             <div style={{ fontSize: 9, color: muted }}>CEO, TechCorp</div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* CTA */}
-      <div style={{ padding: "16px 20px", borderTop: `1px solid ${borderColor}`, textAlign: "center" as const }}>
+      <motion.div 
+        variants={fadeSlideUp} custom={15}
+        style={{ padding: "16px 20px", borderTop: `1px solid ${borderColor}`, textAlign: "center" as const }}
+      >
         <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 6 }}>Pronto para começar?</div>
-        <div style={{ display: "inline-block", padding: "8px 24px", borderRadius: 8, background: accent, color: "#fff", fontSize: 12, fontWeight: 600 }}>
+        <motion.div 
+          style={{ display: "inline-block", padding: "8px 24px", borderRadius: 8, background: accent, color: "#fff", fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+          whileHover={{ scale: 1.08, boxShadow: `0 8px 30px ${accent}55` }}
+          whileTap={{ scale: 0.95 }}
+        >
           Criar Conta Grátis →
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 }
