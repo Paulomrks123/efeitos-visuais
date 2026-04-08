@@ -29,6 +29,15 @@ import styleMinimalTechIntelligence from "@/assets/showcase/style-minimal-tech-i
 import styleLorisPortfolio from "@/assets/showcase/style-loris-portfolio.jpg";
 // Slush Fintech style
 import styleSlushFintech from "@/assets/showcase/style-slush-fintech.jpg";
+// 8 Premium styles
+import styleSaasAnthropic from "@/assets/showcase/style-saas-anthropic.jpg";
+import styleBlogEditorial from "@/assets/showcase/style-blog-editorial.jpg";
+import styleDashboardAnalytics from "@/assets/showcase/style-dashboard-analytics.jpg";
+import styleMinimalistPremium from "@/assets/showcase/style-minimalist-premium.jpg";
+import styleVibrantPremium from "@/assets/showcase/style-vibrant-premium.jpg";
+import styleFuturisticPremium from "@/assets/showcase/style-futuristic-premium.jpg";
+import styleClassicPremium from "@/assets/showcase/style-classic-premium.jpg";
+import styleOrganicPremium from "@/assets/showcase/style-organic-premium.jpg";
 
 import { StyleDefinition } from "@/components/showcase/StyleCard";
 
