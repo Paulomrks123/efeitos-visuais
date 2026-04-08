@@ -34,7 +34,7 @@ export default function Showcase() {
                   <span className="xs:hidden">Estilos</span>
                 </h1>
                 <p className="text-xs sm:text-sm text-muted-foreground">
-                  23 estilos de design
+                  33 estilos de design
                 </p>
               </div>
             </div>
