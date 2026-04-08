@@ -85,6 +85,7 @@ export const designStyles: StyleDefinition[] = [
   border-radius: 8px;
   font-weight: 500;
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "illustrated-cartoon",
@@ -140,6 +141,7 @@ export const designStyles: StyleDefinition[] = [
   align-items: center;
   justify-content: center;
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "dark-tech",
@@ -397,6 +399,7 @@ export const designStyles: StyleDefinition[] = [
     text-shadow: none;
   }
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "retro-modern",
@@ -447,6 +450,7 @@ h1, h2, h3 {
   font-family: 'Playfair Display', serif;
   color: var(--text-primary);
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "industrial",
@@ -504,6 +508,7 @@ h1, h2, h3 {
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "hybrid",
@@ -568,6 +573,7 @@ h1, h2, h3 {
   border-radius: 10px;
   font-weight: 500;
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "hybrid-serious",
@@ -625,6 +631,7 @@ h1, h2, h3 {
   border-radius: var(--radius);
   font-weight: 500;
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "hybrid-friendly",
@@ -689,6 +696,7 @@ h1, h2, h3 {
   border-radius: 20px;
   font-weight: 500;
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   
   // ==================== 10 NOVOS ESTILOS SURPREENDENTES ====================
@@ -803,6 +811,7 @@ h1, h2, h3 {
   from { left: -100%; }
   to { left: 100%; }
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "aurora-borealis",
@@ -902,6 +911,7 @@ h1, h2, h3 {
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 8px 30px rgba(0, 255, 136, 0.5);
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "brutalist",
@@ -1013,6 +1023,7 @@ h1, h2, h3 {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "vaporwave",
@@ -1130,6 +1141,7 @@ h1, h2, h3 {
   from { box-shadow: 0 4px 20px var(--neon-pink); }
   to { box-shadow: 0 4px 40px var(--neon-cyan); }
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "luxury-gold",
@@ -1242,6 +1254,7 @@ h1, h2, h3 {
   box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
   transform: translateY(-2px);
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "candy-pop",
@@ -1359,6 +1372,7 @@ h1, h2, h3 {
 @keyframes rainbow {
   to { background-position: 200% center; }
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "matrix-hacker",
@@ -1506,6 +1520,7 @@ h1, h2, h3 {
   );
   animation: glitch 0.2s infinite;
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "watercolor-art",
@@ -1630,6 +1645,7 @@ h1, h2, h3 {
   transform: scale(1.05) rotate(-2deg);
   border-radius: 10px 30px 10px 30px;
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "glass-3d",
@@ -1741,6 +1757,7 @@ h1, h2, h3 {
   transform: scale(1.05);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "nature-organic",
@@ -1864,6 +1881,7 @@ h1, h2, h3 {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(45, 80, 22, 0.3);
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
 
   // ==================== VIZION LAYOUT - CONVERSION STYLE ====================
@@ -1958,6 +1976,7 @@ body {
   color: var(--neon-green);
   text-shadow: var(--glow-green);
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "futuristic",
@@ -2127,6 +2146,7 @@ All colors MUST be HSL.
     mask-image: radial-gradient(55% 45% at 50% 35%, black 20%, transparent 72%);
   }
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   // ===== NEW TECH STUDY STYLES =====
   {
@@ -2249,6 +2269,7 @@ All colors MUST be HSL.
   background: var(--border-subtle);
   margin: 24px 0;
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "tech-focus-flow",
@@ -2398,6 +2419,7 @@ All colors MUST be HSL.
   color: var(--text-primary);
   background: var(--surface);
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "minimal-tech-intelligence",
@@ -2581,6 +2603,7 @@ All colors MUST be HSL.
   color: var(--text-muted);
   margin-top: var(--space-2);
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "loris-portfolio",
@@ -2749,6 +2772,7 @@ body {
   font-size: 0.75rem;
   color: var(--cor-texto-secundario);
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "slush-fintech",
@@ -2857,6 +2881,7 @@ body {
   border-color: var(--cor-primaria);
   box-shadow: var(--glow);
 }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   // ===== 8 NEW PREMIUM STYLES =====
   {
@@ -2894,6 +2919,7 @@ body {
 .card:hover { border-color: var(--accent); box-shadow: var(--glow); transform: translateY(-2px); }
 .btn { background: var(--accent); color: var(--bg); padding: 14px 32px; border-radius: 12px; font-weight: 600; transition: all 0.3s ease; }
 .btn:hover { background: var(--accent-hover); transform: translateY(-1px); }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "blog-editorial",
@@ -2928,6 +2954,7 @@ body {
 .card { background: var(--surface); border-radius: 12px; overflow: hidden; transition: transform 0.3s ease; }
 .card:hover { transform: translateY(-4px); }
 .tag { background: var(--accent); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "dashboard-analytics",
@@ -2963,6 +2990,7 @@ body {
 .card:hover { border-color: var(--primary); box-shadow: 0 0 30px rgba(124,58,237,0.15); }
 .metric { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 700; }
 .chart-container { background: var(--surface); border-radius: 12px; padding: 20px; }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "minimalist-premium",
@@ -2997,6 +3025,7 @@ h1 { font-size: 4.5rem; font-weight: 300; letter-spacing: -0.04em; line-height: 
 .card:hover { border-color: var(--accent); }
 .btn { background: transparent; border: 1px solid var(--accent); padding: 12px 32px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.75rem; transition: all 0.3s ease; }
 .btn:hover { background: var(--accent); color: white; }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "vibrant-premium",
@@ -3030,6 +3059,7 @@ h1 { font-size: 5rem; font-weight: 800; background: var(--gradient-1); -webkit-b
 .card:hover { transform: scale(1.02) rotate(-0.5deg); border-color: #FF006E; }
 .btn { background: var(--gradient-1); padding: 16px 40px; border-radius: 50px; font-weight: 700; color: white; box-shadow: 0 8px 30px rgba(255,0,110,0.3); }
 .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255,0,110,0.5); }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "futuristic-premium",
@@ -3065,6 +3095,7 @@ h1 { font-family: 'Orbitron', sans-serif; color: var(--cyan); text-shadow: 0 0 2
 .card { background: linear-gradient(135deg, rgba(6,182,212,0.05), transparent); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
 .card:hover { border-color: var(--cyan); box-shadow: var(--glow); }
 .btn { background: linear-gradient(135deg, var(--cyan), #0891B2); color: var(--bg); padding: 12px 28px; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 20px rgba(6,182,212,0.3); }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "classic-premium",
@@ -3100,6 +3131,7 @@ h1 { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 6
 .card:hover { border-color: var(--gold); }
 .btn { background: transparent; border: 2px solid var(--gold); color: var(--gold); padding: 14px 36px; font-family: 'Cormorant Garamond', serif; font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.4s ease; }
 .btn:hover { background: var(--gold); color: var(--bg); }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "organic-premium",
@@ -3137,5 +3169,6 @@ h1 { font-family: 'DM Serif Display', serif; font-size: 3.5rem; color: var(--tex
 .btn { background: var(--sage); color: white; padding: 14px 32px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; }
 .btn:hover { background: var(--terracotta); transform: translateY(-1px); }
 .blob { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }`,
+    exampleUrl: "https://pv-turn.lovable.app",
   },
 ];
