@@ -416,266 +416,123 @@ function StylePreviewMini({ style }: { style: StyleDefinition }) {
   return null;
 }
 
-// Full preview for modal
+// Universal styled preview - same layout, different style per card
 function StylePreviewFull({ style }: { style: StyleDefinition }) {
-  const baseStyle = {
-    fontFamily: style.typography.includes("serif") ? "Georgia, serif" : "Inter, sans-serif",
-  };
+  const c = style.colors;
+  const bg = c[0] || "#0a0a0a";
+  const surface = c[1] || "#1a1a1a";
+  const text = c[2] || "#ffffff";
+  const muted = c[3] || "#888888";
+  const accent = c[4] || "#3b82f6";
+  const isLight = bg === "#FFFFFF" || bg === "#F5F5F5" || bg === "#FFF8F0" || bg === "#FFFFF0" || bg.toLowerCase().includes("fff") || surface.toLowerCase().includes("fff");
+  
+  const font = style.typography.includes("serif") 
+    ? "Georgia, 'Times New Roman', serif" 
+    : style.typography.includes("mono") || style.typography.includes("Mono")
+    ? "'JetBrains Mono', 'Courier New', monospace"
+    : "'Inter', 'Segoe UI', sans-serif";
 
-  if (style.id === "premium-minimal") {
-    return (
-      <div className="bg-white rounded-xl shadow-lg p-6 text-gray-800" style={baseStyle}>
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center">
-              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-900">Dashboard</h3>
-              <p className="text-xs text-gray-500">Visão geral do sistema</p>
-            </div>
-          </div>
-          <button className="px-4 py-2 bg-gray-900 text-white rounded-lg text-sm font-medium">
-            Novo Projeto
-          </button>
-        </div>
-        
-        <div className="grid grid-cols-3 gap-4 mb-6">
-          {["Receita", "Usuários", "Taxa"].map((label, i) => (
-            <div key={i} className="p-4 bg-gray-50 rounded-xl border border-gray-100">
-              <p className="text-xs text-gray-500 mb-1">{label}</p>
-              <p className="text-xl font-semibold text-gray-900">
-                {i === 0 ? "R$ 45.2K" : i === 1 ? "1,234" : "98.5%"}
-              </p>
-            </div>
-          ))}
-        </div>
+  const borderColor = isLight ? `${muted}33` : `${accent}33`;
+  const cardBg = isLight ? `${surface}` : `${surface}cc`;
 
-        <div className="h-20 bg-gradient-to-r from-gray-100 to-gray-50 rounded-xl flex items-end px-4 pb-2 gap-1">
-          {[40, 65, 45, 80, 55, 70, 90, 60].map((h, i) => (
-            <div key={i} className="flex-1 bg-gray-300 rounded-t" style={{ height: `${h}%` }} />
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  if (style.id === "illustrated-cartoon") {
-    return (
-      <div className="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-3xl p-6 border-2 border-orange-200" style={baseStyle}>
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-3">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-2xl shadow-lg">
-              🍕
-            </div>
-            <div>
-              <h3 className="font-bold text-orange-800 text-lg">Cardápio</h3>
-              <p className="text-sm text-orange-600">Escolha seu favorito!</p>
-            </div>
-          </div>
-          <button className="px-5 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-2xl font-bold shadow-lg">
-            🛒 Carrinho
-          </button>
-        </div>
-        
-        <div className="grid grid-cols-3 gap-3">
-          {[
-            { emoji: "🍔", name: "Burger", price: "R$ 25" },
-            { emoji: "🍟", name: "Batatas", price: "R$ 12" },
-            { emoji: "🥤", name: "Bebida", price: "R$ 8" },
-          ].map((item, i) => (
-            <div key={i} className="p-4 bg-white rounded-2xl border-2 border-orange-100 text-center shadow-sm">
-              <div className="text-4xl mb-2">{item.emoji}</div>
-              <p className="font-bold text-gray-800">{item.name}</p>
-              <p className="text-orange-600 font-bold">{item.price}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  if (style.id === "dark-tech") {
-    return (
-      <div className="bg-gray-900 rounded-xl p-6 border border-cyan-500/30" style={baseStyle}>
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center">
-              <div className="w-4 h-4 bg-cyan-400 rounded animate-pulse" />
-            </div>
-            <div>
-              <h3 className="font-semibold text-white">Control Panel</h3>
-              <p className="text-xs text-cyan-400">System Online</p>
-            </div>
-          </div>
-          <div className="flex gap-2">
-            <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
-            <div className="w-3 h-3 rounded-full bg-cyan-500" />
-            <div className="w-3 h-3 rounded-full bg-purple-500" />
-          </div>
-        </div>
-        
-        <div className="grid grid-cols-4 gap-3 mb-4">
-          {["CPU", "RAM", "DISK", "NET"].map((label, i) => (
-            <div key={i} className="p-3 bg-gray-800 rounded-lg border border-gray-700">
-              <p className="text-[10px] text-gray-500 mb-1">{label}</p>
-              <p className="text-lg font-mono text-cyan-400">{[78, 64, 45, 92][i]}%</p>
-              <div className="h-1 bg-gray-700 rounded-full mt-2">
-                <div 
-                  className="h-full bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full" 
-                  style={{ width: `${[78, 64, 45, 92][i]}%` }} 
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="p-4 bg-gray-800/50 rounded-lg border border-purple-500/30">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" />
-            <span className="text-xs text-purple-400 font-mono">LIVE DATA STREAM</span>
-          </div>
-          <div className="font-mono text-xs text-gray-400">
-            &gt; Processing 1,247 requests/sec...
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (style.id === "retro-modern") {
-    return (
-      <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-6 border border-amber-200" style={baseStyle}>
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-600 to-orange-600 flex items-center justify-center text-amber-50 font-bold text-xl shadow-md">
-              R
-            </div>
-            <div>
-              <h3 className="font-bold text-amber-900 text-lg">Vintage Café</h3>
-              <p className="text-sm text-amber-700">Desde 1985</p>
-            </div>
-          </div>
-          <button className="px-5 py-2 bg-amber-700 text-amber-50 rounded-xl font-medium shadow-md">
-            Reservar
-          </button>
-        </div>
-        
-        <div className="grid grid-cols-2 gap-4 mb-4">
-          <div className="p-4 bg-white/70 rounded-xl border border-amber-200 shadow-sm">
-            <p className="text-xs text-amber-600 mb-1">☕ Especialidade</p>
-            <p className="font-semibold text-amber-900">Café Bourbon</p>
-            <p className="text-amber-700 font-bold mt-1">R$ 12,00</p>
-          </div>
-          <div className="p-4 bg-white/70 rounded-xl border border-amber-200 shadow-sm">
-            <p className="text-xs text-amber-600 mb-1">🥐 Destaque</p>
-            <p className="font-semibold text-amber-900">Croissant Artesanal</p>
-            <p className="text-amber-700 font-bold mt-1">R$ 8,00</p>
-          </div>
-        </div>
-
-        <div className="p-4 bg-amber-100/50 rounded-xl text-center">
-          <p className="text-amber-800 italic">"Tradição com sabor contemporâneo"</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (style.id === "industrial") {
-    return (
-      <div className="bg-gray-100 rounded-lg p-5 border-2 border-gray-400" style={baseStyle}>
-        <div className="flex items-center justify-between mb-4 pb-3 border-b-2 border-gray-300">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gray-700 flex items-center justify-center">
-              <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
-              </svg>
-            </div>
-            <span className="font-bold text-gray-800 uppercase tracking-wide">Sistema de Controle</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-gray-600">STATUS:</span>
-            <span className="px-2 py-0.5 bg-green-600 text-white text-xs font-bold">ATIVO</span>
-          </div>
-        </div>
-        
-        <div className="grid grid-cols-4 gap-2 mb-4">
-          {[
-            { label: "PEDIDOS", value: "247", status: "ok" },
-            { label: "PENDENTES", value: "12", status: "warn" },
-            { label: "ENTREGUES", value: "235", status: "ok" },
-            { label: "TEMPO MED", value: "8min", status: "ok" },
-          ].map((item, i) => (
-            <div key={i} className="p-3 bg-white border border-gray-300">
-              <p className="text-[10px] text-gray-500 font-bold">{item.label}</p>
-              <p className={`text-xl font-bold ${item.status === "warn" ? "text-yellow-600" : "text-gray-800"}`}>
-                {item.value}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div className="flex gap-2">
-          <button className="flex-1 py-2 bg-blue-600 text-white font-bold text-sm">NOVO PEDIDO</button>
-          <button className="flex-1 py-2 bg-gray-600 text-white font-bold text-sm">RELATÓRIO</button>
-          <button className="px-4 py-2 bg-red-600 text-white font-bold text-sm">⚠</button>
-        </div>
-      </div>
-    );
-  }
-
-  // Hybrid styles
   return (
-    <div className={`bg-white rounded-xl p-6 border ${
-      style.id === "hybrid-friendly" ? "border-blue-200" : "border-gray-200"
-    }`} style={baseStyle}>
-      <div className="flex items-center justify-between mb-5">
-        <div className="flex items-center gap-3">
-          <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${
-            style.id === "hybrid-friendly" ? "bg-blue-100" : "bg-gray-100"
-          }`}>
-            <span className="text-2xl">{style.id === "hybrid-friendly" ? "🍽️" : "📋"}</span>
+    <div 
+      className="rounded-xl overflow-hidden"
+      style={{ background: bg, fontFamily: font, color: text, border: `1px solid ${borderColor}` }}
+    >
+      {/* Nav */}
+      <div style={{ borderBottom: `1px solid ${borderColor}`, padding: "12px 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <div style={{ width: 28, height: 28, borderRadius: 8, background: accent, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <span style={{ color: "#fff", fontSize: 14, fontWeight: 700 }}>P</span>
           </div>
-          <div>
-            <h3 className="font-semibold text-gray-800">Gestão de Pedidos</h3>
-            <p className={`text-sm ${style.id === "hybrid-friendly" ? "text-blue-600" : "text-gray-500"}`}>
-              {style.id === "hybrid-friendly" ? "Sistema amigável" : "Sistema operacional"}
-            </p>
+          <span style={{ fontWeight: 700, fontSize: 14 }}>ProjetoX</span>
+        </div>
+        <div style={{ display: "flex", gap: "16px", fontSize: 11, color: muted }}>
+          <span>Home</span>
+          <span>Recursos</span>
+          <span>Preços</span>
+        </div>
+        <div style={{ padding: "5px 14px", borderRadius: 8, background: accent, color: "#fff", fontSize: 11, fontWeight: 600, cursor: "pointer" }}>
+          Começar
+        </div>
+      </div>
+
+      {/* Hero */}
+      <div style={{ padding: "32px 20px", textAlign: "center" as const }}>
+        <div style={{ display: "inline-block", padding: "4px 12px", borderRadius: 20, background: `${accent}22`, color: accent, fontSize: 10, fontWeight: 600, marginBottom: 12 }}>
+          ✨ Novo Release v2.0
+        </div>
+        <h2 style={{ fontSize: 22, fontWeight: 800, lineHeight: 1.2, marginBottom: 8, letterSpacing: "-0.02em" }}>
+          Transforme suas ideias<br />em realidade
+        </h2>
+        <p style={{ fontSize: 12, color: muted, maxWidth: 320, margin: "0 auto 16px" }}>
+          Plataforma completa para criar, gerenciar e escalar seus projetos com eficiência.
+        </p>
+        <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
+          <div style={{ padding: "8px 20px", borderRadius: 8, background: accent, color: "#fff", fontSize: 12, fontWeight: 600 }}>
+            Começar Grátis
+          </div>
+          <div style={{ padding: "8px 20px", borderRadius: 8, border: `1px solid ${borderColor}`, fontSize: 12, fontWeight: 500, color: muted }}>
+            Ver Demo
           </div>
         </div>
-        <button className={`px-4 py-2 rounded-xl font-medium text-sm ${
-          style.id === "hybrid-friendly" 
-            ? "bg-blue-500 text-white" 
-            : "bg-gray-800 text-white"
-        }`}>
-          + Novo Pedido
-        </button>
       </div>
-      
-      <div className={`grid grid-cols-3 gap-3 ${style.id === "hybrid-friendly" ? "gap-4" : ""}`}>
+
+      {/* Stats */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, padding: "0 20px 20px" }}>
         {[
-          { icon: "🥩", label: "Carnes", count: 12 },
-          { icon: "🐟", label: "Peixes", count: 8 },
-          { icon: "🦐", label: "Frutos do Mar", count: 5 },
-        ].map((cat, i) => (
-          <div key={i} className={`p-4 rounded-xl border ${
-            style.id === "hybrid-friendly"
-              ? "bg-gradient-to-br from-blue-50 to-white border-blue-100"
-              : "bg-gray-50 border-gray-200"
-          }`}>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-xl">{cat.icon}</span>
-              <span className="font-medium text-gray-800">{cat.label}</span>
-            </div>
-            <p className={`text-2xl font-bold ${
-              style.id === "hybrid-friendly" ? "text-blue-600" : "text-gray-700"
-            }`}>
-              {cat.count}
-            </p>
+          { label: "Usuários", value: "12K+", icon: "👥" },
+          { label: "Projetos", value: "48K", icon: "📁" },
+          { label: "Uptime", value: "99.9%", icon: "⚡" },
+        ].map((stat, i) => (
+          <div key={i} style={{ padding: 12, borderRadius: 10, background: cardBg, border: `1px solid ${borderColor}`, textAlign: "center" as const }}>
+            <div style={{ fontSize: 16, marginBottom: 4 }}>{stat.icon}</div>
+            <div style={{ fontSize: 16, fontWeight: 700, color: accent }}>{stat.value}</div>
+            <div style={{ fontSize: 9, color: muted }}>{stat.label}</div>
           </div>
         ))}
+      </div>
+
+      {/* Features */}
+      <div style={{ padding: "16px 20px 20px" }}>
+        <h3 style={{ fontSize: 14, fontWeight: 700, marginBottom: 12, textAlign: "center" as const }}>Recursos Principais</h3>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+          {[
+            { title: "Dashboard", desc: "Métricas em tempo real", emoji: "📊" },
+            { title: "Automação", desc: "Workflows inteligentes", emoji: "🤖" },
+            { title: "Integrações", desc: "100+ conectores", emoji: "🔗" },
+            { title: "Segurança", desc: "Criptografia E2E", emoji: "🔒" },
+          ].map((f, i) => (
+            <div key={i} style={{ padding: 12, borderRadius: 10, background: cardBg, border: `1px solid ${borderColor}` }}>
+              <div style={{ fontSize: 18, marginBottom: 6 }}>{f.emoji}</div>
+              <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 2 }}>{f.title}</div>
+              <div style={{ fontSize: 10, color: muted }}>{f.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Testimonial */}
+      <div style={{ margin: "0 20px 20px", padding: 16, borderRadius: 12, background: `${accent}11`, border: `1px solid ${accent}22` }}>
+        <p style={{ fontSize: 11, fontStyle: "italic", color: muted, marginBottom: 8 }}>
+          "Esta plataforma mudou completamente a forma como gerenciamos nossos projetos. Recomendo!"
+        </p>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <div style={{ width: 24, height: 24, borderRadius: "50%", background: accent, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 10, fontWeight: 700 }}>A</div>
+          <div>
+            <div style={{ fontSize: 10, fontWeight: 600 }}>Ana Silva</div>
+            <div style={{ fontSize: 9, color: muted }}>CEO, TechCorp</div>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA */}
+      <div style={{ padding: "16px 20px", borderTop: `1px solid ${borderColor}`, textAlign: "center" as const }}>
+        <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 6 }}>Pronto para começar?</div>
+        <div style={{ display: "inline-block", padding: "8px 24px", borderRadius: 8, background: accent, color: "#fff", fontSize: 12, fontWeight: 600 }}>
+          Criar Conta Grátis →
+        </div>
       </div>
     </div>
   );
