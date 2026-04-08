@@ -594,43 +594,56 @@ h1, h2, h3 {
       "--accent": "217 91% 60%",
     },
     sampleCSS: `:root {
-  --background: #FFFFFF;
-  --surface: #F9FAFB;
+  --background: #F8F9FA;
+  --surface: #FFFFFF;
   --text-primary: #374151;
   --text-secondary: #6B7280;
   --primary: #4B5563;
   --accent: #3B82F6;
   --border: #D1D5DB;
-  --radius: 8px;
+  --border-color: #D1D5DB;
+}
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: 'Inter', 'Roboto', sans-serif;
 }
 
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 8px;
   padding: 16px;
+  border-left: 3px solid var(--primary);
 }
 
-.data-highlight {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.label {
-  font-size: 12px;
-  color: var(--text-secondary);
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: var(--primary) !important;
+  color: white !important;
+  border-radius: 6px;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+  font-size: 12px;
 }
 
-.button-primary {
-  background: var(--primary);
-  color: white;
-  padding: 10px 20px;
-  border-radius: var(--radius);
-  font-weight: 500;
-}`,
+.status-badge, .tag {
+  background: var(--primary) !important;
+  color: white !important;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 10px;
+}
+
+.text-accent { color: var(--accent); }
+.icon-container { background: var(--primary) !important; color: white !important; border-radius: 6px !important; }
+
+h1, h2, h3 { color: var(--text-primary); font-weight: 700; }
+
+.data-highlight { font-size: 28px; font-weight: 700; color: var(--text-primary); }
+.label { font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -652,50 +665,58 @@ h1, h2, h3 {
       "--accent": "158 64% 52%",
     },
     sampleCSS: `:root {
-  --background: #FFFFFF;
-  --surface: #EFF6FF;
+  --background: #F0F7FF;
+  --surface: #FFFFFF;
   --text-primary: #1E40AF;
   --text-secondary: #3B82F6;
   --primary: #3B82F6;
   --success: #10B981;
   --warning: #F59E0B;
   --border: #BFDBFE;
-  --radius: 16px;
+  --border-color: #BFDBFE;
+}
+
+body {
+  background: linear-gradient(135deg, #F0F7FF, #EDE9FE);
+  color: #1E293B;
+  font-family: 'Nunito', 'Poppins', sans-serif;
 }
 
 .card {
-  background: linear-gradient(135deg, var(--surface), #FFFFFF);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  background: linear-gradient(135deg, #FFFFFF, #F0F7FF);
+  border: 2px solid var(--border);
+  border-radius: 20px !important;
   padding: 20px;
+  box-shadow: 0 4px 20px rgba(59,130,246,0.08);
 }
 
-.icon-box {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  background: var(--surface);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(59,130,246,0.12);
+  border-color: var(--primary);
 }
 
-.button-primary {
-  background: var(--primary);
-  color: white;
-  padding: 12px 24px;
-  border-radius: 14px;
-  font-weight: 600;
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: var(--primary) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 16px !important;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(59,130,246,0.25);
 }
 
-.category-chip {
-  background: var(--surface);
-  color: var(--primary);
-  padding: 8px 16px;
+.status-badge, .tag {
+  background: linear-gradient(135deg, var(--primary), #818CF8) !important;
+  color: white !important;
   border-radius: 20px;
-  font-weight: 500;
-}`,
+}
+
+.text-accent { color: var(--primary); }
+.icon-container { background: linear-gradient(135deg, #DBEAFE, #EDE9FE) !important; border-radius: 16px !important; }
+
+h1, h2, h3 { color: #1E3A5F; font-weight: 800; }
+
+.category-chip { background: #EFF6FF; color: var(--primary); padding: 8px 16px; border-radius: 20px; font-weight: 600; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   
@@ -722,94 +743,81 @@ h1, h2, h3 {
     sampleCSS: `:root {
   --background: #0D0D0D;
   --surface: #1A1A2E;
+  --text-primary: #E0E0FF;
   --neon-pink: #FF00FF;
   --neon-cyan: #00FFFF;
   --neon-purple: #8B00FF;
+  --border-color: rgba(255,0,255,0.3);
 }
 
-.card-cyberpunk {
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: 'Orbitron', 'Rajdhani', sans-serif;
+}
+
+.card {
   background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
   border: 1px solid var(--neon-pink);
   border-radius: 4px;
   padding: 20px;
   position: relative;
-  box-shadow: 
-    0 0 10px var(--neon-pink),
-    0 0 20px var(--neon-pink),
-    inset 0 0 30px rgba(255, 0, 255, 0.1);
-  animation: neonPulse 2s ease-in-out infinite alternate;
+  box-shadow: 0 0 15px rgba(255,0,255,0.2), inset 0 0 30px rgba(255,0,255,0.05);
+}
+
+.card:hover {
+  box-shadow: 0 0 25px var(--neon-pink), 0 0 50px rgba(255,0,255,0.15);
+}
+
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: transparent;
+  border: 2px solid var(--neon-cyan) !important;
+  color: var(--neon-cyan) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(0,255,255,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.button-primary:hover, .btn:hover {
+  background: var(--neon-cyan);
+  color: var(--background) !important;
+  box-shadow: 0 0 30px var(--neon-cyan);
+}
+
+.status-badge, .tag {
+  background: var(--neon-pink) !important;
+  color: #000 !important;
+  box-shadow: 0 0 10px rgba(255,0,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.text-accent { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0,255,255,0.5); }
+
+h1, h2, h3 { text-transform: uppercase; letter-spacing: 0.05em; }
+
+.icon-container {
+  background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple)) !important;
+  box-shadow: 0 0 15px rgba(255,0,255,0.4);
 }
 
 /* Glitch effect */
-.glitch-text {
-  position: relative;
-  animation: glitch 0.5s infinite;
+.glitch-text { position: relative; }
+.glitch-text::before, .glitch-text::after {
+  content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%;
 }
+.glitch-text::before { color: var(--neon-cyan); animation: cyberGlitch1 0.3s infinite; clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); }
+.glitch-text::after { color: var(--neon-pink); animation: cyberGlitch2 0.3s infinite; clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%); }
+@keyframes cyberGlitch1 { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-3px)} 40%{transform:translateX(3px)} }
+@keyframes cyberGlitch2 { 0%,100%{transform:translateX(0)} 20%{transform:translateX(3px)} 40%{transform:translateX(-3px)} }
 
-.glitch-text::before,
-.glitch-text::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-.glitch-text::before {
-  color: var(--neon-cyan);
-  animation: glitchLeft 0.3s infinite;
-  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
-}
-
-.glitch-text::after {
-  color: var(--neon-pink);
-  animation: glitchRight 0.3s infinite;
-  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
-}
-
-@keyframes neonPulse {
-  from { box-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink); }
-  to { box-shadow: 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink), 0 0 60px var(--neon-pink); }
-}
-
-@keyframes glitchLeft {
-  0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(-3px); }
-  40% { transform: translateX(3px); }
-}
-
-@keyframes glitchRight {
-  0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(3px); }
-  40% { transform: translateX(-3px); }
-}
-
-.button-cyber {
-  background: transparent;
-  border: 2px solid var(--neon-cyan);
-  color: var(--neon-cyan);
-  padding: 12px 24px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s;
-}
-
-.button-cyber::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
-  animation: scanLine 2s linear infinite;
-}
-
-@keyframes scanLine {
-  from { left: -100%; }
-  to { left: 100%; }
+/* Scanlines */
+.scanlines::before {
+  content:''; position:absolute; inset:0; pointer-events:none; z-index:10;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px);
 }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
@@ -834,83 +842,59 @@ h1, h2, h3 {
     sampleCSS: `:root {
   --background: #0F0C29;
   --surface: rgba(48, 43, 99, 0.5);
+  --text-primary: #E0E0FF;
   --aurora-green: #00FF88;
   --aurora-purple: #8B5CF6;
   --aurora-blue: #06B6D4;
+  --border-color: rgba(139,92,246,0.25);
 }
 
-.aurora-container {
+body {
   background: linear-gradient(180deg, #0F0C29 0%, #302B63 50%, #24243E 100%);
+  color: var(--text-primary);
+  font-family: 'Quicksand', 'Comfortaa', sans-serif;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-.aurora-waves {
-  position: absolute;
-  width: 200%;
-  height: 100%;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(0, 255, 136, 0.1) 20%,
-    rgba(139, 92, 246, 0.15) 40%,
-    rgba(6, 182, 212, 0.1) 60%,
-    transparent 100%
-  );
-  animation: auroraWave 8s ease-in-out infinite;
+body::before {
+  content:''; position:fixed; width:200%; height:100%; top:0; left:-50%;
+  background: linear-gradient(180deg, transparent 0%, rgba(0,255,136,0.08) 30%, rgba(139,92,246,0.1) 50%, rgba(6,182,212,0.06) 70%, transparent 100%);
+  animation: auroraWave 8s ease-in-out infinite; pointer-events:none; z-index:0;
 }
-
 @keyframes auroraWave {
-  0%, 100% { 
-    transform: translateX(-25%) translateY(0) rotate(-5deg); 
-    opacity: 0.5;
-  }
-  50% { 
-    transform: translateX(0%) translateY(-20px) rotate(5deg); 
-    opacity: 1;
-  }
+  0%,100%{ transform:translateX(-25%) rotate(-5deg); opacity:0.5; }
+  50%{ transform:translateX(0%) translateY(-20px) rotate(5deg); opacity:1; }
 }
 
-.card-aurora {
-  background: rgba(48, 43, 99, 0.3);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(139, 92, 246, 0.3);
+.card {
+  background: rgba(48,43,99,0.3);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(139,92,246,0.25);
   border-radius: 20px;
-  padding: 24px;
-  box-shadow: 
-    0 8px 32px rgba(0, 255, 136, 0.1),
-    inset 0 0 60px rgba(139, 92, 246, 0.1);
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0,255,136,0.06), inset 0 0 40px rgba(139,92,246,0.06);
 }
 
-.glow-orb {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--aurora-green), transparent);
-  filter: blur(30px);
-  animation: orbFloat 6s ease-in-out infinite;
-}
-
-@keyframes orbFloat {
-  0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
-  50% { transform: translateY(-30px) scale(1.2); opacity: 0.8; }
-}
-
-.button-aurora {
-  background: linear-gradient(135deg, var(--aurora-purple), var(--aurora-green));
-  border: none;
-  color: white;
-  padding: 14px 28px;
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: linear-gradient(135deg, var(--aurora-purple), var(--aurora-green)) !important;
+  color: white !important;
+  border: none !important;
   border-radius: 30px;
   font-weight: 600;
-  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 20px rgba(139,92,246,0.35);
 }
 
-.button-aurora:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 30px rgba(0, 255, 136, 0.5);
-}`,
+.status-badge, .tag {
+  background: linear-gradient(135deg, var(--aurora-purple), var(--aurora-blue)) !important;
+  color: white !important;
+  border-radius: 20px;
+}
+
+.text-accent { color: var(--aurora-green); }
+.icon-container { background: linear-gradient(135deg, var(--aurora-green), var(--aurora-purple)) !important; }
+
+h1, h2 { letter-spacing: -0.02em; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -937,92 +921,65 @@ h1, h2, h3 {
   --accent-red: #FF0000;
   --accent-yellow: #FFFF00;
   --accent-blue: #0000FF;
+  --border-color: #000;
 }
 
-.brutalist-container {
+body {
   background: var(--background);
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-}
-
-.brutal-title {
-  font-size: clamp(4rem, 15vw, 12rem);
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 0.85;
-  letter-spacing: -0.05em;
   color: var(--text);
-  mix-blend-mode: difference;
+  font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
 }
 
-.brutal-card {
+.card {
   background: var(--background);
-  border: 4px solid var(--text);
+  border: 4px solid var(--text) !important;
+  border-radius: 0 !important;
   padding: 20px;
   position: relative;
-  transition: none;
 }
 
-.brutal-card:hover {
-  background: var(--text);
-  color: var(--background);
+.card::before {
+  content:''; position:absolute; top:6px; left:6px; right:-6px; bottom:-6px;
+  background: var(--accent-red); z-index:-1;
 }
 
-.brutal-card::before {
-  content: '';
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  right: -8px;
-  bottom: -8px;
-  background: var(--accent-red);
-  z-index: -1;
-}
-
-.button-brutal {
-  background: var(--text);
-  color: var(--background);
-  border: 3px solid var(--text);
-  padding: 16px 32px;
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: var(--text) !important;
+  color: var(--background) !important;
+  border: 3px solid var(--text) !important;
+  border-radius: 0 !important;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  cursor: pointer;
-  transition: all 0.1s;
 }
 
-.button-brutal:hover {
-  background: var(--accent-yellow);
-  color: var(--text);
+.button-primary:hover, .btn:hover {
+  background: var(--accent-yellow) !important;
+  color: var(--text) !important;
   transform: translate(-4px, -4px);
   box-shadow: 4px 4px 0 var(--text);
 }
 
-.button-brutal:active {
-  transform: translate(0, 0);
-  box-shadow: none;
-}
-
-/* Marquee text */
-.marquee {
-  overflow: hidden;
-  white-space: nowrap;
-  background: var(--text);
-  color: var(--background);
-  padding: 10px 0;
-}
-
-.marquee-content {
-  display: inline-block;
-  animation: marquee 20s linear infinite;
-  font-size: 2rem;
+.status-badge, .tag {
+  background: var(--accent-red) !important;
+  color: white !important;
+  border-radius: 0 !important;
   font-weight: 900;
   text-transform: uppercase;
 }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}`,
+.text-accent { color: var(--accent-red); }
+.icon-container { background: var(--accent-yellow) !important; color: var(--text) !important; border-radius: 0 !important; }
+
+h1, h2, h3 {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+h1 { font-size: 42px !important; line-height: 0.9 !important; }
+
+nav, footer { border-color: var(--text) !important; border-width: 3px !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -1050,97 +1007,59 @@ h1, h2, h3 {
   --neon-purple: #C774E8;
   --neon-cyan: #00FFFF;
   --sunset-orange: #FF8C00;
-  --sunset-pink: #FF1493;
+  --border-color: rgba(255,106,213,0.3);
 }
 
-.vaporwave-bg {
-  background: linear-gradient(
-    180deg,
-    var(--bg-dark) 0%,
-    var(--bg-purple) 40%,
-    var(--sunset-pink) 70%,
-    var(--sunset-orange) 100%
-  );
-  position: relative;
-  overflow: hidden;
+body {
+  background: linear-gradient(180deg, #2E0854 0%, #120458 50%, #FF1493 85%, #FF8C00 100%);
+  color: #FFE0F0;
+  font-family: 'VCR OSD Mono', 'Courier New', monospace;
 }
 
-/* Retro sun */
-.retro-sun {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: linear-gradient(
-    180deg,
-    #FF6AD5 0%,
-    #FF8C00 50%,
-    #FFD700 100%
-  );
-  position: relative;
-  animation: sunPulse 4s ease-in-out infinite;
-}
-
-.retro-sun::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 50%;
-  bottom: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent 0px,
-    transparent 8px,
-    var(--bg-purple) 8px,
-    var(--bg-purple) 16px
-  );
-}
-
-@keyframes sunPulse {
-  0%, 100% { filter: drop-shadow(0 0 30px #FF6AD5); }
-  50% { filter: drop-shadow(0 0 60px #FF8C00); }
-}
-
-/* Perspective grid */
-.grid-floor {
-  background: 
-    linear-gradient(90deg, var(--neon-cyan) 1px, transparent 1px),
-    linear-gradient(0deg, var(--neon-cyan) 1px, transparent 1px);
-  background-size: 50px 50px;
-  transform: perspective(500px) rotateX(60deg);
-  animation: gridMove 2s linear infinite;
-}
-
-@keyframes gridMove {
-  from { background-position: 0 0; }
-  to { background-position: 0 50px; }
-}
-
-.card-vapor {
-  background: rgba(46, 8, 84, 0.7);
+.card {
+  background: rgba(46,8,84,0.7);
   border: 2px solid var(--neon-pink);
   border-radius: 0;
-  padding: 24px;
-  box-shadow: 
-    0 0 20px var(--neon-pink),
-    inset 0 0 20px rgba(255, 106, 213, 0.2);
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(255,106,213,0.2), inset 0 0 20px rgba(255,106,213,0.05);
 }
 
-.button-vapor {
-  background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple));
-  border: none;
-  color: white;
-  padding: 14px 32px;
-  font-family: 'VCR OSD Mono', monospace;
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple)) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 0;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  box-shadow: 0 4px 20px rgba(255, 106, 213, 0.5);
-  animation: buttonGlow 2s ease-in-out infinite alternate;
+  box-shadow: 0 4px 20px rgba(255,106,213,0.4);
+  animation: vaporGlow 2s ease-in-out infinite alternate;
 }
 
-@keyframes buttonGlow {
+@keyframes vaporGlow {
   from { box-shadow: 0 4px 20px var(--neon-pink); }
   to { box-shadow: 0 4px 40px var(--neon-cyan); }
-}`,
+}
+
+.status-badge, .tag {
+  background: var(--neon-cyan) !important;
+  color: #120458 !important;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.text-accent { color: var(--neon-pink); text-shadow: 0 0 10px rgba(255,106,213,0.6); }
+.icon-container { background: linear-gradient(135deg, var(--neon-pink), var(--sunset-orange)) !important; border-radius: 0 !important; }
+
+h1, h2 { text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* Rainbow text */
+.rainbow-text, .text-gradient {
+  background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan), var(--neon-purple), var(--neon-pink));
+  background-size: 200% auto;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: vaporRainbow 3s linear infinite;
+}
+@keyframes vaporRainbow { to { background-position: 200% center; } }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -1167,93 +1086,59 @@ h1, h2, h3 {
   --gold: #D4AF37;
   --gold-light: #FFD700;
   --gold-dark: #B8860B;
+  --border-color: rgba(212,175,55,0.25);
 }
 
-.luxury-container {
+body {
   background: var(--bg-black);
-  color: var(--gold);
+  color: #F5F0E5;
+  font-family: 'Playfair Display', 'Georgia', serif;
 }
 
-.card-luxury {
-  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-black) 100%);
+.card {
+  background: linear-gradient(135deg, var(--bg-dark), var(--bg-black));
   border: 1px solid var(--gold);
-  padding: 32px;
+  padding: 24px;
   position: relative;
   overflow: hidden;
 }
 
-/* Gold shimmer effect */
-.card-luxury::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent 30%,
-    rgba(212, 175, 55, 0.1) 50%,
-    transparent 70%
-  );
-  animation: shimmer 3s ease-in-out infinite;
+.card::before {
+  content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
+  background: linear-gradient(45deg, transparent 30%, rgba(212,175,55,0.08) 50%, transparent 70%);
+  animation: luxShimmer 3s ease-in-out infinite;
 }
+@keyframes luxShimmer { 0%{transform:translateX(-100%) rotate(45deg)} 100%{transform:translateX(100%) rotate(45deg)} }
 
-@keyframes shimmer {
-  0% { transform: translateX(-100%) rotate(45deg); }
-  100% { transform: translateX(100%) rotate(45deg); }
-}
-
-/* Gold text gradient */
-.gold-text {
-  background: linear-gradient(
-    135deg,
-    var(--gold-dark) 0%,
-    var(--gold-light) 25%,
-    var(--gold) 50%,
-    var(--gold-light) 75%,
-    var(--gold-dark) 100%
-  );
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold-light), var(--gold-dark)) !important;
   background-size: 200% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: goldShine 3s ease-in-out infinite;
-}
-
-@keyframes goldShine {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-/* Marble texture overlay */
-.marble-bg {
-  background-image: 
-    linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%),
-    linear-gradient(-45deg, rgba(255,255,255,0.03) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.03) 75%),
-    linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.03) 75%);
-  background-size: 20px 20px;
-}
-
-.button-luxury {
-  background: linear-gradient(135deg, var(--gold-dark), var(--gold-light), var(--gold-dark));
-  background-size: 200% 200%;
-  border: none;
-  color: var(--bg-black);
-  padding: 16px 40px;
+  color: var(--bg-black) !important;
+  border: none !important;
   font-family: 'Playfair Display', serif;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  transition: all 0.3s;
   animation: goldShine 3s ease-in-out infinite;
 }
+@keyframes goldShine { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
 
-.button-luxury:hover {
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
-  transform: translateY(-2px);
-}`,
+.status-badge, .tag {
+  background: var(--gold) !important;
+  color: var(--bg-black) !important;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.text-accent { 
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold-light), var(--gold));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.icon-container { background: linear-gradient(135deg, var(--gold), var(--gold-dark)) !important; color: var(--bg-black) !important; }
+
+h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--gold); }
+
+nav, footer { border-color: rgba(212,175,55,0.2) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -1281,97 +1166,65 @@ h1, h2, h3 {
   --candy-purple: #DDA0DD;
   --candy-green: #98FB98;
   --candy-yellow: #FFFACD;
+  --border-color: rgba(255,182,193,0.5);
 }
 
-.candy-container {
-  background: linear-gradient(135deg, var(--bg-pink) 0%, #E6E6FA 100%);
+body {
+  background: linear-gradient(135deg, var(--bg-pink), #E6E6FA);
+  color: #5D3A6E;
+  font-family: 'Quicksand', 'Nunito', sans-serif;
 }
 
-.card-candy {
+.card {
   background: white;
-  border-radius: 24px;
-  padding: 24px;
-  box-shadow: 
-    0 10px 30px rgba(255, 182, 193, 0.3),
-    0 0 0 4px var(--candy-pink);
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 24px !important;
+  border: 3px solid var(--candy-pink) !important;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(255,182,193,0.25);
+  transition: all 0.3s cubic-bezier(0.175,0.885,0.32,1.275);
 }
 
-.card-candy:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 
-    0 20px 40px rgba(255, 182, 193, 0.4),
-    0 0 0 4px var(--candy-purple);
+.card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(221,160,221,0.3);
+  border-color: var(--candy-purple) !important;
 }
 
-/* Bouncy animation */
-.bouncy {
-  animation: bounce 2s ease-in-out infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  25% { transform: translateY(-10px) scale(1.02); }
-  50% { transform: translateY(0); }
-  75% { transform: translateY(-5px); }
-}
-
-/* Floating bubbles */
-.bubble {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--candy-pink), var(--candy-purple));
-  animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(180deg); }
-}
-
-.button-candy {
-  background: linear-gradient(135deg, var(--candy-pink), var(--candy-purple));
-  border: none;
-  border-radius: 50px;
-  color: white;
-  padding: 14px 32px;
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: linear-gradient(135deg, var(--candy-pink), var(--candy-purple)) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 50px !important;
   font-weight: 700;
-  font-size: 16px;
-  box-shadow: 0 6px 20px rgba(221, 160, 221, 0.4);
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 6px 20px rgba(221,160,221,0.35);
 }
 
-.button-candy:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 25px rgba(255, 182, 193, 0.5);
+.button-primary:hover, .btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(255,182,193,0.5);
 }
 
-.button-candy:active {
-  transform: scale(0.95);
+.status-badge, .tag {
+  background: linear-gradient(135deg, var(--candy-blue), var(--candy-purple)) !important;
+  color: white !important;
+  border-radius: 20px;
+  font-weight: 700;
 }
+
+.text-accent { color: #FF69B4; }
+.icon-container { background: linear-gradient(135deg, var(--candy-pink), var(--candy-blue)) !important; border-radius: 50% !important; }
 
 /* Rainbow text */
-.rainbow-text {
-  background: linear-gradient(
-    90deg,
-    var(--candy-pink),
-    var(--candy-purple),
-    var(--candy-blue),
-    var(--candy-green),
-    var(--candy-yellow),
-    var(--candy-pink)
-  );
+.rainbow-text, .text-gradient {
+  background: linear-gradient(90deg, var(--candy-pink), var(--candy-purple), var(--candy-blue), var(--candy-green), var(--candy-pink));
   background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: rainbow 3s linear infinite;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: candyRainbow 3s linear infinite;
 }
+@keyframes candyRainbow { to { background-position: 200% center; } }
 
-@keyframes rainbow {
-  to { background-position: 200% center; }
-}`,
+h1, h2, h3 { color: #5D3A6E; font-weight: 800; }
+nav, footer { border-color: rgba(255,182,193,0.3) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -1398,128 +1251,65 @@ h1, h2, h3 {
   --matrix-green: #00FF00;
   --matrix-dim: #00CC00;
   --matrix-dark: #003300;
+  --border-color: rgba(0,255,0,0.2);
 }
 
-.matrix-container {
+body {
   background: var(--bg-black);
   color: var(--matrix-green);
   font-family: 'Fira Code', 'JetBrains Mono', monospace;
   position: relative;
-  overflow: hidden;
 }
 
-/* Matrix rain effect */
-.matrix-rain {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(0, 255, 0, 0.03) 50%,
-    transparent 100%
-  );
-  pointer-events: none;
+body::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:100;
+  background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,0,0,0.2) 2px, rgba(0,0,0,0.2) 4px);
 }
 
-/* Scanlines */
-.scanlines::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent 0px,
-    transparent 2px,
-    rgba(0, 0, 0, 0.3) 2px,
-    rgba(0, 0, 0, 0.3) 4px
-  );
-  pointer-events: none;
-}
-
-.card-matrix {
+.card {
   background: var(--bg-dark);
-  border: 1px solid var(--matrix-green);
+  border: 1px solid rgba(0,255,0,0.3);
+  border-radius: 0 !important;
   padding: 20px;
-  position: relative;
 }
 
-.card-matrix::before {
-  content: '> ';
-  color: var(--matrix-green);
-}
+.card::before { content: '> '; color: var(--matrix-green); font-weight: 700; }
 
-/* Blinking cursor */
-.cursor::after {
-  content: '_';
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
-/* Typing effect */
-.typing {
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 2px solid var(--matrix-green);
-  animation: 
-    typing 3s steps(30) forwards,
-    blinkCursor 0.75s step-end infinite;
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blinkCursor {
-  50% { border-color: transparent; }
-}
-
-.button-matrix {
-  background: transparent;
-  border: 1px solid var(--matrix-green);
-  color: var(--matrix-green);
-  padding: 12px 24px;
-  font-family: inherit;
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: transparent !important;
+  border: 1px solid var(--matrix-green) !important;
+  color: var(--matrix-green) !important;
+  border-radius: 0 !important;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s;
+  font-family: inherit;
 }
 
-.button-matrix:hover {
-  background: var(--matrix-green);
-  color: var(--bg-black);
+.button-primary:hover, .btn:hover {
+  background: var(--matrix-green) !important;
+  color: var(--bg-black) !important;
   box-shadow: 0 0 20px var(--matrix-green);
 }
 
-/* Glitch effect on hover */
-.button-matrix:hover::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent 0px,
-    transparent 2px,
-    rgba(0, 255, 0, 0.1) 2px,
-    rgba(0, 255, 0, 0.1) 4px
-  );
-  animation: glitch 0.2s infinite;
-}`,
+.status-badge, .tag {
+  background: transparent !important;
+  border: 1px solid var(--matrix-green);
+  color: var(--matrix-green) !important;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-family: inherit;
+}
+
+.text-accent { color: var(--matrix-green); text-shadow: 0 0 8px rgba(0,255,0,0.5); }
+.icon-container { background: var(--bg-dark) !important; border: 1px solid var(--matrix-green); border-radius: 0 !important; color: var(--matrix-green) !important; }
+
+h1, h2, h3 { color: var(--matrix-green); font-family: inherit; text-transform: uppercase; }
+
+/* Blinking cursor */
+footer::after { content: '_'; animation: matrixBlink 1s step-end infinite; }
+@keyframes matrixBlink { 0%,50%{opacity:1} 51%,100%{opacity:0} }
+
+nav, footer { border-color: rgba(0,255,0,0.2) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -1546,105 +1336,62 @@ h1, h2, h3 {
   --watercolor-rose: #E5989B;
   --watercolor-mauve: #B5838D;
   --watercolor-gray: #6D6875;
+  --border-color: rgba(229,152,155,0.3);
 }
 
-.watercolor-container {
+body {
   background: var(--bg-cream);
+  color: var(--watercolor-gray);
+  font-family: 'Lato', 'Segoe UI', sans-serif;
   position: relative;
 }
 
-/* Watercolor splash */
-.watercolor-splash {
-  position: absolute;
-  width: 300px;
-  height: 300px;
+body::before {
+  content:''; position:fixed; width:300px; height:300px; top:10%; right:-50px;
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 180, 162, 0.3),
-    rgba(229, 152, 155, 0.2),
-    transparent
-  );
+  background: linear-gradient(135deg, rgba(255,180,162,0.2), rgba(229,152,155,0.15), transparent);
   filter: blur(20px);
-  animation: morphBlob 8s ease-in-out infinite;
+  animation: waterBlob 8s ease-in-out infinite; pointer-events:none;
+}
+@keyframes waterBlob {
+  0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}
+  50%{border-radius:50% 50% 40% 60%/40% 50% 50% 60%}
 }
 
-@keyframes morphBlob {
-  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-  25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-  50% { border-radius: 50% 50% 40% 60% / 40% 50% 50% 60%; }
-  75% { border-radius: 40% 60% 50% 50% / 60% 40% 60% 40%; }
+.card {
+  background: rgba(255,255,255,0.7);
+  border: none !important;
+  border-radius: 20px 60px 20px 60px !important;
+  padding: 24px;
+  box-shadow: 0 10px 40px rgba(181,131,141,0.1);
 }
 
-.card-watercolor {
-  background: rgba(255, 255, 255, 0.7);
-  border: none;
-  border-radius: 20px 60px 20px 60px;
-  padding: 32px;
-  box-shadow: 
-    0 10px 40px rgba(181, 131, 141, 0.15),
-    inset 0 0 60px rgba(255, 180, 162, 0.1);
-  position: relative;
-  overflow: hidden;
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: linear-gradient(135deg, var(--watercolor-peach), var(--watercolor-rose)) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 30px 10px 30px 10px !important;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(229,152,155,0.3);
 }
 
-.card-watercolor::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 180, 162, 0.2) 0%,
-    transparent 70%
-  );
-}
-
-/* Paint drip effect */
-.paint-drip {
-  position: relative;
-}
-
-.paint-drip::after {
-  content: '';
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 4px;
-  height: 20px;
-  background: var(--watercolor-rose);
-  border-radius: 0 0 50% 50%;
-  animation: drip 3s ease-in-out infinite;
-}
-
-@keyframes drip {
-  0%, 100% { height: 0; opacity: 0; }
-  50% { height: 20px; opacity: 1; }
-}
-
-.button-watercolor {
-  background: linear-gradient(
-    135deg,
-    var(--watercolor-peach),
-    var(--watercolor-rose)
-  );
-  border: none;
-  border-radius: 30px 10px 30px 10px;
-  color: white;
-  padding: 14px 32px;
-  font-family: 'Dancing Script', cursive;
-  font-size: 18px;
-  box-shadow: 0 4px 20px rgba(229, 152, 155, 0.4);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.button-watercolor:hover {
+.button-primary:hover, .btn:hover {
   transform: scale(1.05) rotate(-2deg);
-  border-radius: 10px 30px 10px 30px;
-}`,
+  border-radius: 10px 30px 10px 30px !important;
+}
+
+.status-badge, .tag {
+  background: var(--watercolor-rose) !important;
+  color: white !important;
+  border-radius: 20px;
+}
+
+.text-accent { color: var(--watercolor-rose); }
+.icon-container { background: linear-gradient(135deg, var(--watercolor-peach), var(--watercolor-rose)) !important; border-radius: 50% !important; }
+
+h1, h2, h3 { font-family: 'Dancing Script', 'Georgia', cursive; color: var(--watercolor-mauve); }
+
+nav, footer { border-color: rgba(229,152,155,0.2) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -1670,93 +1417,62 @@ h1, h2, h3 {
   --gradient-2: #764BA2;
   --gradient-3: #F093FB;
   --gradient-4: #F5576C;
-  --glass-bg: rgba(255, 255, 255, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-bg: rgba(255,255,255,0.1);
+  --glass-border: rgba(255,255,255,0.2);
+  --border-color: rgba(255,255,255,0.15);
 }
 
-.glass-container {
-  background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
-  min-height: 100vh;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Animated gradient background */
-.animated-bg {
-  background: linear-gradient(
-    -45deg,
-    var(--gradient-1),
-    var(--gradient-2),
-    var(--gradient-3),
-    var(--gradient-4)
-  );
+body {
+  background: linear-gradient(-45deg, #667EEA, #764BA2, #F093FB, #F5576C);
   background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+  animation: glassGradient 15s ease infinite;
+  color: white;
+  font-family: -apple-system, 'Inter', sans-serif;
 }
+@keyframes glassGradient { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Floating orbs */
-.glass-orb {
-  position: absolute;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--gradient-3), var(--gradient-4));
-  filter: blur(60px);
-  opacity: 0.6;
-  animation: orbFloat 8s ease-in-out infinite;
-}
-
-@keyframes orbFloat {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -30px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-}
-
-.card-glass {
-  background: var(--glass-bg);
+.card {
+  background: rgba(255,255,255,0.1) !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  border-radius: 20px !important;
   padding: 24px;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1), inset 0 0 0 1px rgba(255,255,255,0.08);
 }
 
-.card-glass:hover {
+.card:hover {
   transform: translateY(-5px);
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.2),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-/* 3D layer effect */
-.glass-layer-1 { transform: translateZ(10px); }
-.glass-layer-2 { transform: translateZ(20px); }
-.glass-layer-3 { transform: translateZ(30px); }
-
-.button-glass {
-  background: rgba(255, 255, 255, 0.2);
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: rgba(255,255,255,0.2) !important;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
-  color: white;
-  padding: 12px 24px;
+  border: 1px solid rgba(255,255,255,0.3) !important;
+  border-radius: 14px !important;
+  color: white !important;
   font-weight: 600;
-  transition: all 0.3s;
 }
 
-.button-glass:hover {
-  background: rgba(255, 255, 255, 0.3);
+.button-primary:hover, .btn:hover {
+  background: rgba(255,255,255,0.3) !important;
   transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}`,
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.status-badge, .tag {
+  background: rgba(255,255,255,0.2) !important;
+  backdrop-filter: blur(8px);
+  color: white !important;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.text-accent { color: rgba(255,255,255,0.9); }
+.icon-container { background: rgba(255,255,255,0.15) !important; backdrop-filter: blur(8px); }
+
+nav { background: rgba(255,255,255,0.05) !important; backdrop-filter: blur(10px); }
+nav, footer { border-color: rgba(255,255,255,0.1) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -1783,104 +1499,49 @@ h1, h2, h3 {
   --forest-light: #4A7C23;
   --wood-brown: #8B4513;
   --sand: #D4A574;
+  --border-color: rgba(45,80,22,0.2);
 }
 
-.nature-container {
+body {
   background: var(--bg-cream);
-  position: relative;
+  color: #3D2B1F;
+  font-family: 'Merriweather', 'Georgia', serif;
 }
 
-/* Paper texture */
-.paper-texture {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+.card {
+  background: linear-gradient(135deg, #FFFEF9, var(--bg-cream));
+  border: 2px solid var(--forest-dark) !important;
+  border-radius: 20px 5px 20px 5px !important;
+  padding: 20px;
+  box-shadow: 4px 4px 0 var(--forest-dark), 0 10px 30px rgba(45,80,22,0.08);
 }
 
-.card-nature {
-  background: linear-gradient(135deg, #FFFEF9, #F5E6D3);
-  border: 2px solid var(--forest-dark);
-  border-radius: 20px 5px 20px 5px;
-  padding: 24px;
-  position: relative;
-  box-shadow: 
-    4px 4px 0 var(--forest-dark),
-    0 10px 30px rgba(45, 80, 22, 0.1);
-}
-
-/* Leaf decoration */
-.leaf-decor::before {
-  content: '🌿';
-  position: absolute;
-  top: -10px;
-  right: 10px;
-  font-size: 24px;
-  transform: rotate(15deg);
-}
-
-/* Organic blob shape */
-.organic-blob {
-  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  background: linear-gradient(135deg, var(--forest-light), var(--forest-dark));
-  animation: morphShape 10s ease-in-out infinite;
-}
-
-@keyframes morphShape {
-  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-  25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-  50% { border-radius: 50% 50% 40% 60% / 40% 50% 50% 60%; }
-  75% { border-radius: 40% 60% 50% 50% / 60% 40% 60% 40%; }
-}
-
-/* Growing vine animation */
-.vine {
-  stroke: var(--forest-light);
-  stroke-width: 2;
-  fill: none;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: growVine 3s ease forwards;
-}
-
-@keyframes growVine {
-  to { stroke-dashoffset: 0; }
-}
-
-.button-nature {
-  background: var(--forest-dark);
-  border: none;
-  border-radius: 30px 10px 30px 10px;
-  color: var(--bg-cream);
-  padding: 14px 28px;
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: var(--forest-dark) !important;
+  color: var(--bg-cream) !important;
+  border: none !important;
+  border-radius: 30px 10px 30px 10px !important;
   font-weight: 600;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s;
 }
 
-.button-nature::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(74, 124, 35, 0.3),
-    transparent
-  );
-  transition: left 0.5s;
-}
-
-.button-nature:hover::before {
-  left: 100%;
-}
-
-.button-nature:hover {
-  background: var(--forest-light);
+.button-primary:hover, .btn:hover {
+  background: var(--forest-light) !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(45, 80, 22, 0.3);
-}`,
+  box-shadow: 0 6px 20px rgba(45,80,22,0.3);
+}
+
+.status-badge, .tag {
+  background: var(--forest-dark) !important;
+  color: var(--bg-cream) !important;
+  border-radius: 20px;
+}
+
+.text-accent { color: var(--forest-light); }
+.icon-container { background: var(--forest-dark) !important; color: var(--bg-cream) !important; border-radius: 50% !important; }
+
+h1, h2, h3 { font-family: 'Merriweather', serif; color: var(--forest-dark); }
+
+nav, footer { border-color: var(--forest-dark) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
 
@@ -1996,155 +1657,83 @@ body {
       "--primary": "189 100% 50%",
       "--accent": "330 100% 65%",
     },
-    sampleCSS: `@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
-@layer base {
-  :root {
-    /* Futuristic dark canvas (default) */
-    --background: 215 44% 8%;
-    --foreground: 210 40% 96%;
-
-    --card: 215 44% 10%;
-    --card-foreground: 210 40% 96%;
-
-    --popover: 215 44% 10%;
-    --popover-foreground: 210 40% 96%;
-
-    /* Neon cyan */
-    --primary: 189 100% 50%;
-    --primary-foreground: 215 44% 8%;
-
-    /* Controls + surfaces */
-    --secondary: 214 34% 14%;
-    --secondary-foreground: 210 40% 96%;
-
-    --muted: 214 34% 14%;
-    --muted-foreground: 215 18% 70%;
-
-    /* Magenta accent */
-    --accent: 330 100% 65%;
-    --accent-foreground: 215 44% 8%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 96%;
-
-    --border: 214 26% 18%;
-    --input: 214 26% 18%;
-    --ring: 189 100% 50%;
-
-    --radius: 1.1rem;
-
-    /* Extended tokens */
-    --primary-glow: 189 100% 60%;
-    --accent-glow: 330 100% 70%;
-    --surface: 215 44% 10%;
-    --surface-2: 214 34% 12%;
-
-    --shadow-elev: 0 20px 60px -30px hsl(var(--primary) / 0.35);
-    --shadow-neon: 0 0 0 1px hsl(var(--border)), 0 0 40px -12px hsl(var(--primary) / 0.55);
-
-    --gradient-hero: radial-gradient(900px 450px at var(--mx, 30%) var(--my, 20%), hsl(var(--primary) / 0.25), transparent 55%),
-      radial-gradient(700px 380px at 85% 30%, hsl(var(--accent) / 0.18), transparent 60%),
-      linear-gradient(180deg, hsl(var(--background)), hsl(var(--background)));
-
-    /* Sidebar tokens (keep shadcn compatibility) */
-    --sidebar-background: 215 44% 8%;
-    --sidebar-foreground: 210 20% 84%;
-    --sidebar-primary: 189 100% 50%;
-    --sidebar-primary-foreground: 215 44% 8%;
-    --sidebar-accent: 214 34% 14%;
-    --sidebar-accent-foreground: 210 40% 96%;
-    --sidebar-border: 214 26% 18%;
-    --sidebar-ring: 189 100% 50%;
-  }
-
-  .dark {
-    --background: 215 44% 8%;
-    --foreground: 210 40% 96%;
-    --card: 215 44% 10%;
-    --card-foreground: 210 40% 96%;
-    --popover: 215 44% 10%;
-    --popover-foreground: 210 40% 96%;
-    --primary: 189 100% 50%;
-    --primary-foreground: 215 44% 8%;
-    --secondary: 214 34% 14%;
-    --secondary-foreground: 210 40% 96%;
-    --muted: 214 34% 14%;
-    --muted-foreground: 215 18% 70%;
-    --accent: 330 100% 65%;
-    --accent-foreground: 215 44% 8%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 96%;
-    --border: 214 26% 18%;
-    --input: 214 26% 18%;
-    --ring: 189 100% 50%;
-    --sidebar-background: 215 44% 8%;
-    --sidebar-foreground: 210 20% 84%;
-    --sidebar-primary: 189 100% 50%;
-    --sidebar-primary-foreground: 215 44% 8%;
-    --sidebar-accent: 214 34% 14%;
-    --sidebar-accent-foreground: 210 40% 96%;
-    --sidebar-border: 214 26% 18%;
-    --sidebar-ring: 189 100% 50%;
-  }
+    sampleCSS: `:root {
+  --background: #0C1220;
+  --surface: #141B2B;
+  --text-primary: #E2E8F0;
+  --text-secondary: #94A3B8;
+  --primary: #00D4FF;
+  --accent: #FF3399;
+  --border: rgba(0,212,255,0.12);
+  --border-color: rgba(0,212,255,0.12);
+  --glow-primary: 0 0 30px rgba(0,212,255,0.25);
+  --glow-accent: 0 0 30px rgba(255,51,153,0.25);
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-behavior: smooth;
-    }
-  }
-
-  body {
-    @apply bg-background text-foreground;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  background-image:
+    radial-gradient(900px 450px at 30% 20%, rgba(0,212,255,0.12), transparent 55%),
+    radial-gradient(700px 380px at 85% 30%, rgba(255,51,153,0.08), transparent 60%);
 }
 
-@layer utilities {
-  .bg-hero {
-    background: var(--gradient-hero);
-  }
+.card {
+  background: rgba(20,27,43,0.8);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 60px -30px rgba(0,212,255,0.15);
+}
 
-  .glass {
-    background: hsl(var(--surface) / 0.55);
-    border: 1px solid hsl(var(--border) / 0.8);
-    backdrop-filter: blur(14px);
-    box-shadow: var(--shadow-elev);
-  }
+.card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--glow-primary);
+}
 
-  .neon-ring {
-    box-shadow: var(--shadow-neon);
-  }
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: linear-gradient(135deg, var(--primary), #0891B2) !important;
+  color: var(--background) !important;
+  border: none !important;
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(0,212,255,0.3);
+}
 
-  .text-gradient {
-    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
+.button-primary:hover, .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,212,255,0.4);
+}
 
-  .grid-sheen {
-    background-image:
-      linear-gradient(to right, hsl(var(--border) / 0.45) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--border) / 0.30) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: radial-gradient(55% 45% at 50% 35%, black 20%, transparent 72%);
-  }
-}`,
+.status-badge, .tag {
+  background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
+  color: white !important;
+}
+
+.text-accent {
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+.icon-container { background: rgba(0,212,255,0.1) !important; border: 1px solid rgba(0,212,255,0.2); }
+
+/* Grid overlay */
+section:first-of-type::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background-image: linear-gradient(to right, rgba(0,212,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,212,255,0.02) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(55% 45% at 50% 35%, black 20%, transparent 72%);
+}
+
+nav, footer { border-color: rgba(0,212,255,0.1) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   // ===== NEW TECH STUDY STYLES =====
@@ -2908,15 +2497,47 @@ body {
   --accent: #D4A574;
   --accent-hover: #E8C49A;
   --border: rgba(255,255,255,0.06);
-  --glow: 0 0 40px rgba(212,165,116,0.15);
+  --border-color: rgba(255,255,255,0.06);
+  --glow: 0 0 40px rgba(212,165,116,0.12);
 }
 
-.hero { padding: 120px 0; text-align: left; }
-.hero h1 { font-size: 4rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: all 0.4s cubic-bezier(.4,0,.2,1); }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.4s cubic-bezier(.4,0,.2,1);
+}
+
 .card:hover { border-color: var(--accent); box-shadow: var(--glow); transform: translateY(-2px); }
-.btn { background: var(--accent); color: var(--bg); padding: 14px 32px; border-radius: 12px; font-weight: 600; transition: all 0.3s ease; }
-.btn:hover { background: var(--accent-hover); transform: translateY(-1px); }`,
+
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: var(--accent) !important;
+  color: var(--bg) !important;
+  border: none !important;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.button-primary:hover, .btn:hover { background: var(--accent-hover) !important; transform: translateY(-1px); }
+
+.status-badge, .tag {
+  background: rgba(212,165,116,0.15) !important;
+  color: var(--accent) !important;
+  border: 1px solid rgba(212,165,116,0.3);
+}
+
+.text-accent { color: var(--accent); }
+.icon-container { background: rgba(212,165,116,0.1) !important; border: 1px solid rgba(212,165,116,0.2); }
+
+h1 { font-size: 36px !important; font-weight: 700; letter-spacing: -0.03em; }
+nav, footer { border-color: rgba(255,255,255,0.06) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -2944,14 +2565,52 @@ body {
   --text-muted: #8B6F5E;
   --accent: #C4956A;
   --border: #E8DDD0;
+  --border-color: #E8DDD0;
 }
 
-.article { max-width: 720px; margin: 0 auto; line-height: 1.8; }
-.article h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 700; letter-spacing: -0.02em; }
-.article p { font-family: 'Source Serif Pro', serif; font-size: 1.125rem; color: var(--text-muted); }
-.card { background: var(--surface); border-radius: 12px; overflow: hidden; transition: transform 0.3s ease; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Source Serif Pro', 'Georgia', serif;
+}
+
+h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--text); letter-spacing: -0.02em; }
+h1 { font-size: 32px !important; font-weight: 700; }
+
+.card {
+  background: var(--surface);
+  border: none !important;
+  border-radius: 12px;
+  padding: 24px;
+  transition: transform 0.3s ease;
+}
+
 .card:hover { transform: translateY(-4px); }
-.tag { background: var(--accent); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }`,
+
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: var(--text) !important;
+  color: var(--bg) !important;
+  border: none !important;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.status-badge, .tag {
+  background: var(--accent) !important;
+  color: white !important;
+  border-radius: 20px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.text-accent { color: var(--accent); }
+.icon-container { background: var(--surface) !important; border: 1px solid var(--border); }
+
+p { line-height: 1.8; }
+nav, footer { border-color: var(--border) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -2980,14 +2639,49 @@ body {
   --primary: #7C3AED;
   --secondary: #06B6D4;
   --border: rgba(255,255,255,0.06);
-  --glass: backdrop-filter: blur(16px);
+  --border-color: rgba(124,58,237,0.15);
 }
 
-.dashboard { display: grid; grid-template-columns: 260px 1fr; gap: 24px; }
-.card { background: var(--surface); backdrop-filter: blur(16px); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
-.card:hover { border-color: var(--primary); box-shadow: 0 0 30px rgba(124,58,237,0.15); }
-.metric { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 700; }
-.chart-container { background: var(--surface); border-radius: 12px; padding: 20px; }`,
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', 'Inter', sans-serif;
+}
+
+.card {
+  background: var(--surface);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 0 30px rgba(124,58,237,0.12); }
+
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: linear-gradient(135deg, var(--primary), #9333EA) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 12px;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.25);
+}
+
+.status-badge, .tag {
+  background: var(--primary) !important;
+  color: white !important;
+}
+
+.text-accent { color: var(--secondary); }
+.icon-container { background: rgba(124,58,237,0.15) !important; border: 1px solid rgba(124,58,237,0.25); }
+
+h1, h2, h3 { font-weight: 700; }
+
+/* Metric style */
+.card:first-child { border-top: 2px solid var(--primary); }
+
+nav, footer { border-color: rgba(124,58,237,0.1) !important; }
+nav { background: rgba(10,10,26,0.9); backdrop-filter: blur(10px); }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -3015,14 +2709,58 @@ body {
   --text-muted: #888888;
   --border: #E5E5E5;
   --accent: #111111;
+  --border-color: #E5E5E5;
 }
 
-.container { max-width: 1200px; margin: 0 auto; padding: 0 64px; }
-h1 { font-size: 4.5rem; font-weight: 300; letter-spacing: -0.04em; line-height: 1; }
-.card { border: 1px solid var(--border); border-radius: 8px; padding: 40px; transition: all 0.5s cubic-bezier(.4,0,.2,1); }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', 'Inter', sans-serif;
+}
+
+h1 { font-size: 36px !important; font-weight: 300 !important; letter-spacing: -0.04em; }
+h2, h3 { font-weight: 400; letter-spacing: -0.02em; }
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 32px;
+  background: transparent;
+  transition: all 0.5s cubic-bezier(.4,0,.2,1);
+}
+
 .card:hover { border-color: var(--accent); }
-.btn { background: transparent; border: 1px solid var(--accent); padding: 12px 32px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.75rem; transition: all 0.3s ease; }
-.btn:hover { background: var(--accent); color: white; }`,
+
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: transparent !important;
+  border: 1px solid var(--accent) !important;
+  color: var(--accent) !important;
+  border-radius: 0 !important;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.button-primary:hover, .btn:hover {
+  background: var(--accent) !important;
+  color: white !important;
+}
+
+.status-badge, .tag {
+  background: transparent !important;
+  border: 1px solid var(--text);
+  color: var(--text) !important;
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 9px;
+}
+
+.text-accent { color: var(--text); }
+.icon-container { background: transparent !important; border: 1px solid var(--border); }
+
+nav, footer { border-color: var(--border) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -3045,18 +2783,59 @@ h1 { font-size: 4.5rem; font-weight: 300; letter-spacing: -0.04em; line-height: 
     },
     sampleCSS: `:root {
   --bg: #0F0118;
-  --surface: linear-gradient(135deg, rgba(131,56,236,0.1), rgba(255,0,110,0.1));
   --text: #FFFFFF;
   --text-muted: #B8A9C9;
   --gradient-1: linear-gradient(135deg, #FF006E, #8338EC);
   --gradient-2: linear-gradient(135deg, #FB5607, #FFBE0B);
+  --border-color: rgba(255,0,110,0.2);
 }
 
-h1 { font-size: 5rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; color: transparent; }
-.card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 32px; transition: all 0.3s ease; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Cabinet Grotesk', 'Nunito', sans-serif;
+}
+
+h1 {
+  font-size: 36px !important; font-weight: 800;
+  background: linear-gradient(135deg, #FF006E, #8338EC);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px !important;
+  padding: 24px;
+}
+
 .card:hover { transform: scale(1.02) rotate(-0.5deg); border-color: #FF006E; }
-.btn { background: var(--gradient-1); padding: 16px 40px; border-radius: 50px; font-weight: 700; color: white; box-shadow: 0 8px 30px rgba(255,0,110,0.3); }
-.btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255,0,110,0.5); }`,
+
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: linear-gradient(135deg, #FF006E, #8338EC) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 50px !important;
+  font-weight: 700;
+  box-shadow: 0 8px 30px rgba(255,0,110,0.3);
+}
+
+.button-primary:hover, .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(255,0,110,0.5);
+}
+
+.status-badge, .tag {
+  background: linear-gradient(135deg, #FB5607, #FFBE0B) !important;
+  color: #0F0118 !important;
+  font-weight: 700;
+  border-radius: 20px;
+}
+
+.text-accent { color: #FF006E; }
+.icon-container { background: linear-gradient(135deg, #8338EC, #3A86FF) !important; }
+
+nav, footer { border-color: rgba(255,0,110,0.15) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -3085,14 +2864,47 @@ h1 { font-size: 5rem; font-weight: 800; background: var(--gradient-1); -webkit-b
   --cyan: #06B6D4;
   --silver: #94A3B8;
   --border: rgba(6,182,212,0.15);
-  --glow: 0 0 40px rgba(6,182,212,0.2);
+  --border-color: rgba(6,182,212,0.15);
+  --glow: 0 0 40px rgba(6,182,212,0.15);
 }
 
-.container { border: 1px solid var(--border); border-radius: 16px; background: var(--surface); }
-h1 { font-family: 'Orbitron', sans-serif; color: var(--cyan); text-shadow: 0 0 20px rgba(6,182,212,0.5); }
-.card { background: linear-gradient(135deg, rgba(6,182,212,0.05), transparent); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Exo 2', 'Inter', sans-serif;
+  background-image: radial-gradient(600px circle at 50% 0%, rgba(6,182,212,0.06), transparent);
+}
+
+h1, h2 { font-family: 'Orbitron', sans-serif; color: var(--cyan); text-shadow: 0 0 15px rgba(6,182,212,0.3); }
+
+.card {
+  background: linear-gradient(135deg, rgba(6,182,212,0.04), transparent);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
 .card:hover { border-color: var(--cyan); box-shadow: var(--glow); }
-.btn { background: linear-gradient(135deg, var(--cyan), #0891B2); color: var(--bg); padding: 12px 28px; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 20px rgba(6,182,212,0.3); }`,
+
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: linear-gradient(135deg, var(--cyan), #0891B2) !important;
+  color: var(--bg) !important;
+  border: none !important;
+  border-radius: 8px;
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(6,182,212,0.3);
+}
+
+.status-badge, .tag {
+  background: rgba(6,182,212,0.15) !important;
+  border: 1px solid rgba(6,182,212,0.3);
+  color: var(--cyan) !important;
+}
+
+.text-accent { color: var(--cyan); text-shadow: 0 0 10px rgba(6,182,212,0.3); }
+.icon-container { background: rgba(6,182,212,0.1) !important; border: 1px solid var(--border); }
+
+nav, footer { border-color: rgba(6,182,212,0.1) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -3121,14 +2933,61 @@ h1 { font-family: 'Orbitron', sans-serif; color: var(--cyan); text-shadow: 0 0 2
   --gold: #D4AF37;
   --gold-light: #E8D48B;
   --border: rgba(212,175,55,0.15);
+  --border-color: rgba(212,175,55,0.15);
 }
 
-h1 { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 600; color: var(--gold); letter-spacing: 0.02em; }
-.divider { height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 48px 0; }
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 32px; transition: all 0.5s ease; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Libre Baskerville', 'Georgia', serif;
+}
+
+h1, h2, h3 { font-family: 'Cormorant Garamond', serif; color: var(--gold); letter-spacing: 0.02em; }
+h1 { font-size: 34px !important; font-weight: 600; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  transition: all 0.5s ease;
+}
+
 .card:hover { border-color: var(--gold); }
-.btn { background: transparent; border: 2px solid var(--gold); color: var(--gold); padding: 14px 36px; font-family: 'Cormorant Garamond', serif; font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.4s ease; }
-.btn:hover { background: var(--gold); color: var(--bg); }`,
+
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: transparent !important;
+  border: 2px solid var(--gold) !important;
+  color: var(--gold) !important;
+  border-radius: 0 !important;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.button-primary:hover, .btn:hover {
+  background: var(--gold) !important;
+  color: var(--bg) !important;
+}
+
+.status-badge, .tag {
+  background: var(--gold) !important;
+  color: var(--bg) !important;
+  border-radius: 0;
+  letter-spacing: 0.1em;
+}
+
+.text-accent { color: var(--gold); }
+.icon-container { background: rgba(212,175,55,0.1) !important; border: 1px solid var(--border); }
+
+/* Decorative divider */
+section + section::before {
+  content: ''; display: block; height: 1px; margin: 0 auto;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+nav, footer { border-color: rgba(212,175,55,0.12) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -3158,15 +3017,50 @@ h1 { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 6
   --terracotta: #C4704B;
   --sand: #E8DFD3;
   --border: #DDD5C8;
+  --border-color: #DDD5C8;
 }
 
-.container { max-width: 1100px; margin: 0 auto; }
-h1 { font-family: 'DM Serif Display', serif; font-size: 3.5rem; color: var(--text); letter-spacing: -0.01em; }
-.card { background: var(--surface); border-radius: 24px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); transition: all 0.4s ease; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Nunito Sans', 'Inter', sans-serif;
+}
+
+h1, h2, h3 { font-family: 'DM Serif Display', serif; color: var(--text); letter-spacing: -0.01em; }
+
+.card {
+  background: var(--surface);
+  border: none !important;
+  border-radius: 24px !important;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+
 .card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
-.btn { background: var(--sage); color: white; padding: 14px 32px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; }
-.btn:hover { background: var(--terracotta); transform: translateY(-1px); }
-.blob { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }`,
+
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: var(--sage) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 50px !important;
+  font-weight: 600;
+}
+
+.button-primary:hover, .btn:hover {
+  background: var(--terracotta) !important;
+  transform: translateY(-1px);
+}
+
+.status-badge, .tag {
+  background: var(--sage) !important;
+  color: white !important;
+  border-radius: 20px;
+}
+
+.text-accent { color: var(--terracotta); }
+.icon-container { background: var(--sand) !important; border-radius: 50% !important; }
+
+nav, footer { border-color: var(--border) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
 ];
