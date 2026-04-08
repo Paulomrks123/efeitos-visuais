@@ -419,24 +419,68 @@ function StylePreviewMini({ style }: { style: StyleDefinition }) {
 
 // Animated wrapper for staggered children
 const fadeSlideUp = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 20 },
   visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.1, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
+    opacity: 1, y: 0,
+    transition: { delay: i * 0.08, duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
   }),
 };
 
 const scaleIn = {
   hidden: { opacity: 0, scale: 0.9 },
   visible: (i: number) => ({
-    opacity: 1,
-    scale: 1,
-    transition: { delay: i * 0.08, duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
+    opacity: 1, scale: 1,
+    transition: { delay: i * 0.07, duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
   }),
 };
 
-// Universal styled preview - same layout, different style per card
+// Determine layout template based on style id
+function getLayoutTemplate(id: string): string {
+  const map: Record<string, string> = {
+    "premium-minimal": "saas-dashboard",
+    "saas-anthropic": "saas-dashboard",
+    "dashboard-analytics": "saas-dashboard",
+    "minimalist-premium": "saas-dashboard",
+
+    "illustrated-cartoon": "food-app",
+    "candy-pop": "food-app",
+    "hybrid-friendly": "food-app",
+
+    "dark-tech": "control-panel",
+    "cyberpunk-neon": "control-panel",
+    "matrix-hacker": "control-panel",
+    "futuristic": "control-panel",
+    "futuristic-premium": "control-panel",
+
+    "retro-modern": "magazine",
+    "vaporwave": "magazine",
+    "classic-premium": "magazine",
+    "blog-editorial": "magazine",
+
+    "industrial": "order-system",
+    "brutalist": "order-system",
+    "hybrid-serious": "order-system",
+    "hybrid": "order-system",
+
+    "aurora-borealis": "portfolio",
+    "watercolor-art": "portfolio",
+    "glass-3d": "portfolio",
+    "loris-portfolio": "portfolio",
+    "vizion-layout": "portfolio",
+
+    "luxury-gold": "luxury-product",
+    "nature-organic": "luxury-product",
+    "organic-premium": "luxury-product",
+
+    "silent-tech": "dev-tool",
+    "tech-focus-flow": "dev-tool",
+    "minimal-tech-intelligence": "dev-tool",
+    "slush-fintech": "dev-tool",
+    "vibrant-premium": "dev-tool",
+  };
+  return map[id] || "saas-dashboard";
+}
+
 function StylePreviewFull({ style }: { style: StyleDefinition }) {
   const c = style.colors;
   const bg = c[0] || "#0a0a0a";
@@ -445,181 +489,342 @@ function StylePreviewFull({ style }: { style: StyleDefinition }) {
   const muted = c[3] || "#888888";
   const accent = c[4] || "#3b82f6";
   const isLight = bg === "#FFFFFF" || bg === "#F5F5F5" || bg === "#FFF8F0" || bg === "#FFFFF0" || bg.toLowerCase().includes("fff") || surface.toLowerCase().includes("fff");
-  
-  const font = style.typography.includes("serif") 
-    ? "Georgia, 'Times New Roman', serif" 
+
+  const font = style.typography.includes("serif")
+    ? "Georgia, 'Times New Roman', serif"
     : style.typography.includes("mono") || style.typography.includes("Mono")
     ? "'JetBrains Mono', 'Courier New', monospace"
     : "'Inter', 'Segoe UI', sans-serif";
 
   const borderColor = isLight ? `${muted}33` : `${accent}33`;
-  const cardBg = isLight ? `${surface}` : `${surface}cc`;
+  const cardBg = isLight ? surface : `${surface}cc`;
+  const template = getLayoutTemplate(style.id);
 
-  return (
-    <motion.div 
-      className="rounded-xl overflow-hidden"
-      style={{ background: bg, fontFamily: font, color: text, border: `1px solid ${borderColor}` }}
-      initial="hidden"
-      animate="visible"
-    >
-      {/* Nav */}
-      <motion.div 
-        variants={fadeSlideUp} custom={0}
-        style={{ borderBottom: `1px solid ${borderColor}`, padding: "12px 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <motion.div 
-            style={{ width: 28, height: 28, borderRadius: 8, background: accent, display: "flex", alignItems: "center", justifyContent: "center" }}
-            whileHover={{ scale: 1.15, rotate: 5 }}
-            transition={{ type: "spring", stiffness: 400 }}
-          >
-            <span style={{ color: "#fff", fontSize: 14, fontWeight: 700 }}>P</span>
-          </motion.div>
-          <span style={{ fontWeight: 700, fontSize: 14 }}>ProjetoX</span>
-        </div>
-        <div style={{ display: "flex", gap: "16px", fontSize: 11, color: muted }}>
-          <span>Home</span>
-          <span>Recursos</span>
-          <span>Preços</span>
-        </div>
-        <motion.div 
-          style={{ padding: "5px 14px", borderRadius: 8, background: accent, color: "#fff", fontSize: 11, fontWeight: 600, cursor: "pointer" }}
-          whileHover={{ scale: 1.05, boxShadow: `0 4px 20px ${accent}55` }}
-          whileTap={{ scale: 0.97 }}
-        >
-          Começar
+  const containerStyle = { background: bg, fontFamily: font, color: text, border: `1px solid ${borderColor}` };
+
+  // ========= TEMPLATE: SaaS Dashboard =========
+  if (template === "saas-dashboard") {
+    return (
+      <motion.div className="rounded-xl overflow-hidden" style={containerStyle} initial="hidden" animate="visible">
+        <motion.div variants={fadeSlideUp} custom={0} style={{ borderBottom: `1px solid ${borderColor}`, padding: "12px 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <div style={{ width: 28, height: 28, borderRadius: 8, background: accent, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 13, fontWeight: 700 }}>S</div>
+            <span style={{ fontWeight: 700, fontSize: 14 }}>SaaSBoard</span>
+          </div>
+          <motion.div whileHover={{ scale: 1.05 }} style={{ padding: "5px 14px", borderRadius: 8, background: accent, color: "#fff", fontSize: 11, fontWeight: 600 }}>Dashboard</motion.div>
         </motion.div>
-      </motion.div>
-
-      {/* Hero */}
-      <motion.div variants={fadeSlideUp} custom={1} style={{ padding: "32px 20px", textAlign: "center" as const }}>
-        <motion.div 
-          variants={scaleIn} custom={2}
-          style={{ display: "inline-block", padding: "4px 12px", borderRadius: 20, background: `${accent}22`, color: accent, fontSize: 10, fontWeight: 600, marginBottom: 12 }}
-        >
-          ✨ Novo Release v2.0
-        </motion.div>
-        <motion.h2 
-          variants={fadeSlideUp} custom={3}
-          style={{ fontSize: 22, fontWeight: 800, lineHeight: 1.2, marginBottom: 8, letterSpacing: "-0.02em" }}
-        >
-          Transforme suas ideias<br />em realidade
-        </motion.h2>
-        <motion.p variants={fadeSlideUp} custom={4} style={{ fontSize: 12, color: muted, maxWidth: 320, margin: "0 auto 16px" }}>
-          Plataforma completa para criar, gerenciar e escalar seus projetos com eficiência.
-        </motion.p>
-        <motion.div variants={fadeSlideUp} custom={5} style={{ display: "flex", gap: 8, justifyContent: "center" }}>
-          <motion.div 
-            style={{ padding: "8px 20px", borderRadius: 8, background: accent, color: "#fff", fontSize: 12, fontWeight: 600 }}
-            whileHover={{ scale: 1.05, boxShadow: `0 6px 24px ${accent}44` }}
-            whileTap={{ scale: 0.96 }}
-          >
-            Começar Grátis
-          </motion.div>
-          <motion.div 
-            style={{ padding: "8px 20px", borderRadius: 8, border: `1px solid ${borderColor}`, fontSize: 12, fontWeight: 500, color: muted }}
-            whileHover={{ scale: 1.05, borderColor: accent }}
-          >
-            Ver Demo
-          </motion.div>
-        </motion.div>
-      </motion.div>
-
-      {/* Stats */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, padding: "0 20px 20px" }}>
-        {[
-          { label: "Usuários", value: "12K+", icon: "👥" },
-          { label: "Projetos", value: "48K", icon: "📁" },
-          { label: "Uptime", value: "99.9%", icon: "⚡" },
-        ].map((stat, i) => (
-          <motion.div 
-            key={i} 
-            variants={scaleIn} custom={6 + i}
-            whileHover={{ y: -4, boxShadow: `0 8px 24px ${accent}22` }}
-            style={{ padding: 12, borderRadius: 10, background: cardBg, border: `1px solid ${borderColor}`, textAlign: "center" as const, cursor: "default" }}
-          >
-            <motion.div 
-              style={{ fontSize: 16, marginBottom: 4 }}
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.6 + i * 0.1, type: "spring", stiffness: 500 }}
-            >
-              {stat.icon}
-            </motion.div>
-            <div style={{ fontSize: 16, fontWeight: 700, color: accent }}>{stat.value}</div>
-            <div style={{ fontSize: 9, color: muted }}>{stat.label}</div>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Features */}
-      <motion.div variants={fadeSlideUp} custom={9} style={{ padding: "16px 20px 20px" }}>
-        <h3 style={{ fontSize: 14, fontWeight: 700, marginBottom: 12, textAlign: "center" as const }}>Recursos Principais</h3>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-          {[
-            { title: "Dashboard", desc: "Métricas em tempo real", emoji: "📊" },
-            { title: "Automação", desc: "Workflows inteligentes", emoji: "🤖" },
-            { title: "Integrações", desc: "100+ conectores", emoji: "🔗" },
-            { title: "Segurança", desc: "Criptografia E2E", emoji: "🔒" },
-          ].map((f, i) => (
-            <motion.div 
-              key={i} 
-              variants={scaleIn} custom={10 + i}
-              whileHover={{ y: -3, boxShadow: `0 6px 20px ${accent}18` }}
-              style={{ padding: 12, borderRadius: 10, background: cardBg, border: `1px solid ${borderColor}`, cursor: "default" }}
-            >
-              <motion.div 
-                style={{ fontSize: 18, marginBottom: 6 }}
-                whileHover={{ scale: 1.3, rotate: 10 }}
-                transition={{ type: "spring", stiffness: 400 }}
-              >
-                {f.emoji}
-              </motion.div>
-              <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 2 }}>{f.title}</div>
-              <div style={{ fontSize: 10, color: muted }}>{f.desc}</div>
+        <motion.div variants={fadeSlideUp} custom={1} style={{ padding: "20px", display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 10 }}>
+          {[{ l: "Receita", v: "R$ 124K", d: "+12.5%" }, { l: "Usuários", v: "8,432", d: "+5.2%" }, { l: "Conversão", v: "3.8%", d: "+0.4%" }, { l: "MRR", v: "R$ 45K", d: "+8.1%" }].map((s, i) => (
+            <motion.div key={i} variants={scaleIn} custom={2 + i} whileHover={{ y: -3 }} style={{ padding: 14, borderRadius: 10, background: cardBg, border: `1px solid ${borderColor}` }}>
+              <div style={{ fontSize: 9, color: muted, marginBottom: 4 }}>{s.l}</div>
+              <div style={{ fontSize: 18, fontWeight: 700 }}>{s.v}</div>
+              <div style={{ fontSize: 10, color: accent, marginTop: 2 }}>{s.d}</div>
             </motion.div>
           ))}
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={6} style={{ padding: "0 20px 20px", display: "grid", gridTemplateColumns: "2fr 1fr", gap: 10 }}>
+          <div style={{ padding: 16, borderRadius: 10, background: cardBg, border: `1px solid ${borderColor}` }}>
+            <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 10 }}>Receita Mensal</div>
+            <div style={{ display: "flex", alignItems: "flex-end", gap: 4, height: 60 }}>
+              {[35, 50, 40, 70, 55, 80, 65, 90, 75, 95, 85, 100].map((h, i) => (
+                <motion.div key={i} initial={{ height: 0 }} animate={{ height: `${h}%` }} transition={{ delay: 0.8 + i * 0.05, duration: 0.4 }} style={{ flex: 1, background: i >= 10 ? accent : `${accent}55`, borderRadius: 3 }} />
+              ))}
+            </div>
+          </div>
+          <div style={{ padding: 16, borderRadius: 10, background: cardBg, border: `1px solid ${borderColor}` }}>
+            <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 8 }}>Top Planos</div>
+            {[{ n: "Pro", p: 58 }, { n: "Business", p: 32 }, { n: "Free", p: 10 }].map((p, i) => (
+              <div key={i} style={{ marginBottom: 8 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 10, marginBottom: 3 }}><span>{p.n}</span><span style={{ color: muted }}>{p.p}%</span></div>
+                <div style={{ height: 4, borderRadius: 4, background: `${accent}22` }}>
+                  <motion.div initial={{ width: 0 }} animate={{ width: `${p.p}%` }} transition={{ delay: 1 + i * 0.15, duration: 0.5 }} style={{ height: "100%", borderRadius: 4, background: accent }} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </motion.div>
+    );
+  }
+
+  // ========= TEMPLATE: Food App =========
+  if (template === "food-app") {
+    return (
+      <motion.div className="rounded-2xl overflow-hidden" style={{ ...containerStyle, borderRadius: 16 }} initial="hidden" animate="visible">
+        <motion.div variants={fadeSlideUp} custom={0} style={{ padding: "16px 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <div style={{ fontSize: 24 }}>🍔</div>
+            <span style={{ fontWeight: 800, fontSize: 16 }}>FoodieApp</span>
+          </div>
+          <motion.div whileHover={{ scale: 1.05 }} style={{ padding: "6px 16px", borderRadius: 20, background: accent, color: "#fff", fontSize: 12, fontWeight: 700 }}>🛒 3 itens</motion.div>
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={1} style={{ padding: "0 20px" }}>
+          <div style={{ padding: "20px", borderRadius: 16, background: `${accent}15`, textAlign: "center" as const, marginBottom: 16 }}>
+            <div style={{ fontSize: 32, marginBottom: 8 }}>🎉</div>
+            <div style={{ fontSize: 16, fontWeight: 800 }}>Frete Grátis Hoje!</div>
+            <div style={{ fontSize: 11, color: muted }}>Pedidos acima de R$ 50</div>
+          </div>
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={2} style={{ padding: "0 20px 16px" }}>
+          <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 10 }}>🔥 Mais Pedidos</div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }}>
+            {[{ e: "🍕", n: "Pizza", p: "R$ 32" }, { e: "🍟", n: "Batatas", p: "R$ 15" }, { e: "🥤", n: "Milkshake", p: "R$ 18" }].map((item, i) => (
+              <motion.div key={i} variants={scaleIn} custom={3 + i} whileHover={{ y: -4, scale: 1.03 }} style={{ padding: 14, borderRadius: 14, background: cardBg, border: `1px solid ${borderColor}`, textAlign: "center" as const }}>
+                <motion.div style={{ fontSize: 30, marginBottom: 6 }} whileHover={{ scale: 1.3, rotate: 10 }} transition={{ type: "spring", stiffness: 400 }}>{item.e}</motion.div>
+                <div style={{ fontSize: 12, fontWeight: 700 }}>{item.n}</div>
+                <div style={{ fontSize: 11, color: accent, fontWeight: 700, marginTop: 4 }}>{item.p}</div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={6} style={{ padding: "0 20px 16px" }}>
+          <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 10 }}>📋 Categorias</div>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" as const }}>
+            {["Lanches", "Bebidas", "Sobremesas", "Combos", "Vegano"].map((cat, i) => (
+              <motion.div key={i} whileHover={{ scale: 1.08 }} style={{ padding: "6px 14px", borderRadius: 20, background: i === 0 ? accent : `${accent}15`, color: i === 0 ? "#fff" : accent, fontSize: 11, fontWeight: 600 }}>{cat}</motion.div>
+            ))}
+          </div>
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={7} style={{ padding: "12px 20px", borderTop: `1px solid ${borderColor}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div><div style={{ fontSize: 10, color: muted }}>Total</div><div style={{ fontSize: 16, fontWeight: 800 }}>R$ 65,00</div></div>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ padding: "10px 24px", borderRadius: 14, background: accent, color: "#fff", fontSize: 13, fontWeight: 700 }}>Finalizar Pedido →</motion.div>
+        </motion.div>
+      </motion.div>
+    );
+  }
+
+  // ========= TEMPLATE: Control Panel / Tech =========
+  if (template === "control-panel") {
+    return (
+      <motion.div className="rounded-xl overflow-hidden" style={containerStyle} initial="hidden" animate="visible">
+        <motion.div variants={fadeSlideUp} custom={0} style={{ borderBottom: `1px solid ${borderColor}`, padding: "10px 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ repeat: Infinity, duration: 2 }} style={{ width: 8, height: 8, borderRadius: "50%", background: "#22c55e" }} />
+            <span style={{ fontWeight: 700, fontSize: 13, fontFamily: "monospace", letterSpacing: 1 }}>SYSTEM::ONLINE</span>
+          </div>
+          <div style={{ display: "flex", gap: 6 }}>
+            {["#22c55e", accent, "#a855f7"].map((c, i) => (<motion.div key={i} animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1.5, delay: i * 0.3 }} style={{ width: 6, height: 6, borderRadius: "50%", background: c }} />))}
+          </div>
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={1} style={{ padding: 20, display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8 }}>
+          {[{ l: "CPU", v: 78, u: "%" }, { l: "RAM", v: 64, u: "%" }, { l: "DISK", v: 45, u: "%" }, { l: "NET", v: 92, u: "Mb/s" }].map((m, i) => (
+            <motion.div key={i} variants={scaleIn} custom={2 + i} style={{ padding: 12, borderRadius: 8, background: cardBg, border: `1px solid ${borderColor}` }}>
+              <div style={{ fontSize: 9, color: muted, fontFamily: "monospace", marginBottom: 4 }}>{m.l}</div>
+              <div style={{ fontSize: 20, fontWeight: 700, fontFamily: "monospace", color: m.v > 80 ? "#ef4444" : accent }}>{m.v}{m.u}</div>
+              <div style={{ height: 3, borderRadius: 3, background: `${accent}22`, marginTop: 6 }}>
+                <motion.div initial={{ width: 0 }} animate={{ width: `${m.v}%` }} transition={{ delay: 0.5 + i * 0.1, duration: 0.6 }} style={{ height: "100%", borderRadius: 3, background: m.v > 80 ? "#ef4444" : accent }} />
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={6} style={{ padding: "0 20px 16px" }}>
+          <div style={{ padding: 14, borderRadius: 8, background: cardBg, border: `1px solid ${accent}33`, fontFamily: "monospace", fontSize: 10, color: muted }}>
+            <div style={{ color: accent, marginBottom: 4 }}>$ tail -f /var/log/system.log</div>
+            {["[OK] Auth service running on :8080", "[OK] Database connected (12ms)", "[WARN] Cache miss rate: 2.3%", "[OK] 1,247 req/s — avg 23ms"].map((line, i) => (
+              <motion.div key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.8 + i * 0.2 }} style={{ marginBottom: 2, color: line.includes("WARN") ? "#eab308" : muted }}>&gt; {line}</motion.div>
+            ))}
+          </div>
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={8} style={{ padding: "0 20px 16px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+          <motion.div whileHover={{ scale: 1.02 }} style={{ padding: "8px 16px", borderRadius: 6, background: accent, color: "#fff", fontSize: 11, fontWeight: 600, textAlign: "center" as const, fontFamily: "monospace" }}>DEPLOY →</motion.div>
+          <motion.div whileHover={{ scale: 1.02 }} style={{ padding: "8px 16px", borderRadius: 6, border: `1px solid ${accent}`, color: accent, fontSize: 11, fontWeight: 600, textAlign: "center" as const, fontFamily: "monospace" }}>LOGS ↗</motion.div>
+        </motion.div>
+      </motion.div>
+    );
+  }
+
+  // ========= TEMPLATE: Magazine / Editorial =========
+  if (template === "magazine") {
+    return (
+      <motion.div className="rounded-xl overflow-hidden" style={containerStyle} initial="hidden" animate="visible">
+        <motion.div variants={fadeSlideUp} custom={0} style={{ padding: "16px 24px", borderBottom: `1px solid ${borderColor}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <span style={{ fontSize: 18, fontWeight: 800, letterSpacing: "-0.03em", fontStyle: "italic" }}>Revista</span>
+          <div style={{ display: "flex", gap: 16, fontSize: 11, color: muted }}>
+            <span>Cultura</span><span>Estilo</span><span>Opinião</span><span>Tech</span>
+          </div>
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={1} style={{ padding: "28px 24px" }}>
+          <div style={{ fontSize: 9, textTransform: "uppercase" as const, letterSpacing: 3, color: accent, fontWeight: 700, marginBottom: 10 }}>Artigo em Destaque</div>
+          <h2 style={{ fontSize: 24, fontWeight: 800, lineHeight: 1.15, marginBottom: 10, letterSpacing: "-0.02em" }}>
+            A Nova Era do Design<br />Digital Chega Agora
+          </h2>
+          <p style={{ fontSize: 12, color: muted, lineHeight: 1.6, marginBottom: 14 }}>
+            Uma análise profunda sobre como as tendências visuais estão moldando o futuro da experiência digital em 2026.
+          </p>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <div style={{ width: 28, height: 28, borderRadius: "50%", background: accent }} />
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 600 }}>Maria Santos</div>
+              <div style={{ fontSize: 9, color: muted }}>5 min de leitura • 14 Mar</div>
+            </div>
+          </div>
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={3} style={{ padding: "0 24px 20px" }}>
+          <div style={{ borderTop: `1px solid ${borderColor}`, paddingTop: 16 }}>
+            <div style={{ fontSize: 11, fontWeight: 700, marginBottom: 12 }}>Mais Lidos</div>
+            {[{ t: "O Futuro das Interfaces", c: "Tecnologia", m: "8 min" }, { t: "Cores que Vendem", c: "Marketing", m: "5 min" }, { t: "Tipografia Expressiva", c: "Design", m: "6 min" }].map((a, i) => (
+              <motion.div key={i} variants={fadeSlideUp} custom={4 + i} whileHover={{ x: 4 }} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 0", borderBottom: i < 2 ? `1px solid ${borderColor}` : "none" }}>
+                <div style={{ fontSize: 18, fontWeight: 800, color: `${accent}55`, fontFamily: "Georgia, serif" }}>{String(i + 1).padStart(2, "0")}</div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 12, fontWeight: 600 }}>{a.t}</div>
+                  <div style={{ fontSize: 9, color: muted }}>{a.c} • {a.m}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </motion.div>
+    );
+  }
+
+  // ========= TEMPLATE: Order System / Industrial =========
+  if (template === "order-system") {
+    return (
+      <motion.div className="rounded-lg overflow-hidden" style={containerStyle} initial="hidden" animate="visible">
+        <motion.div variants={fadeSlideUp} custom={0} style={{ padding: "10px 16px", borderBottom: `2px solid ${borderColor}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <span style={{ fontWeight: 800, fontSize: 13, textTransform: "uppercase" as const, letterSpacing: 2 }}>CONTROLE</span>
+          <div style={{ display: "flex", alignItems: "center", gap: 6 }}><span style={{ fontSize: 9, color: muted }}>STATUS:</span><span style={{ padding: "2px 8px", background: "#22c55e", color: "#fff", fontSize: 9, fontWeight: 800 }}>ATIVO</span></div>
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={1} style={{ padding: 16, display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 6 }}>
+          {[{ l: "PEDIDOS", v: "247" }, { l: "PENDENTES", v: "12" }, { l: "ENTREGUES", v: "235" }, { l: "TEMPO", v: "8min" }].map((s, i) => (
+            <motion.div key={i} variants={scaleIn} custom={2 + i} style={{ padding: 10, background: cardBg, border: `1px solid ${borderColor}` }}>
+              <div style={{ fontSize: 8, fontWeight: 800, color: muted, letterSpacing: 1 }}>{s.l}</div>
+              <div style={{ fontSize: 18, fontWeight: 800, color: s.l === "PENDENTES" ? "#eab308" : text }}>{s.v}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={6} style={{ padding: "0 16px 12px" }}>
+          <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 1, marginBottom: 8, color: muted }}>FILA ATUAL</div>
+          {[{ id: "#1247", s: "Preparando", c: "#eab308" }, { id: "#1246", s: "Saiu p/ Entrega", c: accent }, { id: "#1245", s: "Entregue", c: "#22c55e" }].map((o, i) => (
+            <motion.div key={i} variants={fadeSlideUp} custom={7 + i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 0", borderBottom: `1px solid ${borderColor}` }}>
+              <span style={{ fontSize: 12, fontWeight: 700, fontFamily: "monospace" }}>{o.id}</span>
+              <span style={{ padding: "2px 10px", fontSize: 9, fontWeight: 700, background: `${o.c}22`, color: o.c, borderRadius: 4 }}>{o.s}</span>
+            </motion.div>
+          ))}
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={10} style={{ padding: "8px 16px 16px", display: "flex", gap: 6 }}>
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} style={{ flex: 1, padding: "8px", background: accent, color: "#fff", fontWeight: 800, fontSize: 11, textAlign: "center" as const }}>+ NOVO PEDIDO</motion.div>
+          <motion.div whileHover={{ scale: 1.03 }} style={{ flex: 1, padding: "8px", background: `${muted}33`, color: text, fontWeight: 800, fontSize: 11, textAlign: "center" as const }}>RELATÓRIO</motion.div>
+          <motion.div whileHover={{ scale: 1.05 }} style={{ padding: "8px 12px", background: "#ef4444", color: "#fff", fontWeight: 800, fontSize: 11 }}>⚠</motion.div>
+        </motion.div>
+      </motion.div>
+    );
+  }
+
+  // ========= TEMPLATE: Portfolio / Creative =========
+  if (template === "portfolio") {
+    return (
+      <motion.div className="rounded-xl overflow-hidden" style={containerStyle} initial="hidden" animate="visible">
+        <motion.div variants={fadeSlideUp} custom={0} style={{ padding: "20px 24px", textAlign: "center" as const }}>
+          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 300, delay: 0.2 }} style={{ width: 48, height: 48, borderRadius: "50%", background: `linear-gradient(135deg, ${accent}, ${c[3] || accent})`, margin: "0 auto 12px", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 20, fontWeight: 700 }}>A</motion.div>
+          <div style={{ fontSize: 18, fontWeight: 800, letterSpacing: "-0.02em" }}>Ana Oliveira</div>
+          <div style={{ fontSize: 11, color: muted, marginTop: 2 }}>Designer & Creative Director</div>
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={2} style={{ padding: "0 24px 16px", display: "flex", justifyContent: "center", gap: 16, fontSize: 10, color: muted }}>
+          {["Projetos", "Sobre", "Blog", "Contato"].map((l) => (<span key={l}>{l}</span>))}
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={3} style={{ padding: "0 20px 16px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+            {[{ t: "Branding", sub: "TechCo Rebrand", h: 90 }, { t: "UI/UX", sub: "App Fintech", h: 110 }, { t: "Motion", sub: "Campanha Vídeo", h: 110 }, { t: "Web", sub: "Landing Page", h: 90 }].map((p, i) => (
+              <motion.div key={i} variants={scaleIn} custom={4 + i} whileHover={{ y: -4 }} style={{ borderRadius: 12, overflow: "hidden", border: `1px solid ${borderColor}`, background: cardBg }}>
+                <div style={{ height: p.h, background: `linear-gradient(${135 + i * 30}deg, ${accent}33, ${c[3] || accent}22)`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <motion.span style={{ fontSize: 28 }} whileHover={{ scale: 1.2, rotate: 5 }}>{["🎨", "📱", "🎬", "🌐"][i]}</motion.span>
+                </div>
+                <div style={{ padding: "10px 12px" }}>
+                  <div style={{ fontSize: 12, fontWeight: 700 }}>{p.t}</div>
+                  <div style={{ fontSize: 9, color: muted }}>{p.sub}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={8} style={{ padding: "12px 20px", borderTop: `1px solid ${borderColor}`, display: "flex", justifyContent: "center", gap: 12 }}>
+          {["🐦", "💼", "📸", "✉️"].map((s, i) => (
+            <motion.div key={i} whileHover={{ scale: 1.2, y: -2 }} style={{ width: 32, height: 32, borderRadius: "50%", background: `${accent}15`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>{s}</motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
+    );
+  }
+
+  // ========= TEMPLATE: Luxury Product =========
+  if (template === "luxury-product") {
+    return (
+      <motion.div className="rounded-xl overflow-hidden" style={containerStyle} initial="hidden" animate="visible">
+        <motion.div variants={fadeSlideUp} custom={0} style={{ padding: "16px 24px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: `1px solid ${borderColor}` }}>
+          <span style={{ fontSize: 16, fontWeight: 800, letterSpacing: 4, textTransform: "uppercase" as const }}>Maison</span>
+          <div style={{ display: "flex", gap: 14, fontSize: 10, color: muted }}>
+            <span>Coleção</span><span>Loja</span><span>♡</span>
+          </div>
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={1} style={{ padding: "28px 24px", textAlign: "center" as const }}>
+          <div style={{ fontSize: 9, letterSpacing: 4, textTransform: "uppercase" as const, color: accent, marginBottom: 8 }}>Nova Coleção 2026</div>
+          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3, duration: 0.6 }} style={{ fontSize: 48, marginBottom: 12 }}>💎</motion.div>
+          <h2 style={{ fontSize: 22, fontWeight: 300, letterSpacing: 2, marginBottom: 6, textTransform: "uppercase" as const }}>Elegância Atemporal</h2>
+          <p style={{ fontSize: 11, color: muted, lineHeight: 1.7, maxWidth: 260, margin: "0 auto" }}>Peças artesanais feitas com materiais nobres selecionados à mão.</p>
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={3} style={{ padding: "0 20px 20px", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }}>
+          {[{ n: "Essência", p: "R$ 890", e: "🌸" }, { n: "Velvet", p: "R$ 1.240", e: "🖤" }, { n: "Ouro", p: "R$ 2.100", e: "✨" }].map((p, i) => (
+            <motion.div key={i} variants={scaleIn} custom={4 + i} whileHover={{ y: -4 }} style={{ padding: 16, borderRadius: 12, background: cardBg, border: `1px solid ${borderColor}`, textAlign: "center" as const }}>
+              <div style={{ fontSize: 28, marginBottom: 8 }}>{p.e}</div>
+              <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1 }}>{p.n}</div>
+              <div style={{ fontSize: 13, fontWeight: 300, color: accent, marginTop: 4 }}>{p.p}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+        <motion.div variants={fadeSlideUp} custom={7} style={{ padding: "14px 24px", borderTop: `1px solid ${borderColor}`, textAlign: "center" as const }}>
+          <motion.div whileHover={{ letterSpacing: "6px" }} transition={{ duration: 0.3 }} style={{ display: "inline-block", padding: "10px 28px", border: `1px solid ${accent}`, color: accent, fontSize: 10, fontWeight: 600, letterSpacing: 3, textTransform: "uppercase" as const }}>Explorar Coleção</motion.div>
+        </motion.div>
+      </motion.div>
+    );
+  }
+
+  // ========= TEMPLATE: Dev Tool (default fallback) =========
+  return (
+    <motion.div className="rounded-xl overflow-hidden" style={containerStyle} initial="hidden" animate="visible">
+      <motion.div variants={fadeSlideUp} custom={0} style={{ borderBottom: `1px solid ${borderColor}`, padding: "10px 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <div style={{ width: 24, height: 24, borderRadius: 6, background: accent, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 11, fontWeight: 700 }}>⚡</div>
+          <span style={{ fontWeight: 700, fontSize: 13 }}>DevKit</span>
+          <span style={{ padding: "2px 8px", borderRadius: 6, background: `${accent}22`, color: accent, fontSize: 9, fontWeight: 600 }}>v3.2</span>
+        </div>
+        <div style={{ display: "flex", gap: 10, fontSize: 10, color: muted }}>
+          <span>Docs</span><span>API</span><span>Pricing</span>
         </div>
       </motion.div>
-
-      {/* Testimonial */}
-      <motion.div 
-        variants={fadeSlideUp} custom={14}
-        whileHover={{ scale: 1.01 }}
-        style={{ margin: "0 20px 20px", padding: 16, borderRadius: 12, background: `${accent}11`, border: `1px solid ${accent}22` }}
-      >
-        <p style={{ fontSize: 11, fontStyle: "italic", color: muted, marginBottom: 8 }}>
-          "Esta plataforma mudou completamente a forma como gerenciamos nossos projetos. Recomendo!"
-        </p>
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <motion.div 
-            style={{ width: 24, height: 24, borderRadius: "50%", background: accent, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 10, fontWeight: 700 }}
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 1.2, type: "spring", stiffness: 500 }}
-          >
-            A
-          </motion.div>
-          <div>
-            <div style={{ fontSize: 10, fontWeight: 600 }}>Ana Silva</div>
-            <div style={{ fontSize: 9, color: muted }}>CEO, TechCorp</div>
+      <motion.div variants={fadeSlideUp} custom={1} style={{ padding: "24px 20px", textAlign: "center" as const }}>
+        <div style={{ fontSize: 20, fontWeight: 800, letterSpacing: "-0.02em", marginBottom: 6 }}>Build faster, ship smarter</div>
+        <div style={{ fontSize: 11, color: muted, marginBottom: 16 }}>API-first platform for modern developers</div>
+        <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
+          <motion.div whileHover={{ scale: 1.05 }} style={{ padding: "7px 18px", borderRadius: 8, background: accent, color: "#fff", fontSize: 11, fontWeight: 600 }}>Get Started</motion.div>
+          <motion.div whileHover={{ scale: 1.05 }} style={{ padding: "7px 18px", borderRadius: 8, border: `1px solid ${borderColor}`, fontSize: 11, color: muted }}>View Docs</motion.div>
+        </div>
+      </motion.div>
+      <motion.div variants={fadeSlideUp} custom={3} style={{ padding: "0 20px 16px" }}>
+        <div style={{ padding: 14, borderRadius: 8, background: cardBg, border: `1px solid ${borderColor}`, fontFamily: "monospace", fontSize: 10, color: muted }}>
+          <div style={{ color: accent }}>$ npm install devkit</div>
+          <div style={{ marginTop: 4 }}>
+            <span style={{ color: "#22c55e" }}>✓</span> Installed in 1.2s
+          </div>
+          <div style={{ marginTop: 2 }}>
+            <span style={{ color: "#22c55e" }}>✓</span> 0 vulnerabilities
           </div>
         </div>
       </motion.div>
-
-      {/* CTA */}
-      <motion.div 
-        variants={fadeSlideUp} custom={15}
-        style={{ padding: "16px 20px", borderTop: `1px solid ${borderColor}`, textAlign: "center" as const }}
-      >
-        <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 6 }}>Pronto para começar?</div>
-        <motion.div 
-          style={{ display: "inline-block", padding: "8px 24px", borderRadius: 8, background: accent, color: "#fff", fontSize: 12, fontWeight: 600, cursor: "pointer" }}
-          whileHover={{ scale: 1.08, boxShadow: `0 8px 30px ${accent}55` }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Criar Conta Grátis →
-        </motion.div>
+      <motion.div variants={fadeSlideUp} custom={5} style={{ padding: "0 20px 16px", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
+        {[{ t: "Auth", d: "OAuth 2.0 pronto", e: "🔐" }, { t: "Database", d: "PostgreSQL nativo", e: "🗄️" }, { t: "Realtime", d: "WebSocket built-in", e: "⚡" }].map((f, i) => (
+          <motion.div key={i} variants={scaleIn} custom={6 + i} whileHover={{ y: -3 }} style={{ padding: 12, borderRadius: 8, background: cardBg, border: `1px solid ${borderColor}` }}>
+            <div style={{ fontSize: 18, marginBottom: 6 }}>{f.e}</div>
+            <div style={{ fontSize: 11, fontWeight: 700, marginBottom: 2 }}>{f.t}</div>
+            <div style={{ fontSize: 9, color: muted }}>{f.d}</div>
+          </motion.div>
+        ))}
+      </motion.div>
+      <motion.div variants={fadeSlideUp} custom={9} style={{ padding: "12px 20px", borderTop: `1px solid ${borderColor}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ fontSize: 10, color: muted }}>Trusted by 5K+ developers</div>
+        <div style={{ display: "flex", gap: 4 }}>
+          {[1, 2, 3, 4, 5].map((i) => (<div key={i} style={{ width: 20, height: 20, borderRadius: "50%", background: `${accent}${20 + i * 15}`, marginLeft: i > 1 ? -6 : 0, border: `2px solid ${bg}` }} />))}
+        </div>
       </motion.div>
     </motion.div>
   );
