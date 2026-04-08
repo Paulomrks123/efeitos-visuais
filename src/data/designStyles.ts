@@ -1990,7 +1990,6 @@ body {
     layoutStyle: "Cards glass com blur, orbes flutuantes, grid sheen overlay, hierarquia visual por brilho.",
     typography: "Space Grotesk para títulos, Inter para corpo. JetBrains Mono para dados e código.",
     previewImage: styleFuturistic,
-    exampleUrl: "https://surreal-impact-flow.lovable.app/",
     cssVariables: {
       "--background": "215 44% 8%",
       "--foreground": "210 40% 96%",
