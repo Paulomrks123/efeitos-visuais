@@ -10,6 +10,7 @@ import { PWALifecycle } from "@/components/pwa/PWALifecycle";
 import Index from "./pages/Index";
 import Install from "./pages/Install";
 import Showcase from "./pages/Showcase";
+import StyleExample from "./pages/StyleExample";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/install" element={<Install />} />
             <Route path="/showcase" element={<Showcase />} />
+            <Route path="/showcase/example/:styleId" element={<StyleExample />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
