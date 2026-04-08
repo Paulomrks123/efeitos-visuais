@@ -1,171 +1,76 @@
 
-# Plano: Visualização de Efeitos em Cards Reais
+Problema encontrado
+- Hoje o botão “Ver Exemplo” abre `style.exampleUrl`, e quase todos os estilos estão apontando para o mesmo `https://pv-turn.lovable.app`.
+- O preview atual do modal (`StylePreviewFull`) também usa um único layout React com estilos inline; ele não aplica de verdade o `sampleCSS` de cada card.
+- Resultado: os exemplos ficam praticamente iguais, porque o CSS real de cada estilo não está controlando a página.
 
-## Objetivo
-Transformar a visualização dos 230 efeitos visuais e 80 animações para mostrar cada efeito aplicado em elementos de UI reais, em vez de representações genéricas.
+Plano de correção
+1. Trocar o comportamento de “Ver Exemplo”
+   - Substituir o link externo por uma rota interna, por exemplo `/showcase/example/:styleId`.
+   - Se existir um site de referência real para algum card, ele vira um link secundário (“Referência original”), não o preview principal.
 
----
+2. Fazer o preview usar o CSS real do card
+   - Criar um componente de preview em `iframe/srcDoc`.
+   - Injetar dentro dele o `sampleCSS` do estilo selecionado.
+   - Isso resolve dois problemas ao mesmo tempo:
+     - aplica o CSS verdadeiro do card
+     - evita vazamento de CSS para o resto da plataforma
 
-## Visão Geral da Mudança
+3. Recriar a página-modelo do pv-turn como template reutilizável
+   - Montar uma página-base com a estrutura do site-modelo: header, hero, benefícios, experiências, planos, passos e CTA final.
+   - Nos elementos, usar classes que os próprios cards já definem no CSS, como:
+     - layout: `header`, `hero`, `features-grid`, `projects-grid`, `dashboard`, `article`
+     - cards: `card`, `feature-card`, `project-card`, `offer-box`, `testimonial-card`
+     - botões: `button-primary`, `btn`, `cta-button`, `hero-btn`
+   - Assim o conteúdo-base permanece o mesmo, mas cada card “veste” a página com seu próprio CSS.
 
-Atualmente os previews mostram formas genéricas (quadrados, orbes) com animações simuladas. A nova abordagem mostrará:
+4. Adicionar variantes leves para estilos especiais
+   - Alguns estilos têm elementos únicos que precisam existir no HTML para o visual aparecer de verdade, como:
+     - `aurora-waves`
+     - `matrix-rain`
+     - `retro-sun`
+     - `glass-orb`
+     - `watercolor-splash`
+     - `marquee`
+   - Vou criar uma camada pequena de variantes por família/estilo para esses casos, sem duplicar 33 páginas diferentes.
 
-| Categoria | Atual | Novo |
-|-----------|-------|------|
-| **Glassmorphism** | Orbes flutuantes + card genérico | Card de produto com imagem, titulo, preco e botao |
-| **Neumorphism** | Retangulo com sombra | Controle de volume/slider ou card de perfil |
-| **Gradients** | Quadrado com gradiente | Botao CTA real ou hero card com texto |
-| **Filters** | Quadrado com hue-rotate | Imagem de galeria com filtro aplicado |
-| **Text** | Palavra "TEXTO" animada | Titulo de secao ou headline estilizada |
-| **Images** | Emoji de animal | Foto real com o efeito de entrada aplicado |
-| **Animacoes** | Quadrado pulsando | Cards, icones ou elementos de UI animados |
+5. Unificar o preview do modal e o preview em tela cheia
+   - O modal passa a usar o mesmo renderer real.
+   - O botão “Ver Exemplo” abre a versão completa.
+   - Isso elimina a inconsistência atual entre “modal” e “exemplo”.
 
----
+6. Ajustar a experiência para mobile
+   - Como sua viewport atual é muito estreita, o preview será mobile-first:
+     - grids viram 1 coluna em telas pequenas
+     - títulos e espaçamentos reduzem
+     - botão de voltar fixo
+     - preview ocupa largura total
+   - Isso é importante porque hoje o modal não é ideal para comparar estilos no mobile.
 
-## Componentes a Serem Criados
+Arquivos principais
+- `src/components/showcase/StyleCard.tsx`
+- `src/App.tsx`
+- novo `src/pages/StyleExample.tsx`
+- novo `src/components/showcase/StyleExampleFrame.tsx`
+- opcional: helper como `src/components/showcase/stylePreviewVariants.ts`
 
-### 1. RealisticEffectPreview (Novo Componente Principal)
+Detalhes técnicos
+- Vou parar de depender só de `style.colors` para “simular” diferenças; o visual passará a vir principalmente do `sampleCSS`.
+- O `iframe` é a solução mais segura aqui porque vários cards usam CSS global (`:root`, `body`, `@keyframes`, classes próprias).
+- Para os poucos cards cujo `sampleCSS` não está pronto para navegador puro (ex.: trechos com `@tailwind`), vou normalizar esse CSS ou criar fallback específico, para que eles também fiquem realmente diferentes.
 
-Arquivo: `src/components/effects/RealisticEffectPreview.tsx`
-
-Logica:
-- Recebe o efeito e renderiza um componente de UI real baseado na categoria
-- Injeta o CSS real do efeito diretamente no elemento
-- Cada categoria tem um template de UI especifico
-
-### 2. Templates de UI por Categoria
-
-**Glassmorphism:**
-```text
-+---------------------------+
-|  [Imagem de fundo blur]   |
-|  +---------------------+  |
-|  |  Titulo do Card     |  |
-|  |  Descricao breve    |  |
-|  |  [Botao Comprar]    |  |
-|  +---------------------+  |
-+---------------------------+
-```
-
-**Neumorphism:**
-```text
-+---------------------------+
-|  Avatar circular          |
-|  Nome do Usuario          |
-|  @username                |
-|  [Slider de volume]       |
-+---------------------------+
-```
-
-**Gradients:**
-```text
-+---------------------------+
-|  Headline Impactante      |
-|  Subtitulo menor          |
-|  [  Botao CTA Gradient ]  |
-+---------------------------+
-```
-
-**Filters:**
-```text
-+---------------------------+
-|  +---------------------+  |
-|  |                     |  |
-|  |   Foto de Natureza  |  |
-|  |   (com filtro)      |  |
-|  |                     |  |
-|  +---------------------+  |
-|  Nome do Filtro           |
-+---------------------------+
-```
-
----
-
-## Arquivos a Modificar
-
-1. **Criar** `src/components/effects/RealisticEffectPreview.tsx`
-   - Componente principal com renderizadores por categoria
-   - Templates de UI realistas para cada tipo de efeito
-
-2. **Criar** `src/components/effects/ui-templates/` (pasta)
-   - `GlassmorphismCard.tsx` - Card de produto com blur
-   - `NeumorphismCard.tsx` - Perfil e controles soft
-   - `GradientCard.tsx` - Hero section com CTA
-   - `FilterCard.tsx` - Galeria com filtro
-   - `TextEffectCard.tsx` - Headline animada
-   - `ImageEffectCard.tsx` - Foto com animacao de entrada
-
-3. **Modificar** `src/components/cards/EffectCardWithPlayground.tsx`
-   - Substituir EnhancedEffectPreview por RealisticEffectPreview
-   - Manter compatibilidade com modo compacto e normal
-
-4. **Modificar** `src/components/cards/AnimationCardWithPlayground.tsx`
-   - Substituir AnimationLivePreview por preview realista
-   - Mostrar animacoes aplicadas em cards/icones/botoes
-
----
-
-## Secao Tecnica
-
-### Injecao de CSS Real
-
-Cada template injetara o CSS exato do efeito usando a mesma tecnica do `TextEffectPreview`:
-
-```tsx
-useEffect(() => {
-  const styleElement = document.createElement('style');
-  styleElement.id = uniqueStyleId;
-  styleElement.textContent = effect.cssCode;
-  document.head.appendChild(styleElement);
-  return () => styleElement.remove();
-}, [effect.cssCode]);
-```
-
-### Estrutura do RealisticEffectPreview
-
-```tsx
-function RealisticEffectPreview({ effect, size }) {
-  switch (effect.category) {
-    case "glassmorphism":
-      return <GlassmorphismCard effect={effect} size={size} />;
-    case "neumorphism":
-      return <NeumorphismCard effect={effect} size={size} />;
-    case "gradients":
-      return <GradientCard effect={effect} size={size} />;
-    case "filters":
-      return <FilterCard effect={effect} size={size} />;
-    case "text":
-      return <TextEffectCard effect={effect} size={size} />;
-    case "images":
-      return <ImageEffectCard effect={effect} size={size} />;
-  }
-}
-```
-
-### Imagens para Previews
-
-Utilizarei imagens do Unsplash (ja presentes no projeto) para:
-- Fundos de glassmorphism
-- Fotos com filtros
-- Imagens com efeitos de entrada
-
----
-
-## Beneficios da Mudanca
-
-1. **Contexto Real**: Usuario ve exatamente como o efeito ficara em producao
-2. **Decisao Informada**: Facilita escolher o efeito certo para cada caso de uso
-3. **Demonstracao de Valor**: Cards realistas mostram o potencial profissional
-4. **Codigo Copiavel**: O CSS copiado funciona diretamente no projeto do usuario
-
----
-
-## Ordem de Implementacao
-
-1. Criar pasta `ui-templates` com componentes base
-2. Criar `RealisticEffectPreview.tsx` integrando os templates
-3. Atualizar `EffectCardWithPlayground.tsx` para usar novo preview
-4. Atualizar `AnimationCardWithPlayground.tsx` com previews realistas
-5. Testar todas as 230 combinacoes de efeitos
-6. Ajustar responsividade para modo compacto
-
+Validação
+- Testar estilos bem diferentes entre si, por exemplo:
+  - `premium-minimal`
+  - `dark-tech`
+  - `brutalist`
+  - `glass-3d`
+  - `matrix-hacker`
+  - `loris-portfolio`
+  - `slush-fintech`
+  - `organic-premium`
+- Confirmar:
+  - “Ver Exemplo” não abre mais a mesma página para todos
+  - cada estilo muda visual, botões, cards e atmosfera
+  - não há vazamento de CSS entre exemplos
+  - a visualização funciona no mobile
