@@ -67,24 +67,33 @@ export const designStyles: StyleDefinition[] = [
   --text-secondary: #6B7280;
   --accent: #3B82F6;
   --border: #E5E7EB;
-  --shadow: 0 1px 3px rgba(0,0,0,0.1);
+  --border-color: #E5E7EB;
 }
+
+body { background: var(--background); color: var(--text-primary); font-family: 'Inter', 'SF Pro', sans-serif; }
 
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: var(--shadow);
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
 }
+.card:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.08); transform: translateY(-2px); }
 
-.button-primary {
-  background: var(--text-primary);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: 500;
-}`,
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: var(--text-primary) !important; color: white !important; border: none !important;
+  border-radius: 8px; font-weight: 500; transition: all 0.2s ease;
+}
+.button-primary:hover, .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+.status-badge, .tag { background: var(--accent) !important; color: white !important; border-radius: 6px; font-size: 10px; }
+.text-accent { color: var(--accent); }
+.icon-container { background: var(--surface) !important; border: 1px solid var(--border); }
+h1 { letter-spacing: -0.03em; font-weight: 700; }
+nav, footer { border-color: var(--border) !important; }
+
+/* Subtle entrance */
+@keyframes pmFade { from { opacity:0; transform:translateY(12px) } to { opacity:1; transform:translateY(0) } }
+section { animation: pmFade 0.6s ease-out both; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -112,35 +121,37 @@ export const designStyles: StyleDefinition[] = [
   --primary: #FB923C;
   --secondary: #EF4444;
   --accent: #FBBF24;
-  --success: #22C55E;
-  --radius: 20px;
+  --border-color: #FED7AA;
 }
+
+body { background: var(--background); color: var(--text-primary); font-family: 'Poppins', 'Nunito', sans-serif; }
 
 .card {
-  background: var(--surface);
-  border: 2px solid #FED7AA;
-  border-radius: var(--radius);
-  padding: 20px;
+  background: var(--surface); border: 3px solid #FED7AA; border-radius: 24px !important; padding: 20px;
+  transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+  position: relative; overflow: hidden;
 }
-
-.button-primary {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: white;
-  padding: 14px 28px;
-  border-radius: 16px;
-  font-weight: 700;
-  box-shadow: 0 4px 15px rgba(251, 146, 60, 0.4);
+.card:hover { transform: translateY(-6px) rotate(-1deg); border-color: var(--primary); box-shadow: 0 12px 30px rgba(251,146,60,0.2); }
+.card::after {
+  content:''; position:absolute; top:-50%; right:-50%; width:100%; height:100%;
+  background: radial-gradient(circle, rgba(251,146,60,0.08) 0%, transparent 70%);
+  animation: cartoonGlow 4s ease-in-out infinite alternate;
 }
+@keyframes cartoonGlow { from{transform:scale(1)} to{transform:scale(1.5)} }
 
-.icon-container {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}`,
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+  color: white !important; border: none !important; border-radius: 20px !important;
+  font-weight: 700; box-shadow: 0 6px 20px rgba(251,146,60,0.35);
+  animation: cartoonBounce 3s ease-in-out infinite;
+}
+@keyframes cartoonBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-3px)} }
+
+.status-badge, .tag { background: var(--accent) !important; color: var(--text-primary) !important; border-radius: 50px; font-weight: 700; }
+.text-accent { color: var(--primary); }
+.icon-container { background: linear-gradient(135deg, var(--primary), var(--secondary)) !important; border-radius: 50% !important; }
+h1, h2 { font-weight: 800; }
+nav, footer { border-color: #FED7AA !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -164,241 +175,69 @@ export const designStyles: StyleDefinition[] = [
     sampleCSS: `:root {
   --background: #0F172A;
   --surface: #1E293B;
-  --surface-glow: #1E293B;
   --text-primary: #F1F5F9;
   --text-secondary: #94A3B8;
   --primary: #06B6D4;
   --accent: #8B5CF6;
-  --danger: #EF4444;
-  --glow-primary: 0 0 20px rgba(6, 182, 212, 0.3);
-  --glow-accent: 0 0 20px rgba(139, 92, 246, 0.3);
-  --glow-intense: 0 0 40px rgba(6, 182, 212, 0.5);
+  --border-color: rgba(6,182,212,0.15);
 }
 
-/* ===== GLITCH TEXT EFFECT ===== */
-.glitch-text {
-  position: relative;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+body {
+  background: var(--background); color: var(--text-primary);
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
 }
 
-.glitch-text::before,
-.glitch-text::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
+/* Glitch text */
+.glitch-text { position: relative; text-transform: uppercase; letter-spacing: 0.1em; }
+.glitch-text::before, .glitch-text::after { content: attr(data-text); position: absolute; top:0; left:0; width:100%; height:100%; }
+.glitch-text::before { color: var(--primary); animation: dtGlitchL 0.3s infinite; clip-path: polygon(0 0,100% 0,100% 45%,0 45%); transform: translate(-2px,-1px); }
+.glitch-text::after { color: var(--accent); animation: dtGlitchR 0.3s infinite; clip-path: polygon(0 55%,100% 55%,100% 100%,0 100%); transform: translate(2px,1px); }
+@keyframes dtGlitchL { 0%,100%{transform:translate(-2px,-1px)} 20%{transform:translate(2px,1px)} 60%{transform:translate(1px,2px)} }
+@keyframes dtGlitchR { 0%,100%{transform:translate(2px,1px)} 40%{transform:translate(-1px,2px)} 80%{transform:translate(2px,-1px)} }
 
-.glitch-text::before {
-  color: var(--primary);
-  animation: glitchLeft 0.3s infinite;
-  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
-  transform: translate(-2px, -1px);
-}
-
-.glitch-text::after {
-  color: var(--accent);
-  animation: glitchRight 0.3s infinite;
-  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
-  transform: translate(2px, 1px);
-}
-
-@keyframes glitchLeft {
-  0%, 100% { transform: translate(-2px, -1px); }
-  20% { transform: translate(2px, 1px); }
-  40% { transform: translate(-1px, -2px); }
-  60% { transform: translate(1px, 2px); }
-  80% { transform: translate(-2px, 1px); }
-}
-
-@keyframes glitchRight {
-  0%, 100% { transform: translate(2px, 1px); }
-  20% { transform: translate(-2px, -1px); }
-  40% { transform: translate(1px, 2px); }
-  60% { transform: translate(-1px, -2px); }
-  80% { transform: translate(2px, -1px); }
-}
-
-/* ===== SCAN LINE OVERLAY ===== */
-.scanlines {
-  position: relative;
-  overflow: hidden;
-}
-
+/* Scan lines */
+.scanlines { position: relative; overflow: hidden; }
 .scanlines::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 0, 0, 0.1) 2px,
-    rgba(0, 0, 0, 0.1) 4px
-  );
-  pointer-events: none;
-  z-index: 10;
+  content:''; position:absolute; inset:0; z-index:10; pointer-events:none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px);
 }
-
 .scanlines::after {
-  content: '';
-  position: absolute;
-  top: -100%;
-  left: 0;
-  right: 0;
-  height: 200%;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(6, 182, 212, 0.03) 50%,
-    transparent 100%
-  );
-  animation: scanMove 4s linear infinite;
-  pointer-events: none;
-  z-index: 11;
+  content:''; position:absolute; top:-100%; left:0; right:0; height:200%; z-index:11; pointer-events:none;
+  background: linear-gradient(180deg, transparent 0%, rgba(6,182,212,0.03) 50%, transparent 100%);
+  animation: dtScan 4s linear infinite;
 }
+@keyframes dtScan { 0%{transform:translateY(0)} 100%{transform:translateY(50%)} }
 
-@keyframes scanMove {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(50%); }
-}
-
-/* ===== ANIMATED BORDER CARD ===== */
 .card {
-  background: var(--surface);
-  border: 1px solid rgba(6, 182, 212, 0.2);
-  border-radius: 12px;
-  padding: 20px;
-  position: relative;
-  overflow: hidden;
+  background: var(--surface); border: 1px solid rgba(6,182,212,0.15); border-radius: 12px; padding: 20px;
+  position: relative; overflow: hidden;
 }
-
 .card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
+  content:''; position:absolute; top:0; left:-100%; width:100%; height:2px;
   background: linear-gradient(90deg, transparent, var(--primary), transparent);
-  animation: borderScan 3s linear infinite;
+  animation: dtBorderScan 3s linear infinite;
 }
+@keyframes dtBorderScan { 0%{left:-100%} 100%{left:100%} }
 
-@keyframes borderScan {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
-
-/* ===== GLOWING BUTTON ===== */
-.button-primary {
-  background: transparent;
-  border: 1px solid var(--primary);
-  color: var(--primary);
-  padding: 12px 28px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  position: relative;
-  overflow: hidden;
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: transparent !important; border: 1px solid var(--primary) !important;
+  color: var(--primary) !important; border-radius: 8px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05em; position: relative; overflow: hidden;
   transition: all 0.3s ease;
 }
+.button-primary:hover, .btn:hover { background: var(--primary) !important; color: var(--background) !important; box-shadow: 0 0 30px rgba(6,182,212,0.4); }
 
-.button-primary::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: var(--primary);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.4s ease, height 0.4s ease;
-  z-index: -1;
+.status-badge, .tag { background: var(--primary) !important; color: var(--background) !important; }
+.text-accent { color: var(--primary); text-shadow: 0 0 10px rgba(6,182,212,0.4); }
+.icon-container { background: rgba(6,182,212,0.1) !important; border: 1px solid rgba(6,182,212,0.2); }
+
+/* Neon flicker */
+@keyframes dtFlicker {
+  0%,19%,21%,23%,25%,54%,56%,100% { text-shadow: 0 0 4px var(--primary), 0 0 11px var(--primary); }
+  20%,24%,55% { text-shadow: none; }
 }
-
-.button-primary:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
-.button-primary:hover {
-  color: var(--background);
-  box-shadow: var(--glow-intense);
-}
-
-/* ===== DATA TERMINAL ===== */
-.data-display {
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--primary);
-  background: rgba(6, 182, 212, 0.05);
-  border-left: 3px solid var(--primary);
-  padding: 16px;
-  position: relative;
-}
-
-.data-display::before {
-  content: '>';
-  position: absolute;
-  left: 8px;
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-/* ===== HUD CORNERS ===== */
-.hud-frame {
-  position: relative;
-  padding: 20px;
-}
-
-.hud-frame::before,
-.hud-frame::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-color: var(--primary);
-  border-style: solid;
-}
-
-.hud-frame::before {
-  top: 0;
-  left: 0;
-  border-width: 2px 0 0 2px;
-}
-
-.hud-frame::after {
-  bottom: 0;
-  right: 0;
-  border-width: 0 2px 2px 0;
-}
-
-/* ===== FLICKERING NEON ===== */
-.neon-flicker {
-  animation: flicker 2s infinite;
-  text-shadow: var(--glow-primary);
-}
-
-@keyframes flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    text-shadow: 
-      0 0 4px var(--primary),
-      0 0 11px var(--primary),
-      0 0 19px var(--primary);
-  }
-  20%, 24%, 55% {
-    text-shadow: none;
-  }
-}`,
+h1 { animation: dtFlicker 3s infinite; }
+nav, footer { border-color: rgba(6,182,212,0.12) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -423,33 +262,44 @@ export const designStyles: StyleDefinition[] = [
   --background: #FFFBEB;
   --surface: #FEF3C7;
   --text-primary: #78350F;
-  --text-secondary: #92400E;
   --primary: #D97706;
   --accent: #84CC16;
   --border: #FCD34D;
+  --border-color: #FCD34D;
+}
+
+body { background: var(--background); color: var(--text-primary); font-family: 'Playfair Display', 'Georgia', serif; }
+
+/* Paper texture effect */
+body::before {
+  content:''; position:fixed; inset:0; pointer-events:none; opacity:0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .card {
-  background: linear-gradient(135deg, #FFFBEB, #FEF3C7);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 4px 6px rgba(120, 53, 15, 0.1);
+  background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border: 2px solid var(--border);
+  border-radius: 16px; padding: 20px; box-shadow: 4px 4px 0 rgba(120,53,15,0.15);
+  transition: all 0.3s ease; position: relative;
 }
-
-.button-primary {
-  background: var(--primary);
-  color: #FFFBEB;
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.3);
+.card:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(120,53,15,0.2); }
+.card::after {
+  content:'📌'; position:absolute; top:-8px; right:10px; font-size:16px;
+  animation: retroPin 2s ease-in-out infinite;
 }
+@keyframes retroPin { 0%,100%{transform:rotate(-5deg)} 50%{transform:rotate(5deg)} }
 
-h1, h2, h3 {
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: var(--primary) !important; color: #FFFBEB !important; border: none !important;
+  border-radius: 12px; font-weight: 600; box-shadow: 3px 3px 0 rgba(120,53,15,0.2);
   font-family: 'Playfair Display', serif;
-  color: var(--text-primary);
-}`,
+}
+.button-primary:hover, .btn:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 rgba(120,53,15,0.3); }
+
+.status-badge, .tag { background: var(--accent) !important; color: #3D2B00 !important; border-radius: 4px; font-weight: 700; }
+.text-accent { color: var(--primary); }
+.icon-container { background: var(--surface) !important; border: 2px solid var(--border); border-radius: 12px !important; }
+h1, h2, h3 { font-family: 'Playfair Display', serif; }
+nav, footer { border-color: var(--border) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -481,33 +331,37 @@ h1, h2, h3 {
   --warning: #F59E0B;
   --danger: #EF4444;
   --border: #D1D5DB;
+  --border-color: #D1D5DB;
 }
+
+body { background: var(--background); color: var(--text-primary); font-family: 'Roboto', 'Arial', sans-serif; }
 
 .card {
-  background: var(--surface);
-  border: 2px solid var(--border);
-  padding: 16px;
+  background: var(--surface); border: 2px solid var(--border); border-radius: 0 !important;
+  padding: 16px; border-left: 4px solid var(--primary) !important;
+  transition: border-left-color 0.2s ease;
+}
+.card:hover { border-left-color: var(--success) !important; }
+
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: var(--primary) !important; color: white !important; border: none !important;
+  border-radius: 0 !important; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.05em; font-size: 12px;
 }
 
-.status-badge {
-  padding: 4px 12px;
-  font-weight: 700;
-  font-size: 12px;
-  text-transform: uppercase;
+.status-badge, .tag {
+  background: var(--success) !important; color: white !important; border-radius: 0 !important;
+  font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em;
+  animation: indPulse 2s ease-in-out infinite;
 }
+@keyframes indPulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
 
-.status-ok { background: var(--success); color: white; }
-.status-warn { background: var(--warning); color: white; }
-.status-error { background: var(--danger); color: white; }
-
-.button-action {
-  background: var(--primary);
-  color: white;
-  padding: 10px 20px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}`,
+.text-accent { color: var(--primary); font-weight: 700; }
+.icon-container { background: var(--primary) !important; color: white !important; border-radius: 4px !important; }
+h1, h2, h3 { font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; font-family: 'Roboto', sans-serif; }
+nav { background: var(--text-primary) !important; color: white !important; }
+nav span { color: rgba(255,255,255,0.7) !important; }
+footer { border-color: var(--border) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -533,46 +387,38 @@ h1, h2, h3 {
   --background: #FFFFFF;
   --surface: #F9FAFB;
   --text-primary: #1F2937;
-  --text-secondary: #6B7280;
   --primary: #3B82F6;
   --success: #10B981;
   --warning: #F59E0B;
   --border: #E5E7EB;
-  --radius: 12px;
+  --border-color: #E5E7EB;
 }
+
+body { background: var(--background); color: var(--text-primary); font-family: 'Inter', 'Nunito Sans', sans-serif; }
 
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px;
+  transition: all 0.3s ease; position: relative;
 }
-
-.category-card {
-  background: linear-gradient(135deg, #EFF6FF, #FFFFFF);
-  border: 1px solid #BFDBFE;
-  border-radius: var(--radius);
-  padding: 16px;
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 20px rgba(59,130,246,0.1); }
+.card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px; border-radius: 14px 14px 0 0;
+  background: linear-gradient(90deg, var(--primary), var(--success), var(--warning));
+  opacity: 0; transition: opacity 0.3s ease;
 }
+.card:hover::before { opacity: 1; }
 
-.icon-box {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  background: #F3F4F6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: var(--primary) !important; color: white !important; border: none !important;
+  border-radius: 10px; font-weight: 600;
+  transition: all 0.2s ease;
 }
+.button-primary:hover, .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.25); }
 
-.button-primary {
-  background: var(--primary);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-weight: 500;
-}`,
+.status-badge, .tag { background: var(--primary) !important; color: white !important; border-radius: 10px; }
+.text-accent { color: var(--primary); }
+.icon-container { background: #EFF6FF !important; border-radius: 12px !important; }
+nav, footer { border-color: var(--border) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -596,54 +442,34 @@ h1, h2, h3 {
     sampleCSS: `:root {
   --background: #F8F9FA;
   --surface: #FFFFFF;
-  --text-primary: #374151;
+  --text-primary: #1A1A2E;
   --text-secondary: #6B7280;
-  --primary: #4B5563;
-  --accent: #3B82F6;
-  --border: #D1D5DB;
-  --border-color: #D1D5DB;
+  --primary: #374151;
+  --accent: #4F46E5;
+  --border: #E5E7EB;
+  --border-color: #E5E7EB;
 }
 
-body {
-  background: var(--background);
-  color: var(--text-primary);
-  font-family: 'Inter', 'Roboto', sans-serif;
-}
+body { background: var(--background); color: var(--text-primary); font-family: 'Inter', system-ui, sans-serif; }
 
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 16px;
-  border-left: 3px solid var(--primary);
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px;
+  border-left: 3px solid var(--primary) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  transition: all 0.25s ease;
 }
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-left-color: var(--accent) !important; }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
-  background: var(--primary) !important;
-  color: white !important;
-  border-radius: 6px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  font-size: 12px;
+  background: var(--primary) !important; color: white !important; border: none !important;
+  border-radius: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; font-size: 12px;
 }
 
-.status-badge, .tag {
-  background: var(--primary) !important;
-  color: white !important;
-  border-radius: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 10px;
-}
-
+.status-badge, .tag { background: var(--accent) !important; color: white !important; border-radius: 4px; font-size: 10px; text-transform: uppercase; }
 .text-accent { color: var(--accent); }
 .icon-container { background: var(--primary) !important; color: white !important; border-radius: 6px !important; }
-
-h1, h2, h3 { color: var(--text-primary); font-weight: 700; }
-
-.data-highlight { font-size: 28px; font-weight: 700; color: var(--text-primary); }
-.label { font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }`,
+h1, h2, h3 { font-weight: 700; letter-spacing: -0.01em; }
+nav, footer { border-color: var(--border) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -667,56 +493,35 @@ h1, h2, h3 { color: var(--text-primary); font-weight: 700; }
     sampleCSS: `:root {
   --background: #F0F7FF;
   --surface: #FFFFFF;
-  --text-primary: #1E40AF;
-  --text-secondary: #3B82F6;
   --primary: #3B82F6;
-  --success: #10B981;
-  --warning: #F59E0B;
+  --purple: #8B5CF6;
   --border: #BFDBFE;
   --border-color: #BFDBFE;
 }
 
-body {
-  background: linear-gradient(135deg, #F0F7FF, #EDE9FE);
-  color: #1E293B;
-  font-family: 'Nunito', 'Poppins', sans-serif;
-}
+body { background: linear-gradient(160deg, #F0F7FF 0%, #F5F3FF 50%, #FFF1F2 100%); color: #1E293B; font-family: 'Nunito', 'Poppins', sans-serif; }
 
 .card {
-  background: linear-gradient(135deg, #FFFFFF, #F0F7FF);
-  border: 2px solid var(--border);
-  border-radius: 20px !important;
-  padding: 20px;
-  box-shadow: 0 4px 20px rgba(59,130,246,0.08);
+  background: rgba(255,255,255,0.8); backdrop-filter: blur(8px);
+  border: 2px solid var(--border); border-radius: 22px !important; padding: 20px;
+  box-shadow: 0 4px 20px rgba(59,130,246,0.06);
+  transition: all 0.35s cubic-bezier(0.175,0.885,0.32,1.275);
 }
-
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(59,130,246,0.12);
-  border-color: var(--primary);
-}
+.card:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 12px 35px rgba(59,130,246,0.12); border-color: var(--purple); }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
-  background: var(--primary) !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 16px !important;
-  font-weight: 700;
-  box-shadow: 0 4px 14px rgba(59,130,246,0.25);
+  background: linear-gradient(135deg, var(--primary), var(--purple)) !important;
+  color: white !important; border: none !important; border-radius: 16px !important; font-weight: 700;
+  box-shadow: 0 4px 14px rgba(139,92,246,0.25);
+  animation: friendlyFloat 3s ease-in-out infinite;
 }
+@keyframes friendlyFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
 
-.status-badge, .tag {
-  background: linear-gradient(135deg, var(--primary), #818CF8) !important;
-  color: white !important;
-  border-radius: 20px;
-}
-
-.text-accent { color: var(--primary); }
+.status-badge, .tag { background: linear-gradient(135deg, var(--primary), var(--purple)) !important; color: white !important; border-radius: 20px; }
+.text-accent { color: var(--purple); }
 .icon-container { background: linear-gradient(135deg, #DBEAFE, #EDE9FE) !important; border-radius: 16px !important; }
-
-h1, h2, h3 { color: #1E3A5F; font-weight: 800; }
-
-.category-chip { background: #EFF6FF; color: var(--primary); padding: 8px 16px; border-radius: 20px; font-weight: 600; }`,
+h1 { font-weight: 800; }
+nav, footer { border-color: rgba(139,92,246,0.15) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   
@@ -747,78 +552,53 @@ h1, h2, h3 { color: #1E3A5F; font-weight: 800; }
   --neon-pink: #FF00FF;
   --neon-cyan: #00FFFF;
   --neon-purple: #8B00FF;
-  --border-color: rgba(255,0,255,0.3);
+  --border-color: rgba(255,0,255,0.25);
 }
 
-body {
-  background: var(--background);
-  color: var(--text-primary);
-  font-family: 'Orbitron', 'Rajdhani', sans-serif;
+body { background: var(--background); color: var(--text-primary); font-family: 'Rajdhani', 'Orbitron', sans-serif; }
+
+/* Animated grid background */
+body::before {
+  content:''; position:fixed; inset:0; pointer-events:none; opacity:0.04;
+  background: linear-gradient(90deg, var(--neon-cyan) 1px, transparent 1px),
+    linear-gradient(0deg, var(--neon-cyan) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: cyberGrid 20s linear infinite;
 }
+@keyframes cyberGrid { from{transform:perspective(500px) rotateX(0deg)} to{transform:perspective(500px) rotateX(1deg)} }
 
 .card {
-  background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
-  border: 1px solid var(--neon-pink);
-  border-radius: 4px;
-  padding: 20px;
-  position: relative;
-  box-shadow: 0 0 15px rgba(255,0,255,0.2), inset 0 0 30px rgba(255,0,255,0.05);
+  background: linear-gradient(135deg, #1A1A2E, #16213E); border: 1px solid var(--neon-pink);
+  border-radius: 4px !important; padding: 20px; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  box-shadow: 0 0 15px rgba(255,0,255,0.15), inset 0 0 30px rgba(255,0,255,0.03);
+  animation: cyberPulse 3s ease-in-out infinite alternate;
 }
-
-.card:hover {
-  box-shadow: 0 0 25px var(--neon-pink), 0 0 50px rgba(255,0,255,0.15);
-}
+@keyframes cyberPulse { from{box-shadow:0 0 10px rgba(255,0,255,0.15)} to{box-shadow:0 0 25px rgba(255,0,255,0.25)} }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
-  background: transparent;
-  border: 2px solid var(--neon-cyan) !important;
-  color: var(--neon-cyan) !important;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-weight: 700;
-  box-shadow: 0 0 10px rgba(0,255,255,0.3);
-  position: relative;
-  overflow: hidden;
+  background: transparent !important; border: 2px solid var(--neon-cyan) !important;
+  color: var(--neon-cyan) !important; border-radius: 0 !important; text-transform: uppercase;
+  letter-spacing: 0.2em; font-weight: 700; position: relative; overflow: hidden;
 }
-
-.button-primary:hover, .btn:hover {
-  background: var(--neon-cyan);
-  color: var(--background) !important;
-  box-shadow: 0 0 30px var(--neon-cyan);
+.button-primary::before, .btn::before {
+  content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+  background: linear-gradient(90deg, transparent, rgba(0,255,255,0.15), transparent);
+  animation: cyberScan 2s linear infinite;
 }
+@keyframes cyberScan { from{left:-100%} to{left:100%} }
 
-.status-badge, .tag {
-  background: var(--neon-pink) !important;
-  color: #000 !important;
-  box-shadow: 0 0 10px rgba(255,0,255,0.5);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
+.status-badge, .tag { background: var(--neon-pink) !important; color: #000 !important; border-radius: 0 !important; text-transform: uppercase; letter-spacing: 0.1em; box-shadow: 0 0 12px rgba(255,0,255,0.4); }
+.text-accent { color: var(--neon-cyan); text-shadow: 0 0 12px rgba(0,255,255,0.5); }
+.icon-container { background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple)) !important; border-radius: 0 !important; box-shadow: 0 0 15px rgba(255,0,255,0.3); }
 
-.text-accent { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0,255,255,0.5); }
+.glitch-text { position:relative; text-transform:uppercase; letter-spacing:0.1em; }
+.glitch-text::before,.glitch-text::after { content:attr(data-text); position:absolute; top:0; left:0; width:100%; height:100%; }
+.glitch-text::before { color:var(--neon-cyan); animation:cyberG1 0.3s infinite; clip-path:polygon(0 0,100% 0,100% 45%,0 45%); }
+.glitch-text::after { color:var(--neon-pink); animation:cyberG2 0.3s infinite; clip-path:polygon(0 55%,100% 55%,100% 100%,0 100%); }
+@keyframes cyberG1 { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-3px)} 75%{transform:translateX(2px)} }
+@keyframes cyberG2 { 0%,100%{transform:translateX(0)} 25%{transform:translateX(3px)} 75%{transform:translateX(-2px)} }
 
-h1, h2, h3 { text-transform: uppercase; letter-spacing: 0.05em; }
-
-.icon-container {
-  background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple)) !important;
-  box-shadow: 0 0 15px rgba(255,0,255,0.4);
-}
-
-/* Glitch effect */
-.glitch-text { position: relative; }
-.glitch-text::before, .glitch-text::after {
-  content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-}
-.glitch-text::before { color: var(--neon-cyan); animation: cyberGlitch1 0.3s infinite; clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); }
-.glitch-text::after { color: var(--neon-pink); animation: cyberGlitch2 0.3s infinite; clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%); }
-@keyframes cyberGlitch1 { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-3px)} 40%{transform:translateX(3px)} }
-@keyframes cyberGlitch2 { 0%,100%{transform:translateX(0)} 20%{transform:translateX(3px)} 40%{transform:translateX(-3px)} }
-
-/* Scanlines */
-.scanlines::before {
-  content:''; position:absolute; inset:0; pointer-events:none; z-index:10;
-  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px);
-}`,
+nav, footer { border-color: rgba(255,0,255,0.2) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -841,60 +621,55 @@ h1, h2, h3 { text-transform: uppercase; letter-spacing: 0.05em; }
     },
     sampleCSS: `:root {
   --background: #0F0C29;
-  --surface: rgba(48, 43, 99, 0.5);
+  --surface: rgba(48,43,99,0.4);
   --text-primary: #E0E0FF;
   --aurora-green: #00FF88;
   --aurora-purple: #8B5CF6;
   --aurora-blue: #06B6D4;
-  --border-color: rgba(139,92,246,0.25);
+  --border-color: rgba(139,92,246,0.2);
 }
 
 body {
   background: linear-gradient(180deg, #0F0C29 0%, #302B63 50%, #24243E 100%);
-  color: var(--text-primary);
-  font-family: 'Quicksand', 'Comfortaa', sans-serif;
-  position: relative;
-  overflow-x: hidden;
+  color: var(--text-primary); font-family: 'Quicksand', 'Comfortaa', sans-serif;
+  min-height: 100vh; position: relative; overflow-x: hidden;
 }
 
+/* Aurora waves */
+body::before, body::after {
+  content:''; position:fixed; width:300%; height:50%; pointer-events:none; opacity:0.5;
+}
 body::before {
-  content:''; position:fixed; width:200%; height:100%; top:0; left:-50%;
-  background: linear-gradient(180deg, transparent 0%, rgba(0,255,136,0.08) 30%, rgba(139,92,246,0.1) 50%, rgba(6,182,212,0.06) 70%, transparent 100%);
-  animation: auroraWave 8s ease-in-out infinite; pointer-events:none; z-index:0;
+  top:0; left:-100%;
+  background: linear-gradient(180deg, transparent, rgba(0,255,136,0.06) 30%, rgba(139,92,246,0.08) 60%, transparent);
+  animation: auroraW1 10s ease-in-out infinite; transform-origin: center;
 }
-@keyframes auroraWave {
-  0%,100%{ transform:translateX(-25%) rotate(-5deg); opacity:0.5; }
-  50%{ transform:translateX(0%) translateY(-20px) rotate(5deg); opacity:1; }
+body::after {
+  top:20%; right:-100%;
+  background: linear-gradient(180deg, transparent, rgba(6,182,212,0.05) 40%, rgba(139,92,246,0.06) 70%, transparent);
+  animation: auroraW2 14s ease-in-out infinite;
 }
+@keyframes auroraW1 { 0%,100%{transform:translateX(-10%) rotate(-3deg)} 50%{transform:translateX(10%) rotate(3deg)} }
+@keyframes auroraW2 { 0%,100%{transform:translateX(10%) rotate(2deg)} 50%{transform:translateX(-10%) rotate(-2deg)} }
 
 .card {
-  background: rgba(48,43,99,0.3);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(139,92,246,0.25);
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 8px 32px rgba(0,255,136,0.06), inset 0 0 40px rgba(139,92,246,0.06);
+  background: rgba(48,43,99,0.3); backdrop-filter: blur(16px);
+  border: 1px solid rgba(139,92,246,0.2); border-radius: 20px !important; padding: 20px;
+  box-shadow: 0 8px 32px rgba(0,255,136,0.05);
+  transition: all 0.4s ease;
 }
+.card:hover { border-color: var(--aurora-green); box-shadow: 0 8px 40px rgba(0,255,136,0.1); transform: translateY(-3px); }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
   background: linear-gradient(135deg, var(--aurora-purple), var(--aurora-green)) !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 30px;
-  font-weight: 600;
-  box-shadow: 0 4px 20px rgba(139,92,246,0.35);
+  color: white !important; border: none !important; border-radius: 30px !important;
+  font-weight: 600; box-shadow: 0 4px 20px rgba(139,92,246,0.3);
 }
 
-.status-badge, .tag {
-  background: linear-gradient(135deg, var(--aurora-purple), var(--aurora-blue)) !important;
-  color: white !important;
-  border-radius: 20px;
-}
-
+.status-badge, .tag { background: linear-gradient(135deg, var(--aurora-purple), var(--aurora-blue)) !important; color: white !important; border-radius: 20px; }
 .text-accent { color: var(--aurora-green); }
-.icon-container { background: linear-gradient(135deg, var(--aurora-green), var(--aurora-purple)) !important; }
-
-h1, h2 { letter-spacing: -0.02em; }`,
+.icon-container { background: linear-gradient(135deg, rgba(0,255,136,0.2), rgba(139,92,246,0.2)) !important; border-radius: 50% !important; }
+nav, footer { border-color: rgba(139,92,246,0.15) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -924,60 +699,42 @@ h1, h2 { letter-spacing: -0.02em; }`,
   --border-color: #000;
 }
 
-body {
-  background: var(--background);
-  color: var(--text);
-  font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
-}
+body { background: var(--background); color: var(--text); font-family: 'Arial Black', 'Impact', sans-serif; }
 
 .card {
-  background: var(--background);
-  border: 4px solid var(--text) !important;
-  border-radius: 0 !important;
-  padding: 20px;
-  position: relative;
+  background: var(--background); border: 4px solid var(--text) !important;
+  border-radius: 0 !important; padding: 20px; position: relative;
+  transition: none;
 }
-
-.card::before {
-  content:''; position:absolute; top:6px; left:6px; right:-6px; bottom:-6px;
-  background: var(--accent-red); z-index:-1;
-}
+.card::before { content:''; position:absolute; top:6px; left:6px; right:-6px; bottom:-6px; background: var(--accent-red); z-index:-1; }
+.card:hover { background: var(--text); color: var(--background); }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
-  background: var(--text) !important;
-  color: var(--background) !important;
-  border: 3px solid var(--text) !important;
-  border-radius: 0 !important;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  background: var(--text) !important; color: var(--background) !important;
+  border: 3px solid var(--text) !important; border-radius: 0 !important;
+  font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em;
 }
-
 .button-primary:hover, .btn:hover {
-  background: var(--accent-yellow) !important;
-  color: var(--text) !important;
-  transform: translate(-4px, -4px);
-  box-shadow: 4px 4px 0 var(--text);
+  background: var(--accent-yellow) !important; color: var(--text) !important;
+  transform: translate(-4px,-4px); box-shadow: 4px 4px 0 var(--text);
 }
+.button-primary:active, .btn:active { transform: translate(0,0); box-shadow: none; }
 
-.status-badge, .tag {
-  background: var(--accent-red) !important;
-  color: white !important;
-  border-radius: 0 !important;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
+.status-badge, .tag { background: var(--accent-blue) !important; color: white !important; border-radius: 0 !important; font-weight: 900; text-transform: uppercase; }
 .text-accent { color: var(--accent-red); }
-.icon-container { background: var(--accent-yellow) !important; color: var(--text) !important; border-radius: 0 !important; }
+.icon-container { background: var(--accent-yellow) !important; color: var(--text) !important; border-radius: 0 !important; border: 3px solid var(--text); }
 
-h1, h2, h3 {
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: -0.04em;
+h1 { font-size: 42px !important; line-height: 0.9 !important; text-transform: uppercase; letter-spacing: -0.05em; mix-blend-mode: difference; }
+h2, h3 { text-transform: uppercase; font-weight: 900; }
+
+/* Marquee effect */
+footer::before {
+  content: '★ BRUTAL ★ RAW ★ ANTI-DESIGN ★ BRUTAL ★ RAW ★ ANTI-DESIGN ★ ';
+  display: block; white-space: nowrap; overflow: hidden; font-weight: 900;
+  font-size: 14px; background: var(--text); color: var(--background); padding: 6px 0;
+  animation: brutalMarquee 10s linear infinite;
 }
-
-h1 { font-size: 42px !important; line-height: 0.9 !important; }
+@keyframes brutalMarquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
 nav, footer { border-color: var(--text) !important; border-width: 3px !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
@@ -1007,59 +764,55 @@ nav, footer { border-color: var(--text) !important; border-width: 3px !important
   --neon-purple: #C774E8;
   --neon-cyan: #00FFFF;
   --sunset-orange: #FF8C00;
-  --border-color: rgba(255,106,213,0.3);
+  --border-color: rgba(255,106,213,0.25);
 }
 
 body {
-  background: linear-gradient(180deg, #2E0854 0%, #120458 50%, #FF1493 85%, #FF8C00 100%);
-  color: #FFE0F0;
-  font-family: 'VCR OSD Mono', 'Courier New', monospace;
+  background: linear-gradient(180deg, #2E0854 0%, #120458 50%, #FF1493 80%, #FF8C00 100%);
+  color: #FFE0F0; font-family: 'Courier New', monospace;
+  min-height: 100vh; position: relative;
 }
 
+/* Retro grid floor */
+body::after {
+  content:''; position:fixed; bottom:0; left:0; right:0; height:40%;
+  background: linear-gradient(90deg, rgba(0,255,255,0.15) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(0,255,255,0.15) 1px, transparent 1px);
+  background-size: 40px 40px;
+  transform: perspective(400px) rotateX(60deg); transform-origin: bottom;
+  animation: vaporGrid 2s linear infinite; pointer-events: none; opacity: 0.3;
+}
+@keyframes vaporGrid { from{background-position:0 0} to{background-position:0 40px} }
+
 .card {
-  background: rgba(46,8,84,0.7);
-  border: 2px solid var(--neon-pink);
-  border-radius: 0;
-  padding: 20px;
-  box-shadow: 0 0 20px rgba(255,106,213,0.2), inset 0 0 20px rgba(255,106,213,0.05);
+  background: rgba(46,8,84,0.7); border: 2px solid var(--neon-pink);
+  border-radius: 0 !important; padding: 20px;
+  box-shadow: 0 0 20px rgba(255,106,213,0.15), inset 0 0 20px rgba(255,106,213,0.03);
 }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
   background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple)) !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  box-shadow: 0 4px 20px rgba(255,106,213,0.4);
+  color: white !important; border: none !important; border-radius: 0 !important;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  box-shadow: 0 4px 20px rgba(255,106,213,0.3);
   animation: vaporGlow 2s ease-in-out infinite alternate;
 }
+@keyframes vaporGlow { from{box-shadow:0 4px 20px var(--neon-pink)} to{box-shadow:0 4px 40px var(--neon-cyan)} }
 
-@keyframes vaporGlow {
-  from { box-shadow: 0 4px 20px var(--neon-pink); }
-  to { box-shadow: 0 4px 40px var(--neon-cyan); }
-}
-
-.status-badge, .tag {
-  background: var(--neon-cyan) !important;
-  color: #120458 !important;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.text-accent { color: var(--neon-pink); text-shadow: 0 0 10px rgba(255,106,213,0.6); }
+.status-badge, .tag { background: var(--neon-cyan) !important; color: #120458 !important; font-weight: 700; text-transform: uppercase; }
+.text-accent { color: var(--neon-pink); text-shadow: 0 0 10px rgba(255,106,213,0.5); }
 .icon-container { background: linear-gradient(135deg, var(--neon-pink), var(--sunset-orange)) !important; border-radius: 0 !important; }
 
 h1, h2 { text-transform: uppercase; letter-spacing: 0.08em; }
 
-/* Rainbow text */
 .rainbow-text, .text-gradient {
   background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan), var(--neon-purple), var(--neon-pink));
-  background-size: 200% auto;
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent;
   animation: vaporRainbow 3s linear infinite;
 }
-@keyframes vaporRainbow { to { background-position: 200% center; } }`,
+@keyframes vaporRainbow { to{background-position:200% center} }
+
+nav, footer { border-color: rgba(255,106,213,0.25) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -1086,59 +839,50 @@ h1, h2 { text-transform: uppercase; letter-spacing: 0.08em; }
   --gold: #D4AF37;
   --gold-light: #FFD700;
   --gold-dark: #B8860B;
-  --border-color: rgba(212,175,55,0.25);
+  --border-color: rgba(212,175,55,0.2);
 }
 
-body {
-  background: var(--bg-black);
-  color: #F5F0E5;
-  font-family: 'Playfair Display', 'Georgia', serif;
+body { background: var(--bg-black); color: #F5F0E5; font-family: 'Playfair Display', 'Georgia', serif; }
+
+/* Marble texture */
+body::before {
+  content:''; position:fixed; inset:0; pointer-events:none; opacity:0.015;
+  background-image: linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.05) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.05) 75%);
+  background-size: 20px 20px;
 }
 
 .card {
   background: linear-gradient(135deg, var(--bg-dark), var(--bg-black));
-  border: 1px solid var(--gold);
-  padding: 24px;
-  position: relative;
-  overflow: hidden;
+  border: 1px solid rgba(212,175,55,0.3); border-radius: 4px; padding: 24px;
+  position: relative; overflow: hidden;
 }
-
 .card::before {
   content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
-  background: linear-gradient(45deg, transparent 30%, rgba(212,175,55,0.08) 50%, transparent 70%);
-  animation: luxShimmer 3s ease-in-out infinite;
+  background: linear-gradient(45deg, transparent 30%, rgba(212,175,55,0.06) 50%, transparent 70%);
+  animation: luxShimmer 4s ease-in-out infinite;
 }
 @keyframes luxShimmer { 0%{transform:translateX(-100%) rotate(45deg)} 100%{transform:translateX(100%) rotate(45deg)} }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
   background: linear-gradient(135deg, var(--gold-dark), var(--gold-light), var(--gold-dark)) !important;
-  background-size: 200% 200%;
-  color: var(--bg-black) !important;
-  border: none !important;
-  font-family: 'Playfair Display', serif;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  background-size: 200% 200%; color: var(--bg-black) !important; border: none !important;
+  border-radius: 2px; font-family: 'Playfair Display', serif; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
   animation: goldShine 3s ease-in-out infinite;
 }
 @keyframes goldShine { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
 
-.status-badge, .tag {
-  background: var(--gold) !important;
-  color: var(--bg-black) !important;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-}
-
-.text-accent { 
+.status-badge, .tag { background: var(--gold) !important; color: var(--bg-black) !important; letter-spacing: 0.1em; border-radius: 0; }
+.text-accent {
   background: linear-gradient(135deg, var(--gold-dark), var(--gold-light), var(--gold));
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.icon-container { background: linear-gradient(135deg, var(--gold), var(--gold-dark)) !important; color: var(--bg-black) !important; }
-
-h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--gold); }
-
-nav, footer { border-color: rgba(212,175,55,0.2) !important; }`,
+.icon-container { background: linear-gradient(135deg, var(--gold), var(--gold-dark)) !important; color: var(--bg-black) !important; border-radius: 2px !important; }
+h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--gold); letter-spacing: 0.03em; }
+nav, footer { border-color: rgba(212,175,55,0.15) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -1169,61 +913,44 @@ nav, footer { border-color: rgba(212,175,55,0.2) !important; }`,
   --border-color: rgba(255,182,193,0.5);
 }
 
-body {
-  background: linear-gradient(135deg, var(--bg-pink), #E6E6FA);
-  color: #5D3A6E;
-  font-family: 'Quicksand', 'Nunito', sans-serif;
+body { background: linear-gradient(135deg, var(--bg-pink), #E6E6FA, #F0FFF0); color: #5D3A6E; font-family: 'Quicksand', 'Nunito', sans-serif; }
+
+/* Floating bubbles */
+body::before, body::after {
+  content:''; position:fixed; border-radius:50%; pointer-events:none;
+  animation: candyFloat 6s ease-in-out infinite;
 }
+body::before { width:60px; height:60px; top:20%; left:5%; background: linear-gradient(135deg, rgba(255,182,193,0.3), rgba(221,160,221,0.2)); }
+body::after { width:40px; height:40px; top:60%; right:8%; background: linear-gradient(135deg, rgba(135,206,235,0.3), rgba(152,251,152,0.2)); animation-delay: 2s; }
+@keyframes candyFloat { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-25px) rotate(180deg)} }
 
 .card {
-  background: white;
-  border-radius: 24px !important;
-  border: 3px solid var(--candy-pink) !important;
-  padding: 20px;
-  box-shadow: 0 10px 30px rgba(255,182,193,0.25);
-  transition: all 0.3s cubic-bezier(0.175,0.885,0.32,1.275);
+  background: white; border: 3px solid var(--candy-pink) !important; border-radius: 28px !important;
+  padding: 20px; box-shadow: 0 10px 30px rgba(255,182,193,0.2);
+  transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
 }
-
-.card:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 20px 40px rgba(221,160,221,0.3);
-  border-color: var(--candy-purple) !important;
-}
+.card:hover { transform: translateY(-8px) scale(1.02) rotate(-1deg); border-color: var(--candy-purple) !important; box-shadow: 0 20px 40px rgba(221,160,221,0.25); }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
   background: linear-gradient(135deg, var(--candy-pink), var(--candy-purple)) !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 50px !important;
-  font-weight: 700;
-  box-shadow: 0 6px 20px rgba(221,160,221,0.35);
+  color: white !important; border: none !important; border-radius: 50px !important;
+  font-weight: 700; box-shadow: 0 6px 20px rgba(221,160,221,0.3);
+  animation: candyBounce 2s ease-in-out infinite;
 }
+@keyframes candyBounce { 0%,100%{transform:scale(1)} 50%{transform:scale(1.03)} }
 
-.button-primary:hover, .btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 25px rgba(255,182,193,0.5);
-}
-
-.status-badge, .tag {
-  background: linear-gradient(135deg, var(--candy-blue), var(--candy-purple)) !important;
-  color: white !important;
-  border-radius: 20px;
-  font-weight: 700;
-}
-
+.status-badge, .tag { background: linear-gradient(135deg, var(--candy-blue), var(--candy-purple)) !important; color: white !important; border-radius: 20px; }
 .text-accent { color: #FF69B4; }
 .icon-container { background: linear-gradient(135deg, var(--candy-pink), var(--candy-blue)) !important; border-radius: 50% !important; }
 
-/* Rainbow text */
 .rainbow-text, .text-gradient {
   background: linear-gradient(90deg, var(--candy-pink), var(--candy-purple), var(--candy-blue), var(--candy-green), var(--candy-pink));
-  background-size: 200% auto;
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent;
   animation: candyRainbow 3s linear infinite;
 }
-@keyframes candyRainbow { to { background-position: 200% center; } }
+@keyframes candyRainbow { to{background-position:200% center} }
 
-h1, h2, h3 { color: #5D3A6E; font-weight: 800; }
+h1, h2 { font-weight: 800; }
 nav, footer { border-color: rgba(255,182,193,0.3) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
@@ -1247,69 +974,65 @@ nav, footer { border-color: rgba(255,182,193,0.3) !important; }`,
     },
     sampleCSS: `:root {
   --bg-black: #000000;
-  --bg-dark: #0D0D0D;
+  --bg-dark: #050505;
   --matrix-green: #00FF00;
   --matrix-dim: #00CC00;
-  --matrix-dark: #003300;
-  --border-color: rgba(0,255,0,0.2);
+  --border-color: rgba(0,255,0,0.15);
 }
 
 body {
-  background: var(--bg-black);
-  color: var(--matrix-green);
-  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  background: var(--bg-black); color: var(--matrix-green);
+  font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
   position: relative;
 }
 
+/* CRT scanlines */
 body::after {
   content:''; position:fixed; inset:0; pointer-events:none; z-index:100;
-  background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,0,0,0.2) 2px, rgba(0,0,0,0.2) 4px);
+  background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px);
 }
+
+/* Matrix rain simulation */
+body::before {
+  content:'01001 10110 00101 11010 01100 10011';
+  position:fixed; top:-20px; left:0; right:0; pointer-events:none;
+  font-size:10px; letter-spacing:4px; color:rgba(0,255,0,0.08);
+  word-break:break-all; line-height:1.5; padding:10px;
+  animation: matrixFall 8s linear infinite;
+}
+@keyframes matrixFall { from{transform:translateY(-100%)} to{transform:translateY(100vh)} }
 
 .card {
-  background: var(--bg-dark);
-  border: 1px solid rgba(0,255,0,0.3);
-  border-radius: 0 !important;
-  padding: 20px;
+  background: var(--bg-dark); border: 1px solid rgba(0,255,0,0.25);
+  border-radius: 0 !important; padding: 20px; position: relative;
 }
-
-.card::before { content: '> '; color: var(--matrix-green); font-weight: 700; }
+.card::before { content:'> '; color: var(--matrix-green); font-weight: 700; }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
-  background: transparent !important;
-  border: 1px solid var(--matrix-green) !important;
-  color: var(--matrix-green) !important;
-  border-radius: 0 !important;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-family: inherit;
+  background: transparent !important; border: 1px solid var(--matrix-green) !important;
+  color: var(--matrix-green) !important; border-radius: 0 !important;
+  text-transform: uppercase; letter-spacing: 0.1em; font-family: inherit;
+  transition: all 0.15s ease;
 }
-
 .button-primary:hover, .btn:hover {
-  background: var(--matrix-green) !important;
-  color: var(--bg-black) !important;
-  box-shadow: 0 0 20px var(--matrix-green);
+  background: var(--matrix-green) !important; color: var(--bg-black) !important;
+  box-shadow: 0 0 25px rgba(0,255,0,0.5);
 }
 
 .status-badge, .tag {
-  background: transparent !important;
-  border: 1px solid var(--matrix-green);
-  color: var(--matrix-green) !important;
-  border-radius: 0;
-  text-transform: uppercase;
-  font-family: inherit;
+  background: transparent !important; border: 1px solid var(--matrix-green);
+  color: var(--matrix-green) !important; border-radius: 0 !important; font-family: inherit;
 }
-
-.text-accent { color: var(--matrix-green); text-shadow: 0 0 8px rgba(0,255,0,0.5); }
-.icon-container { background: var(--bg-dark) !important; border: 1px solid var(--matrix-green); border-radius: 0 !important; color: var(--matrix-green) !important; }
+.text-accent { color: var(--matrix-green); text-shadow: 0 0 8px rgba(0,255,0,0.4); }
+.icon-container { background: var(--bg-dark) !important; border: 1px solid rgba(0,255,0,0.3); border-radius: 0 !important; color: var(--matrix-green) !important; }
 
 h1, h2, h3 { color: var(--matrix-green); font-family: inherit; text-transform: uppercase; }
 
-/* Blinking cursor */
-footer::after { content: '_'; animation: matrixBlink 1s step-end infinite; }
-@keyframes matrixBlink { 0%,50%{opacity:1} 51%,100%{opacity:0} }
+/* Cursor blink */
+h1::after { content: '_'; animation: mBlink 1s step-end infinite; }
+@keyframes mBlink { 0%,50%{opacity:1} 51%,100%{opacity:0} }
 
-nav, footer { border-color: rgba(0,255,0,0.2) !important; }`,
+nav, footer { border-color: rgba(0,255,0,0.15) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -1336,61 +1059,46 @@ nav, footer { border-color: rgba(0,255,0,0.2) !important; }`,
   --watercolor-rose: #E5989B;
   --watercolor-mauve: #B5838D;
   --watercolor-gray: #6D6875;
-  --border-color: rgba(229,152,155,0.3);
+  --border-color: rgba(229,152,155,0.25);
 }
 
-body {
-  background: var(--bg-cream);
-  color: var(--watercolor-gray);
-  font-family: 'Lato', 'Segoe UI', sans-serif;
-  position: relative;
-}
+body { background: var(--bg-cream); color: var(--watercolor-gray); font-family: 'Lato', sans-serif; position: relative; }
 
+/* Watercolor splashes */
 body::before {
-  content:''; position:fixed; width:300px; height:300px; top:10%; right:-50px;
-  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  background: linear-gradient(135deg, rgba(255,180,162,0.2), rgba(229,152,155,0.15), transparent);
-  filter: blur(20px);
-  animation: waterBlob 8s ease-in-out infinite; pointer-events:none;
+  content:''; position:fixed; width:250px; height:250px; top:5%; right:-40px;
+  border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+  background: linear-gradient(135deg, rgba(255,180,162,0.15), rgba(229,152,155,0.1), transparent);
+  filter: blur(25px); animation: wcBlob1 10s ease-in-out infinite; pointer-events:none;
 }
-@keyframes waterBlob {
-  0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}
-  50%{border-radius:50% 50% 40% 60%/40% 50% 50% 60%}
+body::after {
+  content:''; position:fixed; width:200px; height:200px; bottom:10%; left:-30px;
+  border-radius: 40% 60% 70% 30%/50% 60% 30% 60%;
+  background: linear-gradient(135deg, rgba(181,131,141,0.12), rgba(109,104,117,0.08), transparent);
+  filter: blur(20px); animation: wcBlob2 12s ease-in-out infinite; pointer-events:none;
 }
+@keyframes wcBlob1 { 0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%; transform:translate(0,0)} 50%{border-radius:40% 60% 50% 50%/50% 40% 60% 50%; transform:translate(-20px,15px)} }
+@keyframes wcBlob2 { 0%,100%{border-radius:40% 60% 70% 30%/50% 60% 30% 60%} 50%{border-radius:60% 40% 30% 70%/40% 50% 60% 50%} }
 
 .card {
-  background: rgba(255,255,255,0.7);
-  border: none !important;
-  border-radius: 20px 60px 20px 60px !important;
-  padding: 24px;
-  box-shadow: 0 10px 40px rgba(181,131,141,0.1);
+  background: rgba(255,255,255,0.65); border: none !important;
+  border-radius: 20px 50px 20px 50px !important; padding: 24px;
+  box-shadow: 0 10px 40px rgba(181,131,141,0.08);
+  transition: all 0.4s ease;
 }
+.card:hover { transform: translateY(-3px) rotate(-0.5deg); box-shadow: 0 15px 45px rgba(181,131,141,0.12); }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
   background: linear-gradient(135deg, var(--watercolor-peach), var(--watercolor-rose)) !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 30px 10px 30px 10px !important;
-  font-weight: 600;
-  box-shadow: 0 4px 20px rgba(229,152,155,0.3);
+  color: white !important; border: none !important; border-radius: 30px 10px 30px 10px !important;
+  font-weight: 600; box-shadow: 0 4px 15px rgba(229,152,155,0.25);
 }
+.button-primary:hover, .btn:hover { transform: scale(1.05) rotate(-2deg); border-radius: 10px 30px 10px 30px !important; }
 
-.button-primary:hover, .btn:hover {
-  transform: scale(1.05) rotate(-2deg);
-  border-radius: 10px 30px 10px 30px !important;
-}
-
-.status-badge, .tag {
-  background: var(--watercolor-rose) !important;
-  color: white !important;
-  border-radius: 20px;
-}
-
+.status-badge, .tag { background: var(--watercolor-rose) !important; color: white !important; border-radius: 20px; }
 .text-accent { color: var(--watercolor-rose); }
 .icon-container { background: linear-gradient(135deg, var(--watercolor-peach), var(--watercolor-rose)) !important; border-radius: 50% !important; }
-
-h1, h2, h3 { font-family: 'Dancing Script', 'Georgia', cursive; color: var(--watercolor-mauve); }
-
+h1, h2, h3 { font-family: 'Dancing Script', cursive; color: var(--watercolor-mauve); font-weight: 700; }
 nav, footer { border-color: rgba(229,152,155,0.2) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
@@ -1417,62 +1125,46 @@ nav, footer { border-color: rgba(229,152,155,0.2) !important; }`,
   --gradient-2: #764BA2;
   --gradient-3: #F093FB;
   --gradient-4: #F5576C;
-  --glass-bg: rgba(255,255,255,0.1);
-  --glass-border: rgba(255,255,255,0.2);
-  --border-color: rgba(255,255,255,0.15);
+  --border-color: rgba(255,255,255,0.12);
 }
 
 body {
   background: linear-gradient(-45deg, #667EEA, #764BA2, #F093FB, #F5576C);
-  background-size: 400% 400%;
-  animation: glassGradient 15s ease infinite;
-  color: white;
-  font-family: -apple-system, 'Inter', sans-serif;
+  background-size: 400% 400%; animation: glassGrad 15s ease infinite;
+  color: white; font-family: -apple-system, 'Inter', sans-serif;
+  position: relative; overflow-x: hidden;
 }
-@keyframes glassGradient { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+@keyframes glassGrad { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+
+/* Floating glass orbs */
+body::before, body::after {
+  content:''; position:fixed; border-radius:50%; pointer-events:none; filter:blur(50px); opacity:0.4;
+  animation: glassOrb 8s ease-in-out infinite;
+}
+body::before { width:200px; height:200px; top:10%; left:-50px; background: var(--gradient-3); }
+body::after { width:150px; height:150px; bottom:15%; right:-30px; background: var(--gradient-4); animation-delay:3s; }
+@keyframes glassOrb { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(30px,-30px) scale(1.1)} 66%{transform:translate(-20px,20px) scale(0.9)} }
 
 .card {
-  background: rgba(255,255,255,0.1) !important;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.2) !important;
-  border-radius: 20px !important;
-  padding: 24px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1), inset 0 0 0 1px rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.08) !important; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.15) !important; border-radius: 22px !important; padding: 22px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08), inset 0 0 0 1px rgba(255,255,255,0.06);
+  transition: all 0.4s ease;
 }
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-}
+.card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
-  background: rgba(255,255,255,0.2) !important;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.3) !important;
-  border-radius: 14px !important;
-  color: white !important;
-  font-weight: 600;
+  background: rgba(255,255,255,0.18) !important; backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.25) !important; border-radius: 14px !important;
+  color: white !important; font-weight: 600;
 }
+.button-primary:hover, .btn:hover { background: rgba(255,255,255,0.3) !important; transform: scale(1.05); }
 
-.button-primary:hover, .btn:hover {
-  background: rgba(255,255,255,0.3) !important;
-  transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-}
-
-.status-badge, .tag {
-  background: rgba(255,255,255,0.2) !important;
-  backdrop-filter: blur(8px);
-  color: white !important;
-  border: 1px solid rgba(255,255,255,0.25);
-}
-
+.status-badge, .tag { background: rgba(255,255,255,0.2) !important; backdrop-filter: blur(8px); color: white !important; border: 1px solid rgba(255,255,255,0.2); }
 .text-accent { color: rgba(255,255,255,0.9); }
-.icon-container { background: rgba(255,255,255,0.15) !important; backdrop-filter: blur(8px); }
-
-nav { background: rgba(255,255,255,0.05) !important; backdrop-filter: blur(10px); }
-nav, footer { border-color: rgba(255,255,255,0.1) !important; }`,
+.icon-container { background: rgba(255,255,255,0.12) !important; backdrop-filter: blur(8px); }
+nav { background: rgba(255,255,255,0.03) !important; backdrop-filter: blur(12px); }
+nav, footer { border-color: rgba(255,255,255,0.08) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -1502,45 +1194,41 @@ nav, footer { border-color: rgba(255,255,255,0.1) !important; }`,
   --border-color: rgba(45,80,22,0.2);
 }
 
-body {
-  background: var(--bg-cream);
-  color: #3D2B1F;
-  font-family: 'Merriweather', 'Georgia', serif;
+body { background: var(--bg-cream); color: #3D2B1F; font-family: 'Merriweather', serif; position: relative; }
+
+/* Leaf decoration */
+body::before {
+  content:'🌿🍃🌱'; position:fixed; top:15%; right:10px; font-size:20px;
+  opacity:0.15; pointer-events:none;
+  animation: leafFloat 6s ease-in-out infinite;
 }
+@keyframes leafFloat { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-15px) rotate(10deg)} }
 
 .card {
   background: linear-gradient(135deg, #FFFEF9, var(--bg-cream));
-  border: 2px solid var(--forest-dark) !important;
-  border-radius: 20px 5px 20px 5px !important;
-  padding: 20px;
-  box-shadow: 4px 4px 0 var(--forest-dark), 0 10px 30px rgba(45,80,22,0.08);
+  border: 2px solid var(--forest-dark) !important; border-radius: 20px 5px 20px 5px !important;
+  padding: 20px; box-shadow: 4px 4px 0 rgba(45,80,22,0.15);
+  transition: all 0.3s ease;
 }
+.card:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(45,80,22,0.2); }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
-  background: var(--forest-dark) !important;
-  color: var(--bg-cream) !important;
-  border: none !important;
-  border-radius: 30px 10px 30px 10px !important;
-  font-weight: 600;
+  background: var(--forest-dark) !important; color: var(--bg-cream) !important; border: none !important;
+  border-radius: 30px 10px 30px 10px !important; font-weight: 600;
+  position: relative; overflow: hidden;
 }
-
-.button-primary:hover, .btn:hover {
-  background: var(--forest-light) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(45,80,22,0.3);
+.button-primary::before, .btn::before {
+  content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+  background: linear-gradient(90deg, transparent, rgba(74,124,35,0.3), transparent);
+  transition: left 0.5s;
 }
+.button-primary:hover::before, .btn:hover::before { left: 100%; }
+.button-primary:hover, .btn:hover { background: var(--forest-light) !important; }
 
-.status-badge, .tag {
-  background: var(--forest-dark) !important;
-  color: var(--bg-cream) !important;
-  border-radius: 20px;
-}
-
+.status-badge, .tag { background: var(--forest-dark) !important; color: var(--bg-cream) !important; border-radius: 20px; }
 .text-accent { color: var(--forest-light); }
 .icon-container { background: var(--forest-dark) !important; color: var(--bg-cream) !important; border-radius: 50% !important; }
-
 h1, h2, h3 { font-family: 'Merriweather', serif; color: var(--forest-dark); }
-
 nav, footer { border-color: var(--forest-dark) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
@@ -1568,75 +1256,42 @@ nav, footer { border-color: var(--forest-dark) !important; }`,
     sampleCSS: `:root {
   --background: #000000;
   --surface: #0F172A;
-  --surface-light: #1E293B;
   --text-primary: #FFFFFF;
   --text-secondary: #94A3B8;
   --neon-green: #00FF88;
-  --glow-green: 0 0 20px rgba(0, 255, 136, 0.4);
-  --glow-green-intense: 0 0 40px rgba(0, 255, 136, 0.6);
+  --border-color: rgba(0,255,136,0.12);
 }
 
 body {
-  background: var(--background);
-  background-image: 
-    radial-gradient(circle at 50% 0%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
-    linear-gradient(rgba(0, 255, 136, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 136, 0.02) 1px, transparent 1px);
+  background: var(--background); color: var(--text-primary);
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  background-image: radial-gradient(circle at 50% 0%, rgba(0,255,136,0.04) 0%, transparent 50%),
+    linear-gradient(rgba(0,255,136,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,136,0.015) 1px, transparent 1px);
   background-size: 100% 100%, 50px 50px, 50px 50px;
 }
 
-.hero-headline {
-  font-size: clamp(2.5rem, 8vw, 5rem);
-  font-weight: 800;
-  line-height: 1.1;
-  color: var(--text-primary);
-}
-
-.hero-headline .highlight {
-  color: var(--neon-green);
-  text-shadow: var(--glow-green);
-}
-
-.offer-box {
-  background: var(--surface);
-  border: 2px solid var(--neon-green);
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: var(--glow-green);
-  position: relative;
-  overflow: hidden;
-}
-
-.cta-button {
-  background: linear-gradient(135deg, var(--neon-green), #00CC6A);
-  color: #000000;
-  font-weight: 700;
-  padding: 16px 40px;
-  border-radius: 12px;
-  font-size: 1.125rem;
+.card {
+  background: var(--surface); border: 1px solid rgba(0,255,136,0.15);
+  border-radius: 16px; padding: 20px;
   transition: all 0.3s ease;
-  box-shadow: var(--glow-green);
 }
+.card:hover { border-color: var(--neon-green); box-shadow: 0 0 25px rgba(0,255,136,0.1); }
 
-.cta-button:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: var(--glow-green-intense);
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: linear-gradient(135deg, var(--neon-green), #00CC6A) !important;
+  color: #000 !important; border: none !important; border-radius: 12px;
+  font-weight: 700; box-shadow: 0 0 20px rgba(0,255,136,0.25);
+  animation: vizPulse 2s ease-in-out infinite;
 }
+@keyframes vizPulse { 0%,100%{box-shadow:0 0 20px rgba(0,255,136,0.25)} 50%{box-shadow:0 0 35px rgba(0,255,136,0.4)} }
 
-.testimonial-card {
-  background: var(--surface);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 20px;
-}
+.status-badge, .tag { background: rgba(0,255,136,0.15) !important; border: 1px solid rgba(0,255,136,0.3); color: var(--neon-green) !important; }
+.text-accent { color: var(--neon-green); text-shadow: 0 0 10px rgba(0,255,136,0.3); }
+.icon-container { background: rgba(0,255,136,0.1) !important; border: 1px solid rgba(0,255,136,0.2); }
 
-.countdown-number {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--neon-green);
-  text-shadow: var(--glow-green);
-}`,
+h1 { font-weight: 800; font-size: 32px !important; }
+nav, footer { border-color: rgba(0,255,136,0.1) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -1661,79 +1316,51 @@ body {
   --background: #0C1220;
   --surface: #141B2B;
   --text-primary: #E2E8F0;
-  --text-secondary: #94A3B8;
   --primary: #00D4FF;
   --accent: #FF3399;
-  --border: rgba(0,212,255,0.12);
-  --border-color: rgba(0,212,255,0.12);
-  --glow-primary: 0 0 30px rgba(0,212,255,0.25);
-  --glow-accent: 0 0 30px rgba(255,51,153,0.25);
+  --border-color: rgba(0,212,255,0.1);
 }
 
 body {
-  background: var(--background);
-  color: var(--text-primary);
+  background: var(--background); color: var(--text-primary);
   font-family: 'Space Grotesk', 'Inter', sans-serif;
-  background-image:
-    radial-gradient(900px 450px at 30% 20%, rgba(0,212,255,0.12), transparent 55%),
-    radial-gradient(700px 380px at 85% 30%, rgba(255,51,153,0.08), transparent 60%);
+  background-image: radial-gradient(900px 450px at 30% 20%, rgba(0,212,255,0.1), transparent 55%),
+    radial-gradient(700px 380px at 85% 30%, rgba(255,51,153,0.06), transparent 60%);
+}
+
+/* Grid overlay */
+body::before {
+  content:''; position:fixed; inset:0; pointer-events:none;
+  background-image: linear-gradient(to right, rgba(0,212,255,0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,212,255,0.015) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(60% 50% at 50% 30%, black 20%, transparent 75%);
 }
 
 .card {
-  background: rgba(20,27,43,0.8);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 20px 60px -30px rgba(0,212,255,0.15);
+  background: rgba(20,27,43,0.75); border: 1px solid rgba(0,212,255,0.1);
+  border-radius: 16px; padding: 20px; backdrop-filter: blur(8px);
+  box-shadow: 0 20px 60px -30px rgba(0,212,255,0.12);
+  transition: all 0.3s ease;
 }
-
-.card:hover {
-  border-color: var(--primary);
-  box-shadow: var(--glow-primary);
-}
+.card:hover { border-color: var(--primary); box-shadow: 0 0 30px rgba(0,212,255,0.15); }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
   background: linear-gradient(135deg, var(--primary), #0891B2) !important;
-  color: var(--background) !important;
-  border: none !important;
-  border-radius: 12px;
-  font-weight: 700;
-  box-shadow: 0 4px 20px rgba(0,212,255,0.3);
+  color: var(--background) !important; border: none !important;
+  border-radius: 12px; font-weight: 700; box-shadow: 0 4px 20px rgba(0,212,255,0.25);
 }
+.button-primary:hover, .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,212,255,0.35); }
 
-.button-primary:hover, .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0,212,255,0.4);
-}
+.status-badge, .tag { background: linear-gradient(135deg, var(--primary), var(--accent)) !important; color: white !important; }
 
-.status-badge, .tag {
-  background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
-  color: white !important;
-}
-
-.text-accent {
+.text-accent, .text-gradient {
   background: linear-gradient(90deg, var(--primary), var(--accent));
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 
-.text-gradient {
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-
-.icon-container { background: rgba(0,212,255,0.1) !important; border: 1px solid rgba(0,212,255,0.2); }
-
-/* Grid overlay */
-section:first-of-type::before {
-  content:''; position:absolute; inset:0; pointer-events:none;
-  background-image: linear-gradient(to right, rgba(0,212,255,0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0,212,255,0.02) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(55% 45% at 50% 35%, black 20%, transparent 72%);
-}
-
-nav, footer { border-color: rgba(0,212,255,0.1) !important; }`,
+.icon-container { background: rgba(0,212,255,0.08) !important; border: 1px solid rgba(0,212,255,0.15); }
+nav, footer { border-color: rgba(0,212,255,0.08) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   // ===== NEW TECH STUDY STYLES =====
@@ -1756,107 +1383,44 @@ nav, footer { border-color: rgba(0,212,255,0.1) !important; }`,
       "--muted": "20 6% 90%",
     },
     sampleCSS: `:root {
-  /* Paleta Tecnologia Silenciosa */
   --background: #FAFAFA;
   --surface: #FFFFFF;
-  --surface-elevated: #F5F5F4;
   --text-primary: #292524;
   --text-secondary: #78716C;
-  --text-muted: #A8A29E;
   --accent: #3B82F6;
-  --accent-subtle: rgba(59, 130, 246, 0.08);
   --border: #E7E5E4;
-  --border-subtle: #F5F5F4;
-  
-  /* Sombras Precisas */
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md: 0 2px 8px rgba(0,0,0,0.06);
-  --shadow-focus: 0 0 0 2px var(--accent-subtle);
+  --border-color: #E7E5E4;
 }
 
-/* Card Silencioso */
-.card-silent {
-  background: var(--surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: var(--shadow-sm);
+body { background: var(--background); color: var(--text-primary); font-family: 'Inter', system-ui, sans-serif; }
+
+.card {
+  background: var(--surface); border: 1px solid #F5F5F4; border-radius: 12px;
+  padding: 22px; box-shadow: 0 1px 2px rgba(0,0,0,0.03);
   transition: box-shadow 0.2s ease;
 }
+.card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 
-.card-silent:hover {
-  box-shadow: var(--shadow-md);
+/* Accent indicator line */
+.card::after {
+  content:''; position:absolute; bottom:0; left:20px; right:20px; height:2px;
+  background: var(--accent); border-radius:1px; transform:scaleX(0); transition:transform 0.3s ease;
 }
+.card:hover::after { transform:scaleX(1); }
 
-/* Botão Funcional */
-.button-functional {
-  background: var(--text-primary);
-  color: var(--background);
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: -0.01em;
-  transition: opacity 0.15s ease;
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: var(--text-primary) !important; color: var(--background) !important;
+  border: none !important; border-radius: 8px; font-weight: 500; font-size: 14px;
+  letter-spacing: -0.01em; transition: opacity 0.15s ease;
 }
+.button-primary:hover, .btn:hover { opacity: 0.88; }
 
-.button-functional:hover {
-  opacity: 0.9;
-}
-
-/* Acento Digital */
-.accent-indicator {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
-/* Input Preciso */
-.input-precise {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 12px 16px;
-  font-size: 14px;
-  color: var(--text-primary);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
-}
-
-.input-precise:focus {
-  border-color: var(--accent);
-  box-shadow: var(--shadow-focus);
-  outline: none;
-}
-
-/* Grid Preciso */
-.grid-layout {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
-}
-
-/* Tipografia Hierárquica */
-.heading-primary {
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-  line-height: 1.3;
-}
-
-.text-body {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-/* Divisor Sutil */
-.divider {
-  height: 1px;
-  background: var(--border-subtle);
-  margin: 24px 0;
-}`,
+.status-badge, .tag { background: rgba(59,130,246,0.08) !important; color: var(--accent) !important; border-radius: 6px; font-weight: 500; }
+.text-accent { color: var(--accent); }
+.icon-container { background: #F5F5F4 !important; border-radius: 10px !important; }
+h1 { font-weight: 600; letter-spacing: -0.02em; }
+h2, h3 { font-weight: 600; }
+nav, footer { border-color: #F5F5F4 !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -1878,135 +1442,54 @@ nav, footer { border-color: rgba(0,212,255,0.1) !important; }`,
       "--muted": "215 20% 25%",
     },
     sampleCSS: `:root {
-  /* Paleta Tech Focus Flow */
   --background: #0F172A;
   --surface: #1E293B;
-  --surface-elevated: #334155;
   --text-primary: #F1F5F9;
-  --text-secondary: #94A3B8;
   --text-muted: #64748B;
   --accent: #6366F1;
-  --accent-glow: rgba(99, 102, 241, 0.15);
   --success: #22C55E;
   --border: #334155;
-  --border-subtle: rgba(148, 163, 184, 0.1);
-  
-  /* Sombras Profundas */
-  --shadow-depth: 0 4px 24px rgba(0,0,0,0.4);
-  --shadow-glow: 0 0 20px var(--accent-glow);
+  --border-color: rgba(148,163,184,0.08);
 }
 
-/* Card de Fluxo */
-.card-flow {
-  background: var(--surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  padding: 20px;
+body { background: var(--background); color: var(--text-primary); font-family: 'Inter', system-ui, sans-serif; }
+
+.card {
+  background: var(--surface); border: 1px solid rgba(148,163,184,0.08);
+  border-radius: 12px; padding: 20px;
   transition: border-color 0.2s ease;
 }
+.card:hover { border-color: var(--accent); }
 
-.card-flow:hover {
-  border-color: var(--accent);
+/* Progress indicator on cards */
+.card::before {
+  content:''; position:absolute; top:0; left:0; height:100%; width:3px;
+  background: linear-gradient(180deg, var(--accent), #818CF8);
+  border-radius:3px 0 0 3px; opacity:0; transition:opacity 0.2s ease;
 }
+.card:hover::before { opacity:1; }
 
-/* Barra de Progresso */
-.progress-bar {
-  height: 4px;
-  background: var(--border);
-  border-radius: 2px;
-  overflow: hidden;
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: var(--accent) !important; color: white !important; border: none !important;
+  border-radius: 8px; font-weight: 600; font-size: 14px;
+  box-shadow: 0 0 20px rgba(99,102,241,0.12);
+  transition: transform 0.15s ease;
 }
+.button-primary:hover, .btn:hover { transform: translateY(-1px); box-shadow: 0 0 30px rgba(99,102,241,0.2); }
 
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent), #818CF8);
-  border-radius: 2px;
-  transition: width 0.3s ease;
+.status-badge, .tag { background: var(--accent) !important; color: white !important; border-radius: 6px; }
+.text-accent { color: var(--accent); }
+.icon-container { background: rgba(99,102,241,0.1) !important; border: 1px solid rgba(99,102,241,0.15); }
+
+/* Status dot animation */
+.status-badge::before, .tag::before {
+  content:''; display:inline-block; width:6px; height:6px; border-radius:50%;
+  background: var(--success); margin-right:6px;
+  animation: focusPulse 2s ease-in-out infinite;
 }
+@keyframes focusPulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
-/* Botão de Ação Primária */
-.button-action {
-  background: var(--accent);
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 14px;
-  box-shadow: var(--shadow-glow);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.button-action:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 0 30px var(--accent-glow);
-}
-
-/* Métricas de Tempo */
-.time-display {
-  font-family: 'SF Mono', 'JetBrains Mono', monospace;
-  font-size: 32px;
-  font-weight: 600;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-}
-
-.time-label {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-}
-
-/* Indicador de Status */
-.status-active {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: var(--success);
-}
-
-.status-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: currentColor;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-/* Sidebar Minimalista */
-.sidebar-minimal {
-  width: 64px;
-  background: var(--background);
-  border-right: 1px solid var(--border-subtle);
-  padding: 16px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-.nav-icon {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  color: var(--text-muted);
-  transition: color 0.15s ease, background 0.15s ease;
-}
-
-.nav-icon:hover,
-.nav-icon.active {
-  color: var(--text-primary);
-  background: var(--surface);
-}`,
+nav, footer { border-color: rgba(148,163,184,0.06) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -2028,169 +1511,50 @@ nav, footer { border-color: rgba(0,212,255,0.1) !important; }`,
       "--muted": "210 40% 96%",
     },
     sampleCSS: `:root {
-  /* Paleta Minimal Tech Intelligence */
   --background: #FFFFFF;
   --surface: #F8FAFC;
-  --surface-alt: #F1F5F9;
   --text-primary: #1E293B;
   --text-secondary: #64748B;
-  --text-muted: #94A3B8;
   --accent: #0EA5E9;
-  --accent-light: rgba(14, 165, 233, 0.1);
-  --success: #10B981;
-  --warning: #F59E0B;
   --border: #E2E8F0;
-  --border-focus: var(--accent);
-  
-  /* Espaçamento Modular (8px base) */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
+  --border-color: #E2E8F0;
 }
 
-/* Card Modular */
-.card-modular {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: var(--space-5);
+body { background: var(--background); color: var(--text-primary); font-family: -apple-system, 'Inter', system-ui, sans-serif; }
+
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  padding: 20px;
 }
 
-/* Seção de Conteúdo */
-.content-section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
+/* Section header style */
+.card::before {
+  content:''; display:block; width:100%; height:1px; background:var(--border);
+  margin-bottom:12px;
 }
 
-.section-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--border);
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: var(--accent) !important; color: white !important; border: none !important;
+  border-radius: 6px; font-weight: 500; font-size: 13px;
+}
+.button-primary:hover, .btn:hover { background: #0284C7 !important; }
+
+.button-action {
+  background: transparent; border: 1px solid var(--border);
+  color: var(--text-secondary); border-radius: 6px;
 }
 
-.section-title {
-  font-size: 13px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
+.status-badge, .tag {
+  background: rgba(14,165,233,0.08) !important; color: var(--accent) !important;
+  border-radius: 4px; font-size: 11px; font-weight: 600;
 }
+.text-accent { color: var(--accent); }
+.icon-container { background: var(--surface) !important; border: 1px solid var(--border); border-radius: 8px !important; }
 
-/* Lista de Items */
-.item-list {
-  display: flex;
-  flex-direction: column;
-}
+.section-title, .section-header { font-size: 13px !important; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary) !important; }
 
-.item-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-3) 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.item-row:last-child {
-  border-bottom: none;
-}
-
-.item-label {
-  font-size: 14px;
-  color: var(--text-primary);
-}
-
-.item-value {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
-}
-
-/* Botão Inteligente */
-.button-smart {
-  background: var(--accent);
-  color: white;
-  padding: 10px 16px;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 13px;
-  transition: background 0.15s ease;
-}
-
-.button-smart:hover {
-  background: #0284C7;
-}
-
-.button-secondary {
-  background: transparent;
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
-  padding: 10px 16px;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 13px;
-  transition: border-color 0.15s ease, color 0.15s ease;
-}
-
-.button-secondary:hover {
-  border-color: var(--text-secondary);
-  color: var(--text-primary);
-}
-
-/* Badge de Status */
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 11px;
-  font-weight: 600;
-}
-
-.status-success {
-  background: rgba(16, 185, 129, 0.1);
-  color: var(--success);
-}
-
-.status-warning {
-  background: rgba(245, 158, 11, 0.1);
-  color: var(--warning);
-}
-
-/* Grid Previsível */
-.grid-predictable {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
-}
-
-/* Métrica Modular */
-.metric-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: var(--space-4);
-  text-align: center;
-}
-
-.metric-value {
-  font-size: 28px;
-  font-weight: 600;
-  color: var(--text-primary);
-  line-height: 1;
-}
-
-.metric-label {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-top: var(--space-2);
-}`,
+h1 { font-weight: 600; letter-spacing: -0.02em; }
+nav, footer { border-color: var(--border) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -2213,153 +1577,41 @@ nav, footer { border-color: rgba(0,212,255,0.1) !important; }`,
       "--muted": "0 0% 6%",
     },
     sampleCSS: `:root {
-  /* Paleta de cores — Dark Portfolio Minimal */
   --cor-fundo: #000000;
   --cor-superficie: #0a0a0a;
   --cor-texto: #ffffff;
   --cor-texto-secundario: #6b7280;
   --cor-borda: #1f2937;
-  --cor-accent: #ffffff;
-
-  /* Tipografia */
-  --fonte-principal: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --fonte-mono: 'Courier New', monospace;
-
-  /* Espaçamentos */
-  --espacamento-base: 16px;
-  --raio-borda: 8px;
+  --border-color: #1f2937;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+body { background: var(--cor-fundo); color: var(--cor-texto); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; }
 
-body {
-  font-family: var(--fonte-principal);
-  color: var(--cor-texto);
-  background: var(--cor-fundo);
-  line-height: 1.6;
+.card {
+  background: transparent; border: 1px solid var(--cor-borda); border-radius: 8px;
+  padding: 20px; transition: border-color 0.3s ease;
 }
+.card:hover { border-color: var(--cor-texto-secundario); }
 
-/* Header — navegação ultra-simples */
-.header {
-  border-bottom: 1px solid var(--cor-borda);
-  padding: var(--espacamento-base) calc(var(--espacamento-base) * 2);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.header-logo {
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: var(--cor-texto);
-}
-
-.header-nav {
-  display: flex;
-  gap: calc(var(--espacamento-base) * 1.5);
-}
-
-.header-nav a {
-  color: var(--cor-texto-secundario);
-  text-decoration: none;
-  font-size: 0.875rem;
-  transition: color 0.3s ease;
-}
-
-.header-nav a:hover {
-  color: var(--cor-texto);
-}
-
-/* Hero Section — impacto visual */
-.hero {
-  padding: calc(var(--espacamento-base) * 5) calc(var(--espacamento-base) * 2);
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.hero h1 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: var(--espacamento-base);
-  color: var(--cor-texto);
-}
-
-.hero p {
-  font-size: 1.125rem;
-  color: var(--cor-texto-secundario);
-  margin-bottom: calc(var(--espacamento-base) * 2);
-}
-
-.hero-btn {
-  background: var(--cor-texto);
-  color: var(--cor-fundo);
-  border: none;
-  padding: 12px 32px;
-  border-radius: var(--raio-borda);
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: var(--cor-texto) !important; color: var(--cor-fundo) !important;
+  border: none !important; border-radius: 8px; font-weight: 600;
   transition: opacity 0.3s ease;
 }
+.button-primary:hover, .btn:hover { opacity: 0.85; }
 
-.hero-btn:hover {
-  opacity: 0.85;
-}
+.status-badge, .tag { background: transparent !important; border: 1px solid var(--cor-borda); color: var(--cor-texto-secundario) !important; border-radius: 20px; }
+.text-accent { color: var(--cor-texto); }
+.icon-container { background: var(--cor-superficie) !important; border: 1px solid var(--cor-borda); }
 
-/* Grid de projetos */
-.projects-grid {
-  padding: calc(var(--espacamento-base) * 3) calc(var(--espacamento-base) * 2);
-  max-width: 1000px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: calc(var(--espacamento-base) * 1.5);
-}
+h1 { font-size: 36px !important; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
+h2 { font-weight: 700; letter-spacing: -0.02em; }
 
-@media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-  .hero h1 {
-    font-size: 1.75rem;
-  }
-}
+/* Minimal entrance */
+@keyframes lorisFade { from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:translateY(0)} }
+section { animation: lorisFade 0.8s ease-out both; }
 
-.project-card {
-  border: 1px solid var(--cor-borda);
-  border-radius: var(--raio-borda);
-  padding: calc(var(--espacamento-base) * 1.5);
-  transition: border-color 0.3s ease;
-}
-
-.project-card:hover {
-  border-color: var(--cor-texto-secundario);
-}
-
-.project-card h3 {
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.project-card p {
-  font-size: 0.875rem;
-  color: var(--cor-texto-secundario);
-}
-
-/* Footer */
-.footer {
-  border-top: 1px solid var(--cor-borda);
-  padding: calc(var(--espacamento-base) * 2);
-  text-align: center;
-  font-size: 0.75rem;
-  color: var(--cor-texto-secundario);
-}`,
+nav, footer { border-color: var(--cor-borda) !important; }`,
   },
   {
     id: "slush-fintech",
@@ -2387,87 +1639,43 @@ body {
   --cor-texto-secundario: #94A3B8;
   --cor-primaria: #3B82F6;
   --cor-destaque: #60A5FA;
-  --cor-borda: rgba(59, 130, 246, 0.2);
-  --glow: 0 0 40px rgba(59, 130, 246, 0.3);
-  --fonte-principal: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --espacamento-base: 16px;
-  --raio-borda: 12px;
+  --cor-borda: rgba(59,130,246,0.15);
+  --border-color: rgba(59,130,246,0.15);
 }
 
 body {
-  background: var(--cor-fundo);
-  color: var(--cor-texto);
-  font-family: var(--fonte-principal);
-  line-height: 1.6;
+  background: var(--cor-fundo); color: var(--cor-texto);
+  font-family: 'Inter', sans-serif; line-height: 1.6;
+  background-image: radial-gradient(circle at 50% 0%, rgba(59,130,246,0.06) 0%, transparent 50%);
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--espacamento-base) calc(var(--espacamento-base) * 2);
-  border-bottom: 1px solid var(--cor-borda);
-}
-
-.logo {
-  font-weight: 800;
-  font-size: 1.5rem;
-  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-destaque));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero {
-  text-align: center;
-  padding: calc(var(--espacamento-base) * 6) calc(var(--espacamento-base) * 2);
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.hero h1 {
-  font-size: 3.5rem;
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-.button-primary {
-  background: var(--cor-primaria);
-  color: white;
-  border: none;
-  padding: 16px 40px;
-  border-radius: var(--raio-borda);
-  font-weight: 600;
-  box-shadow: var(--glow);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.button-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 60px rgba(59, 130, 246, 0.5);
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: calc(var(--espacamento-base) * 1.5);
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: calc(var(--espacamento-base) * 3) calc(var(--espacamento-base) * 2);
-}
-
-.feature-card {
-  background: var(--cor-superficie);
-  border: 1px solid var(--cor-borda);
-  border-radius: var(--raio-borda);
-  padding: calc(var(--espacamento-base) * 2);
+.card {
+  background: var(--cor-superficie); border: 1px solid var(--cor-borda);
+  border-radius: 12px; padding: 20px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+.card:hover { border-color: var(--cor-primaria); box-shadow: 0 0 30px rgba(59,130,246,0.12); }
 
-.feature-card:hover {
-  border-color: var(--cor-primaria);
-  box-shadow: var(--glow);
-}`,
+.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
+  background: var(--cor-primaria) !important; color: white !important; border: none !important;
+  border-radius: 12px; font-weight: 600;
+  box-shadow: 0 0 25px rgba(59,130,246,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.button-primary:hover, .btn:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(59,130,246,0.35); }
+
+.status-badge, .tag { background: linear-gradient(135deg, var(--cor-primaria), var(--cor-destaque)) !important; color: white !important; }
+.text-accent {
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-destaque));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.icon-container {
+  background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(96,165,250,0.1)) !important;
+  border: 1px solid rgba(59,130,246,0.2);
+}
+
+h1 { font-size: 32px !important; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
+nav, footer { border-color: rgba(59,130,246,0.1) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   // ===== 8 NEW PREMIUM STYLES =====
@@ -2496,48 +1704,36 @@ body {
   --text-muted: #8B8B8B;
   --accent: #D4A574;
   --accent-hover: #E8C49A;
-  --border: rgba(255,255,255,0.06);
-  --border-color: rgba(255,255,255,0.06);
-  --glow: 0 0 40px rgba(212,165,116,0.12);
+  --border: rgba(255,255,255,0.05);
+  --border-color: rgba(255,255,255,0.05);
 }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
+
+/* Warm spotlight */
+body::before {
+  content:''; position:fixed; width:600px; height:400px; top:-100px; left:50%; transform:translateX(-50%);
+  background: radial-gradient(ellipse, rgba(212,165,116,0.06) 0%, transparent 70%);
+  pointer-events:none;
 }
 
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px;
-  transition: all 0.4s cubic-bezier(.4,0,.2,1);
+  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  padding: 24px; transition: all 0.4s cubic-bezier(.4,0,.2,1);
 }
-
-.card:hover { border-color: var(--accent); box-shadow: var(--glow); transform: translateY(-2px); }
+.card:hover { border-color: rgba(212,165,116,0.3); box-shadow: 0 0 40px rgba(212,165,116,0.08); transform: translateY(-2px); }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
-  background: var(--accent) !important;
-  color: var(--bg) !important;
-  border: none !important;
-  border-radius: 12px;
-  font-weight: 600;
+  background: var(--accent) !important; color: var(--bg) !important; border: none !important;
+  border-radius: 12px; font-weight: 600; transition: all 0.3s ease;
 }
-
 .button-primary:hover, .btn:hover { background: var(--accent-hover) !important; transform: translateY(-1px); }
 
-.status-badge, .tag {
-  background: rgba(212,165,116,0.15) !important;
-  color: var(--accent) !important;
-  border: 1px solid rgba(212,165,116,0.3);
-}
-
+.status-badge, .tag { background: rgba(212,165,116,0.12) !important; color: var(--accent) !important; border: 1px solid rgba(212,165,116,0.25); border-radius: 8px; }
 .text-accent { color: var(--accent); }
-.icon-container { background: rgba(212,165,116,0.1) !important; border: 1px solid rgba(212,165,116,0.2); }
-
-h1 { font-size: 36px !important; font-weight: 700; letter-spacing: -0.03em; }
-nav, footer { border-color: rgba(255,255,255,0.06) !important; }`,
+.icon-container { background: rgba(212,165,116,0.08) !important; border: 1px solid rgba(212,165,116,0.15); }
+h1 { font-size: 34px !important; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+nav, footer { border-color: rgba(255,255,255,0.04) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -2568,48 +1764,33 @@ nav, footer { border-color: rgba(255,255,255,0.06) !important; }`,
   --border-color: #E8DDD0;
 }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Source Serif Pro', 'Georgia', serif;
-}
+body { background: var(--bg); color: var(--text); font-family: 'Source Serif Pro', 'Georgia', serif; line-height: 1.8; }
 
-h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--text); letter-spacing: -0.02em; }
-h1 { font-size: 32px !important; font-weight: 700; }
+/* Decorative serif accent */
+body::before {
+  content:'"'; position:fixed; top:15%; right:5%; font-size:120px;
+  font-family: 'Playfair Display', serif; color: rgba(196,149,106,0.06);
+  pointer-events:none;
+}
 
 .card {
-  background: var(--surface);
-  border: none !important;
-  border-radius: 12px;
-  padding: 24px;
-  transition: transform 0.3s ease;
+  background: var(--surface); border: none !important; border-radius: 12px;
+  padding: 24px; transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-bottom: 3px solid transparent !important;
 }
-
-.card:hover { transform: translateY(-4px); }
+.card:hover { transform: translateY(-4px); border-bottom-color: var(--accent) !important; box-shadow: 0 8px 25px rgba(0,0,0,0.04); }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
-  background: var(--text) !important;
-  color: var(--bg) !important;
-  border: none !important;
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.03em;
+  background: var(--text) !important; color: var(--bg) !important; border: none !important;
+  border-radius: 8px; font-family: 'Inter', sans-serif; font-weight: 500; letter-spacing: 0.03em;
 }
 
-.status-badge, .tag {
-  background: var(--accent) !important;
-  color: white !important;
-  border-radius: 20px;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
+.status-badge, .tag { background: var(--accent) !important; color: white !important; border-radius: 20px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
 .text-accent { color: var(--accent); }
-.icon-container { background: var(--surface) !important; border: 1px solid var(--border); }
+.icon-container { background: var(--surface) !important; border: 1px solid var(--border); border-radius: 8px !important; }
 
-p { line-height: 1.8; }
+h1, h2, h3 { font-family: 'Playfair Display', serif; letter-spacing: -0.02em; }
+h1 { font-size: 32px !important; font-weight: 700; }
 nav, footer { border-color: var(--border) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
@@ -2633,55 +1814,45 @@ nav, footer { border-color: var(--border) !important; }`,
     },
     sampleCSS: `:root {
   --bg: #0A0A1A;
-  --surface: rgba(18,18,43,0.8);
+  --surface: rgba(18,18,43,0.85);
   --text: #E2E8F0;
   --text-muted: #64748B;
   --primary: #7C3AED;
   --secondary: #06B6D4;
-  --border: rgba(255,255,255,0.06);
-  --border-color: rgba(124,58,237,0.15);
+  --border: rgba(255,255,255,0.05);
+  --border-color: rgba(124,58,237,0.12);
 }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'DM Sans', 'Inter', sans-serif;
+body { background: var(--bg); color: var(--text); font-family: 'DM Sans', 'Inter', sans-serif; }
+
+/* Gradient orb */
+body::before {
+  content:''; position:fixed; width:400px; height:400px; top:-150px; right:-100px;
+  background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
+  pointer-events:none;
 }
 
 .card {
-  background: var(--surface);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
+  background: var(--surface); backdrop-filter: blur(16px);
+  border: 1px solid var(--border); border-radius: 16px; padding: 20px;
+  border-top: 2px solid transparent;
+  transition: all 0.3s ease;
 }
-
-.card:hover { border-color: var(--primary); box-shadow: 0 0 30px rgba(124,58,237,0.12); }
+.card:hover { border-top-color: var(--primary); box-shadow: 0 0 30px rgba(124,58,237,0.1); }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
   background: linear-gradient(135deg, var(--primary), #9333EA) !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 12px;
-  font-weight: 600;
-  box-shadow: 0 4px 20px rgba(124,58,237,0.25);
+  color: white !important; border: none !important; border-radius: 12px;
+  font-weight: 600; box-shadow: 0 4px 20px rgba(124,58,237,0.2);
 }
 
-.status-badge, .tag {
-  background: var(--primary) !important;
-  color: white !important;
-}
-
+.status-badge, .tag { background: var(--primary) !important; color: white !important; border-radius: 6px; }
 .text-accent { color: var(--secondary); }
-.icon-container { background: rgba(124,58,237,0.15) !important; border: 1px solid rgba(124,58,237,0.25); }
+.icon-container { background: rgba(124,58,237,0.12) !important; border: 1px solid rgba(124,58,237,0.2); }
 
-h1, h2, h3 { font-weight: 700; }
-
-/* Metric style */
-.card:first-child { border-top: 2px solid var(--primary); }
-
-nav, footer { border-color: rgba(124,58,237,0.1) !important; }
-nav { background: rgba(10,10,26,0.9); backdrop-filter: blur(10px); }`,
+h1, h2 { font-weight: 700; }
+nav { background: rgba(10,10,26,0.95); backdrop-filter: blur(12px); }
+nav, footer { border-color: rgba(124,58,237,0.08) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -2708,59 +1879,41 @@ nav { background: rgba(10,10,26,0.9); backdrop-filter: blur(10px); }`,
   --text: #111111;
   --text-muted: #888888;
   --border: #E5E5E5;
-  --accent: #111111;
   --border-color: #E5E5E5;
 }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Outfit', 'Inter', sans-serif;
-}
+body { background: var(--bg); color: var(--text); font-family: 'Outfit', 'Inter', sans-serif; }
 
-h1 { font-size: 36px !important; font-weight: 300 !important; letter-spacing: -0.04em; }
-h2, h3 { font-weight: 400; letter-spacing: -0.02em; }
+h1 { font-size: 36px !important; font-weight: 200 !important; letter-spacing: -0.04em; }
+h2 { font-weight: 300; letter-spacing: -0.02em; }
+h3 { font-weight: 400; }
 
 .card {
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 32px;
-  background: transparent;
-  transition: all 0.5s cubic-bezier(.4,0,.2,1);
+  border: 1px solid var(--border); border-radius: 4px !important; padding: 28px;
+  background: transparent; transition: all 0.5s cubic-bezier(.4,0,.2,1);
 }
-
-.card:hover { border-color: var(--accent); }
+.card:hover { border-color: var(--text); }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
-  background: transparent !important;
-  border: 1px solid var(--accent) !important;
-  color: var(--accent) !important;
-  border-radius: 0 !important;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-size: 11px;
+  background: transparent !important; border: 1px solid var(--text) !important;
+  color: var(--text) !important; border-radius: 0 !important;
+  font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; font-size: 10px;
+  transition: all 0.3s ease;
 }
-
-.button-primary:hover, .btn:hover {
-  background: var(--accent) !important;
-  color: white !important;
-}
+.button-primary:hover, .btn:hover { background: var(--text) !important; color: white !important; }
 
 .status-badge, .tag {
-  background: transparent !important;
-  border: 1px solid var(--text);
-  color: var(--text) !important;
-  border-radius: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 9px;
+  background: transparent !important; border: 1px solid var(--text-muted);
+  color: var(--text-muted) !important; border-radius: 0 !important;
+  text-transform: uppercase; letter-spacing: 0.15em; font-size: 9px;
 }
-
 .text-accent { color: var(--text); }
-.icon-container { background: transparent !important; border: 1px solid var(--border); }
+.icon-container { background: transparent !important; border: 1px solid var(--border); border-radius: 0 !important; }
+nav, footer { border-color: var(--border) !important; }
 
-nav, footer { border-color: var(--border) !important; }`,
+/* Minimal line animation */
+@keyframes minLine { from{width:0} to{width:100%} }
+h1::after { content:''; display:block; height:1px; background:var(--text); margin-top:12px; animation:minLine 1s ease-out both; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -2785,57 +1938,55 @@ nav, footer { border-color: var(--border) !important; }`,
   --bg: #0F0118;
   --text: #FFFFFF;
   --text-muted: #B8A9C9;
-  --gradient-1: linear-gradient(135deg, #FF006E, #8338EC);
-  --gradient-2: linear-gradient(135deg, #FB5607, #FFBE0B);
-  --border-color: rgba(255,0,110,0.2);
+  --pink: #FF006E;
+  --purple: #8338EC;
+  --orange: #FB5607;
+  --yellow: #FFBE0B;
+  --blue: #3A86FF;
+  --border-color: rgba(255,0,110,0.15);
 }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Cabinet Grotesk', 'Nunito', sans-serif;
+body { background: var(--bg); color: var(--text); font-family: 'Nunito', sans-serif; position: relative; overflow-x: hidden; }
+
+/* Animated gradient blobs */
+body::before {
+  content:''; position:fixed; width:300px; height:300px; top:-80px; right:-80px;
+  background: linear-gradient(135deg, rgba(255,0,110,0.12), rgba(131,56,236,0.08));
+  border-radius:50%; filter:blur(60px); pointer-events:none;
+  animation: vibOrb1 8s ease-in-out infinite;
 }
+body::after {
+  content:''; position:fixed; width:250px; height:250px; bottom:-60px; left:-60px;
+  background: linear-gradient(135deg, rgba(251,86,7,0.1), rgba(255,190,11,0.06));
+  border-radius:50%; filter:blur(50px); pointer-events:none;
+  animation: vibOrb2 10s ease-in-out infinite;
+}
+@keyframes vibOrb1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-30px,40px)} }
+@keyframes vibOrb2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,-30px)} }
 
 h1 {
-  font-size: 36px !important; font-weight: 800;
-  background: linear-gradient(135deg, #FF006E, #8338EC);
+  font-size: 34px !important; font-weight: 800;
+  background: linear-gradient(135deg, var(--pink), var(--purple), var(--blue));
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 
 .card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 24px !important;
-  padding: 24px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px !important; padding: 22px; transition: all 0.3s ease;
 }
-
-.card:hover { transform: scale(1.02) rotate(-0.5deg); border-color: #FF006E; }
+.card:hover { transform: scale(1.02) rotate(-0.5deg); border-color: var(--pink); background: rgba(255,255,255,0.06); }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
-  background: linear-gradient(135deg, #FF006E, #8338EC) !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 50px !important;
-  font-weight: 700;
-  box-shadow: 0 8px 30px rgba(255,0,110,0.3);
+  background: linear-gradient(135deg, var(--pink), var(--purple)) !important;
+  color: white !important; border: none !important; border-radius: 50px !important;
+  font-weight: 700; box-shadow: 0 8px 30px rgba(255,0,110,0.25);
 }
+.button-primary:hover, .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(255,0,110,0.4); }
 
-.button-primary:hover, .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(255,0,110,0.5);
-}
-
-.status-badge, .tag {
-  background: linear-gradient(135deg, #FB5607, #FFBE0B) !important;
-  color: #0F0118 !important;
-  font-weight: 700;
-  border-radius: 20px;
-}
-
-.text-accent { color: #FF006E; }
-.icon-container { background: linear-gradient(135deg, #8338EC, #3A86FF) !important; }
-
-nav, footer { border-color: rgba(255,0,110,0.15) !important; }`,
+.status-badge, .tag { background: linear-gradient(135deg, var(--orange), var(--yellow)) !important; color: #0F0118 !important; font-weight: 700; border-radius: 20px; }
+.text-accent { color: var(--pink); }
+.icon-container { background: linear-gradient(135deg, rgba(131,56,236,0.2), rgba(58,134,255,0.15)) !important; border-radius: 16px !important; }
+nav, footer { border-color: rgba(255,0,110,0.1) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -2860,51 +2011,56 @@ nav, footer { border-color: rgba(255,0,110,0.15) !important; }`,
   --bg: #030712;
   --surface: #111827;
   --text: #E2E8F0;
-  --text-muted: #64748B;
   --cyan: #06B6D4;
   --silver: #94A3B8;
-  --border: rgba(6,182,212,0.15);
-  --border-color: rgba(6,182,212,0.15);
-  --glow: 0 0 40px rgba(6,182,212,0.15);
+  --border: rgba(6,182,212,0.12);
+  --border-color: rgba(6,182,212,0.12);
 }
 
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Exo 2', 'Inter', sans-serif;
-  background-image: radial-gradient(600px circle at 50% 0%, rgba(6,182,212,0.06), transparent);
+  background: var(--bg); color: var(--text); font-family: 'Exo 2', 'Inter', sans-serif;
+  background-image: radial-gradient(600px circle at 50% 0%, rgba(6,182,212,0.04) 0%, transparent 60%);
 }
 
-h1, h2 { font-family: 'Orbitron', sans-serif; color: var(--cyan); text-shadow: 0 0 15px rgba(6,182,212,0.3); }
+/* HUD corner elements */
+body::before {
+  content:''; position:fixed; top:10px; left:10px; width:30px; height:30px;
+  border-left: 2px solid rgba(6,182,212,0.2); border-top: 2px solid rgba(6,182,212,0.2);
+  pointer-events:none;
+}
+body::after {
+  content:''; position:fixed; bottom:10px; right:10px; width:30px; height:30px;
+  border-right: 2px solid rgba(6,182,212,0.2); border-bottom: 2px solid rgba(6,182,212,0.2);
+  pointer-events:none;
+}
+
+h1, h2 { font-family: 'Orbitron', sans-serif; color: var(--cyan); text-shadow: 0 0 12px rgba(6,182,212,0.25); letter-spacing: 0.03em; }
 
 .card {
-  background: linear-gradient(135deg, rgba(6,182,212,0.04), transparent);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px;
+  background: linear-gradient(135deg, rgba(6,182,212,0.03), transparent);
+  border: 1px solid var(--border); border-radius: 12px; padding: 20px;
+  transition: all 0.3s ease;
 }
+.card:hover { border-color: var(--cyan); box-shadow: 0 0 30px rgba(6,182,212,0.12); }
 
-.card:hover { border-color: var(--cyan); box-shadow: var(--glow); }
+/* Metallic scan effect */
+.card::before {
+  content:''; position:absolute; top:0; left:-100%; width:50%; height:100%;
+  background: linear-gradient(90deg, transparent, rgba(6,182,212,0.04), transparent);
+  animation: ftScan 5s linear infinite;
+}
+@keyframes ftScan { 0%{left:-50%} 100%{left:150%} }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
   background: linear-gradient(135deg, var(--cyan), #0891B2) !important;
-  color: var(--bg) !important;
-  border: none !important;
-  border-radius: 8px;
-  font-weight: 700;
-  box-shadow: 0 4px 20px rgba(6,182,212,0.3);
+  color: var(--bg) !important; border: none !important; border-radius: 8px;
+  font-weight: 700; box-shadow: 0 4px 20px rgba(6,182,212,0.2);
 }
 
-.status-badge, .tag {
-  background: rgba(6,182,212,0.15) !important;
-  border: 1px solid rgba(6,182,212,0.3);
-  color: var(--cyan) !important;
-}
-
-.text-accent { color: var(--cyan); text-shadow: 0 0 10px rgba(6,182,212,0.3); }
-.icon-container { background: rgba(6,182,212,0.1) !important; border: 1px solid var(--border); }
-
-nav, footer { border-color: rgba(6,182,212,0.1) !important; }`,
+.status-badge, .tag { background: rgba(6,182,212,0.1) !important; border: 1px solid rgba(6,182,212,0.25); color: var(--cyan) !important; }
+.text-accent { color: var(--cyan); text-shadow: 0 0 8px rgba(6,182,212,0.25); }
+.icon-container { background: rgba(6,182,212,0.06) !important; border: 1px solid var(--border); }
+nav, footer { border-color: rgba(6,182,212,0.08) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -2932,62 +2088,40 @@ nav, footer { border-color: rgba(6,182,212,0.1) !important; }`,
   --text-muted: #8B9DC3;
   --gold: #D4AF37;
   --gold-light: #E8D48B;
-  --border: rgba(212,175,55,0.15);
-  --border-color: rgba(212,175,55,0.15);
+  --border: rgba(212,175,55,0.12);
+  --border-color: rgba(212,175,55,0.12);
 }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Libre Baskerville', 'Georgia', serif;
-}
+body { background: var(--bg); color: var(--text); font-family: 'Libre Baskerville', 'Georgia', serif; }
 
 h1, h2, h3 { font-family: 'Cormorant Garamond', serif; color: var(--gold); letter-spacing: 0.02em; }
-h1 { font-size: 34px !important; font-weight: 600; }
+h1 { font-size: 34px !important; font-weight: 500; }
+
+/* Decorative ornament */
+section + section::before {
+  content:'◆'; display:block; text-align:center; color:var(--gold); opacity:0.3;
+  font-size:12px; margin:8px 0; letter-spacing:8px;
+}
 
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 24px;
-  transition: all 0.5s ease;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 4px !important;
+  padding: 24px; transition: all 0.5s ease;
 }
-
-.card:hover { border-color: var(--gold); }
+.card:hover { border-color: rgba(212,175,55,0.3); }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
-  background: transparent !important;
-  border: 2px solid var(--gold) !important;
-  color: var(--gold) !important;
-  border-radius: 0 !important;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 14px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  background: transparent !important; border: 2px solid var(--gold) !important;
+  color: var(--gold) !important; border-radius: 0 !important;
+  font-family: 'Cormorant Garamond', serif; font-size: 14px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  transition: all 0.4s ease;
 }
+.button-primary:hover, .btn:hover { background: var(--gold) !important; color: var(--bg) !important; }
 
-.button-primary:hover, .btn:hover {
-  background: var(--gold) !important;
-  color: var(--bg) !important;
-}
-
-.status-badge, .tag {
-  background: var(--gold) !important;
-  color: var(--bg) !important;
-  border-radius: 0;
-  letter-spacing: 0.1em;
-}
-
+.status-badge, .tag { background: var(--gold) !important; color: var(--bg) !important; border-radius: 0 !important; letter-spacing: 0.1em; font-size: 10px; }
 .text-accent { color: var(--gold); }
-.icon-container { background: rgba(212,175,55,0.1) !important; border: 1px solid var(--border); }
-
-/* Decorative divider */
-section + section::before {
-  content: ''; display: block; height: 1px; margin: 0 auto;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-
-nav, footer { border-color: rgba(212,175,55,0.12) !important; }`,
+.icon-container { background: rgba(212,175,55,0.06) !important; border: 1px solid var(--border); border-radius: 2px !important; }
+nav, footer { border-color: rgba(212,175,55,0.1) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
@@ -3020,46 +2154,35 @@ nav, footer { border-color: rgba(212,175,55,0.12) !important; }`,
   --border-color: #DDD5C8;
 }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Nunito Sans', 'Inter', sans-serif;
+body { background: var(--bg); color: var(--text); font-family: 'Nunito Sans', 'Inter', sans-serif; position: relative; }
+
+/* Organic blob decoration */
+body::before {
+  content:''; position:fixed; width:200px; height:200px; top:15%; right:-40px;
+  background: rgba(92,124,94,0.05); border-radius: 60% 40% 70% 30%/50% 60% 40% 50%;
+  animation: orgBlob 12s ease-in-out infinite; pointer-events:none;
 }
+@keyframes orgBlob { 0%,100%{border-radius:60% 40% 70% 30%/50% 60% 40% 50%} 50%{border-radius:40% 60% 30% 70%/60% 40% 60% 40%} }
 
 h1, h2, h3 { font-family: 'DM Serif Display', serif; color: var(--text); letter-spacing: -0.01em; }
 
 .card {
-  background: var(--surface);
-  border: none !important;
-  border-radius: 24px !important;
-  padding: 24px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  background: var(--surface); border: none !important; border-radius: 24px !important;
+  padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  transition: all 0.4s ease;
 }
-
-.card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+.card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); }
 
 .button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
-  background: var(--sage) !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 50px !important;
-  font-weight: 600;
+  background: var(--sage) !important; color: white !important; border: none !important;
+  border-radius: 50px !important; font-weight: 600;
+  transition: all 0.3s ease;
 }
+.button-primary:hover, .btn:hover { background: var(--terracotta) !important; transform: translateY(-1px); }
 
-.button-primary:hover, .btn:hover {
-  background: var(--terracotta) !important;
-  transform: translateY(-1px);
-}
-
-.status-badge, .tag {
-  background: var(--sage) !important;
-  color: white !important;
-  border-radius: 20px;
-}
-
+.status-badge, .tag { background: var(--sage) !important; color: white !important; border-radius: 20px; }
 .text-accent { color: var(--terracotta); }
 .icon-container { background: var(--sand) !important; border-radius: 50% !important; }
-
 nav, footer { border-color: var(--border) !important; }`,
     exampleUrl: "https://pv-turn.lovable.app",
   },
