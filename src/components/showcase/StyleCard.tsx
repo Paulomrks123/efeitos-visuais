@@ -176,15 +176,24 @@ export function StyleCard({ style, index }: StyleCardProps) {
                 </div>
               )}
 
-              {/* Interactive Preview */}
-              <div 
-                className="rounded-xl overflow-hidden p-6"
-                style={{ 
-                  background: `linear-gradient(135deg, ${style.colors[0]}15, ${style.colors[1]}15)`,
-                  border: `1px solid ${style.colors[0]}33`
-                }}
-              >
-                <StylePreviewFull style={style} />
+              {/* Interactive Preview via iframe */}
+              <div className="rounded-xl overflow-hidden border border-border/50" style={{ height: 480 }}>
+                <StyleExampleFrame
+                  sampleCSS={style.sampleCSS}
+                  styleName={style.name}
+                />
+              </div>
+
+              {/* Full page link */}
+              <div className="flex justify-center">
+                <Link
+                  to={`/showcase/example/${style.id}`}
+                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                  onClick={() => setShowDetails(false)}
+                >
+                  <ExternalLink size={16} />
+                  Ver em tela cheia
+                </Link>
               </div>
 
               {/* Description */}
