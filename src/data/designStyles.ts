@@ -2771,7 +2771,6 @@ body {
   font-size: 0.75rem;
   color: var(--cor-texto-secundario);
 }`,
-    exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "slush-fintech",
