@@ -65,7 +65,7 @@ export default function Showcase() {
               <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-primary/20 flex items-center justify-center">
                 <Palette size={12} className="sm:w-4 sm:h-4 text-primary" />
               </div>
-              <span className="font-medium text-xs sm:text-base">23 Estilos</span>
+              <span className="font-medium text-xs sm:text-base">33 Estilos</span>
             </div>
             <p className="text-[10px] sm:text-sm text-muted-foreground text-center sm:text-left hidden sm:block">
               De Premium Minimalista a Tech Focus Flow
