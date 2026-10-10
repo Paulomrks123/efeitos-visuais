@@ -1,3 +1,4 @@
+import { createDalaCSS, dalaArtwork } from "./styles/dala";
 import stylePremiumMinimal from "@/assets/showcase/style-premium-minimal.jpg";
 import styleIllustratedCartoon from "@/assets/showcase/style-illustrated-cartoon.jpg";
 import styleDarkTech from "@/assets/showcase/style-dark-tech.jpg";
@@ -45,199 +46,64 @@ export const designStyles: StyleDefinition[] = [
   {
     id: "premium-minimal",
     name: "Premium Minimalista",
-    subtitle: "SaaS Moderno • Tecnologia • Finanças",
-    description: "Visual clean e sofisticado com paleta neutra, tipografia moderna sem serifa e layout baseado em grid com espaçamentos amplos. Cards com bordas sutis e sombras leves transmitem profissionalismo.",
-    objective: "Transmitir profissionalismo, tecnologia e confiança — ideal para SaaS financeiro e B2B.",
-    colors: ["#FFFFFF", "#F5F5F5", "#1A1A1A", "#6B7280", "#3B82F6"],
-    features: ["Clean", "Grid Layout", "Monocromático", "Sombras Sutis"],
-    iconStyle: "Ícones lineares minimalistas, monocromáticos, traço fino e consistente. Sem ilustrações ou cores chamativas.",
-    layoutStyle: "Grid rígido, espaçamentos amplos, hierarquia clara. Cards com bordas sutis.",
-    typography: "Inter, SF Pro, sans-serif. Hierarquia clara entre títulos e corpo.",
-    previewImage: stylePremiumMinimal,
+    subtitle: "Dala Void • Premium • Assimétrico",
+    description: "Referência Dala: fundo preto puro, títulos amplos de peso regular, corpo ultraleve, ações violeta e constelação de triângulos coloridos. Conteúdo flutua sem caixas, bordas ou sombras.",
+    objective: "Apresentar conexões e inteligência coletiva em uma experiência premium inspirada na Dala.",
+    colors: ["#000000", "#FFFFFF", "#8052FF", "#FFB829", "#15846E"],
+    features: ["Dala", "Constelação", "Tipografia Ampla", "Sem Painéis"],
+    iconStyle: "Triângulos geométricos multicoloridos e marca angular violeta.",
+    layoutStyle: "Composição assimétrica com título amplo à esquerda e seções em duas colunas.",
+    typography: "PPNeueMontreal ou Inter. Títulos 400; corpo 200; rótulos 600.",
+    previewImage: dalaArtwork[0],
     cssVariables: {
-      "--background": "0 0% 100%",
-      "--foreground": "0 0% 10%",
-      "--primary": "221 83% 53%",
-      "--muted": "210 40% 96%",
+      "--background": "0 0% 0%",
+      "--foreground": "0 0% 100%",
+      "--primary": "256 100% 66.1%",
+      "--accent": "40 100% 58%",
     },
-    sampleCSS: `:root {
-  --background: #FFFFFF;
-  --surface: #F9FAFB;
-  --text-primary: #111827;
-  --text-secondary: #6B7280;
-  --accent: #3B82F6;
-  --border: #E5E7EB;
-  --border-color: #E5E7EB;
-}
-
-body { background: var(--background); color: var(--text-primary); font-family: 'Inter', 'SF Pro', sans-serif; }
-
-.card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-  transition: all 0.3s ease;
-}
-.card:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.08); transform: translateY(-2px); }
-
-.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
-  background: var(--text-primary) !important; color: white !important; border: none !important;
-  border-radius: 8px; font-weight: 500; transition: all 0.2s ease;
-}
-.button-primary:hover, .btn:hover { opacity: 0.9; transform: translateY(-1px); }
-
-.status-badge, .tag { background: var(--accent) !important; color: white !important; border-radius: 6px; font-size: 10px; }
-.text-accent { color: var(--accent); }
-.icon-container { background: var(--surface) !important; border: 1px solid var(--border); }
-h1 { letter-spacing: -0.03em; font-weight: 700; }
-nav, footer { border-color: var(--border) !important; }
-
-/* Subtle entrance */
-@keyframes pmFade { from { opacity:0; transform:translateY(12px) } to { opacity:1; transform:translateY(0) } }
-section { animation: pmFade 0.6s ease-out both; }`,
+    sampleCSS: createDalaCSS(0),
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "illustrated-cartoon",
     name: "Ilustrado / Cartoon",
-    subtitle: "Food App • Popular • Acessível",
-    description: "Layout colorido, leve e acessível com paleta vibrante. Bordas arredondadas, cards grandes e chamativos. Ícones ilustrados em flat design com cores sólidas.",
-    objective: "Criar uma experiência divertida, fácil de usar e visualmente memorável — ideal para apps de alimentação e público geral.",
-    colors: ["#FFF7ED", "#FB923C", "#EF4444", "#FBBF24", "#22C55E"],
-    features: ["Colorido", "Arredondado", "Flat Design", "Amigável"],
-    iconStyle: "Ícones ilustrados estilo cartoon, flat design, cores sólidas e vivas, sem contorno externo.",
-    layoutStyle: "Cards grandes e chamativos, bordas muito arredondadas, visual acolhedor.",
-    typography: "Rounded, amigável. Poppins, Nunito ou similar.",
-    previewImage: styleIllustratedCartoon,
+    subtitle: "Dala Constellation • Imersivo • Central",
+    description: "Referência Dala: fundo preto puro, títulos amplos de peso regular, corpo ultraleve, ações violeta e constelação de triângulos coloridos. Conteúdo flutua sem caixas, bordas ou sombras.",
+    objective: "Apresentar conexões e inteligência coletiva em uma experiência premium inspirada na Dala.",
+    colors: ["#000000", "#FFFFFF", "#8052FF", "#FFB829", "#15846E"],
+    features: ["Dala", "Constelação", "Tipografia Ampla", "Sem Painéis"],
+    iconStyle: "Triângulos geométricos multicoloridos e marca angular violeta.",
+    layoutStyle: "Constelação acima do título centralizado e conteúdo em ritmo vertical espaçoso.",
+    typography: "PPNeueMontreal ou Inter. Títulos 400; corpo 200; rótulos 600.",
+    previewImage: dalaArtwork[1],
     cssVariables: {
-      "--background": "30 100% 98%",
-      "--foreground": "20 80% 20%",
-      "--primary": "25 95% 55%",
-      "--accent": "45 93% 58%",
+      "--background": "0 0% 0%",
+      "--foreground": "0 0% 100%",
+      "--primary": "256 100% 66.1%",
+      "--accent": "40 100% 58%",
     },
-    sampleCSS: `:root {
-  --background: #FFF7ED;
-  --surface: #FFFFFF;
-  --text-primary: #7C2D12;
-  --primary: #FB923C;
-  --secondary: #EF4444;
-  --accent: #FBBF24;
-  --border-color: #FED7AA;
-}
-
-body { background: var(--background); color: var(--text-primary); font-family: 'Poppins', 'Nunito', sans-serif; }
-
-.card {
-  background: var(--surface); border: 3px solid #FED7AA; border-radius: 24px !important; padding: 20px;
-  transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
-  position: relative; overflow: hidden;
-}
-.card:hover { transform: translateY(-6px) rotate(-1deg); border-color: var(--primary); box-shadow: 0 12px 30px rgba(251,146,60,0.2); }
-.card::after {
-  content:''; position:absolute; top:-50%; right:-50%; width:100%; height:100%;
-  background: radial-gradient(circle, rgba(251,146,60,0.08) 0%, transparent 70%);
-  animation: cartoonGlow 4s ease-in-out infinite alternate;
-}
-@keyframes cartoonGlow { from{transform:scale(1)} to{transform:scale(1.5)} }
-
-.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
-  background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
-  color: white !important; border: none !important; border-radius: 20px !important;
-  font-weight: 700; box-shadow: 0 6px 20px rgba(251,146,60,0.35);
-  animation: cartoonBounce 3s ease-in-out infinite;
-}
-@keyframes cartoonBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-3px)} }
-
-.status-badge, .tag { background: var(--accent) !important; color: var(--text-primary) !important; border-radius: 50px; font-weight: 700; }
-.text-accent { color: var(--primary); }
-.icon-container { background: linear-gradient(135deg, var(--primary), var(--secondary)) !important; border-radius: 50% !important; }
-h1, h2 { font-weight: 800; }
-nav, footer { border-color: #FED7AA !important; }`,
+    sampleCSS: createDalaCSS(1),
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
     id: "dark-tech",
     name: "Dark Tech / Futurista",
-    subtitle: "Tech • Gaming • Dashboards",
-    description: "Tema escuro predominante com fundo preto/grafite. Destaques em azul, roxo ou neon. Visual de painel de controle com cards que possuem glow sutil, efeitos de glitch e scan lines animadas.",
-    objective: "Transmitir tecnologia avançada, controle e inteligência artificial.",
-    colors: ["#0F172A", "#1E293B", "#06B6D4", "#8B5CF6", "#22D3EE"],
-    features: ["Dark Mode", "Neon Glow", "Glitch Effects", "Scan Lines"],
-    iconStyle: "Ícones geométricos, estilo tech/futurista, lineares ou semi-fill. Monocromáticos com destaque neon.",
-    layoutStyle: "Visual de painel de controle, cards com glow sutil, densidade média-alta de informação.",
-    typography: "Geométrica moderna. Inter, Space Grotesk, JetBrains Mono para dados.",
-    previewImage: styleDarkTech,
+    subtitle: "Dala Neural • Tecnologia • Invertido",
+    description: "Referência Dala: fundo preto puro, títulos amplos de peso regular, corpo ultraleve, ações violeta e constelação de triângulos coloridos. Conteúdo flutua sem caixas, bordas ou sombras.",
+    objective: "Apresentar conexões e inteligência coletiva em uma experiência premium inspirada na Dala.",
+    colors: ["#000000", "#FFFFFF", "#8052FF", "#FFB829", "#15846E"],
+    features: ["Dala", "Constelação", "Tipografia Ampla", "Sem Painéis"],
+    iconStyle: "Triângulos geométricos multicoloridos e marca angular violeta.",
+    layoutStyle: "Título alinhado à direita com constelação à esquerda e seções invertidas.",
+    typography: "PPNeueMontreal ou Inter. Títulos 400; corpo 200; rótulos 600.",
+    previewImage: dalaArtwork[2],
     cssVariables: {
-      "--background": "222 47% 11%",
-      "--foreground": "210 40% 98%",
-      "--primary": "187 94% 43%",
-      "--accent": "262 83% 58%",
+      "--background": "0 0% 0%",
+      "--foreground": "0 0% 100%",
+      "--primary": "256 100% 66.1%",
+      "--accent": "40 100% 58%",
     },
-    sampleCSS: `:root {
-  --background: #0F172A;
-  --surface: #1E293B;
-  --text-primary: #F1F5F9;
-  --text-secondary: #94A3B8;
-  --primary: #06B6D4;
-  --accent: #8B5CF6;
-  --border-color: rgba(6,182,212,0.15);
-}
-
-body {
-  background: var(--background); color: var(--text-primary);
-  font-family: 'Space Grotesk', 'Inter', sans-serif;
-}
-
-/* Glitch text */
-.glitch-text { position: relative; text-transform: uppercase; letter-spacing: 0.1em; }
-.glitch-text::before, .glitch-text::after { content: attr(data-text); position: absolute; top:0; left:0; width:100%; height:100%; }
-.glitch-text::before { color: var(--primary); animation: dtGlitchL 0.3s infinite; clip-path: polygon(0 0,100% 0,100% 45%,0 45%); transform: translate(-2px,-1px); }
-.glitch-text::after { color: var(--accent); animation: dtGlitchR 0.3s infinite; clip-path: polygon(0 55%,100% 55%,100% 100%,0 100%); transform: translate(2px,1px); }
-@keyframes dtGlitchL { 0%,100%{transform:translate(-2px,-1px)} 20%{transform:translate(2px,1px)} 60%{transform:translate(1px,2px)} }
-@keyframes dtGlitchR { 0%,100%{transform:translate(2px,1px)} 40%{transform:translate(-1px,2px)} 80%{transform:translate(2px,-1px)} }
-
-/* Scan lines */
-.scanlines { position: relative; overflow: hidden; }
-.scanlines::before {
-  content:''; position:absolute; inset:0; z-index:10; pointer-events:none;
-  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px);
-}
-.scanlines::after {
-  content:''; position:absolute; top:-100%; left:0; right:0; height:200%; z-index:11; pointer-events:none;
-  background: linear-gradient(180deg, transparent 0%, rgba(6,182,212,0.03) 50%, transparent 100%);
-  animation: dtScan 4s linear infinite;
-}
-@keyframes dtScan { 0%{transform:translateY(0)} 100%{transform:translateY(50%)} }
-
-.card {
-  background: var(--surface); border: 1px solid rgba(6,182,212,0.15); border-radius: 12px; padding: 20px;
-  position: relative; overflow: hidden;
-}
-.card::before {
-  content:''; position:absolute; top:0; left:-100%; width:100%; height:2px;
-  background: linear-gradient(90deg, transparent, var(--primary), transparent);
-  animation: dtBorderScan 3s linear infinite;
-}
-@keyframes dtBorderScan { 0%{left:-100%} 100%{left:100%} }
-
-.button-primary, .btn, .btn-primary, .cta-button, .hero-btn {
-  background: transparent !important; border: 1px solid var(--primary) !important;
-  color: var(--primary) !important; border-radius: 8px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.05em; position: relative; overflow: hidden;
-  transition: all 0.3s ease;
-}
-.button-primary:hover, .btn:hover { background: var(--primary) !important; color: var(--background) !important; box-shadow: 0 0 30px rgba(6,182,212,0.4); }
-
-.status-badge, .tag { background: var(--primary) !important; color: var(--background) !important; }
-.text-accent { color: var(--primary); text-shadow: 0 0 10px rgba(6,182,212,0.4); }
-.icon-container { background: rgba(6,182,212,0.1) !important; border: 1px solid rgba(6,182,212,0.2); }
-
-/* Neon flicker */
-@keyframes dtFlicker {
-  0%,19%,21%,23%,25%,54%,56%,100% { text-shadow: 0 0 4px var(--primary), 0 0 11px var(--primary); }
-  20%,24%,55% { text-shadow: none; }
-}
-h1 { animation: dtFlicker 3s infinite; }
-nav, footer { border-color: rgba(6,182,212,0.12) !important; }`,
+    sampleCSS: createDalaCSS(2),
     exampleUrl: "https://pv-turn.lovable.app",
   },
   {
