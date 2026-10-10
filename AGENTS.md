@@ -1,0 +1,2 @@
+# Architecture rules
+- Showcase style CSS is the single source for both copyable code and iframe examples; self-contained style-family generators belong in `src/data/styles` so their visual assets and variants cannot diverge between the two experiences.
